@@ -13,22 +13,7 @@ import { enquiry } from "@/lib/whatsapp";
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const panelId = useId();
-
-  // The home page opens with a full-height photograph, so the header sits over
-  // it until the visitor scrolls, then takes on a solid background.
-  const isHome = pathname === "/";
-  const overlay = isHome && !scrolled && !open;
-
-  useEffect(() => {
-    if (!isHome) return;
-
-    const onScroll = () => setScrolled(window.scrollY > 56);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [isHome]);
 
   // The panel is closed from the link handlers below rather than from a route
   // effect, which would trigger a cascading render on every navigation.
@@ -55,17 +40,7 @@ export function SiteHeader() {
     pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header
-      className={cn(
-        "top-0 z-50 transition-colors duration-500",
-        // Fixed on the home page so it floats over the opening photograph;
-        // sticky elsewhere so it still occupies layout space at the top.
-        isHome ? "fixed inset-x-0" : "sticky",
-        overlay
-          ? "border-b border-transparent bg-transparent"
-          : "border-b border-line bg-bone/90 backdrop-blur-md",
-      )}
-    >
+    <header className="sticky top-0 z-50 border-b border-line bg-bone/88 backdrop-blur-md">
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center gap-8 px-5 sm:px-8 lg:h-[4.75rem]">
         <Link
           href="/"
@@ -74,11 +49,7 @@ export function SiteHeader() {
           aria-label={`${SITE.name} home`}
         >
           <Image
-            src={
-              overlay
-                ? "/brand/smarto-wordmark-light.webp"
-                : "/brand/smarto-wordmark.webp"
-            }
+            src="/brand/smarto-wordmark.webp"
             alt={SITE.name}
             width={720}
             height={160}
@@ -96,13 +67,9 @@ export function SiteHeader() {
                   aria-current={isActive(item.href) ? "page" : undefined}
                   className={cn(
                     "relative inline-flex h-11 items-center text-[0.9375rem] transition-colors",
-                    overlay && "text-bone/75 hover:text-bone",
-                    overlay &&
-                      isActive(item.href) &&
-                      "text-bone after:absolute after:inset-x-0 after:bottom-2.5 after:h-px after:bg-bone/70",
-                    !overlay && isActive(item.href)
+                    isActive(item.href)
                       ? "text-ink after:absolute after:inset-x-0 after:bottom-2.5 after:h-px after:bg-clay"
-                      : !overlay && "text-taupe hover:text-ink",
+                      : "text-taupe hover:text-ink",
                   )}
                 >
                   {item.label}
@@ -117,7 +84,6 @@ export function SiteHeader() {
             message={enquiry("I would like to plan a trip in the Northeast.")}
             location="header"
             size="sm"
-            tone={overlay ? "onDark" : "primary"}
           >
             Plan a trip
           </WhatsAppLink>
@@ -128,12 +94,7 @@ export function SiteHeader() {
           onClick={() => setOpen((value) => !value)}
           aria-expanded={open}
           aria-controls={panelId}
-          className={cn(
-            "ml-auto inline-flex size-11 items-center justify-center border transition-colors lg:hidden",
-            overlay
-              ? "border-bone/35 text-bone hover:bg-bone/10"
-              : "border-line-strong text-ink hover:bg-sand",
-          )}
+          className="ml-auto inline-flex size-11 items-center justify-center border border-line-strong text-ink transition-colors hover:bg-sand lg:hidden"
         >
           <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
           <svg
