@@ -50,6 +50,11 @@ const STYLES = {
     'No text, no lettering, no signage, no logos, no watermarks.',
     'Avoid HDR halos, plastic surfaces, perfect symmetry, and any visible AI artifacts.',
   ].join(' '),
+  // Compositing textures (fog plates, grain) — no scene, no styling agenda.
+  fx: [
+    'Photographic texture element for compositing.',
+    'No text, no lettering, no watermarks, no objects, no landscape features.',
+  ].join(' '),
 }
 
 /** Load OPENAI_API_KEY from .env.local without adding a dotenv dependency. */
