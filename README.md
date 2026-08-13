@@ -50,6 +50,27 @@ public/
 scripts/        Development-time asset generation
 ```
 
+## Deployment
+
+Pushes to `main` deploy to production through the connected Vercel project.
+
+**Commits must be authored by an email GitHub recognises for the account.**
+Once a Vercel project is linked to a GitHub repository, Vercel validates the
+commit author and refuses to build otherwise, failing with:
+
+```text
+The Deployment was blocked because there was no git user associated with the commit.
+```
+
+The deployment sits in an `UNKNOWN` state in `vercel ls` rather than reporting a
+build error, so check the API if a deploy appears stuck:
+
+```bash
+gh api user --jq .email
+```
+
+Set `git config user.email` to that address before committing.
+
 ## Content status
 
 **Most catalog content is placeholder.** Every record in `src/data/` carries a
