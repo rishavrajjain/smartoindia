@@ -81,7 +81,7 @@
   }
 
   body:has([data-page-theme="kinetic-field-guide"]) {
-    background: #080808;
+    background: #f7f6f1;
   }
 
   html {
