@@ -2,16 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { DestinationMarquee } from "@/components/sections/destination-marquee";
+import { HomeHero } from "@/components/sections/home-hero";
 import { ReviewCarousel } from "@/components/sections/review-carousel";
 import { Container } from "@/components/ui/container";
-import { Eyebrow, Label } from "@/components/ui/deco";
+import { Eyebrow } from "@/components/ui/deco";
 import { PackageCard } from "@/components/ui/package-card";
-import { WhatsAppLink } from "@/components/ui/whatsapp-link";
 import { IMAGES } from "@/data/images";
 import { FEATURED_PACKAGES } from "@/data/packages";
 import { REVIEWS } from "@/data/reviews";
 import { pageMetadata } from "@/lib/seo";
-import { enquiry } from "@/lib/whatsapp";
 
 export const metadata = pageMetadata({
   title: "Smarto — Northeast India, travelled well",
@@ -38,70 +37,9 @@ const STEPS = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="pt-14 lg:pt-24">
-        <Container width="wide">
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-12">
-            <div className="lg:col-span-8">
-              <Eyebrow>Northeast India</Eyebrow>
-              <h1 className="mt-7 max-w-4xl text-[2.75rem] leading-[1.02] sm:text-[4rem] lg:text-[5.25rem]">
-                Travelled slowly,{" "}
-                <span className="accent">planned properly</span>.
-              </h1>
-            </div>
-            <div className="lg:col-span-4 lg:pb-3">
-              <p className="max-w-sm text-[1.0625rem] leading-relaxed text-taupe">
-                Road trips, festivals and everyday cabs across six regions. Tell
-                us the idea; we build the rest around it.
-              </p>
-              <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-                <WhatsAppLink
-                  message={enquiry(
-                    "I would like to plan a trip in the Northeast. Here is what I have in mind:",
-                  )}
-                  location="home-hero"
-                  size="md"
-                >
-                  Plan a trip
-                </WhatsAppLink>
-                <Link
-                  href="/packages"
-                  className="link-rule text-[0.9375rem] font-medium text-ink"
-                >
-                  See the trips
-                </Link>
-              </div>
-            </div>
-          </div>
+      <HomeHero />
 
-          <figure className="mt-14 lg:mt-20">
-            <div className="relative aspect-[4/3] overflow-hidden bg-sand sm:aspect-video lg:aspect-[21/9]">
-              <Image
-                src={IMAGES.homeHero.src}
-                alt={IMAGES.homeHero.alt}
-                fill
-                priority
-                fetchPriority="high"
-                sizes="(min-width: 1280px) 1216px, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <figcaption className="mt-4 flex flex-wrap items-center justify-between gap-3">
-              <div className="flex flex-wrap gap-2">
-                <Label>Assam · Meghalaya · Arunachal</Label>
-                <Label>Sikkim · Nagaland</Label>
-              </div>
-              <p className="text-label font-medium text-taupe uppercase">
-                Based in Guwahati
-              </p>
-            </figcaption>
-          </figure>
-        </Container>
-      </section>
-
-      <div className="mt-20 lg:mt-28">
-        <DestinationMarquee />
-      </div>
+      <DestinationMarquee />
 
       {/* Featured trips */}
       <Container width="wide" className="pt-20 lg:pt-28">

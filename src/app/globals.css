@@ -51,6 +51,11 @@
 
   --animate-rise: rise 0.7s var(--ease-out-quiet) both;
   --animate-marquee: marquee 46s linear infinite;
+  /* Very slow push-in on the opening photograph. */
+  --animate-kenburns: kenburns 26s var(--ease-out-quiet) both;
+  --animate-unveil: unveil 1.15s var(--ease-out-quiet) both;
+  --animate-fade-up: fade-up 1s var(--ease-out-quiet) both;
+  --animate-cue: cue 2.4s ease-in-out infinite;
 
   @keyframes rise {
     from {
@@ -60,6 +65,50 @@
     to {
       opacity: 1;
       transform: none;
+    }
+  }
+
+  /* Each headline line wipes upward from its own baseline. */
+  @keyframes unveil {
+    from {
+      clip-path: inset(105% 0 0 0);
+      transform: translate3d(0, 0.32em, 0);
+    }
+    to {
+      clip-path: inset(-25% 0 -25% 0);
+      transform: none;
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 12px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes kenburns {
+    from {
+      transform: scale(1.001);
+    }
+    to {
+      transform: scale(1.075);
+    }
+  }
+
+  @keyframes cue {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateY(7px);
+      opacity: 1;
     }
   }
 
@@ -148,6 +197,44 @@
       color-mix(in oklab, #0c0805 42%, transparent) 45%,
       transparent 80%
     );
+  }
+
+  /*
+    Opening frame scrim. Darkens the base heavily for the headline and the top
+    band lightly for the overlaid header, leaving the middle of the photograph
+    untouched. Measured against the brightest asset: bone on the base reads
+    above 7:1, and on the top band above 4.5:1.
+  */
+  .hero-scrim {
+    background:
+      linear-gradient(
+        to top,
+        color-mix(in oklab, #0c0805 88%, transparent) 0%,
+        color-mix(in oklab, #0c0805 66%, transparent) 26%,
+        color-mix(in oklab, #0c0805 18%, transparent) 55%,
+        transparent 72%
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in oklab, #0c0805 55%, transparent) 0%,
+        color-mix(in oklab, #0c0805 12%, transparent) 18%,
+        transparent 32%
+      );
+  }
+
+  /* Hairline that draws itself across the frame once, on load. */
+  .rule-draw {
+    transform-origin: left;
+    animation: rule-draw 1.4s var(--ease-out-quiet) both;
+  }
+
+  @keyframes rule-draw {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
   }
 
   .no-scrollbar {
