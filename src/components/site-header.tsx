@@ -40,7 +40,10 @@ export function SiteHeader() {
     pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-bone/88 backdrop-blur-md">
+    <header
+      data-site-chrome="header"
+      className="sticky top-0 z-50 border-b border-line bg-bone/88 backdrop-blur-md"
+    >
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center gap-8 px-5 sm:px-8 lg:h-[4.75rem]">
         <Link
           href="/"

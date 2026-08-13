@@ -11,7 +11,7 @@ const STATES = ["Assam", "Meghalaya", "Arunachal", "Sikkim", "Nagaland"];
 
 export function SiteFooter() {
   return (
-    <footer className="mt-28 lg:mt-40">
+    <footer data-site-chrome="footer" className="mt-28 lg:mt-40">
       {/* Sign-off */}
       <div className="border-t border-line bg-sand">
         <Container width="wide" className="py-20 lg:py-28">

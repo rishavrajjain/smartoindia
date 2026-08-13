@@ -21,7 +21,10 @@ export function StickyWhatsApp() {
   if (isPackageDetail) return null;
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-40 lg:hidden">
+    <div
+      data-site-chrome="sticky-whatsapp"
+      className="pointer-events-none fixed inset-x-0 bottom-0 z-40 lg:hidden"
+    >
       <div
         className="pointer-events-auto border-t border-line bg-bone/93 px-4 pt-3 backdrop-blur-lg"
         style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}

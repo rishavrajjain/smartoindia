@@ -13,6 +13,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
+    {
+      url: absoluteUrl("/a"),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
     ...NAV.map((item) => ({
       url: absoluteUrl(item.href),
       lastModified,

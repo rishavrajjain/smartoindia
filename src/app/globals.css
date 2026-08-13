@@ -74,6 +74,16 @@
 }
 
 @layer base {
+  /* The /a concept is a self-contained art direction with its own navigation. */
+  body:has([data-page-theme="kinetic-field-guide"])
+    > [data-site-chrome] {
+    display: none;
+  }
+
+  body:has([data-page-theme="kinetic-field-guide"]) {
+    background: #080808;
+  }
+
   html {
     scroll-behavior: smooth;
     /* Clears the sticky header when jumping to an in-page anchor. */
