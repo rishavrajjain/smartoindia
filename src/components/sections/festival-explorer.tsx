@@ -41,7 +41,7 @@ export function FestivalExplorer({ festivals }: { festivals: Festival[] }) {
 
   return (
     <div>
-      <fieldset className="[min-inline-size:0]">
+      <fieldset>
         <legend className="text-label font-medium text-clay-deep uppercase">
           Choose a month
         </legend>

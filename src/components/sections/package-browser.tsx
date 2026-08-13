@@ -238,7 +238,7 @@ function FilterRow({
   onSelect: (value: string) => void;
 }) {
   return (
-    <fieldset className="[min-inline-size:0]">
+    <fieldset>
       <legend className="text-label font-medium text-taupe uppercase">
         {legend}
       </legend>
