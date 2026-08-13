@@ -1,0 +1,351 @@
+import Image from "next/image";
+import Link from "next/link";
+import type { CSSProperties } from "react";
+import type { Viewport } from "next";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
+
+import { WaCta } from "@/components/ui/wa-cta";
+import { IMAGES } from "@/data/images";
+import { PACKAGES } from "@/data/packages";
+import { pageMetadata } from "@/lib/seo";
+import { enquiry, WHATSAPP_DISPLAY } from "@/lib/whatsapp";
+
+/**
+ * Concept C — "Night Drive".
+ *
+ * Dark cinematic luxury in the Black Tomato / Avenue H register: near-black
+ * green, champagne gold, a whisper-thin serif, photography graded down to
+ * embers. Confidence through restraint — short copy, vast space, slow reveals.
+ */
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-c-display",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
+});
+
+const manrope = Manrope({
+  variable: "--font-c-body",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600"],
+});
+
+export const metadata = pageMetadata({
+  title: "Smarto C: The far Northeast, travelled quietly",
+  description:
+    "Private journeys across Assam, Meghalaya, Arunachal, Sikkim, and Nagaland. A car, a driver who knows the road, and one WhatsApp thread that plans everything.",
+  path: "/c",
+});
+
+export const viewport: Viewport = {
+  themeColor: "#0b0f0c",
+  colorScheme: "dark",
+};
+
+/* Palette — kept in one place. Contrast on #0b0f0c:
+   ivory 16.2:1 · mist 8.6:1 · gold 7.2:1. */
+const PALETTE = {
+  "--n-bg": "#0b0f0c",
+  "--n-bg-lift": "#111712",
+  "--n-ivory": "#ece7db",
+  "--n-mist": "#a8ad9f",
+  "--n-gold": "#c9a962",
+  "--n-line": "rgba(236, 231, 219, 0.14)",
+} as CSSProperties;
+
+const JOURNEYS = [
+  { numeral: "I", pkg: PACKAGES.find((p) => p.slug === "meghalaya-waterfalls-and-caves")! },
+  { numeral: "II", pkg: PACKAGES.find((p) => p.slug === "tawang-high-passes")! },
+  { numeral: "III", pkg: PACKAGES.find((p) => p.slug === "kaziranga-and-the-brahmaputra")! },
+];
+
+const TENETS = [
+  {
+    title: "One car, the whole way",
+    line: "Your driver stays with you from airport to airport. Luggage moves once.",
+  },
+  {
+    title: "Planned around weather",
+    line: "In these hills the cloud decides the day. Itineraries bend instead of breaking.",
+  },
+  {
+    title: "One thread on WhatsApp",
+    line: "No portals, no forms. The person who plans your trip is the person who answers.",
+  },
+];
+
+export default function ConceptCPage() {
+  return (
+    <div
+      data-page-theme="night-drive"
+      style={PALETTE}
+      className={`${cormorant.variable} ${manrope.variable} bg-[var(--n-bg)] font-[family-name:var(--font-c-body)] text-[var(--n-ivory)]`}
+    >
+      {/* ——— Header */}
+      <header className="absolute inset-x-0 top-0 z-30">
+        <div className="mx-auto flex h-20 w-full max-w-[90rem] items-center justify-between px-6 sm:px-10">
+          <Link href="/c" aria-label="Smarto concept C home">
+            <Image
+              src="/brand/smarto-wordmark-light.webp"
+              alt="Smarto"
+              width={720}
+              height={160}
+              priority
+              className="h-6 w-auto"
+            />
+          </Link>
+          <nav aria-label="Site">
+            <ul className="flex items-center gap-8 text-[0.8125rem] tracking-[0.08em]">
+              <li className="hidden sm:block">
+                <Link href="/packages" className="text-[var(--n-mist)] transition-colors hover:text-[var(--n-ivory)]">
+                  Journeys
+                </Link>
+              </li>
+              <li className="hidden sm:block">
+                <Link href="/cabs" className="text-[var(--n-mist)] transition-colors hover:text-[var(--n-ivory)]">
+                  Cars
+                </Link>
+              </li>
+              <li>
+                <Link href="/" className="text-[var(--n-gold)] underline decoration-[rgba(201,169,98,0.4)] underline-offset-4 transition-colors hover:text-[#dcc084]">
+                  Classic site
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      {/* ——— Hero: full viewport, graded down. */}
+      <section aria-labelledby="c-hero" className="relative flex min-h-svh items-end">
+        <div aria-hidden="true" className="absolute inset-0">
+          <Image
+            src={IMAGES.homeHero.src}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-60 brightness-[0.72] saturate-[0.82]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--n-bg)] via-[rgba(11,15,12,0.35)] to-[rgba(11,15,12,0.55)]" />
+        </div>
+
+        <div className="relative mx-auto w-full max-w-[90rem] px-6 pb-20 sm:px-10 lg:pb-28">
+          <p className="text-[0.6875rem] font-medium tracking-[0.32em] text-[var(--n-gold)] uppercase">
+            Northeast India · by private car
+          </p>
+          <h1
+            id="c-hero"
+            className="mt-6 max-w-3xl font-[family-name:var(--font-c-display)] text-[3rem] leading-[1.04] font-light sm:text-[4.5rem] lg:text-[5.5rem]"
+          >
+            After the airport,
+            <br />
+            <em className="text-[var(--n-gold)]">the good part</em> begins.
+          </h1>
+          <p className="mt-8 max-w-md text-[0.9375rem] leading-relaxed text-[var(--n-mist)]">
+            Seven states, one driver who knows them, and an itinerary written
+            around weather, light, and how you actually like to travel.
+          </p>
+          <div className="mt-10 flex flex-wrap items-center gap-6">
+            <WaCta
+              message={enquiry("I would like to plan a private Northeast journey.")}
+              location="concept-c"
+              className="inline-flex min-h-13 items-center gap-3 border border-[var(--n-gold)] px-8 text-[0.8125rem] font-medium tracking-[0.22em] text-[var(--n-gold)] uppercase transition-colors duration-500 hover:bg-[var(--n-gold)] hover:text-[var(--n-bg)]"
+            >
+              Begin on WhatsApp
+            </WaCta>
+            <span className="text-[0.8125rem] text-[var(--n-mist)]">
+              {WHATSAPP_DISPLAY}
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* ——— Manifesto line */}
+      <section aria-label="How Smarto travels" className="border-y border-[var(--n-line)]">
+        <div className="mx-auto max-w-[90rem] px-6 py-16 text-center sm:px-10 lg:py-24">
+          <p className="reveal mx-auto max-w-3xl font-[family-name:var(--font-c-display)] text-[1.75rem] leading-[1.35] font-light text-[var(--n-ivory)] italic sm:text-[2.25rem]">
+            “We drive these roads every week. The itinerary is just the part we
+            write down.”
+          </p>
+          <p className="mt-6 text-[0.6875rem] font-medium tracking-[0.32em] text-[var(--n-mist)] uppercase">
+            Smarto · Guwahati
+          </p>
+        </div>
+      </section>
+
+      {/* ——— Journeys: three editorial rows */}
+      <section aria-labelledby="c-journeys" className="mx-auto max-w-[90rem] px-6 py-20 sm:px-10 lg:py-28">
+        <div className="flex items-baseline justify-between gap-6">
+          <h2
+            id="c-journeys"
+            className="font-[family-name:var(--font-c-display)] text-[2.5rem] leading-none font-light sm:text-[3.5rem]"
+          >
+            Journeys
+          </h2>
+          <Link
+            href="/packages"
+            className="text-[0.8125rem] tracking-[0.12em] text-[var(--n-gold)] uppercase underline decoration-[rgba(201,169,98,0.4)] underline-offset-4 hover:text-[#dcc084]"
+          >
+            All nine
+          </Link>
+        </div>
+
+        <div className="mt-14 space-y-20 lg:space-y-28">
+          {JOURNEYS.map(({ numeral, pkg }, index) => (
+            <article
+              key={pkg.slug}
+              className={`reveal grid items-center gap-8 lg:grid-cols-12 lg:gap-14 ${
+                index % 2 === 1 ? "lg:[&>div:first-child]:order-2" : ""
+              }`}
+            >
+              <div className="relative aspect-[3/2] overflow-hidden lg:col-span-7">
+                <Image
+                  src={pkg.hero.src}
+                  alt={pkg.hero.alt}
+                  fill
+                  loading="lazy"
+                  sizes="(min-width: 1024px) 55vw, 92vw"
+                  className="object-cover brightness-[0.88] saturate-[0.9]"
+                />
+              </div>
+              <div className="lg:col-span-5">
+                <p className="font-[family-name:var(--font-c-display)] text-[1.5rem] text-[var(--n-gold)]">
+                  {numeral}
+                </p>
+                <h3 className="mt-3 font-[family-name:var(--font-c-display)] text-[1.875rem] leading-[1.12] font-light sm:text-[2.25rem]">
+                  {pkg.title}
+                </h3>
+                <p className="mt-2 text-[0.6875rem] font-medium tracking-[0.28em] text-[var(--n-mist)] uppercase">
+                  {pkg.durationLabel} · {pkg.state}
+                </p>
+                <p className="mt-5 max-w-md text-[0.9375rem] leading-relaxed text-[var(--n-mist)]">
+                  {pkg.summary}
+                </p>
+                <div className="mt-7 flex flex-wrap items-center gap-x-8 gap-y-4">
+                  <WaCta
+                    message={pkg.enquiry}
+                    location="concept-c"
+                    subject={pkg.slug}
+                    className="text-[0.8125rem] font-medium tracking-[0.22em] text-[var(--n-gold)] uppercase underline decoration-[rgba(201,169,98,0.4)] underline-offset-8 transition-colors hover:text-[#dcc084]"
+                  >
+                    Request a quote
+                  </WaCta>
+                  <Link
+                    href={`/packages/${pkg.slug}`}
+                    className="text-[0.8125rem] tracking-[0.12em] text-[var(--n-mist)] uppercase transition-colors hover:text-[var(--n-ivory)]"
+                  >
+                    The route
+                  </Link>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* ——— Tenets */}
+      <section aria-labelledby="c-tenets" className="border-t border-[var(--n-line)] bg-[var(--n-bg-lift)]">
+        <div className="mx-auto max-w-[90rem] px-6 py-20 sm:px-10 lg:py-28">
+          <h2 id="c-tenets" className="sr-only">
+            How the service works
+          </h2>
+          <div className="grid gap-12 sm:grid-cols-3 sm:gap-8">
+            {TENETS.map((tenet, index) => (
+              <div key={tenet.title} className="reveal border-t border-[var(--n-line)] pt-6">
+                <p className="text-[0.6875rem] font-medium tracking-[0.32em] text-[var(--n-gold)] uppercase">
+                  0{index + 1}
+                </p>
+                <h3 className="mt-4 font-[family-name:var(--font-c-display)] text-[1.5rem] leading-snug font-normal">
+                  {tenet.title}
+                </h3>
+                <p className="mt-3 text-[0.9375rem] leading-relaxed text-[var(--n-mist)]">
+                  {tenet.line}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ——— Festival nocturne */}
+      <section aria-labelledby="c-festival" className="relative overflow-hidden">
+        <div aria-hidden="true" className="absolute inset-0">
+          <Image
+            src={IMAGES.festivalsHero.src}
+            alt=""
+            fill
+            loading="lazy"
+            sizes="100vw"
+            className="object-cover brightness-[0.5] saturate-[0.85]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[rgba(11,15,12,0.85)] via-[rgba(11,15,12,0.45)] to-transparent" />
+        </div>
+        <div className="relative mx-auto max-w-[90rem] px-6 py-24 sm:px-10 lg:py-36">
+          <p className="text-[0.6875rem] font-medium tracking-[0.32em] text-[var(--n-gold)] uppercase">
+            Festivals
+          </p>
+          <h2
+            id="c-festival"
+            className="mt-5 max-w-xl font-[family-name:var(--font-c-display)] text-[2.25rem] leading-[1.1] font-light sm:text-[3rem]"
+          >
+            Hornbill in December. Bihu in April. Ziro when the valley sings.
+          </h2>
+          <p className="mt-6 max-w-md text-[0.9375rem] leading-relaxed text-[var(--n-ivory)]/80">
+            Dates drift with the lunar calendar; we confirm the current year
+            before anything is booked.
+          </p>
+          <div className="mt-9">
+            <WaCta
+              message={enquiry("I would like to plan a trip around a festival.")}
+              location="concept-c"
+              className="inline-flex min-h-13 items-center border border-[var(--n-ivory)]/40 px-8 text-[0.8125rem] font-medium tracking-[0.22em] text-[var(--n-ivory)] uppercase transition-colors duration-500 hover:border-[var(--n-gold)] hover:text-[var(--n-gold)]"
+            >
+              Plan around a festival
+            </WaCta>
+          </div>
+        </div>
+      </section>
+
+      {/* ——— Footer */}
+      <footer className="border-t border-[var(--n-line)]">
+        <div className="mx-auto max-w-[90rem] px-6 py-14 sm:px-10">
+          <div className="flex flex-wrap items-end justify-between gap-8">
+            <div>
+              <p className="font-[family-name:var(--font-c-display)] text-[1.875rem] font-light italic">
+                One message. The rest is road.
+              </p>
+              <p className="mt-3 text-[0.8125rem] text-[var(--n-mist)]">
+                {WHATSAPP_DISPLAY} · Guwahati, Assam
+              </p>
+            </div>
+            <ul className="flex items-center gap-6 text-[0.8125rem] text-[var(--n-mist)]">
+              <li><Link href="/" className="transition-colors hover:text-[var(--n-ivory)]">Classic</Link></li>
+              <li><Link href="/a" className="transition-colors hover:text-[var(--n-ivory)]">A</Link></li>
+              <li><Link href="/b" className="transition-colors hover:text-[var(--n-ivory)]">B</Link></li>
+              <li><Link href="/impact" className="transition-colors hover:text-[var(--n-ivory)]">Impact</Link></li>
+            </ul>
+          </div>
+          <p className="mt-10 border-t border-[var(--n-line)] pt-6 text-[0.75rem] text-[var(--n-mist)]/70">
+            © {new Date().getFullYear()} Smarto India · Concept C. Itineraries
+            and festival dates are confirmed on WhatsApp before travel.
+          </p>
+        </div>
+      </footer>
+
+      {/* ——— Floating CTA */}
+      <div className="fixed right-5 bottom-5 z-40">
+        <WaCta
+          message={enquiry("I would like to plan a private Northeast journey.")}
+          location="concept-c"
+          className="inline-flex min-h-12 items-center gap-2.5 rounded-full bg-[var(--n-gold)] px-6 text-[0.8125rem] font-semibold tracking-[0.1em] text-[var(--n-bg)] uppercase shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition-colors hover:bg-[#dcc084]"
+        >
+          Plan a journey
+        </WaCta>
+      </div>
+    </div>
+  );
+}
