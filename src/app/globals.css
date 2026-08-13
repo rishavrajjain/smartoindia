@@ -74,9 +74,9 @@
 }
 
 @layer base {
-  /* The /a concept is a self-contained art direction with its own navigation. */
-  body:has([data-page-theme="kinetic-field-guide"])
-    > [data-site-chrome] {
+  /* Concept pages (/a, /b) are self-contained art directions with their own
+     navigation, so the shared site chrome steps aside for any of them. */
+  body:has([data-page-theme]) > [data-site-chrome] {
     display: none;
   }
 
