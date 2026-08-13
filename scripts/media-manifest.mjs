@@ -33,19 +33,6 @@
 /** @type {MediaAsset[]} */
 export const assets = [
   {
-    id: 'fx-mist',
-    style: 'fx',
-    usedOn: '/ — hero cloud-motion overlay (screen blend)',
-    subject: 'Wispy drifting fog streaks on solid black, for screen-blend compositing',
-    aspect: '3:1',
-    size: '1536x512',
-    quality: 'medium',
-    width: 1536,
-    alt: '',
-    prompt:
-      'Long wispy streaks of drifting fog and thin low cloud floating on a pure solid black background. Soft diffuse edges, varied density with large calm gaps of plain black, gentle horizontal flow, pale neutral grey mist, photographic and volumetric, monochrome. The black background must stay pure black with no gradient, no stars, no noise.',
-  },
-  {
     id: 'hero-valley-dusk',
     style: 'moody',
     usedOn: '/ — full-bleed portrait hero',

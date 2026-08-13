@@ -200,63 +200,6 @@
     transform: scale(1.045);
   }
 
-  /*
-    Living clouds on the hero photograph.
-
-    Two copies of a real fog plate (white wisps on pure black) sit over the
-    image with `mix-blend-mode: screen`, which makes the black vanish and
-    leaves only mist. They drift in opposite directions on very slow ping-pong
-    loops — the counter-movement hides each reversal, so it reads as weather
-    rather than a loop. A mask fades the effect out above the meadow, so the
-    car and grass stay perfectly still. Reduced motion freezes the wisps into
-    a static part of the photograph.
-  */
-  .mist-veil {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    mask-image: linear-gradient(to bottom, black 0%, black 56%, transparent 84%);
-  }
-  .mist {
-    position: absolute;
-    inset-block: -6%;
-    left: -50%;
-    width: 200%;
-    background-image: url("/images/fx-mist.webp");
-    background-size: cover;
-    background-position: center;
-    mix-blend-mode: screen;
-    will-change: transform;
-  }
-  .mist-a {
-    opacity: 0.2;
-    animation: mist-a 90s ease-in-out infinite alternate;
-    animation-delay: -12s;
-  }
-  .mist-b {
-    opacity: 0.13;
-    animation: mist-b 135s ease-in-out infinite alternate;
-    animation-delay: -50s;
-  }
-  @keyframes mist-a {
-    from {
-      transform: translate3d(-4.5%, 1%, 0) scale(1.1);
-    }
-    to {
-      transform: translate3d(4.5%, -1%, 0) scale(1.1);
-    }
-  }
-  /* Mirrored horizontally so the shared plate never reads as a duplicate. */
-  @keyframes mist-b {
-    from {
-      transform: translate3d(4%, -1.5%, 0) scale(-1.22, 1.22);
-    }
-    to {
-      transform: translate3d(-4%, 1.5%, 0) scale(-1.22, 1.22);
-    }
-  }
-
 }
 
 @media (prefers-reduced-motion: reduce) {
