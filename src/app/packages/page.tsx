@@ -13,7 +13,7 @@ import { enquiry } from "@/lib/whatsapp";
 export const metadata = pageMetadata({
   title: "Travel packages across Northeast India",
   description:
-    "Planned routes through Meghalaya, Assam, Arunachal Pradesh, Sikkim, and Nagaland — filterable by state, trip length, and travel style. Every trip is reshaped around your dates.",
+    "Planned routes through Meghalaya, Assam, Arunachal Pradesh, Sikkim, and Nagaland. Filter by state, trip length, and travel style. Every trip is reshaped around your dates.",
   path: "/packages",
 });
 

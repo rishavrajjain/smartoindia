@@ -14,7 +14,7 @@ import { enquiry } from "@/lib/whatsapp";
 export const metadata = pageMetadata({
   title: "Northeast India festival calendar",
   description:
-    "Hornbill, Bihu, Wangala, Losar, Ziro and more — browse Northeast Indian festivals by month and plan a trip around one. Dates shift each year and are confirmed before you travel.",
+    "Hornbill, Bihu, Wangala, Losar, Ziro and more. Browse Northeast Indian festivals by month and plan a trip around one. Dates shift each year and are confirmed before you travel.",
   path: "/festivals",
 });
 

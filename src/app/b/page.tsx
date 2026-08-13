@@ -14,7 +14,7 @@ import { JourneyShell, type JourneyStop } from "./journey-shell";
 import { UseCaseCarousel, type UseCaseSlide } from "./use-case-carousel";
 
 export const metadata = pageMetadata({
-  title: "Smarto B — Our cabs, for every kind of journey",
+  title: "Smarto B: Our cabs, for every kind of journey",
   description:
     "Cabs, outstation trips, corporate travel, and festival journeys across Northeast India. One WhatsApp message plans the whole road.",
   path: "/b",
@@ -50,14 +50,14 @@ const SLIDES: UseCaseSlide[] = [
   },
   {
     phrase: "outstation weekends",
-    copy: "Shillong, Cherrapunji, Kaziranga and beyond — one car, one driver who knows the road, and a fare agreed before you leave town.",
+    copy: "Shillong, Cherrapunji, Kaziranga and beyond. One car, one driver who knows the road, and a fare agreed before you leave town.",
     image: IMAGES.cabsOutstation,
     ctaLabel: "Plan an outstation trip",
     ctaMessage: enquiry("I would like a quote for an outstation trip."),
   },
   {
     phrase: "festival season",
-    copy: "Hornbill, Bihu, Ziro — the best of the Northeast happens on specific days in specific places. We handle the roads so you are there for them.",
+    copy: "Hornbill, Bihu, Ziro. The best of the Northeast happens on specific days in specific places. We handle the roads so you are there for them.",
     image: IMAGES.festivalDrums,
     ctaLabel: "Plan a festival run",
     ctaMessage: enquiry("I would like to plan travel around a festival."),
@@ -75,7 +75,7 @@ const OUTSTATION = [
   {
     place: "Shillong",
     drive: "About 3 hours from Guwahati",
-    note: "The everyday hill run — offices, weekends, and the lake on the way up.",
+    note: "The everyday hill run: offices, weekends, and the lake on the way up.",
     image: IMAGES.meghalayaFamily,
     message: enquiry("I would like a cab fare for Guwahati to Shillong."),
   },
@@ -268,7 +268,7 @@ export default function ConceptBPage() {
                   Six ways we drive.
                 </h2>
                 <p className="mt-5 max-w-sm text-[0.9375rem] leading-relaxed text-taupe">
-                  Every service below is one WhatsApp message away — say where
+                  Every service below is one WhatsApp message away. Say where
                   and when, and we confirm the car and the fare.
                 </p>
                 {/* Figure from Manav's wireframe (Aug 2026). Verify with him
@@ -337,7 +337,7 @@ export default function ConceptBPage() {
                 </h2>
                 <p className="mt-5 max-w-md text-[0.9375rem] leading-relaxed text-bone/70">
                   Daily employee transport, visitor movement, and offsites across
-                  the Northeast — with one point of contact and billing your
+                  the Northeast, with one point of contact and billing your
                   finance team will not argue with.
                 </p>
               </div>
@@ -445,7 +445,7 @@ export default function ConceptBPage() {
                   id="b-final-heading"
                   className="mt-5 max-w-2xl text-[2.25rem] leading-[1.04] sm:text-[3.25rem]"
                 >
-                  Wherever the cab on the road below has reached — we can take
+                  Wherever the cab on the road below has reached, we can take
                   you there.
                 </h2>
               </div>

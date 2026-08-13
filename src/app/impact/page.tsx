@@ -13,7 +13,7 @@ import { enquiry } from "@/lib/whatsapp";
 export const metadata = pageMetadata({
   title: "Impact and responsible travel",
   description:
-    "How Smarto tries to keep its footprint small and its spending local across Northeast India — electric vehicles where they work, village stays paid directly, and honest limits.",
+    "How Smarto tries to keep its footprint small and its spending local across Northeast India: electric vehicles where they work, village stays paid directly, and honest limits.",
   path: "/impact",
 });
 
@@ -43,7 +43,7 @@ export default function ImpactPage() {
       <Container width="narrow" className="pt-16 lg:pt-24">
         <p className="text-xl leading-relaxed text-ink">
           We would rather say less and mean it. These are commitments, not
-          achievements — we have not measured most of them properly yet.
+          achievements. We have not measured most of them properly yet.
         </p>
         <p className="mt-5 leading-relaxed text-taupe">
           No percentages, no carbon figures. When we have measured something we

@@ -192,7 +192,7 @@ export function PackageBrowser({ packages }: { packages: TravelPackage[] }) {
           </h3>
           <p className="mx-auto mt-3 max-w-md leading-relaxed text-taupe">
             These are only the routes we have written up. We plan custom trips
-            across the whole region — tell us where you want to go and we will
+            across the whole region. Tell us where you want to go and we will
             build it around your dates.
           </p>
           <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">

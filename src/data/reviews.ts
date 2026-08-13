@@ -17,7 +17,7 @@ export const REVIEWS: Review[] = [
     author: "Ananya",
     context: "Meghalaya, five days",
     quote:
-      "They talked us out of the itinerary we asked for and suggested a shorter one. It was the right call — we saw less and enjoyed it considerably more.",
+      "They talked us out of the itinerary we asked for and suggested a shorter one. It was the right call. We saw less and enjoyed it considerably more.",
     status: "mock",
   },
   {

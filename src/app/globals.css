@@ -80,8 +80,8 @@
     display: none;
   }
 
-  body:has([data-page-theme="kinetic-field-guide"]) {
-    background: #f7f6f1;
+  body:has([data-page-theme="travel-atelier"]) {
+    background: #f4f0e7;
   }
 
   html {

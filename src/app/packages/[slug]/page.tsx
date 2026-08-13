@@ -34,7 +34,7 @@ export async function generateMetadata(
   // No `image` here on purpose: the branded card from `opengraph-image.tsx` in
   // this segment is used instead. Setting one explicitly would override it.
   return pageMetadata({
-    title: `${item.title} — ${item.durationLabel}`,
+    title: `${item.title}: ${item.durationLabel}`,
     description: item.summary,
     path: `/packages/${item.slug}`,
   });

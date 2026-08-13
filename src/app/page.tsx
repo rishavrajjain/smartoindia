@@ -14,7 +14,7 @@ import { pageMetadata } from "@/lib/seo";
 import { enquiry } from "@/lib/whatsapp";
 
 export const metadata = pageMetadata({
-  title: "Smarto — Northeast India, travelled well",
+  title: "Smarto: Northeast India, travelled well",
   description:
     "Road trips, festival journeys, and everyday transport across Assam, Meghalaya, Arunachal Pradesh, Sikkim, and Nagaland. Plan yours on WhatsApp.",
   path: "/",

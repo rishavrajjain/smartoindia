@@ -47,7 +47,7 @@ export const PACKAGES: TravelPackage[] = [
         day: 2,
         title: "Shillong to Cherrapunji",
         description:
-          "A short drive out to the plateau edge. Afternoon at the Nohkalikai and Seven Sisters viewpoints, then the Mawsmai cave. We keep the order flexible — in this region the cloud decides what is worth seeing when.",
+          "A short drive out to the plateau edge. Afternoon at the Nohkalikai and Seven Sisters viewpoints, then the Mawsmai cave. We keep the order flexible. In this region the cloud decides what is worth seeing when.",
         stay: "Cherrapunji",
       },
       {
@@ -86,7 +86,7 @@ export const PACKAGES: TravelPackage[] = [
       "Travel insurance and personal expenses",
     ],
     stayNotes:
-      "A mix of small hotels and family-run guesthouses, chosen for location and cleanliness rather than star rating. Cherrapunji options are simpler than Shillong ones — that is the trade-off for waking up at the gorge.",
+      "A mix of small hotels and family-run guesthouses, chosen for location and cleanliness rather than star rating. Cherrapunji options are simpler than Shillong ones. That is the trade-off for waking up at the gorge.",
     transportNotes:
       "One vehicle and one driver for the whole trip, so your luggage stays put. Hill roads here are narrow and wet for much of the year; we plan shorter driving days than the distances suggest.",
     tags: ["Nature", "Road trip", "Culture"],
@@ -122,7 +122,7 @@ export const PACKAGES: TravelPackage[] = [
         day: 1,
         title: "Guwahati to Shillong",
         description:
-          "Pickup and the drive up. We use the afternoon to sort out what you will actually carry down — the descent is much better with a small bag.",
+          "Pickup and the drive up. We use the afternoon to sort out what you will actually carry down. The descent is much better with a small bag.",
         stay: "Shillong",
       },
       {
@@ -211,7 +211,7 @@ export const PACKAGES: TravelPackage[] = [
         day: 3,
         title: "Mawphlang and the plateau",
         description:
-          "The sacred grove at Mawphlang with a local guide — flat, shaded, and genuinely interesting for children. Afternoon drive to Cherrapunji.",
+          "The sacred grove at Mawphlang with a local guide is flat, shaded, and genuinely interesting for children. Afternoon drive to Cherrapunji.",
         stay: "Cherrapunji",
       },
       {
@@ -246,7 +246,7 @@ export const PACKAGES: TravelPackage[] = [
     stayNotes:
       "Hotels rather than guesthouses on this one, chosen for lifts, hot water, and rooms that can take an extra bed. Tell us ages and we will confirm what each property allows.",
     transportNotes:
-      "We keep driving to short stretches with regular stops. If anyone in the group gets carsick on hill roads, say so when you enquire — it changes which route we take out of Shillong.",
+      "We keep driving to short stretches with regular stops. If anyone in the group gets carsick on hill roads, say so when you enquire. It changes which route we take out of Shillong.",
     tags: ["Easy pace", "Nature", "Slow travel"],
     featured: false,
     priceLabel: PRICE_LABEL,
@@ -280,7 +280,7 @@ export const PACKAGES: TravelPackage[] = [
         day: 1,
         title: "Arrive Guwahati, drive to Kaziranga",
         description:
-          "Pickup and the four-and-a-half-hour drive east along the river plain. Evening arrival, early night — the safari start is genuinely early.",
+          "Pickup and the four-and-a-half-hour drive east along the river plain. Evening arrival and an early night. The safari start is genuinely early.",
         stay: "Kaziranga",
       },
       {
@@ -321,7 +321,7 @@ export const PACKAGES: TravelPackage[] = [
     stayNotes:
       "Lodges near the Kohora gate, so the pre-dawn start does not also involve an hour in the car. Rooms are comfortable rather than luxurious.",
     transportNotes:
-      "Safaris are in park-registered jeeps, which are not the vehicle you arrive in — that is a park rule, not a choice. Your own vehicle and driver stay with you for everything else.",
+      "Safaris are in park-registered jeeps, which are not the vehicle you arrive in. That is a park rule, not a choice. Your own vehicle and driver stay with you for everything else.",
     tags: ["Wildlife", "Nature", "Easy pace"],
     featured: true,
     priceLabel: PRICE_LABEL,
@@ -408,7 +408,7 @@ export const PACKAGES: TravelPackage[] = [
       "Travel insurance and personal expenses",
     ],
     stayNotes:
-      "Majuli accommodation is bamboo cottages and homestays — comfortable and clean, but simple. The Jorhat and Dibrugarh nights can be in a tea bungalow if you would like that; say so when you enquire.",
+      "Majuli accommodation is in bamboo cottages and homestays. They are comfortable and clean, but simple. The Jorhat and Dibrugarh nights can be in a tea bungalow if you would like that; say so when you enquire.",
     transportNotes:
       "The Majuli ferry runs to a schedule that shifts with the river level and stops entirely in bad weather. We build a buffer around it and will tell you honestly if a crossing looks doubtful.",
     tags: ["Slow travel", "Culture", "Nature"],
@@ -458,7 +458,7 @@ export const PACKAGES: TravelPackage[] = [
         day: 3,
         title: "Dirang",
         description:
-          "A deliberate rest day at moderate altitude — the single biggest thing that makes the rest of this trip pleasant. Hot springs, the old dzong, and the valley floor.",
+          "A deliberate rest day at moderate altitude is the single biggest thing that makes the rest of this trip pleasant. Hot springs, the old dzong, and the valley floor.",
         stay: "Dirang",
       },
       {
@@ -511,7 +511,7 @@ export const PACKAGES: TravelPackage[] = [
       "Travel insurance and personal expenses",
     ],
     stayNotes:
-      "Hotels in Tawang and Dirang are modest and heating is limited — bring layers rather than expecting a warm room. Hot water is usually available but sometimes only in the evening.",
+      "Hotels in Tawang and Dirang are modest and heating is limited. Bring layers rather than expecting a warm room. Hot water is usually available but sometimes only in the evening.",
     transportNotes:
       "Sela Pass closes without warning for snow and roadworks, sometimes for a full day. If it does, we stop where it is safe and pick the itinerary back up; we will not push a closed pass. Anyone with a heart or lung condition should speak to a doctor before booking this route.",
     tags: ["High altitude", "Road trip", "Nature"],
@@ -598,7 +598,7 @@ export const PACKAGES: TravelPackage[] = [
       "Travel insurance and personal expenses",
     ],
     stayNotes:
-      "Lachen and Lachung accommodation is basic by design — these are small high villages, and rooms there are heated by blanket rather than radiator. Gangtok nights are ordinary comfortable hotels.",
+      "Lachen and Lachung accommodation is basic by design. These are small high villages, and rooms there are heated by blanket rather than radiator. Gangtok nights are ordinary comfortable hotels.",
     transportNotes:
       "North Sikkim regulations change and sometimes close routes at short notice, particularly to Gurudongmar. Foreign nationals face additional restrictions in the north; tell us your nationality when you enquire so we plan a route you can actually take.",
     tags: ["High altitude", "Nature", "Road trip"],
@@ -632,7 +632,7 @@ export const PACKAGES: TravelPackage[] = [
         day: 1,
         title: "Arrive Dimapur, drive to Kohima",
         description:
-          "Pickup and the climb into the hills. Evening in Kohima to settle in — the town is busy during festival week and we plan around that.",
+          "Pickup and the climb into the hills. Evening in Kohima to settle in. The town is busy during festival week and we plan around that.",
         stay: "Kohima",
       },
       {
