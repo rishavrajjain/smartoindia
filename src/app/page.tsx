@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Viewport } from "next";
+import { Source_Serif_4 } from "next/font/google";
 
 import { ReviewCarousel } from "@/components/sections/review-carousel";
 import { WhatsAppLink } from "@/components/ui/whatsapp-link";
@@ -33,6 +34,15 @@ export const viewport: Viewport = {
  * fixed WhatsApp bar at the bottom is the one persistent action.
  */
 
+/* Hero title face — a transitional serif in the register of the reference
+   ("Find your piece."). One weight, loaded only on this route. */
+const sourceSerif = Source_Serif_4({
+  variable: "--font-hero-title",
+  subsets: ["latin"],
+  display: "swap",
+  weight: "400",
+});
+
 const FEATURED = FEATURED_PACKAGES.slice(0, 3);
 
 export default function HomePage() {
@@ -40,7 +50,10 @@ export default function HomePage() {
     <div data-page-theme="mobile-frame">
       <div className="relative mx-auto min-h-svh max-w-[26.5rem] bg-bone text-ink shadow-[0_0_60px_rgba(0,0,0,0.55)]">
         {/* ——— The picture. Nothing on it but the wordmark. */}
-        <section aria-label={IMAGES.homeHeroValley.alt} className="relative h-svh">
+        <section
+          aria-label={IMAGES.homeHeroValley.alt}
+          className={`${sourceSerif.variable} relative h-svh`}
+        >
           <Image
             src={IMAGES.homeHeroValley.src}
             alt={IMAGES.homeHeroValley.alt}
@@ -56,6 +69,12 @@ export default function HomePage() {
             <div className="cloudfall cloudfall-b" />
             <div className="clouddrift" />
           </div>
+          {/* The title arrives a beat after the scene does. */}
+          <p className="hero-title-reveal absolute inset-x-0 top-[52%] px-6 text-center font-[family-name:var(--font-hero-title)] text-[2.5rem] leading-[1.08] text-bone [text-shadow:0_1px_28px_rgba(12,8,5,0.45)]">
+            Explore
+            <br />
+            North East
+          </p>
           <header className="absolute inset-x-0 top-0 flex justify-center pt-6">
             <Link href="/" aria-label={`${SITE.name} home`}>
               <Image

@@ -300,6 +300,24 @@
     }
   }
 
+  /* The hero title holds back a beat, then condenses out of the scene. */
+  .hero-title-reveal {
+    opacity: 0;
+    animation: hero-title-in 1.6s var(--ease-out-quiet) 1.05s both;
+  }
+  @keyframes hero-title-in {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+      filter: blur(0);
+    }
+  }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
