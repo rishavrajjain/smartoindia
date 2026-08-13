@@ -35,6 +35,14 @@ const STYLES = {
     'No text, no lettering, no signage, no logos, no watermarks, no number plates.',
     'Avoid HDR halos, plastic skin, waxy faces, duplicated limbs, stiff posed group shots, and any visible AI artifacts.',
   ].join(' '),
+  // Dark cinematic landscape — for the hero valley and anything brooding.
+  moody: [
+    'Shot on a full-frame camera with a fast prime lens in dark, heavily overcast conditions.',
+    'Cold blue-grey cinematic grade, deeply shadowed greens, soft diffuse light, real mist and cloud volume.',
+    'Fine-art landscape photography: still, vast, silent, with true-to-life texture in grass and rock.',
+    'No text, no lettering, no signage, no logos, no watermarks, no number plates.',
+    'Avoid HDR halos, crushed blacks without detail, banding in the sky, and any visible AI artifacts.',
+  ].join(' '),
   // Still lifes and close detail, where the subject carries it rather than light.
   detail: [
     'Shot close on a full-frame camera with a macro-capable prime lens in bright natural daylight.',
@@ -121,7 +129,7 @@ async function optimise(asset, png) {
 
   const webp = await sharp(png)
     .resize(asset.width, height, { fit: 'cover', position: 'attention' })
-    .webp({ quality: 82, effort: 6 })
+    .webp({ quality: asset.quality === 'high' ? 88 : 82, effort: 6 })
     .toBuffer()
 
   await writeFile(path.join(OUT_DIR, `${asset.id}.webp`), webp)

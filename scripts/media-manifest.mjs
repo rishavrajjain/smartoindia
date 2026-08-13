@@ -33,6 +33,19 @@
 /** @type {MediaAsset[]} */
 export const assets = [
   {
+    id: 'hero-valley-dusk',
+    style: 'moody',
+    usedOn: '/ — full-bleed portrait hero',
+    subject: 'Lone white sedan in an immense misty green valley under a heavy sky',
+    aspect: '2:3',
+    size: '1024x1536',
+    quality: 'high',
+    width: 1280,
+    alt: 'A white sedan parked on mossy grass in a vast green valley, steep mountain walls rising into low cloud on both sides',
+    prompt:
+      'A small plain white sedan seen from the rear three-quarter, parked alone at the centre of a vast flat mossy green meadow on the floor of an immense symmetric U-shaped glacial valley. Two colossal dark green mountain walls rise steeply on the left and right of the frame, converging toward a distant narrow gap at the centre, with low grey storm cloud filling the sky and long ribbons of white mist hanging between the walls. Very dark, brooding overcast light with a cold blue-grey grade, deeply shadowed greens, wet grass texture in the foreground, the car small and centred in the lower third of the frame. Cinematic, still, completely silent. No people, no road, no buildings, no number plate, no badges.',
+  },
+  {
     id: 'home-hero',
     usedOn: '/ — full-bleed hero',
     subject: 'Family at a hill viewpoint on a bright morning',

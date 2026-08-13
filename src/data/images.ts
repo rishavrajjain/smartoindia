@@ -18,6 +18,12 @@ function image(
 }
 
 export const IMAGES = {
+  homeHeroValley: image(
+    "hero-valley-dusk",
+    1200,
+    1800,
+    "A white sedan parked on mossy grass in a vast green valley, steep mountain walls rising into low cloud on both sides",
+  ),
   homeHero: image(
     "home-hero",
     2000,

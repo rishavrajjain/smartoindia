@@ -80,24 +80,6 @@
     display: none;
   }
 
-  body:has([data-page-theme="travel-atelier"]) {
-    background: #f4f0e7;
-  }
-
-  /* Concept-page body backgrounds, so overscroll never flashes bone. */
-  body:has([data-page-theme="night-drive"]) {
-    background: #0b0f0c;
-  }
-  body:has([data-page-theme="grand-poster"]) {
-    background: #f7ecd9;
-  }
-  body:has([data-page-theme="index-sheet"]) {
-    background: #f4f4ef;
-  }
-  body:has([data-page-theme="sunline"]) {
-    background: #fffdf6;
-  }
-
   /* Focus rings that stay visible on each concept's ground. */
   [data-page-theme="night-drive"] :focus-visible {
     outline-color: #c9a962;
@@ -217,6 +199,7 @@
   .group:hover .zoom-slow {
     transform: scale(1.045);
   }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -232,4 +215,28 @@
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/*
+  Per-theme body backgrounds. Deliberately unlayered: the root layout paints
+  the body with the `bg-bone` utility, and only unlayered rules outrank the
+  utilities layer without resorting to !important.
+*/
+body:has([data-page-theme="travel-atelier"]) {
+  background-color: #f4f0e7;
+}
+body:has([data-page-theme="night-drive"]) {
+  background-color: #0b0f0c;
+}
+body:has([data-page-theme="grand-poster"]) {
+  background-color: #f7ecd9;
+}
+body:has([data-page-theme="index-sheet"]) {
+  background-color: #f4f4ef;
+}
+body:has([data-page-theme="sunline"]) {
+  background-color: #fffdf6;
+}
+body:has([data-page-theme="mobile-frame"]) {
+  background-color: #141816;
 }
