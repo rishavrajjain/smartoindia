@@ -50,6 +50,12 @@ export default function HomePage() {
             sizes="(min-width: 424px) 424px, 100vw"
             className="object-cover"
           />
+          {/* Cloud pouring over the pass — see .cloudfall-veil in globals. */}
+          <div aria-hidden="true" className="cloudfall-veil">
+            <div className="cloudfall" />
+            <div className="cloudfall cloudfall-b" />
+            <div className="clouddrift" />
+          </div>
           <header className="absolute inset-x-0 top-0 flex justify-center pt-6">
             <Link href="/" aria-label={`${SITE.name} home`}>
               <Image

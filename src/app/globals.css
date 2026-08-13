@@ -200,6 +200,106 @@
     transform: scale(1.045);
   }
 
+  /*
+    The cloud bank pouring over the pass.
+
+    The hero photograph has a mass of cloud spilling through the V between the
+    two valley walls. Three copies of a fog plate (white wisps on pure black,
+    screen-blended so the black vanishes) animate inside an elliptical mask
+    centred on that gap: two run a continuous conveyor — fade in high, sink
+    through the pass, fade out — half a cycle apart, and one drifts sideways
+    along the upper deck. Motion only reads against the dark walls, which is
+    exactly where cloud edges live in the photo. The meadow and car sit far
+    outside the mask and never move. Reduced motion freezes the conveyor at
+    opacity 0 and the drift layer in place — a still photograph again.
+  */
+  .cloudfall-veil {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    mask-image: radial-gradient(
+      72% 46% at 50% 41%,
+      black 26%,
+      transparent 66%
+    );
+  }
+  .cloudfall,
+  .clouddrift {
+    position: absolute;
+    left: -25%;
+    width: 150%;
+    height: 62%;
+    top: 12%;
+    background-image: url("/images/fx-mist.webp");
+    background-size: cover;
+    background-position: center;
+    mix-blend-mode: screen;
+    will-change: transform, opacity;
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 22%,
+      black 78%,
+      transparent 100%
+    );
+  }
+  .cloudfall {
+    opacity: 0;
+    animation: cloudfall 30s linear infinite;
+  }
+  .cloudfall-b {
+    animation-name: cloudfall-b;
+    animation-delay: -15s;
+  }
+  .clouddrift {
+    top: 6%;
+    height: 45%;
+    opacity: 0.2;
+    animation: clouddrift 52s ease-in-out infinite alternate;
+    animation-delay: -20s;
+  }
+  @keyframes cloudfall {
+    0% {
+      transform: translate3d(-2%, -9%, 0) scale(1.05);
+      opacity: 0;
+    }
+    22% {
+      opacity: 0.3;
+    }
+    70% {
+      opacity: 0.24;
+    }
+    100% {
+      transform: translate3d(2%, 13%, 0) scale(1.12);
+      opacity: 0;
+    }
+  }
+  @keyframes cloudfall-b {
+    0% {
+      transform: translate3d(2%, -9%, 0) scale(-1.05, 1.05);
+      opacity: 0;
+    }
+    22% {
+      opacity: 0.3;
+    }
+    70% {
+      opacity: 0.24;
+    }
+    100% {
+      transform: translate3d(-2%, 13%, 0) scale(-1.12, 1.12);
+      opacity: 0;
+    }
+  }
+  @keyframes clouddrift {
+    from {
+      transform: translate3d(-6%, 1%, 0) scale(1.15);
+    }
+    to {
+      transform: translate3d(6%, -1%, 0) scale(1.15);
+    }
+  }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
