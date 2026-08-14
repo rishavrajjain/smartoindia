@@ -4,6 +4,7 @@ import type { Viewport } from "next";
 import { Source_Serif_4 } from "next/font/google";
 
 import { ReviewCarousel } from "@/components/sections/review-carousel";
+import { TripCoverflow } from "@/components/sections/trip-coverflow";
 import { WhatsAppLink } from "@/components/ui/whatsapp-link";
 import { IMAGES } from "@/data/images";
 import { FEATURED_PACKAGES } from "@/data/packages";
@@ -43,7 +44,7 @@ const sourceSerif = Source_Serif_4({
   weight: "400",
 });
 
-const FEATURED = FEATURED_PACKAGES.slice(0, 3);
+const FEATURED = FEATURED_PACKAGES;
 
 export default function HomePage() {
   return (
@@ -52,7 +53,7 @@ export default function HomePage() {
         {/* ——— The picture. Nothing on it but the wordmark. */}
         <section
           aria-label={IMAGES.homeHeroValley.alt}
-          className={`${sourceSerif.variable} relative h-svh`}
+          className={`${sourceSerif.variable} relative h-[76svh]`}
         >
           <Image
             src={IMAGES.homeHeroValley.src}
@@ -70,7 +71,7 @@ export default function HomePage() {
             <div className="clouddrift" />
           </div>
           {/* The title arrives a beat after the scene does. */}
-          <p className="hero-title-reveal absolute inset-x-0 top-[52%] px-6 text-center font-[family-name:var(--font-hero-title)] text-[2.5rem] leading-[1.08] text-bone [text-shadow:0_1px_28px_rgba(12,8,5,0.45)]">
+          <p className="hero-title-reveal absolute inset-x-0 top-[13%] px-6 text-center font-[family-name:var(--font-hero-title)] text-[2.375rem] leading-[1.1] text-bone [text-shadow:0_1px_28px_rgba(12,8,5,0.55)]">
             Explore
             <br />
             North East
@@ -89,8 +90,27 @@ export default function HomePage() {
           </header>
         </section>
 
+        {/* ——— The go-to trips, swipeable in three dimensions. */}
+        <section aria-labelledby="home-trips" className="pt-8">
+          <h2
+            id="home-trips"
+            className="px-6 text-center text-label font-medium text-taupe uppercase"
+          >
+            Our go-to trips
+          </h2>
+          <TripCoverflow trips={FEATURED} />
+          <p className="text-center">
+            <Link
+              href="/packages"
+              className="link-rule text-[0.9375rem] font-medium text-ink"
+            >
+              All nine trips
+            </Link>
+          </p>
+        </section>
+
         {/* ——— One quiet line, one action. */}
-        <section aria-labelledby="home-title" className="px-6 pt-12 pb-4 text-center">
+        <section aria-labelledby="home-title" className="px-6 pt-14 pb-4 text-center">
           <h1 id="home-title" className="text-[1.75rem] leading-snug">
             Northeast India,
             <br />
@@ -138,40 +158,6 @@ export default function HomePage() {
             ))}
           </ul>
         </nav>
-
-        {/* ——— Three trips, plainly. */}
-        <section aria-labelledby="home-trips" className="px-6 pt-14">
-          <h2 id="home-trips" className="text-label font-medium text-taupe uppercase">
-            Often planned
-          </h2>
-          <ul className="mt-5 space-y-10">
-            {FEATURED.map((pkg) => (
-              <li key={pkg.slug}>
-                <Link href={`/packages/${pkg.slug}`} className="group block">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-sand">
-                    <Image
-                      src={pkg.hero.src}
-                      alt={pkg.hero.alt}
-                      fill
-                      loading="lazy"
-                      sizes="(min-width: 424px) 376px, 92vw"
-                      className="zoom-slow object-cover"
-                    />
-                  </div>
-                  <h3 className="mt-4 text-[1.25rem] leading-snug">{pkg.title}</h3>
-                  <p className="mt-1 text-label font-medium text-taupe uppercase">
-                    {pkg.durationLabel} · {pkg.priceLabel}
-                  </p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-8">
-            <Link href="/packages" className="link-rule text-[0.9375rem] font-medium text-ink">
-              All nine trips
-            </Link>
-          </p>
-        </section>
 
         {/* ——— Quiet proof. */}
         <section aria-labelledby="home-reviews" className="pt-14">
