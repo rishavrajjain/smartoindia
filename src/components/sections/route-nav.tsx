@@ -31,15 +31,15 @@ function RouteFlag({ reached }: { reached: boolean }) {
         x2="1.6"
         y2="15"
         stroke="currentColor"
-        strokeWidth="1.3"
+        strokeWidth="1.5"
         strokeLinecap="round"
       />
       <path
         d="M1.6 1.7 L10 4.2 L1.6 6.7 Z"
-        strokeWidth="1"
+        strokeWidth="1.25"
         strokeLinejoin="round"
         className={
-          reached ? "fill-clay stroke-clay" : "fill-bone stroke-line-strong"
+          reached ? "fill-clay stroke-clay" : "fill-clay/25 stroke-clay"
         }
       />
     </svg>
@@ -147,10 +147,10 @@ export function RouteNav({ stops }: { stops: RouteStop[] }) {
       style={initial}
       className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-[26.5rem] px-2.5 pb-[max(0.6rem,env(safe-area-inset-bottom))]"
     >
-      {/* Floating frosted-glass bar: translucent, blurred, with a top light
-          edge and a soft lifted shadow. */}
+      {/* Floating frosted-glass bar: one clean hairline border and a soft
+          lifted shadow — no stacked highlight lines. */}
       <div
-        className="rounded-[1.35rem] border border-white/40 bg-bone/55 px-4 pt-3 pb-2.5 shadow-[0_8px_30px_-8px_rgba(12,8,5,0.35)] ring-1 ring-ink/5 backdrop-blur-xl backdrop-saturate-150 [box-shadow:inset_0_1px_0_rgba(255,255,255,0.6),0_10px_34px_-10px_rgba(12,8,5,0.4)]"
+        className="rounded-[1.5rem] border border-white/25 bg-bone/70 px-4 pt-3 pb-2.5 shadow-[0_12px_34px_-12px_rgba(12,8,5,0.45)] backdrop-blur-xl backdrop-saturate-150"
       >
         {/* Section announced for screen readers in place of a visible label. */}
         <p className="sr-only" aria-live="polite">
@@ -183,7 +183,7 @@ export function RouteNav({ stops }: { stops: RouteStop[] }) {
                     aria-current={index === activeStop ? "true" : undefined}
                     className={cn(
                       "group absolute top-0 flex h-full w-12 -translate-x-1/2 flex-col items-center transition-colors duration-300",
-                      reached ? "text-clay" : "text-line-strong",
+                      reached ? "text-clay" : "text-clay/45",
                     )}
                     style={{ left: `${(index / last) * 100}%` }}
                   >
