@@ -144,15 +144,13 @@ const SERVICES = [
 /* Verified differentiators from smartocabs.com. */
 const CAB_FEATURES = ["EV fleet", "No surge pricing", "Zero cancellation"];
 
-/* Sectors Smarto moves for corporate clients. Stands in for the logo row in
-   the wireframe — real client logos are Manav's to supply and must not be
-   invented. */
-const CORPORATE_SECTORS = [
-  "Hotels",
-  "Restaurants",
-  "Offices",
-  "Events",
-  "Airlines",
+/* Real client logos, mirrored from smartocabs.com's own "Clients" section. */
+const CLIENT_LOGOS = [
+  { src: "/logos/airtel.webp", name: "Airtel", w: 128, h: 128 },
+  { src: "/logos/apollo-clinic.webp", name: "Apollo Clinic", w: 246, h: 128 },
+  { src: "/logos/asian-paints.webp", name: "Asian Paints", w: 148, h: 128 },
+  { src: "/logos/bharat-petroleum.webp", name: "Bharat Petroleum", w: 103, h: 128 },
+  { src: "/logos/godrej.webp", name: "Godrej", w: 264, h: 128 },
 ];
 
 /* Festival cards pair the catalog entry with its generated scene image. */
@@ -359,33 +357,52 @@ export default function HomePage() {
           </ul>
         </section>
 
-        {/* ——— Corporate: a quiet dark band. */}
+        {/* ——— Corporate: a quiet dark band with a revolving client wall. */}
         <section
           id="home-corporate"
-          className="mt-16 scroll-mt-6 bg-ink px-6 py-14 text-bone"
+          className="mt-16 scroll-mt-6 bg-ink py-14 text-bone"
         >
-          <p className="text-label font-medium text-marigold-bright uppercase">
-            Corporate
-          </p>
-          <h2 className="mt-3 font-display text-[1.75rem] leading-tight text-bone">
-            Teams that arrive on time
-          </h2>
-          <p className="mt-3 text-[0.9375rem] leading-relaxed text-bone/70">
-            Employee transport, offsites, and hospitality partners across the
-            Northeast — one point of contact, billing your finance team will not
-            argue with.
-          </p>
-          <ul className="mt-6 flex flex-wrap gap-2">
-            {CORPORATE_SECTORS.map((sector) => (
-              <li
-                key={sector}
-                className="rounded-full border border-bone/25 px-3.5 py-1.5 text-[0.8125rem] text-bone/85"
-              >
-                {sector}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-7">
+          <div className="px-6">
+            <p className="text-label font-medium text-marigold-bright uppercase">
+              Corporate
+            </p>
+            <h2 className="mt-3 font-display text-[1.75rem] leading-tight text-bone">
+              Teams that arrive on time
+            </h2>
+            <p className="mt-3 text-[0.9375rem] leading-relaxed text-bone/70">
+              Employee transport, offsites, and everyday movement — one point of
+              contact, billing your finance team will not argue with.
+            </p>
+            <p className="mt-8 text-label font-medium text-bone/55 uppercase">
+              Trusted by teams at
+            </p>
+          </div>
+
+          {/* Revolving client logos — two copies for a seamless loop. */}
+          <div className="marquee-mask mt-4 overflow-hidden">
+            <ul className="flex w-max animate-marquee items-center gap-3">
+              {[0, 1].map((copy) =>
+                CLIENT_LOGOS.map((logo) => (
+                  <li
+                    key={`${copy}-${logo.name}`}
+                    aria-hidden={copy === 1 ? true : undefined}
+                    className="flex h-16 shrink-0 items-center justify-center rounded-2xl bg-bone px-6"
+                  >
+                    <Image
+                      src={logo.src}
+                      alt={copy === 0 ? logo.name : ""}
+                      width={logo.w}
+                      height={logo.h}
+                      loading="lazy"
+                      className="h-8 w-auto object-contain"
+                    />
+                  </li>
+                )),
+              )}
+            </ul>
+          </div>
+
+          <div className="px-6 pt-10">
             <WaCta
               message={enquiry(
                 "I would like to discuss corporate transport for my team.",

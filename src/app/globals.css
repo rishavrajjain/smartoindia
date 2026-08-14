@@ -177,6 +177,24 @@
     display: none;
   }
 
+  /* Fades a revolving marquee out at both edges. */
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 9%,
+      #000 91%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 9%,
+      #000 91%,
+      transparent
+    );
+  }
+
   /*
     Scroll-triggered reveal with no JavaScript, via scroll-driven animations.
     Browsers without support show the content immediately, which is the correct
