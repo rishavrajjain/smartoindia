@@ -75,7 +75,10 @@ export function TripCoverflow({ trips }: { trips: TravelPackage[] }) {
               alt=""
               fill
               loading={index < 2 ? "eager" : "lazy"}
-              sizes="13rem"
+              // The card is 208px wide but 280px tall; a 3:2 photo covered by
+              // height renders ~420px wide, so the fetched file must match that
+              // covered width (times DPR) or it upscales and looks pixelated.
+              sizes="420px"
               className="object-cover"
             />
             <span aria-hidden="true" className="photo-scrim absolute inset-0" />
