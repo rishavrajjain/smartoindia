@@ -57,25 +57,25 @@ export function TripCoverflow({ trips }: { trips: TravelPackage[] }) {
     <ul
       ref={railRef}
       aria-label="Our go-to trips"
-      className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pt-5 pb-8"
+      className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pt-4 pb-2"
       style={{
         perspective: "1100px",
         // Lets the first and last card rest at the centre of the rail.
-        paddingInline: "calc(50% - 7.25rem)",
+        paddingInline: "calc(50% - 6.5rem)",
       }}
     >
       {trips.map((trip, index) => (
         <li key={trip.slug} className="shrink-0 snap-center">
           <Link
             href={`/packages/${trip.slug}`}
-            className="relative block h-[19.5rem] w-[14.5rem] overflow-hidden rounded-[1.25rem] bg-sand shadow-[0_18px_45px_-12px_rgba(12,8,5,0.45)] ring-1 ring-ink/10 will-change-transform"
+            className="relative block h-[17.5rem] w-[13rem] overflow-hidden rounded-[1.25rem] bg-sand shadow-[0_18px_45px_-12px_rgba(12,8,5,0.45)] ring-1 ring-ink/10 will-change-transform"
           >
             <Image
               src={trip.hero.src}
               alt=""
               fill
               loading={index < 2 ? "eager" : "lazy"}
-              sizes="14.5rem"
+              sizes="13rem"
               className="object-cover"
             />
             <span aria-hidden="true" className="photo-scrim absolute inset-0" />

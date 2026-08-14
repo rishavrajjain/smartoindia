@@ -53,7 +53,7 @@ export default function HomePage() {
         {/* ——— The picture. Nothing on it but the wordmark. */}
         <section
           aria-label={IMAGES.heroRiver.alt}
-          className={`${sourceSerif.variable} relative h-[76svh]`}
+          className={`${sourceSerif.variable} relative h-svh`}
         >
           <Image
             src={IMAGES.heroRiver.src}
@@ -63,6 +63,16 @@ export default function HomePage() {
             fetchPriority="high"
             sizes="(min-width: 424px) 424px, 100vw"
             className="object-cover"
+          />
+          {/* Gentle grades top and bottom: the title and cards stay legible
+              without dulling the water in the middle. */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 top-0 h-[38%] bg-gradient-to-b from-[rgba(12,8,5,0.52)] via-[rgba(12,8,5,0.22)] to-transparent"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-[rgba(12,8,5,0.42)] to-transparent"
           />
           {/* The title arrives a beat after the scene does. */}
           <p className="hero-title-reveal absolute inset-x-0 top-[13%] px-6 text-center font-[family-name:var(--font-hero-title)] text-[2.375rem] leading-[1.1] text-bone [text-shadow:0_1px_28px_rgba(12,8,5,0.55)]">
@@ -82,25 +92,17 @@ export default function HomePage() {
               />
             </Link>
           </header>
-        </section>
 
-        {/* ——— The go-to trips, swipeable in three dimensions. */}
-        <section aria-labelledby="home-trips" className="pt-8">
-          <h2
-            id="home-trips"
-            className="px-6 text-center text-label font-medium text-taupe uppercase"
-          >
-            Our go-to trips
-          </h2>
-          <TripCoverflow trips={FEATURED} />
-          <p className="text-center">
-            <Link
-              href="/packages"
-              className="link-rule text-[0.9375rem] font-medium text-ink"
+          {/* ——— The go-to trips, floating on the water. */}
+          <div className="absolute inset-x-0 bottom-[5.75rem]">
+            <h2
+              id="home-trips"
+              className="px-6 text-center text-[0.6875rem] font-medium tracking-[0.18em] text-bone/90 uppercase [text-shadow:0_1px_14px_rgba(12,8,5,0.5)]"
             >
-              All nine trips
-            </Link>
-          </p>
+              Our go-to trips
+            </h2>
+            <TripCoverflow trips={FEATURED} />
+          </div>
         </section>
 
         {/* ——— One quiet line, one action. */}
