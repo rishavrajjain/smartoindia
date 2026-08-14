@@ -4,7 +4,6 @@ import type { Viewport } from "next";
 import { Source_Serif_4 } from "next/font/google";
 
 import { HomeMenu } from "@/components/sections/home-menu";
-import { ReviewCarousel } from "@/components/sections/review-carousel";
 import { RouteNav, type RouteStop } from "@/components/sections/route-nav";
 import { TripCoverflow } from "@/components/sections/trip-coverflow";
 import { WaCta } from "@/components/ui/wa-cta";
@@ -408,7 +407,8 @@ export default function HomePage() {
           </p>
         </section>
 
-        {/* ——— Quiet proof. */}
+        {/* ——— Quiet proof. A simple swipeable rail — fixed-width cards that
+            cannot overflow the phone frame. */}
         <section aria-labelledby="home-reviews" className="pt-16">
           <h2
             id="home-reviews"
@@ -416,9 +416,27 @@ export default function HomePage() {
           >
             From past trips
           </h2>
-          <div className="mt-5 px-6">
-            <ReviewCarousel reviews={REVIEWS} />
-          </div>
+          <ul className="no-scrollbar mt-5 flex snap-x snap-mandatory gap-3.5 overflow-x-auto px-6 pb-2">
+            {REVIEWS.slice(0, 4).map((review) => (
+              <li key={review.id} className="w-[17rem] shrink-0 snap-start">
+                <figure className="flex h-full flex-col rounded-2xl border border-line bg-paper p-5">
+                  <blockquote className="flex-1 font-display text-[1.0625rem] leading-relaxed text-ink">
+                    &ldquo;{review.quote}&rdquo;
+                  </blockquote>
+                  <figcaption className="mt-4 border-t border-line pt-3 text-[0.8125rem]">
+                    <span className="font-medium text-ink">{review.author}</span>
+                    <span className="mt-0.5 block text-taupe">
+                      {review.context}
+                    </span>
+                  </figcaption>
+                </figure>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 px-6 text-[0.6875rem] text-taupe/70">
+            Illustrative feedback shown while we gather permission to publish
+            real reviews.
+          </p>
         </section>
 
         {/* ——— Footer: real contact details from smartocabs.com. */}
