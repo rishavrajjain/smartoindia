@@ -18,6 +18,18 @@ function image(
 }
 
 export const IMAGES = {
+  heroRiver: image(
+    "hero-river-morning",
+    1280,
+    1920,
+    "A slender wooden boat drifting on crystal-clear turquoise water in a sunlit green gorge under a bright blue sky",
+  ),
+  heroFlagsRoad: image(
+    "hero-flags-road",
+    1280,
+    1920,
+    "A white car sweeping up a sunlit green mountain road beneath strings of colourful prayer flags against a deep blue sky",
+  ),
   homeHeroValley: image(
     "hero-valley-dusk",
     1200,

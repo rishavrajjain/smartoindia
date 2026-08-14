@@ -46,6 +46,30 @@ export const assets = [
       'Long wispy streaks of drifting fog and thin low cloud floating on a pure solid black background. Soft diffuse edges, varied density with large calm gaps of plain black, gentle horizontal flow, pale neutral grey mist, photographic and volumetric, monochrome. The black background must stay pure black with no gradient, no stars, no noise.',
   },
   {
+    id: 'hero-flags-road',
+    usedOn: '/ — candidate hero (bright, adventurous)',
+    subject: 'Sunlit hill road with a white sedan under streaming prayer flags',
+    aspect: '2:3',
+    size: '1024x1536',
+    quality: 'high',
+    width: 1280,
+    alt: 'A white car sweeping up a sunlit green mountain road beneath strings of colourful prayer flags against a deep blue sky',
+    prompt:
+      'Seen from a high hairpin bend, a narrow tarmac road sweeps up through brilliant green eastern-Himalayan slopes toward the camera, a small plain white sedan mid-bend catching the sun. Long strings of colourful Buddhist prayer flags stream overhead across a deep blue sky with crisp white clouds filling the top of the frame. Golden morning light, vivid saturated greens, joyful, adventurous, full of air and light. No people close to camera, no signage, no number plate.',
+  },
+  {
+    id: 'hero-river-morning',
+    usedOn: '/ — candidate hero (bright, iconic water)',
+    subject: 'Crystal turquoise river gorge with a drifting wooden boat on a bright morning',
+    aspect: '2:3',
+    size: '1024x1536',
+    quality: 'high',
+    width: 1280,
+    alt: 'A slender wooden boat drifting on crystal-clear turquoise water in a sunlit green gorge under a bright blue sky',
+    prompt:
+      'Looking down a crystal-clear turquoise river in a sunlit gorge in Meghalaya on a brilliant morning: a slender wooden boat drifts over water so transparent it appears to float on glass, white pebble banks glow in the sun, lush green forested cliffs rise on both sides, and a deep blue sky with bright white clouds fills the top of the frame above the gorge mouth. Sparkling light on the water, vivid natural colour, serene and thrilling at once. A single boatman far away and not identifiable.',
+  },
+  {
     id: 'hero-valley-dusk',
     style: 'moody',
     usedOn: '/ — full-bleed portrait hero',

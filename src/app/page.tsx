@@ -21,7 +21,7 @@ export const metadata = pageMetadata({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#1e2422",
+  themeColor: "#2a67ab",
   colorScheme: "light",
 };
 
@@ -52,24 +52,18 @@ export default function HomePage() {
       <div className="relative mx-auto min-h-svh max-w-[26.5rem] bg-bone text-ink shadow-[0_0_60px_rgba(0,0,0,0.55)]">
         {/* ——— The picture. Nothing on it but the wordmark. */}
         <section
-          aria-label={IMAGES.homeHeroValley.alt}
+          aria-label={IMAGES.heroRiver.alt}
           className={`${sourceSerif.variable} relative h-[76svh]`}
         >
           <Image
-            src={IMAGES.homeHeroValley.src}
-            alt={IMAGES.homeHeroValley.alt}
+            src={IMAGES.heroRiver.src}
+            alt={IMAGES.heroRiver.alt}
             fill
             priority
             fetchPriority="high"
             sizes="(min-width: 424px) 424px, 100vw"
             className="object-cover"
           />
-          {/* Cloud pouring over the pass — see .cloudfall-veil in globals. */}
-          <div aria-hidden="true" className="cloudfall-veil">
-            <div className="cloudfall" />
-            <div className="cloudfall cloudfall-b" />
-            <div className="clouddrift" />
-          </div>
           {/* The title arrives a beat after the scene does. */}
           <p className="hero-title-reveal absolute inset-x-0 top-[13%] px-6 text-center font-[family-name:var(--font-hero-title)] text-[2.375rem] leading-[1.1] text-bone [text-shadow:0_1px_28px_rgba(12,8,5,0.55)]">
             Explore

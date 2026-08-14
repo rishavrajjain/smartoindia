@@ -13,6 +13,32 @@
     "status": "generated"
   },
   {
+    "id": "hero-flags-road",
+    "src": "/images/hero-flags-road.webp",
+    "width": 1280,
+    "height": 1920,
+    "aspect": "2:3",
+    "alt": "A white car sweeping up a sunlit green mountain road beneath strings of colourful prayer flags against a deep blue sky",
+    "usedOn": "/ — candidate hero (bright, adventurous)",
+    "subject": "Sunlit hill road with a white sedan under streaming prayer flags",
+    "prompt": "Seen from a high hairpin bend, a narrow tarmac road sweeps up through brilliant green eastern-Himalayan slopes toward the camera, a small plain white sedan mid-bend catching the sun. Long strings of colourful Buddhist prayer flags stream overhead across a deep blue sky with crisp white clouds filling the top of the frame. Golden morning light, vivid saturated greens, joyful, adventurous, full of air and light. No people close to camera, no signage, no number plate.",
+    "model": "gpt-image-2",
+    "status": "generated"
+  },
+  {
+    "id": "hero-river-morning",
+    "src": "/images/hero-river-morning.webp",
+    "width": 1280,
+    "height": 1920,
+    "aspect": "2:3",
+    "alt": "A slender wooden boat drifting on crystal-clear turquoise water in a sunlit green gorge under a bright blue sky",
+    "usedOn": "/ — candidate hero (bright, iconic water)",
+    "subject": "Crystal turquoise river gorge with a drifting wooden boat on a bright morning",
+    "prompt": "Looking down a crystal-clear turquoise river in a sunlit gorge in Meghalaya on a brilliant morning: a slender wooden boat drifts over water so transparent it appears to float on glass, white pebble banks glow in the sun, lush green forested cliffs rise on both sides, and a deep blue sky with bright white clouds fills the top of the frame above the gorge mouth. Sparkling light on the water, vivid natural colour, serene and thrilling at once. A single boatman far away and not identifiable.",
+    "model": "gpt-image-2",
+    "status": "generated"
+  },
+  {
     "id": "hero-valley-dusk",
     "src": "/images/hero-valley-dusk.webp",
     "width": 1280,
