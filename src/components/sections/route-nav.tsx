@@ -145,21 +145,22 @@ export function RouteNav({ stops }: { stops: RouteStop[] }) {
     <div
       ref={barRef}
       style={initial}
-      className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-[26.5rem]"
+      className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-[26.5rem] px-2.5 pb-[max(0.6rem,env(safe-area-inset-bottom))]"
     >
+      {/* Floating frosted-glass bar: translucent, blurred, with a top light
+          edge and a soft lifted shadow. */}
       <div
-        className="border-t border-line bg-bone/95 px-4 pt-3 backdrop-blur-lg"
-        style={{ paddingBottom: "calc(0.5rem + env(safe-area-inset-bottom))" }}
+        className="rounded-[1.35rem] border border-white/40 bg-bone/55 px-4 pt-3 pb-2.5 shadow-[0_8px_30px_-8px_rgba(12,8,5,0.35)] ring-1 ring-ink/5 backdrop-blur-xl backdrop-saturate-150 [box-shadow:inset_0_1px_0_rgba(255,255,255,0.6),0_10px_34px_-10px_rgba(12,8,5,0.4)]"
       >
         {/* Section announced for screen readers in place of a visible label. */}
         <p className="sr-only" aria-live="polite">
           Section: {stops[activeStop]?.label}
         </p>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
           <nav aria-label="Jump to a section" className="min-w-0 flex-1">
-            {/* mx-6 keeps the cab fully visible when parked at either end. */}
-            <div className="relative mx-6 h-[2.75rem]">
+            {/* mx keeps the cab fully visible when parked at either end. */}
+            <div className="relative mx-4 h-[2.75rem]">
               {/* Road bed and the fill that trails the cab. Sits below the
                   flags so the route reads left-to-right. */}
               <div className="absolute inset-x-0 top-[1.6rem] h-px bg-line-strong" />
@@ -189,7 +190,7 @@ export function RouteNav({ stops }: { stops: RouteStop[] }) {
                     <RouteFlag reached={reached} />
                     <span
                       className={cn(
-                        "mt-[0.3rem] text-[0.5625rem] font-medium tracking-[0.08em] whitespace-nowrap uppercase transition-colors duration-300",
+                        "mt-[0.3rem] text-[0.5rem] font-semibold tracking-[0.02em] whitespace-nowrap uppercase transition-colors duration-300",
                         index === activeStop
                           ? "text-ink"
                           : reached
@@ -235,7 +236,7 @@ export function RouteNav({ stops }: { stops: RouteStop[] }) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackCtaClick({ location: "sticky" })}
-            className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-sm bg-ink px-4 text-sm font-medium text-bone transition-colors duration-300 hover:bg-clay-deep"
+            className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-xl bg-ink px-4 text-sm font-medium text-bone shadow-sm transition-colors duration-300 hover:bg-clay-deep"
           >
             <WhatsAppIcon />
             <span>Plan</span>

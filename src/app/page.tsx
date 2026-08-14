@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Viewport } from "next";
-import { Source_Serif_4 } from "next/font/google";
+import { Fraunces, Source_Serif_4 } from "next/font/google";
 
 import { HomeMenu } from "@/components/sections/home-menu";
 import { RouteNav, type RouteStop } from "@/components/sections/route-nav";
@@ -37,13 +37,21 @@ export const viewport: Viewport = {
  * fixed WhatsApp bar at the bottom is the one persistent action.
  */
 
-/* Hero title face — a transitional serif in the register of the reference
-   ("Find your piece."). One weight, loaded only on this route. */
+/* Hero title faces: a refined serif for "Explore" and a characterful,
+   optically-soft Fraunces for "North East" — funky curves, still premium. */
 const sourceSerif = Source_Serif_4({
   variable: "--font-hero-title",
   subsets: ["latin"],
   display: "swap",
   weight: "400",
+});
+
+const fraunces = Fraunces({
+  variable: "--font-hero-funky",
+  subsets: ["latin"],
+  display: "swap",
+  style: ["italic"],
+  axes: ["opsz", "SOFT", "WONK"],
 });
 
 const FEATURED = FEATURED_PACKAGES;
@@ -141,7 +149,14 @@ const CORPORATE_SECTORS = [
   "Airlines",
 ];
 
-const FESTIVAL_PICKS = FESTIVALS.slice(0, 4);
+/* Festival cards pair the catalog entry with its generated scene image. */
+const FESTIVAL_IMAGE: Record<string, (typeof IMAGES)[keyof typeof IMAGES]> = {
+  "bihu-spring": IMAGES.festBihu,
+  hornbill: IMAGES.festHornbill,
+  wangala: IMAGES.festWangala,
+  losar: IMAGES.festLosar,
+};
+const FESTIVAL_PICKS = FESTIVALS.filter((f) => FESTIVAL_IMAGE[f.id]);
 
 export default function HomePage() {
   return (
@@ -151,7 +166,7 @@ export default function HomePage() {
         <section
           id="home-top"
           aria-label={IMAGES.heroDawnRidges.alt}
-          className={`${sourceSerif.variable} relative h-svh`}
+          className={`${sourceSerif.variable} ${fraunces.variable} relative h-svh`}
         >
           <Image
             src={IMAGES.heroDawnRidges.src}
@@ -162,11 +177,15 @@ export default function HomePage() {
             sizes="(min-width: 424px) 424px, 100vw"
             className="object-cover"
           />
-          {/* The title arrives a beat after the scene does. */}
-          <p className="hero-title-reveal absolute inset-x-0 top-[13%] px-6 text-center font-[family-name:var(--font-hero-title)] text-[2.375rem] leading-[1.1] text-bone [text-shadow:0_1px_28px_rgba(12,8,5,0.55)]">
-            Explore
-            <br />
-            North East
+          {/* The title arrives a beat after the scene does. "North East" gets
+              the funky, curvy Fraunces treatment for personality. */}
+          <p className="hero-title-reveal absolute inset-x-0 top-[12%] px-6 text-center text-bone [text-shadow:0_1px_28px_rgba(12,8,5,0.55)]">
+            <span className="block font-[family-name:var(--font-hero-title)] text-[1.625rem] leading-none tracking-[0.02em] text-bone/85">
+              Explore
+            </span>
+            <span className="mt-1.5 block font-[family-name:var(--font-hero-funky)] text-[3.5rem] leading-[0.92] font-semibold italic">
+              North East
+            </span>
           </p>
           <header className="absolute inset-x-0 top-0 flex items-center px-4 pt-5">
             <span aria-hidden="true" className="size-11 shrink-0" />
@@ -365,35 +384,47 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ——— Festivals. */}
+        {/* ——— Festivals: a visual grid of the region's big gatherings. */}
         <section id="home-festivals" className="scroll-mt-6 px-6 pt-16">
           <p className="text-label font-medium text-clay uppercase">Festivals</p>
           <h2 className="mt-3 font-display text-[1.75rem] leading-tight">
             Travel by the calendar
           </h2>
-          <ul className="mt-6 border-t border-line">
+          <ul className="mt-6 grid grid-cols-2 gap-3.5">
             {FESTIVAL_PICKS.map((festival) => (
-              <li key={festival.id} className="border-b border-line">
+              <li key={festival.id}>
                 <Link
                   href="/festivals"
-                  className="flex items-baseline justify-between gap-4 py-4"
+                  className="group relative block aspect-[4/5] overflow-hidden rounded-2xl bg-sand ring-1 ring-ink/10"
                 >
-                  <span className="min-w-0">
-                    <span className="block font-display text-[1.125rem] text-ink">
+                  <Image
+                    src={FESTIVAL_IMAGE[festival.id].src}
+                    alt=""
+                    fill
+                    loading="lazy"
+                    sizes="200px"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="photo-scrim absolute inset-0"
+                  />
+                  <span className="absolute top-3 right-3 rounded-full bg-bone/90 px-2.5 py-1 text-[0.625rem] font-semibold tracking-[0.1em] text-ink uppercase backdrop-blur-sm">
+                    {festival.month}
+                  </span>
+                  <span className="absolute inset-x-0 bottom-0 p-3.5">
+                    <span className="block font-display text-[1.1875rem] leading-tight text-bone">
                       {festival.name}
                     </span>
-                    <span className="mt-0.5 block text-[0.8125rem] text-taupe">
+                    <span className="mt-0.5 block text-[0.6875rem] font-medium tracking-[0.1em] text-bone/75 uppercase">
                       {festival.state}
                     </span>
-                  </span>
-                  <span className="shrink-0 text-label font-medium text-clay uppercase">
-                    {festival.month}
                   </span>
                 </Link>
               </li>
             ))}
           </ul>
-          <div className="mt-6 flex items-center justify-between gap-4">
+          <div className="mt-6">
             <Link
               href="/festivals"
               className="link-rule text-[0.9375rem] font-medium text-ink"

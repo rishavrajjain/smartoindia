@@ -154,6 +154,30 @@ export const IMAGES = {
     "A group of colleagues boarding clean white passenger vans in an open yard on a bright morning",
   ),
 
+  festBihu: image(
+    "fest-bihu",
+    900,
+    675,
+    "Dancers in traditional red-and-white Assamese dress mid-movement at an outdoor Bihu gathering in bright daylight",
+  ),
+  festHornbill: image(
+    "fest-hornbill",
+    900,
+    675,
+    "Naga performers in traditional shawls and headdresses at an outdoor cultural festival",
+  ),
+  festWangala: image(
+    "fest-wangala",
+    900,
+    675,
+    "A line of drummers in traditional dress playing long drums at an outdoor Garo harvest festival",
+  ),
+  festLosar: image(
+    "fest-losar",
+    900,
+    675,
+    "Colourful prayer flags strung before a whitewashed Buddhist monastery in the mountains under a bright sky",
+  ),
   festivalsHero: image(
     "festivals-hero",
     2000,

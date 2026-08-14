@@ -39,6 +39,58 @@
     "status": "generated"
   },
   {
+    "id": "fest-bihu",
+    "src": "/images/fest-bihu.webp",
+    "width": 900,
+    "height": 675,
+    "aspect": "4:3",
+    "alt": "Dancers in traditional red-and-white Assamese dress mid-movement at an outdoor Bihu gathering in bright daylight",
+    "usedOn": "/ — festivals card (Rongali Bihu)",
+    "subject": "Assamese Bihu dancers in red-and-white dress in a sunny field",
+    "prompt": "A joyful outdoor Rongali Bihu spring gathering in rural Assam: a loose line of dancers in traditional red-bordered white mekhela-chador and dhoti, caught mid-movement with a little motion blur, on a green field under bright morning sun. Faces mostly turned to the side or away, natural candid energy, marigold and green tones. A couple of dhol drummers to one side.",
+    "model": "gpt-image-2",
+    "status": "generated"
+  },
+  {
+    "id": "fest-hornbill",
+    "src": "/images/fest-hornbill.webp",
+    "width": 900,
+    "height": 675,
+    "aspect": "4:3",
+    "alt": "Naga performers in traditional shawls and headdresses at an outdoor cultural festival on an overcast day",
+    "usedOn": "/ — festivals card (Hornbill Festival)",
+    "subject": "Naga cultural performers in traditional dress at a daytime festival ground",
+    "prompt": "A daytime Naga cultural festival in the hills of Nagaland: performers in traditional red-and-black woven shawls and feathered headdresses stand and move in a loose group before a thatched morung hut, seen from a respectful middle distance so faces are small and not identifiable. Overcast hill light, deep greens, earthy reds, dignified and celebratory rather than staged.",
+    "model": "gpt-image-2",
+    "status": "generated"
+  },
+  {
+    "id": "fest-wangala",
+    "src": "/images/fest-wangala.webp",
+    "width": 900,
+    "height": 675,
+    "aspect": "4:3",
+    "alt": "A line of drummers in simple traditional dress playing long drums at an outdoor Garo harvest festival",
+    "usedOn": "/ — festivals card (Wangala)",
+    "subject": "Garo harvest-festival drummers in a line on a green field",
+    "prompt": "A Garo Wangala harvest festival in the Meghalaya hills: a long line of drummers in simple traditional dress with feathered headgear playing long hand drums as they move across a green field, seen from the side and slightly behind so faces are turned away. Bright overcast daylight, warm harvest tones, real motion and rhythm.",
+    "model": "gpt-image-2",
+    "status": "generated"
+  },
+  {
+    "id": "fest-losar",
+    "src": "/images/fest-losar.webp",
+    "width": 900,
+    "height": 675,
+    "aspect": "4:3",
+    "alt": "Colourful prayer flags strung before a whitewashed Buddhist monastery in the mountains under a bright sky",
+    "usedOn": "/ — festivals card (Losar)",
+    "subject": "Monpa Buddhist new-year scene with prayer flags and a monastery",
+    "prompt": "A Losar Buddhist new-year scene in the high Monpa country of Arunachal Pradesh: dense colourful prayer flags strung across the foreground before a whitewashed hillside monastery with red and gold trim, snow peaks behind under a bright blue winter sky. A few figures in warm traditional coats far off, small and not identifiable. Crisp cold light, festive and serene.",
+    "model": "gpt-image-2",
+    "status": "generated"
+  },
+  {
     "id": "hero-flags-road",
     "src": "/images/hero-flags-road.webp",
     "width": 1280,
