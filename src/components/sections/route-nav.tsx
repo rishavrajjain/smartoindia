@@ -12,8 +12,38 @@ import { enquiry, whatsappUrl } from "@/lib/whatsapp";
 export interface RouteStop {
   /** DOM id of the section this stop scrolls to. */
   id: string;
-  /** Short section name shown under the dot. */
+  /** Short section name shown under the flag. */
   label: string;
+}
+
+/** A little route flag planted on the road; solid once its stop is reached. */
+function RouteFlag({ reached }: { reached: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 12 16"
+      className="mt-[0.6rem] h-[15px] w-[12px]"
+      fill="none"
+      aria-hidden="true"
+    >
+      <line
+        x1="1.6"
+        y1="1"
+        x2="1.6"
+        y2="15"
+        stroke="currentColor"
+        strokeWidth="1.3"
+        strokeLinecap="round"
+      />
+      <path
+        d="M1.6 1.7 L10 4.2 L1.6 6.7 Z"
+        strokeWidth="1"
+        strokeLinejoin="round"
+        className={
+          reached ? "fill-clay stroke-clay" : "fill-bone stroke-line-strong"
+        }
+      />
+    </svg>
+  );
 }
 
 type RouteProperties = CSSProperties & { "--trip": number };
@@ -128,17 +158,19 @@ export function RouteNav({ stops }: { stops: RouteStop[] }) {
 
         <div className="flex items-center gap-3">
           <nav aria-label="Jump to a section" className="min-w-0 flex-1">
-            {/* mx-8 keeps the cab fully visible when parked at either end. */}
-            <div className="relative mx-8 h-[2.75rem]">
-              {/* Road bed and the fill that trails the cab. */}
-              <div className="absolute inset-x-0 top-[1.4rem] h-px bg-line-strong" />
+            {/* mx-6 keeps the cab fully visible when parked at either end. */}
+            <div className="relative mx-6 h-[2.75rem]">
+              {/* Road bed and the fill that trails the cab. Sits below the
+                  flags so the route reads left-to-right. */}
+              <div className="absolute inset-x-0 top-[1.6rem] h-px bg-line-strong" />
               <div
                 aria-hidden="true"
-                className="absolute inset-x-0 top-[1.4rem] h-px origin-left bg-clay transition-transform duration-150"
+                className="absolute inset-x-0 top-[1.6rem] h-px origin-left bg-clay transition-transform duration-150"
                 style={{ transform: "scaleX(var(--trip, 0))" }}
               />
 
-              {/* Stops: the dot and its section name, one tappable target. */}
+              {/* Stops: a little route flag planted on the road, its section
+                  name underneath. The whole thing is one tappable target. */}
               {stops.map((stop, index) => {
                 const reached = index <= activeStop;
                 return (
@@ -148,20 +180,16 @@ export function RouteNav({ stops }: { stops: RouteStop[] }) {
                     onClick={() => scrollToStop(stop.id, index)}
                     aria-label={`Go to ${stop.label}`}
                     aria-current={index === activeStop ? "true" : undefined}
-                    className="group absolute top-0 flex h-full -translate-x-1/2 flex-col items-center"
+                    className={cn(
+                      "group absolute top-0 flex h-full w-12 -translate-x-1/2 flex-col items-center transition-colors duration-300",
+                      reached ? "text-clay" : "text-line-strong",
+                    )}
                     style={{ left: `${(index / last) * 100}%` }}
                   >
+                    <RouteFlag reached={reached} />
                     <span
                       className={cn(
-                        "mt-[1.15rem] size-[7px] rounded-full border transition-colors duration-300",
-                        reached
-                          ? "border-clay bg-clay"
-                          : "border-line-strong bg-bone group-hover:border-taupe",
-                      )}
-                    />
-                    <span
-                      className={cn(
-                        "mt-[0.4rem] text-[0.5625rem] font-medium tracking-[0.1em] whitespace-nowrap uppercase transition-colors duration-300",
+                        "mt-[0.3rem] text-[0.5625rem] font-medium tracking-[0.08em] whitespace-nowrap uppercase transition-colors duration-300",
                         index === activeStop
                           ? "text-ink"
                           : reached
@@ -178,7 +206,7 @@ export function RouteNav({ stops }: { stops: RouteStop[] }) {
               {/* The Smarto cab, riding the road on --trip. */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute top-[1.4rem]"
+                className="pointer-events-none absolute top-[1.6rem] z-10"
                 style={{
                   left: "calc(var(--trip, 0) * 100%)",
                   transform: "translate(-50%, calc(-100% + 2px))",
@@ -190,7 +218,7 @@ export function RouteNav({ stops }: { stops: RouteStop[] }) {
                   width={360}
                   height={136}
                   priority
-                  className="h-[1.5rem] w-auto"
+                  className="h-[1.05rem] w-auto"
                 />
               </div>
             </div>
