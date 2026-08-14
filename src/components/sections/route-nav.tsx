@@ -203,13 +203,16 @@ export function RouteNav({ stops }: { stops: RouteStop[] }) {
                 );
               })}
 
-              {/* The Smarto cab, riding the road on --trip. */}
+              {/* The Smarto cab, riding the road on --trip. The wrapper has an
+                  explicit width and is centred with a negative margin: at
+                  trip=1 a width-less box parked at left:100% collapses to zero
+                  and the cab vanishes, so the width is pinned here. */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute top-[1.6rem] z-10"
+                className="pointer-events-none absolute top-[1.6rem] z-10 -ml-[1.4rem] w-[2.8rem]"
                 style={{
                   left: "calc(var(--trip, 0) * 100%)",
-                  transform: "translate(-50%, calc(-100% + 2px))",
+                  transform: "translateY(calc(-100% + 2px))",
                 }}
               >
                 <Image
@@ -218,7 +221,7 @@ export function RouteNav({ stops }: { stops: RouteStop[] }) {
                   width={360}
                   height={136}
                   priority
-                  className="h-[1.05rem] w-auto"
+                  className="mx-auto h-[1.05rem] w-auto"
                 />
               </div>
             </div>

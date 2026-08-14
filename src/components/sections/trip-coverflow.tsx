@@ -46,10 +46,68 @@ export function TripCoverflow({ trips }: { trips: TravelPackage[] }) {
     rail.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule, { passive: true });
 
+    // Gentle autoplay: advance one card at a time, wrapping back to the
+    // start. Any touch, drag, wheel, or hover pauses it; it resumes a few
+    // seconds after the visitor lets go. Reduced motion opts out entirely.
+    let pausedUntil = 0;
+    let hovering = false;
+    const pauseFor = (ms: number) => {
+      pausedUntil = Date.now() + ms;
+    };
+    const onInteract = () => pauseFor(7000);
+    const onEnter = () => {
+      hovering = true;
+    };
+    const onLeave = () => {
+      hovering = false;
+      pauseFor(2500);
+    };
+
+    const centreOf = (el: HTMLElement) => el.offsetLeft + el.clientWidth / 2;
+    const currentIndex = () => {
+      const mid = rail.scrollLeft + rail.clientWidth / 2;
+      let best = 0;
+      let bestDelta = Infinity;
+      Array.from(rail.children).forEach((li, i) => {
+        const delta = Math.abs(centreOf(li as HTMLElement) - mid);
+        if (delta < bestDelta) {
+          bestDelta = delta;
+          best = i;
+        }
+      });
+      return best;
+    };
+    const goTo = (index: number) => {
+      const li = rail.children[index] as HTMLElement | undefined;
+      if (!li) return;
+      rail.scrollTo({
+        left: centreOf(li) - rail.clientWidth / 2,
+        behavior: "smooth",
+      });
+    };
+
+    const tick = () => {
+      if (hovering || Date.now() < pausedUntil || document.hidden) return;
+      goTo((currentIndex() + 1) % rail.children.length);
+    };
+    const timer = window.setInterval(tick, 3600);
+
+    rail.addEventListener("pointerdown", onInteract, { passive: true });
+    rail.addEventListener("touchstart", onInteract, { passive: true });
+    rail.addEventListener("wheel", onInteract, { passive: true });
+    rail.addEventListener("mouseenter", onEnter);
+    rail.addEventListener("mouseleave", onLeave);
+
     return () => {
       window.cancelAnimationFrame(frame);
+      window.clearInterval(timer);
       rail.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
+      rail.removeEventListener("pointerdown", onInteract);
+      rail.removeEventListener("touchstart", onInteract);
+      rail.removeEventListener("wheel", onInteract);
+      rail.removeEventListener("mouseenter", onEnter);
+      rail.removeEventListener("mouseleave", onLeave);
     };
   }, []);
 

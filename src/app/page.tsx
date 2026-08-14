@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Viewport } from "next";
 import { Source_Serif_4 } from "next/font/google";
 
+import { HomeMenu } from "@/components/sections/home-menu";
 import { ReviewCarousel } from "@/components/sections/review-carousel";
 import { RouteNav, type RouteStop } from "@/components/sections/route-nav";
 import { TripCoverflow } from "@/components/sections/trip-coverflow";
@@ -80,8 +81,13 @@ export default function HomePage() {
             <br />
             North East
           </p>
-          <header className="absolute inset-x-0 top-0 flex justify-center pt-6">
-            <Link href="/" aria-label={`${SITE.name} home`}>
+          <header className="absolute inset-x-0 top-0 flex items-center px-4 pt-5">
+            <span aria-hidden="true" className="size-11 shrink-0" />
+            <Link
+              href="/"
+              aria-label={`${SITE.name} home`}
+              className="flex flex-1 justify-center"
+            >
               <Image
                 src="/brand/smarto-wordmark-light.webp"
                 alt={SITE.name}
@@ -91,6 +97,7 @@ export default function HomePage() {
                 className="h-5 w-auto opacity-90"
               />
             </Link>
+            <HomeMenu />
           </header>
 
           {/* ——— The go-to trips, floating on the water. */}
