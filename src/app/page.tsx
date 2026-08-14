@@ -4,6 +4,7 @@ import type { Viewport } from "next";
 import { Source_Serif_4 } from "next/font/google";
 
 import { ReviewCarousel } from "@/components/sections/review-carousel";
+import { RouteNav, type RouteStop } from "@/components/sections/route-nav";
 import { TripCoverflow } from "@/components/sections/trip-coverflow";
 import { WhatsAppLink } from "@/components/ui/whatsapp-link";
 import { IMAGES } from "@/data/images";
@@ -46,12 +47,21 @@ const sourceSerif = Source_Serif_4({
 
 const FEATURED = FEATURED_PACKAGES;
 
+/* The route bar's dots. Each id is a section on this page, in scroll order. */
+const ROUTE_STOPS: RouteStop[] = [
+  { id: "home-top", label: "Trips" },
+  { id: "home-explore", label: "Explore" },
+  { id: "home-reviews-sec", label: "Reviews" },
+  { id: "home-footer", label: "Contact" },
+];
+
 export default function HomePage() {
   return (
     <div data-page-theme="mobile-frame">
       <div className="relative mx-auto min-h-svh max-w-[26.5rem] bg-bone text-ink shadow-[0_0_60px_rgba(0,0,0,0.55)]">
         {/* ——— The picture. Nothing on it but the wordmark. */}
         <section
+          id="home-top"
           aria-label={IMAGES.heroDawnRidges.alt}
           className={`${sourceSerif.variable} relative h-svh`}
         >
@@ -120,7 +130,7 @@ export default function HomePage() {
         </section>
 
         {/* ——— The site, as an index. */}
-        <nav aria-label="Explore" className="px-6 pt-10">
+        <nav id="home-explore" aria-label="Explore" className="scroll-mt-6 px-6 pt-10">
           <ul className="border-t border-line">
             {NAV.map((item, index) => (
               <li key={item.href} className="border-b border-line">
@@ -146,7 +156,11 @@ export default function HomePage() {
         </nav>
 
         {/* ——— Quiet proof. */}
-        <section aria-labelledby="home-reviews" className="pt-14">
+        <section
+          id="home-reviews-sec"
+          aria-labelledby="home-reviews"
+          className="scroll-mt-6 pt-14"
+        >
           <h2 id="home-reviews" className="px-6 text-label font-medium text-taupe uppercase">
             From past trips
           </h2>
@@ -156,7 +170,10 @@ export default function HomePage() {
         </section>
 
         {/* ——— Footer. */}
-        <footer className="mt-16 border-t border-line px-6 pt-8 pb-32 text-center">
+        <footer
+          id="home-footer"
+          className="mt-16 scroll-mt-6 border-t border-line px-6 pt-8 pb-36 text-center"
+        >
           <p className="text-label font-medium text-taupe uppercase">
             Assam · Meghalaya · Arunachal
             <br />
@@ -180,22 +197,8 @@ export default function HomePage() {
           </ul>
         </footer>
 
-        {/* ——— The one persistent action, kept inside the frame. */}
-        <div className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-[26.5rem]">
-          <div
-            className="border-t border-line bg-bone/93 px-4 pt-3 backdrop-blur-lg"
-            style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}
-          >
-            <WhatsAppLink
-              message={enquiry("I would like to plan a trip in the Northeast.")}
-              location="sticky"
-              size="md"
-              fullWidth
-            >
-              Plan my trip on WhatsApp
-            </WhatsAppLink>
-          </div>
-        </div>
+        {/* ——— The route bar: section navigation and the persistent CTA. */}
+        <RouteNav stops={ROUTE_STOPS} />
       </div>
     </div>
   );
