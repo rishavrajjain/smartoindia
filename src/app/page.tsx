@@ -101,36 +101,42 @@ const SERVICES = [
     name: "Airport transfers",
     line: "Met at arrivals, tracked to your flight.",
     fare: null,
+    icon: "/icons/ic-airport.webp",
     message: enquiry("I need an airport transfer."),
   },
   {
     name: "Shillong drop",
     line: "Guwahati to Shillong, one flat fare.",
     fare: "₹2,799",
+    icon: "/icons/ic-hills.webp",
     message: enquiry("I would like to book a Shillong drop."),
   },
   {
     name: "Railway station",
     line: "To Guwahati station, on train time.",
     fare: "₹399",
+    icon: "/icons/ic-train.webp",
     message: enquiry("I need a railway station drop."),
   },
   {
     name: "Sonapur drop",
     line: "City-edge run at a fixed price.",
     fare: "₹1,599",
+    icon: "/icons/ic-milestone.webp",
     message: enquiry("I would like to book a Sonapur drop."),
   },
   {
     name: "Hourly rental",
     line: "A car and driver on your clock.",
     fare: null,
+    icon: "/icons/ic-clock.webp",
     message: enquiry("I would like an hourly cab rental."),
   },
   {
     name: "Outstation",
     line: "Fixed fares to the hills, agreed up front.",
     fare: null,
+    icon: "/icons/ic-road.webp",
     message: enquiry("I would like an outstation cab quote."),
   },
 ] as const;
@@ -312,9 +318,17 @@ export default function HomePage() {
                   message={service.message}
                   location="home-cabs"
                   subject={service.name}
-                  className="flex items-center justify-between gap-4 py-4"
+                  className="flex items-center gap-3.5 py-3.5"
                 >
-                  <span className="min-w-0">
+                  <Image
+                    src={service.icon}
+                    alt=""
+                    width={240}
+                    height={240}
+                    loading="lazy"
+                    className="size-11 shrink-0 object-contain [filter:drop-shadow(0_4px_6px_rgba(12,8,5,0.14))]"
+                  />
+                  <span className="min-w-0 flex-1">
                     <span className="block font-display text-[1.125rem] text-ink">
                       {service.name}
                     </span>
