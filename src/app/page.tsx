@@ -21,7 +21,7 @@ export const metadata = pageMetadata({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#2a67ab",
+  themeColor: "#1d6b98",
   colorScheme: "light",
 };
 
@@ -52,27 +52,17 @@ export default function HomePage() {
       <div className="relative mx-auto min-h-svh max-w-[26.5rem] bg-bone text-ink shadow-[0_0_60px_rgba(0,0,0,0.55)]">
         {/* ——— The picture. Nothing on it but the wordmark. */}
         <section
-          aria-label={IMAGES.heroRiver.alt}
+          aria-label={IMAGES.heroDawnRidges.alt}
           className={`${sourceSerif.variable} relative h-svh`}
         >
           <Image
-            src={IMAGES.heroRiver.src}
-            alt={IMAGES.heroRiver.alt}
+            src={IMAGES.heroDawnRidges.src}
+            alt={IMAGES.heroDawnRidges.alt}
             fill
             priority
             fetchPriority="high"
             sizes="(min-width: 424px) 424px, 100vw"
             className="object-cover"
-          />
-          {/* Gentle grades top and bottom: the title and cards stay legible
-              without dulling the water in the middle. */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-0 top-0 h-[38%] bg-gradient-to-b from-[rgba(12,8,5,0.52)] via-[rgba(12,8,5,0.22)] to-transparent"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-[rgba(12,8,5,0.42)] to-transparent"
           />
           {/* The title arrives a beat after the scene does. */}
           <p className="hero-title-reveal absolute inset-x-0 top-[13%] px-6 text-center font-[family-name:var(--font-hero-title)] text-[2.375rem] leading-[1.1] text-bone [text-shadow:0_1px_28px_rgba(12,8,5,0.55)]">

@@ -13,6 +13,32 @@
     "status": "generated"
   },
   {
+    "id": "hero-dawn-ridges",
+    "src": "/images/hero-dawn-ridges.webp",
+    "width": 1280,
+    "height": 1920,
+    "aspect": "2:3",
+    "alt": "Layered green mountain ridges under a soft golden dawn sky, with gentle mist settling in the dark valley below",
+    "usedOn": "/ — hero backdrop staged for overlaid title and cards",
+    "subject": "Layered green ridgelines at golden dawn with a misty dark foreground shelf",
+    "prompt": "Composed as a backdrop for overlaid interface text: the top third is a clean, smooth golden-dawn sky fading from deep teal-blue to warm amber with two or three small soft clouds; the middle band shows five or six layered eastern-Himalayan ridgelines in fresh greens receding into golden haze; the bottom third dissolves into soft, dark pine-green valley mist with almost no detail. Serene, optimistic first light, huge open negative space above and below, nothing in the foreground.",
+    "model": "gpt-image-2",
+    "status": "generated"
+  },
+  {
+    "id": "hero-tea-dawn",
+    "src": "/images/hero-tea-dawn.webp",
+    "width": 1280,
+    "height": 1920,
+    "aspect": "2:3",
+    "alt": "Smooth rolling curves of a tea garden glowing in golden morning light beneath a soft hazy sky",
+    "usedOn": "/ — hero backdrop candidate (tea garden stage)",
+    "subject": "Rolling tea-garden curves in golden morning light, hazy sky above, dark soft foreground",
+    "prompt": "Composed as a backdrop for overlaid interface text: the top third is a clean, softly glowing morning sky in pale gold and gentle blue with thin haze; the middle band shows the smooth rolling emerald curves of an Assam tea garden catching low golden light, one or two shade trees standing far off; the bottom third falls into soft dark-green shadow and thin ground mist with almost no detail. Serene, warm, optimistic, huge open negative space above and below, nothing in the foreground.",
+    "model": "gpt-image-2",
+    "status": "generated"
+  },
+  {
     "id": "hero-flags-road",
     "src": "/images/hero-flags-road.webp",
     "width": 1280,

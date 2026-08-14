@@ -50,6 +50,14 @@ const STYLES = {
     'No text, no lettering, no signage, no logos, no watermarks.',
     'Avoid HDR halos, plastic surfaces, perfect symmetry, and any visible AI artifacts.',
   ].join(' '),
+  // Hero backdrops composed as a stage for overlaid UI — calm zones top and
+  // bottom, detail only in the middle band.
+  serene: [
+    'Fine-art minimalist landscape photography in soft natural light.',
+    'Smooth atmospheric gradients, generous calm negative space, gentle haze, true-to-life texture only on the middle ridges.',
+    'No text, no lettering, no signage, no logos, no watermarks, no people, no buildings.',
+    'Avoid HDR halos, busy foreground detail, harsh contrast, and any visible AI artifacts.',
+  ].join(' '),
   // Compositing textures (fog plates, grain) — no scene, no styling agenda.
   fx: [
     'Photographic texture element for compositing.',

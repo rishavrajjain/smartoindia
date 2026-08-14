@@ -18,6 +18,18 @@ function image(
 }
 
 export const IMAGES = {
+  heroDawnRidges: image(
+    "hero-dawn-ridges",
+    1280,
+    1920,
+    "Layered green mountain ridges under a soft golden dawn sky, with gentle mist settling in the dark valley below",
+  ),
+  heroTeaDawn: image(
+    "hero-tea-dawn",
+    1280,
+    1920,
+    "Smooth rolling curves of a tea garden glowing in golden morning light beneath a soft hazy sky",
+  ),
   heroRiver: image(
     "hero-river-morning",
     1280,

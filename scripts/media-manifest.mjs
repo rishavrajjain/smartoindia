@@ -46,6 +46,32 @@ export const assets = [
       'Long wispy streaks of drifting fog and thin low cloud floating on a pure solid black background. Soft diffuse edges, varied density with large calm gaps of plain black, gentle horizontal flow, pale neutral grey mist, photographic and volumetric, monochrome. The black background must stay pure black with no gradient, no stars, no noise.',
   },
   {
+    id: 'hero-dawn-ridges',
+    style: 'serene',
+    usedOn: '/ — hero backdrop staged for overlaid title and cards',
+    subject: 'Layered green ridgelines at golden dawn with a misty dark foreground shelf',
+    aspect: '2:3',
+    size: '1024x1536',
+    quality: 'high',
+    width: 1280,
+    alt: 'Layered green mountain ridges under a soft golden dawn sky, with gentle mist settling in the dark valley below',
+    prompt:
+      'Composed as a backdrop for overlaid interface text: the top third is a clean, smooth golden-dawn sky fading from deep teal-blue to warm amber with two or three small soft clouds; the middle band shows five or six layered eastern-Himalayan ridgelines in fresh greens receding into golden haze; the bottom third dissolves into soft, dark pine-green valley mist with almost no detail. Serene, optimistic first light, huge open negative space above and below, nothing in the foreground.',
+  },
+  {
+    id: 'hero-tea-dawn',
+    style: 'serene',
+    usedOn: '/ — hero backdrop candidate (tea garden stage)',
+    subject: 'Rolling tea-garden curves in golden morning light, hazy sky above, dark soft foreground',
+    aspect: '2:3',
+    size: '1024x1536',
+    quality: 'high',
+    width: 1280,
+    alt: 'Smooth rolling curves of a tea garden glowing in golden morning light beneath a soft hazy sky',
+    prompt:
+      'Composed as a backdrop for overlaid interface text: the top third is a clean, softly glowing morning sky in pale gold and gentle blue with thin haze; the middle band shows the smooth rolling emerald curves of an Assam tea garden catching low golden light, one or two shade trees standing far off; the bottom third falls into soft dark-green shadow and thin ground mist with almost no detail. Serene, warm, optimistic, huge open negative space above and below, nothing in the foreground.',
+  },
+  {
     id: 'hero-flags-road',
     usedOn: '/ — candidate hero (bright, adventurous)',
     subject: 'Sunlit hill road with a white sedan under streaming prayer flags',
