@@ -7,18 +7,19 @@ import { HomeMenu } from "@/components/sections/home-menu";
 import { ReviewCarousel } from "@/components/sections/review-carousel";
 import { RouteNav, type RouteStop } from "@/components/sections/route-nav";
 import { TripCoverflow } from "@/components/sections/trip-coverflow";
-import { WhatsAppLink } from "@/components/ui/whatsapp-link";
+import { WaCta } from "@/components/ui/wa-cta";
+import { FESTIVALS } from "@/data/festivals";
 import { IMAGES } from "@/data/images";
 import { FEATURED_PACKAGES } from "@/data/packages";
 import { REVIEWS } from "@/data/reviews";
 import { pageMetadata } from "@/lib/seo";
-import { NAV, SITE } from "@/lib/site";
-import { WHATSAPP_DISPLAY, enquiry } from "@/lib/whatsapp";
+import { SITE } from "@/lib/site";
+import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, enquiry } from "@/lib/whatsapp";
 
 export const metadata = pageMetadata({
   title: "Smarto: Northeast India, travelled well",
   description:
-    "Road trips, festival journeys, and everyday transport across Assam, Meghalaya, Arunachal Pradesh, Sikkim, and Nagaland. Plan yours on WhatsApp.",
+    "EV airport transfers, flat-fare outstation rides, and road trips across Assam, Meghalaya and the Northeast. No surge, zero cancellation. Plan yours on WhatsApp.",
   path: "/",
 });
 
@@ -48,13 +49,100 @@ const sourceSerif = Source_Serif_4({
 
 const FEATURED = FEATURED_PACKAGES;
 
-/* The route bar's dots. Each id is a section on this page, in scroll order. */
+/* The route bar's flags. Each id is a section on this page, in scroll order. */
 const ROUTE_STOPS: RouteStop[] = [
   { id: "home-top", label: "Trips" },
-  { id: "home-explore", label: "Explore" },
-  { id: "home-reviews-sec", label: "Reviews" },
-  { id: "home-footer", label: "Contact" },
+  { id: "home-cabs", label: "Cabs" },
+  { id: "home-corporate", label: "Corporate" },
+  { id: "home-festivals", label: "Festivals" },
 ];
+
+/* Outstation destinations — the four-card row from Manav's wireframe. */
+const OUTSTATION = [
+  {
+    place: "Shillong",
+    drive: "3 hrs from Guwahati",
+    image: IMAGES.meghalayaFamily,
+    message: enquiry("I would like a cab fare for Guwahati to Shillong."),
+  },
+  {
+    place: "Cherrapunji",
+    drive: "4 hrs from Guwahati",
+    image: IMAGES.meghalayaWaterfalls,
+    message: enquiry("I would like a cab fare for a Cherrapunji trip."),
+  },
+  {
+    place: "Kaziranga",
+    drive: "4.5 hrs from Guwahati",
+    image: IMAGES.assamKaziranga,
+    message: enquiry("I would like a cab fare for a Kaziranga trip."),
+  },
+  {
+    place: "Tawang",
+    drive: "2 days by road",
+    image: IMAGES.arunachalTawang,
+    message: enquiry("I would like to plan a Tawang trip by road."),
+  },
+] as const;
+
+/*
+ * Cab services and flat fares from smartocabs.com. Fares are the published
+ * "starting from" rates — confirm current pricing with Manav before launch.
+ */
+const SERVICES = [
+  {
+    name: "Airport transfers",
+    line: "Met at arrivals, tracked to your flight.",
+    fare: null,
+    message: enquiry("I need an airport transfer."),
+  },
+  {
+    name: "Shillong drop",
+    line: "Guwahati to Shillong, one flat fare.",
+    fare: "₹2,799",
+    message: enquiry("I would like to book a Shillong drop."),
+  },
+  {
+    name: "Railway station",
+    line: "To Guwahati station, on train time.",
+    fare: "₹399",
+    message: enquiry("I need a railway station drop."),
+  },
+  {
+    name: "Sonapur drop",
+    line: "City-edge run at a fixed price.",
+    fare: "₹1,599",
+    message: enquiry("I would like to book a Sonapur drop."),
+  },
+  {
+    name: "Hourly rental",
+    line: "A car and driver on your clock.",
+    fare: null,
+    message: enquiry("I would like an hourly cab rental."),
+  },
+  {
+    name: "Outstation",
+    line: "Fixed fares to the hills, agreed up front.",
+    fare: null,
+    message: enquiry("I would like an outstation cab quote."),
+  },
+] as const;
+
+/* Verified differentiators from smartocabs.com. */
+const CAB_FEATURES = ["EV fleet", "No surge pricing", "Zero cancellation"];
+
+/* Sectors Smarto moves for corporate clients. Stands in for the logo row in
+   the wireframe — real client logos are Manav's to supply and must not be
+   invented. */
+const CORPORATE_SECTORS = [
+  "Hotels",
+  "Restaurants",
+  "Offices",
+  "Events",
+  "Airlines",
+];
+
+const FESTIVAL_PICKS = FESTIVALS.slice(0, 4);
 
 export default function HomePage() {
   return (
@@ -112,63 +200,220 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ——— One quiet line, one action. */}
-        <section aria-labelledby="home-title" className="px-6 pt-14 pb-4 text-center">
-          <h1 id="home-title" className="text-[1.75rem] leading-snug">
-            Northeast India,
-            <br />
-            <span className="accent">travelled well</span>.
-          </h1>
-          <p className="mx-auto mt-4 max-w-[17rem] text-[0.9375rem] leading-relaxed text-taupe">
-            Road trips, festivals and everyday cabs. One message plans all of
-            it.
-          </p>
-          <div className="mt-7 flex flex-col items-center gap-4">
-            <WhatsAppLink
-              message={enquiry(
-                "I would like to plan a trip in the Northeast. Here is what I have in mind:",
-              )}
-              location="home-hero"
-              size="md"
+        {/* ——— Outstation: the four destination cards. */}
+        <section id="home-outstation" className="scroll-mt-6 px-6 pt-14">
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <p className="text-label font-medium text-clay uppercase">
+                Outstation
+              </p>
+              <h2 className="mt-3 font-display text-[1.75rem] leading-tight">
+                Roads out of town
+              </h2>
+            </div>
+            <Link
+              href="/packages"
+              className="link-rule shrink-0 text-[0.8125rem] font-medium text-ink"
             >
-              Plan on WhatsApp
-            </WhatsAppLink>
+              All trips
+            </Link>
+          </div>
+          <ul className="mt-6 grid grid-cols-2 gap-3.5">
+            {OUTSTATION.map((card) => (
+              <li key={card.place}>
+                <WaCta
+                  message={card.message}
+                  location="home-cabs"
+                  subject={card.place}
+                  className="group relative block aspect-[4/5] overflow-hidden rounded-2xl bg-sand ring-1 ring-ink/10"
+                >
+                  <span className="absolute inset-0">
+                    <Image
+                      src={card.image.src}
+                      alt=""
+                      fill
+                      loading="lazy"
+                      sizes="200px"
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                    />
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="photo-scrim absolute inset-0"
+                  />
+                  <span className="absolute inset-x-0 bottom-0 p-3.5">
+                    <span className="block font-display text-[1.1875rem] text-bone">
+                      {card.place}
+                    </span>
+                    <span className="mt-0.5 block text-[0.6875rem] font-medium tracking-[0.1em] text-bone/75 uppercase">
+                      {card.drive}
+                    </span>
+                  </span>
+                </WaCta>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* ——— Cabs: the stat, the differentiators, and the fare list. */}
+        <section id="home-cabs" className="scroll-mt-6 px-6 pt-16">
+          <p className="text-label font-medium text-clay uppercase">Cabs</p>
+          <h2 className="mt-3 font-display text-[1.75rem] leading-tight">
+            Flat fares, no surprises
+          </h2>
+
+          {/* Figure from Manav's wireframe. Owner-supplied — confirm before
+              treating as a published business fact. */}
+          <div className="mt-6 flex items-baseline gap-3 border-t border-line pt-5">
+            <span className="font-display text-[2.75rem] leading-none text-clay">
+              50,000+
+            </span>
+            <span className="text-label font-medium text-taupe uppercase">
+              customers
+              <br />
+              driven so far
+            </span>
+          </div>
+
+          {/* Verified differentiators from smartocabs.com. */}
+          <ul className="mt-4 flex flex-wrap gap-2 border-b border-line pb-5">
+            {CAB_FEATURES.map((feature) => (
+              <li
+                key={feature}
+                className="rounded-full bg-clay-soft px-3 py-1.5 text-[0.75rem] font-medium text-clay-deep"
+              >
+                {feature}
+              </li>
+            ))}
+          </ul>
+
+          <ul className="mt-2">
+            {SERVICES.map((service) => (
+              <li key={service.name} className="border-b border-line">
+                <WaCta
+                  message={service.message}
+                  location="home-cabs"
+                  subject={service.name}
+                  className="flex items-center justify-between gap-4 py-4"
+                >
+                  <span className="min-w-0">
+                    <span className="block font-display text-[1.125rem] text-ink">
+                      {service.name}
+                    </span>
+                    <span className="mt-0.5 block text-[0.8125rem] leading-relaxed text-taupe">
+                      {service.line}
+                    </span>
+                  </span>
+                  {service.fare ? (
+                    <span className="shrink-0 text-right">
+                      <span className="block text-[0.625rem] font-medium tracking-[0.1em] text-taupe uppercase">
+                        from
+                      </span>
+                      <span className="block font-display text-[1.125rem] text-clay">
+                        {service.fare}
+                      </span>
+                    </span>
+                  ) : (
+                    <span
+                      aria-hidden="true"
+                      className="shrink-0 text-clay"
+                    >
+                      →
+                    </span>
+                  )}
+                </WaCta>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* ——— Corporate: a quiet dark band. */}
+        <section
+          id="home-corporate"
+          className="mt-16 scroll-mt-6 bg-ink px-6 py-14 text-bone"
+        >
+          <p className="text-label font-medium text-marigold-bright uppercase">
+            Corporate
+          </p>
+          <h2 className="mt-3 font-display text-[1.75rem] leading-tight text-bone">
+            Teams that arrive on time
+          </h2>
+          <p className="mt-3 text-[0.9375rem] leading-relaxed text-bone/70">
+            Employee transport, offsites, and hospitality partners across the
+            Northeast — one point of contact, billing your finance team will not
+            argue with.
+          </p>
+          <ul className="mt-6 flex flex-wrap gap-2">
+            {CORPORATE_SECTORS.map((sector) => (
+              <li
+                key={sector}
+                className="rounded-full border border-bone/25 px-3.5 py-1.5 text-[0.8125rem] text-bone/85"
+              >
+                {sector}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-7">
+            <WaCta
+              message={enquiry(
+                "I would like to discuss corporate transport for my team.",
+              )}
+              location="home-corporate"
+              className="inline-flex min-h-12 items-center gap-2.5 rounded-sm bg-bone px-6 text-[0.9375rem] font-medium text-ink transition-colors hover:bg-white"
+            >
+              Talk to us about your team
+            </WaCta>
           </div>
         </section>
 
-        {/* ——— The site, as an index. */}
-        <nav id="home-explore" aria-label="Explore" className="scroll-mt-6 px-6 pt-10">
-          <ul className="border-t border-line">
-            {NAV.map((item, index) => (
-              <li key={item.href} className="border-b border-line">
-                <Link href={item.href} className="flex items-baseline gap-4 py-4">
-                  <span aria-hidden="true" className="text-label font-medium text-taupe tabular-nums">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className="flex-1">
-                    <span className="block font-display text-[1.25rem] text-ink">
-                      {item.label}
+        {/* ——— Festivals. */}
+        <section id="home-festivals" className="scroll-mt-6 px-6 pt-16">
+          <p className="text-label font-medium text-clay uppercase">Festivals</p>
+          <h2 className="mt-3 font-display text-[1.75rem] leading-tight">
+            Travel by the calendar
+          </h2>
+          <ul className="mt-6 border-t border-line">
+            {FESTIVAL_PICKS.map((festival) => (
+              <li key={festival.id} className="border-b border-line">
+                <Link
+                  href="/festivals"
+                  className="flex items-baseline justify-between gap-4 py-4"
+                >
+                  <span className="min-w-0">
+                    <span className="block font-display text-[1.125rem] text-ink">
+                      {festival.name}
                     </span>
-                    <span className="mt-0.5 block text-[0.8125rem] leading-relaxed text-taupe">
-                      {item.blurb}
+                    <span className="mt-0.5 block text-[0.8125rem] text-taupe">
+                      {festival.state}
                     </span>
                   </span>
-                  <span aria-hidden="true" className="text-clay">
-                    →
+                  <span className="shrink-0 text-label font-medium text-clay uppercase">
+                    {festival.month}
                   </span>
                 </Link>
               </li>
             ))}
           </ul>
-        </nav>
+          <div className="mt-6 flex items-center justify-between gap-4">
+            <Link
+              href="/festivals"
+              className="link-rule text-[0.9375rem] font-medium text-ink"
+            >
+              The full calendar
+            </Link>
+          </div>
+          <p className="mt-4 text-[0.75rem] leading-relaxed text-taupe/80">
+            Festival dates shift year to year. We confirm the current calendar on
+            WhatsApp before you book.
+          </p>
+        </section>
 
         {/* ——— Quiet proof. */}
-        <section
-          id="home-reviews-sec"
-          aria-labelledby="home-reviews"
-          className="scroll-mt-6 pt-14"
-        >
-          <h2 id="home-reviews" className="px-6 text-label font-medium text-taupe uppercase">
+        <section aria-labelledby="home-reviews" className="pt-16">
+          <h2
+            id="home-reviews"
+            className="px-6 text-label font-medium text-taupe uppercase"
+          >
             From past trips
           </h2>
           <div className="mt-5 px-6">
@@ -176,32 +421,54 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ——— Footer. */}
+        {/* ——— Footer: real contact details from smartocabs.com. */}
         <footer
           id="home-footer"
-          className="mt-16 scroll-mt-6 border-t border-line px-6 pt-8 pb-36 text-center"
+          className="mt-16 scroll-mt-6 border-t border-line px-6 pt-10 pb-36 text-center"
         >
-          <p className="text-label font-medium text-taupe uppercase">
-            Assam · Meghalaya · Arunachal
-            <br />
-            Sikkim · Nagaland
+          <p className="font-display text-[1.5rem] leading-tight">
+            Smart People, <span className="accent">Smart Choice</span>.
           </p>
-          <p className="mt-4 text-[0.8125rem] text-taupe">
-            {WHATSAPP_DISPLAY} · Based in {SITE.base}
+
+          <dl className="mx-auto mt-7 max-w-xs space-y-4 text-[0.875rem]">
+            <div>
+              <dt className="text-label font-medium text-taupe uppercase">
+                WhatsApp &amp; calls
+              </dt>
+              <dd className="mt-1">
+                <a
+                  href={`tel:+${WHATSAPP_NUMBER}`}
+                  className="text-ink transition-colors hover:text-clay"
+                >
+                  {WHATSAPP_DISPLAY}
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt className="text-label font-medium text-taupe uppercase">
+                Email
+              </dt>
+              <dd className="mt-1">
+                <a
+                  href={`mailto:${SITE.email}`}
+                  className="text-ink transition-colors hover:text-clay"
+                >
+                  {SITE.email}
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt className="text-label font-medium text-taupe uppercase">
+                Office
+              </dt>
+              <dd className="mt-1 leading-relaxed text-taupe">{SITE.address}</dd>
+            </div>
+          </dl>
+
+          <p className="mt-8 text-[0.75rem] leading-relaxed text-taupe/80">
+            © {new Date().getFullYear()} {SITE.legalName}. Fares and trip
+            details are confirmed on WhatsApp before travel.
           </p>
-          <p className="mt-6 text-[0.75rem] text-taupe/80">
-            © {new Date().getFullYear()} {SITE.legalName}. Trip details are
-            confirmed on WhatsApp before travel.
-          </p>
-          <ul className="mt-4 flex justify-center gap-4 text-[0.75rem] text-taupe/80">
-            {["a", "b", "c", "d", "e", "f"].map((concept) => (
-              <li key={concept}>
-                <Link href={`/${concept}`} className="underline underline-offset-4 hover:text-ink">
-                  {concept.toUpperCase()}
-                </Link>
-              </li>
-            ))}
-          </ul>
         </footer>
 
         {/* ——— The route bar: section navigation and the persistent CTA. */}

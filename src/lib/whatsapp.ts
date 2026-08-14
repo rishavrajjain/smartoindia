@@ -3,11 +3,17 @@
  * the analytics contract stay in one place.
  */
 
-/** Smarto's enquiry line, in wa.me international format (no plus, no spaces). */
-export const WHATSAPP_NUMBER = "919864148845";
+/**
+ * Smarto's enquiry line, in wa.me international format (no plus, no spaces).
+ *
+ * This is the number published on smartocabs.com. It replaces the placeholder
+ * (919864148845) that was previously in the repo — confirm with Manav that
+ * enquiries should land on this line.
+ */
+export const WHATSAPP_NUMBER = "917099013815";
 
 /** Human-readable form, for display next to the link. */
-export const WHATSAPP_DISPLAY = "+91 98641 48845";
+export const WHATSAPP_DISPLAY = "+91 70990 13815";
 
 /**
  * Where on the site a CTA was rendered. Passed to `trackCtaClick` so conversion
@@ -21,6 +27,7 @@ export type CtaLocation =
   | "home-packages"
   | "home-custom-trip"
   | "home-cabs"
+  | "home-corporate"
   | "home-alt-hero"
   | "home-alt-route"
   | "home-alt-final"

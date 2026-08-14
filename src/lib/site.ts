@@ -1,11 +1,18 @@
 /** Single source of truth for site-wide identity, URLs, and navigation. */
 
+/*
+ * Verified business facts sourced from smartocabs.com (their live site).
+ * Confirm with Manav before major changes — especially the WhatsApp number,
+ * which differs from the placeholder previously in the repo.
+ */
 export const SITE = {
   name: "Smarto",
-  legalName: "Smarto India",
+  legalName: "Firstventure Mobility Pvt. Ltd.",
+  brand: "Smarto Cabs",
+  slogan: "Smart People, Smart Choice",
   tagline: "Northeast India, travelled well",
   description:
-    "Smarto plans road trips, festival journeys, and everyday transport across Assam, Meghalaya, Arunachal Pradesh, Sikkim, and Nagaland. Tell us what you have in mind on WhatsApp.",
+    "Smarto runs EV airport transfers, outstation rides, and road trips across Assam, Meghalaya, and the wider Northeast — flat fares, no surge, zero cancellation. Plan yours on WhatsApp.",
   /**
    * Absolute origin used for canonical URLs, sitemap entries, and Open Graph.
    * Vercel sets VERCEL_PROJECT_PRODUCTION_URL on every deployment.
@@ -16,8 +23,9 @@ export const SITE = {
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
       : "https://smartoindia.vercel.app"),
   locale: "en_IN",
-  /** Operating base. Kept vague until Manav confirms a registered address. */
   base: "Guwahati, Assam",
+  email: "hello@smartocabs.com",
+  address: "F20, 1st Floor, Grand Plaza, AT Road, Paltan Bazaar, Guwahati 781008",
 } as const;
 
 export interface NavItem {
