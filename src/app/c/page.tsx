@@ -87,9 +87,10 @@ export default function ConceptCPage() {
       style={PALETTE}
       className={`${cormorant.variable} ${manrope.variable} bg-[var(--n-bg)] font-[family-name:var(--font-c-body)] text-[var(--n-ivory)]`}
     >
+      <div className="relative mx-auto min-h-svh max-w-[26.5rem] ring-1 ring-[rgba(236,231,219,0.1)]">
       {/* ——— Header: the wordmark top left, the menu top right. */}
       <header className="absolute inset-x-0 top-0 z-30">
-        <div className="flex h-20 items-center justify-between px-6 sm:px-10">
+        <div className="flex h-20 items-center justify-between px-6">
           <Link href="/c" aria-label="Smarto concept C home">
             <Image
               src="/brand/smarto-wordmark-light.webp"
@@ -117,7 +118,6 @@ export default function ConceptCPage() {
             src="/video/hero-reel.mp4"
             poster="/images/hero-video-poster.webp"
             alt="A young traveller with a backpack walking across the tarmac at Guwahati airport, a plane behind her"
-            sizes="100vw"
           />
           {/* Quiet grades: enough for the wordmark and the one action. */}
           <div className="pointer-events-none absolute inset-x-0 top-0 h-[22%] bg-gradient-to-b from-[rgba(11,15,12,0.6)] to-transparent" />
@@ -128,8 +128,8 @@ export default function ConceptCPage() {
 
       {/* ——— Manifesto line */}
       <section aria-label="How Smarto travels" className="border-y border-[var(--n-line)]">
-        <div className="mx-auto max-w-[90rem] px-6 py-16 text-center sm:px-10 lg:py-24">
-          <p className="reveal mx-auto max-w-3xl font-[family-name:var(--font-c-display)] text-[1.75rem] leading-[1.35] font-light text-[var(--n-ivory)] italic sm:text-[2.25rem]">
+        <div className="mx-auto max-w-[90rem] px-6 py-16 text-center">
+          <p className="reveal mx-auto max-w-3xl font-[family-name:var(--font-c-display)] text-[1.75rem] leading-[1.35] font-light text-[var(--n-ivory)] italic">
             “We drive these roads every week. The itinerary is just the part we
             write down.”
           </p>
@@ -140,11 +140,11 @@ export default function ConceptCPage() {
       </section>
 
       {/* ——— Journeys: three editorial rows */}
-      <section aria-labelledby="c-journeys" className="mx-auto max-w-[90rem] px-6 py-20 sm:px-10 lg:py-28">
+      <section aria-labelledby="c-journeys" className="mx-auto max-w-[90rem] px-6 py-20">
         <div className="flex items-baseline justify-between gap-6">
           <h2
             id="c-journeys"
-            className="font-[family-name:var(--font-c-display)] text-[2.5rem] leading-none font-light sm:text-[3.5rem]"
+            className="font-[family-name:var(--font-c-display)] text-[2.5rem] leading-none font-light"
           >
             Journeys
           </h2>
@@ -156,29 +156,27 @@ export default function ConceptCPage() {
           </Link>
         </div>
 
-        <div className="mt-14 space-y-20 lg:space-y-28">
+        <div className="mt-14 space-y-20">
           {JOURNEYS.map(({ numeral, pkg }, index) => (
             <article
               key={pkg.slug}
-              className={`reveal grid items-center gap-8 lg:grid-cols-12 lg:gap-14 ${
-                index % 2 === 1 ? "lg:[&>div:first-child]:order-2" : ""
-              }`}
+              className="reveal grid items-center gap-8"
             >
-              <div className="relative aspect-[3/2] overflow-hidden lg:col-span-7">
+              <div className="relative aspect-[3/2] overflow-hidden">
                 <Image
                   src={pkg.hero.src}
                   alt={pkg.hero.alt}
                   fill
                   loading="lazy"
-                  sizes="(min-width: 1024px) 55vw, 92vw"
+                  sizes="(min-width: 424px) 376px, 92vw"
                   className="object-cover brightness-[0.88] saturate-[0.9]"
                 />
               </div>
-              <div className="lg:col-span-5">
+              <div>
                 <p className="font-[family-name:var(--font-c-display)] text-[1.5rem] text-[var(--n-gold)]">
                   {numeral}
                 </p>
-                <h3 className="mt-3 font-[family-name:var(--font-c-display)] text-[1.875rem] leading-[1.12] font-light sm:text-[2.25rem]">
+                <h3 className="mt-3 font-[family-name:var(--font-c-display)] text-[1.875rem] leading-[1.12] font-light">
                   {pkg.title}
                 </h3>
                 <p className="mt-2 text-[0.6875rem] font-medium tracking-[0.28em] text-[var(--n-mist)] uppercase">
@@ -211,11 +209,11 @@ export default function ConceptCPage() {
 
       {/* ——— Tenets */}
       <section aria-labelledby="c-tenets" className="border-t border-[var(--n-line)] bg-[var(--n-bg-lift)]">
-        <div className="mx-auto max-w-[90rem] px-6 py-20 sm:px-10 lg:py-28">
+        <div className="mx-auto max-w-[90rem] px-6 py-20">
           <h2 id="c-tenets" className="sr-only">
             How the service works
           </h2>
-          <div className="grid gap-12 sm:grid-cols-3 sm:gap-8">
+          <div className="grid gap-12">
             {TENETS.map((tenet, index) => (
               <div key={tenet.title} className="reveal border-t border-[var(--n-line)] pt-6">
                 <p className="text-[0.6875rem] font-medium tracking-[0.32em] text-[var(--n-gold)] uppercase">
@@ -246,13 +244,13 @@ export default function ConceptCPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[rgba(11,15,12,0.85)] via-[rgba(11,15,12,0.45)] to-transparent" />
         </div>
-        <div className="relative mx-auto max-w-[90rem] px-6 py-24 sm:px-10 lg:py-36">
+        <div className="relative mx-auto max-w-[90rem] px-6 py-24">
           <p className="text-[0.6875rem] font-medium tracking-[0.32em] text-[var(--n-gold)] uppercase">
             Festivals
           </p>
           <h2
             id="c-festival"
-            className="mt-5 max-w-xl font-[family-name:var(--font-c-display)] text-[2.25rem] leading-[1.1] font-light sm:text-[3rem]"
+            className="mt-5 max-w-xl font-[family-name:var(--font-c-display)] text-[2.25rem] leading-[1.1] font-light"
           >
             Hornbill in December. Bihu in April. Ziro when the valley sings.
           </h2>
@@ -274,7 +272,7 @@ export default function ConceptCPage() {
 
       {/* ——— Footer */}
       <footer className="border-t border-[var(--n-line)]">
-        <div className="mx-auto max-w-[90rem] px-6 py-14 sm:px-10">
+        <div className="mx-auto max-w-[90rem] px-6 py-14">
           <div className="flex flex-wrap items-end justify-between gap-8">
             <div>
               <p className="font-[family-name:var(--font-c-display)] text-[1.875rem] font-light italic">
@@ -300,14 +298,15 @@ export default function ConceptCPage() {
 
 
       {/* ——— Floating CTA */}
-      <div className="fixed right-5 bottom-5 z-40">
+      <div className="pointer-events-none fixed inset-x-0 bottom-5 z-40 mx-auto flex max-w-[26.5rem] justify-end px-5">
         <WaCta
           message={enquiry("I would like to plan a private Northeast journey.")}
           location="concept-c"
-          className="inline-flex min-h-12 items-center gap-2.5 rounded-full bg-[var(--n-gold)] px-6 text-[0.8125rem] font-semibold tracking-[0.1em] text-[var(--n-bg)] uppercase shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition-colors hover:bg-[#dcc084]"
+          className="pointer-events-auto inline-flex min-h-12 items-center gap-2.5 rounded-full bg-[var(--n-gold)] px-6 text-[0.8125rem] font-semibold tracking-[0.1em] text-[var(--n-bg)] uppercase shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition-colors hover:bg-[#dcc084]"
         >
           Plan a journey
         </WaCta>
+      </div>
       </div>
     </div>
   );

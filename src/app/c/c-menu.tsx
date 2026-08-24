@@ -68,9 +68,9 @@ export function CMenu() {
         createPortal(
           <div
             id={panelId}
-            className={`${cormorant.variable} animate-rise fixed inset-0 z-[60] flex flex-col bg-[#0b0f0c] text-[#ece7db]`}
+            className={`${cormorant.variable} animate-rise fixed inset-x-0 top-0 bottom-0 z-[60] mx-auto flex max-w-[26.5rem] flex-col bg-[#0b0f0c] text-[#ece7db] ring-1 ring-[rgba(236,231,219,0.1)]`}
           >
-            <div className="flex h-20 shrink-0 items-center justify-between px-6 sm:px-10">
+            <div className="flex h-20 shrink-0 items-center justify-between px-6">
               <span className="text-[0.6875rem] font-medium tracking-[0.32em] text-[#a8ad9f] uppercase">
                 Menu
               </span>
@@ -96,7 +96,7 @@ export function CMenu() {
 
             <nav
               aria-label="Site"
-              className="flex-1 overflow-y-auto px-6 sm:px-10"
+              className="flex-1 overflow-y-auto px-6"
             >
               <ul className="mx-auto max-w-xl border-t border-[rgba(236,231,219,0.14)]">
                 {NAV.map((item, index) => (
@@ -146,7 +146,7 @@ export function CMenu() {
               </ul>
             </nav>
 
-            <div className="shrink-0 px-6 py-6 sm:px-10">
+            <div className="shrink-0 px-6 py-6">
               <div className="mx-auto max-w-xl">
                 <WaCta
                   message={enquiry(
