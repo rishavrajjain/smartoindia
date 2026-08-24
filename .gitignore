@@ -49,3 +49,6 @@ next-env.d.ts
 
 # Generated asset scratch
 /scripts/.image-cache/
+
+# Raw video masters (compressed copies live in public/video)
+/video/

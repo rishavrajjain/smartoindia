@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Viewport } from "next";
 import { Fraunces, Source_Serif_4 } from "next/font/google";
 
+import { HeroVideo } from "@/components/sections/hero-video";
 import { HomeMenu } from "@/components/sections/home-menu";
 import { RouteNav, type RouteStop } from "@/components/sections/route-nav";
 import { TripCoverflow } from "@/components/sections/trip-coverflow";
@@ -166,20 +167,25 @@ export default function HomePage() {
   return (
     <div data-page-theme="mobile-frame">
       <div className="relative mx-auto min-h-svh max-w-[26.5rem] bg-bone text-ink shadow-[0_0_60px_rgba(0,0,0,0.55)]">
-        {/* ——— The picture. Nothing on it but the wordmark. */}
+        {/* ——— The film. One journey, airport to platform, on loop. */}
         <section
           id="home-top"
-          aria-label={IMAGES.heroDawnRidges.alt}
-          className={`${sourceSerif.variable} ${fraunces.variable} relative h-svh`}
+          aria-label="A short film of a Smarto journey: landing at Guwahati airport, taking a Smarto cab through the hills, and arriving at the railway station"
+          className={`${sourceSerif.variable} ${fraunces.variable} relative h-svh overflow-hidden`}
         >
-          <Image
-            src={IMAGES.heroDawnRidges.src}
-            alt={IMAGES.heroDawnRidges.alt}
-            fill
-            priority
-            fetchPriority="high"
-            sizes="(min-width: 424px) 424px, 100vw"
-            className="object-cover"
+          <HeroVideo
+            src="/video/hero-reel.mp4"
+            poster="/images/hero-video-poster.webp"
+            alt="A young traveller with a backpack walking across the tarmac at Guwahati airport, a plane behind her"
+          />
+          {/* Gentle grades so the title and cards stay legible over motion. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 h-[36%] bg-gradient-to-b from-[rgba(12,8,5,0.55)] via-[rgba(12,8,5,0.24)] to-transparent"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-[rgba(12,8,5,0.6)] via-[rgba(12,8,5,0.28)] to-transparent"
           />
           {/* The title arrives a beat after the scene does. "North East" gets
               the funky, curvy Fraunces treatment for personality. */}
