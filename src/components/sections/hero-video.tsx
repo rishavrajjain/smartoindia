@@ -24,10 +24,13 @@ export function HeroVideo({
   src,
   poster,
   alt,
+  sizes = "(min-width: 424px) 424px, 100vw",
 }: {
   src: string;
   poster: string;
   alt: string;
+  /** Poster image sizes hint — pass "100vw" for full-width heroes. */
+  sizes?: string;
 }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [playing, setPlaying] = useState(false);
@@ -84,7 +87,7 @@ export function HeroVideo({
         fill
         priority
         fetchPriority="high"
-        sizes="(min-width: 424px) 424px, 100vw"
+        sizes={sizes}
         className="object-cover"
       />
       <video

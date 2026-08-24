@@ -4,6 +4,9 @@ import type { CSSProperties } from "react";
 import type { Viewport } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 
+import { HeroVideo } from "@/components/sections/hero-video";
+
+import { CMenu } from "./c-menu";
 import { WaCta } from "@/components/ui/wa-cta";
 import { IMAGES } from "@/data/images";
 import { PACKAGES } from "@/data/packages";
@@ -84,9 +87,9 @@ export default function ConceptCPage() {
       style={PALETTE}
       className={`${cormorant.variable} ${manrope.variable} bg-[var(--n-bg)] font-[family-name:var(--font-c-body)] text-[var(--n-ivory)]`}
     >
-      {/* ——— Header */}
+      {/* ——— Header: the wordmark top left, the menu top right. */}
       <header className="absolute inset-x-0 top-0 z-30">
-        <div className="mx-auto flex h-20 w-full max-w-[90rem] items-center justify-between px-6 sm:px-10">
+        <div className="flex h-20 items-center justify-between px-6 sm:px-10">
           <Link href="/c" aria-label="Smarto concept C home">
             <Image
               src="/brand/smarto-wordmark-light.webp"
@@ -97,71 +100,30 @@ export default function ConceptCPage() {
               className="h-6 w-auto"
             />
           </Link>
-          <nav aria-label="Site">
-            <ul className="flex items-center gap-8 text-[0.8125rem] tracking-[0.08em]">
-              <li className="hidden sm:block">
-                <Link href="/packages" className="text-[var(--n-mist)] transition-colors hover:text-[var(--n-ivory)]">
-                  Journeys
-                </Link>
-              </li>
-              <li className="hidden sm:block">
-                <Link href="/cabs" className="text-[var(--n-mist)] transition-colors hover:text-[var(--n-ivory)]">
-                  Cars
-                </Link>
-              </li>
-              <li>
-                <Link href="/" className="text-[var(--n-gold)] underline decoration-[rgba(201,169,98,0.4)] underline-offset-4 transition-colors hover:text-[#dcc084]">
-                  Classic site
-                </Link>
-              </li>
-            </ul>
-          </nav>
+          <CMenu />
         </div>
       </header>
 
-      {/* ——— Hero: full viewport, graded down. */}
-      <section aria-labelledby="c-hero" className="relative flex min-h-svh items-end">
-        <div aria-hidden="true" className="absolute inset-0">
-          <Image
-            src={IMAGES.homeHero.src}
-            alt=""
-            fill
-            priority
+      {/* ——— Hero: the journey film, one action, nothing else. */}
+      <section
+        aria-label="A short film of a Smarto journey across Northeast India"
+        className="relative flex min-h-svh items-end overflow-hidden"
+      >
+        <h1 id="c-hero" className="sr-only">
+          Smarto — private journeys across Northeast India
+        </h1>
+        <div className="absolute inset-0">
+          <HeroVideo
+            src="/video/hero-reel.mp4"
+            poster="/images/hero-video-poster.webp"
+            alt="A young traveller with a backpack walking across the tarmac at Guwahati airport, a plane behind her"
             sizes="100vw"
-            className="object-cover opacity-60 brightness-[0.72] saturate-[0.82]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--n-bg)] via-[rgba(11,15,12,0.35)] to-[rgba(11,15,12,0.55)]" />
+          {/* Quiet grades: enough for the wordmark and the one action. */}
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[22%] bg-gradient-to-b from-[rgba(11,15,12,0.6)] to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[32%] bg-gradient-to-t from-[rgba(11,15,12,0.75)] to-transparent" />
         </div>
 
-        <div className="relative mx-auto w-full max-w-[90rem] px-6 pb-20 sm:px-10 lg:pb-28">
-          <p className="text-[0.6875rem] font-medium tracking-[0.32em] text-[var(--n-gold)] uppercase">
-            Northeast India · by private car
-          </p>
-          <h1
-            id="c-hero"
-            className="mt-6 max-w-3xl font-[family-name:var(--font-c-display)] text-[3rem] leading-[1.04] font-light sm:text-[4.5rem] lg:text-[5.5rem]"
-          >
-            After the airport,
-            <br />
-            <em className="text-[var(--n-gold)]">the good part</em> begins.
-          </h1>
-          <p className="mt-8 max-w-md text-[0.9375rem] leading-relaxed text-[var(--n-mist)]">
-            Seven states, one driver who knows them, and an itinerary written
-            around weather, light, and how you actually like to travel.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center gap-6">
-            <WaCta
-              message={enquiry("I would like to plan a private Northeast journey.")}
-              location="concept-c"
-              className="inline-flex min-h-13 items-center gap-3 border border-[var(--n-gold)] px-8 text-[0.8125rem] font-medium tracking-[0.22em] text-[var(--n-gold)] uppercase transition-colors duration-500 hover:bg-[var(--n-gold)] hover:text-[var(--n-bg)]"
-            >
-              Begin on WhatsApp
-            </WaCta>
-            <span className="text-[0.8125rem] text-[var(--n-mist)]">
-              {WHATSAPP_DISPLAY}
-            </span>
-          </div>
-        </div>
       </section>
 
       {/* ——— Manifesto line */}
@@ -335,6 +297,7 @@ export default function ConceptCPage() {
           </p>
         </div>
       </footer>
+
 
       {/* ——— Floating CTA */}
       <div className="fixed right-5 bottom-5 z-40">
