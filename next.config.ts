@@ -24,6 +24,37 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      // All generated site assets follow the rename-on-change convention, so
+      // they can be cached hard: repeat visits load them from disk cache with
+      // zero network. Never overwrite a file in place under these paths —
+      // changed content gets a new filename.
+      {
+        source: "/images/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/icons/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/logos/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
       {
         source: "/brand/:path*",
         headers: [
