@@ -59,17 +59,20 @@ const fraunces = Fraunces({
 
 /* Manav's hero copy, timed to the film's beats (video seconds). Fares are
    owner-supplied. */
+/* Boundaries sit ~0.15s before the film's hard cuts (ffmpeg scene detection:
+   3.92 / 5.67 / 15.67), so each line clears with its scene and the next rises
+   as the new scene lands. */
 const HERO_CAPTIONS: HeroCaption[] = [
   { at: 0, small: "Airport rides", pre: "starting", big: "₹399" },
-  { at: 3, small: "Drive to Shillong", pre: "starting", big: "₹2,799" },
-  { at: 7, small: "Outstation rides", pre: "starting", big: "₹3,499" },
+  { at: 3.8, small: "Drive to Shillong", pre: "starting", big: "₹2,799" },
+  { at: 5.55, small: "Outstation rides", pre: "starting", big: "₹3,499" },
   {
     at: 11,
     small: "Explore",
     big: "North East",
     sub: "with personally curated packages",
   },
-  { at: 16, small: "Railway station rides", pre: "starting", big: "₹199" },
+  { at: 15.55, small: "Railway station rides", pre: "starting", big: "₹199" },
 ];
 
 /* The route bar's flags. Each id is a section on this page, in scroll order. */
@@ -366,7 +369,7 @@ export default function HomePage() {
           className="mt-16 scroll-mt-6 bg-ink py-14 text-bone"
         >
           <div className="px-6">
-            <p className="text-label font-medium text-marigold-bright uppercase">
+            <p className="text-label font-medium text-clay-bright uppercase">
               Corporate
             </p>
             <h2 className="mt-3 font-display text-[1.75rem] leading-tight text-bone">

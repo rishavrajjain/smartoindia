@@ -1,42 +1,47 @@
 @import "tailwindcss";
 
 /*
-  Smarto identity — editorial, restrained, warm.
+  Smarto identity — editorial, restrained, in the wordmark's violet.
 
-  Near-monochrome by design: warm bone paper, near-black ink, and a single
-  saddle-brown accent, with terracotta and ochre used only in small doses. The
-  photography carries the colour; the interface stays quiet. Contrast ratios are
+  Near-monochrome by design: cool bone paper, near-black ink, and a single
+  brand-violet accent drawn from the logo's indigo→crimson gradient, with the
+  rose and bright-violet steps used only in small doses. The photography
+  carries the warmth; the interface stays quiet and cool. Contrast ratios are
   noted where they constrain usage.
+
+  NOTE: the accent tokens keep their historical names (clay/terracotta/ochre)
+  but now carry the brand violet family — a rename pass across components can
+  follow separately.
 */
 @theme {
   /* Paper */
-  --color-bone: #faf8f3;
-  --color-sand: #f4ece0;
+  --color-bone: #faf9fc;
+  --color-sand: #f0edf6;
   --color-paper: #ffffff;
 
   /* Ink — text roles.
-     ink on bone     18.8:1
-     taupe on bone    6.3:1  (AA body)
-     taupe on sand    5.9:1  (AA body) */
-  --color-ink: #0c0805;
-  --color-taupe: #6b5942;
+     ink on bone     18.6:1
+     taupe on bone    5.6:1  (AA body)
+     taupe on sand    5.1:1  (AA body) */
+  --color-ink: #0e0b14;
+  --color-taupe: #676080;
 
-  /* Accent.
-     clay on bone       5.4:1  (AA body)
-     bone on clay       5.4:1  (AA body)
-     terracotta on bone 2.5:1  — fills and rules only, never text
-     ochre on bone      3.0:1  — fills and rules only, never text
-     ink on terracotta  7.6:1  (AA body)
-     ink on ochre       6.3:1  (AA body) */
-  --color-clay: #8c5b33;
-  --color-clay-deep: #6d4525;
-  --color-clay-soft: #f0e6da;
-  --color-terracotta: #e08a5c;
-  --color-ochre: #c8821e;
+  /* Accent — the wordmark violet.
+     clay on bone       7.2:1  (AA body)
+     bone on clay       7.2:1  (AA body)
+     terracotta on bone 3.1:1  — fills and rules only, never text
+     ochre on bone      3.9:1  — fills and rules only, never text
+     clay-bright: for text on dark grounds (ink band: 7.4:1) */
+  --color-clay: #5c469b;
+  --color-clay-deep: #443374;
+  --color-clay-soft: #ece7f7;
+  --color-clay-bright: #b3a1e6;
+  --color-terracotta: #d95c73;
+  --color-ochre: #8b6fc7;
 
   /* Hairlines. Rules do the work that colour used to. */
-  --color-line: #e4dacb;
-  --color-line-strong: #cdbfab;
+  --color-line: #e4e0ec;
+  --color-line-strong: #c9c3d9;
 
   /* Typography — an editorial serif for display, a quiet grotesque for UI. */
   --font-display: var(--font-newsreader), ui-serif, Georgia, serif;
