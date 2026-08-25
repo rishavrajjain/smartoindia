@@ -60,16 +60,16 @@ const fraunces = Fraunces({
 /* Manav's hero copy, timed to the film's beats (video seconds). Fares are
    owner-supplied. */
 const HERO_CAPTIONS: HeroCaption[] = [
-  { at: 0, small: "Airport rides", big: "starting ₹399" },
-  { at: 3, small: "Shillong rides", big: "starting ₹2,799" },
-  { at: 7, small: "Outstation rides", big: "starting ₹3,499" },
+  { at: 0, small: "Airport rides", pre: "starting", big: "₹399" },
+  { at: 3, small: "Drive to Shillong", pre: "starting", big: "₹2,799" },
+  { at: 7, small: "Outstation rides", pre: "starting", big: "₹3,499" },
   {
     at: 11,
     small: "Explore",
     big: "North East",
     sub: "with personally curated packages",
   },
-  { at: 16, small: "Railway station rides", big: "starting ₹199" },
+  { at: 16, small: "Railway station rides", pre: "starting", big: "₹199" },
 ];
 
 /* The route bar's flags. Each id is a section on this page, in scroll order. */

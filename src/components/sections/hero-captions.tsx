@@ -8,6 +8,8 @@ export interface HeroCaption {
   /** Video second at which this caption takes over. */
   at: number;
   small: string;
+  /** Small lead-in word inside the big line, e.g. "starting". */
+  pre?: string;
   big: string;
   sub?: string;
 }
@@ -73,8 +75,13 @@ export function HeroCaptions({
           <span className="block font-[family-name:var(--font-hero-title)] text-[1.625rem] leading-none tracking-[0.02em] text-bone/85">
             {caption.small}
           </span>
-          <span className="mt-1.5 block font-[family-name:var(--font-hero-funky)] text-[3rem] leading-[0.95] font-semibold italic">
-            {caption.big}
+          <span className="mt-1.5 block font-[family-name:var(--font-hero-funky)] leading-[0.95] font-semibold italic">
+            {caption.pre && (
+              <span className="mr-2 text-[1.5rem] text-bone/85">
+                {caption.pre}
+              </span>
+            )}
+            <span className="text-[3rem]">{caption.big}</span>
           </span>
           {caption.sub && (
             <span className="mt-2.5 block text-[0.9375rem] font-medium tracking-[0.04em] text-bone/85">
@@ -85,7 +92,10 @@ export function HeroCaptions({
       ))}
       <p className="sr-only">
         {captions
-          .map((c) => `${c.small} ${c.big}${c.sub ? ` ${c.sub}` : ""}`)
+          .map(
+            (c) =>
+              `${c.small}${c.pre ? ` ${c.pre}` : ""} ${c.big}${c.sub ? ` ${c.sub}` : ""}`,
+          )
           .join(". ")}
         . With Smarto, across Northeast India.
       </p>
