@@ -3,6 +3,10 @@ import Link from "next/link";
 import type { Viewport } from "next";
 import { Fraunces, Source_Serif_4 } from "next/font/google";
 
+import {
+  HeroCaptions,
+  type HeroCaption,
+} from "@/components/sections/hero-captions";
 import { HeroVideo } from "@/components/sections/hero-video";
 import { HomeMenu } from "@/components/sections/home-menu";
 import { RouteNav, type RouteStop } from "@/components/sections/route-nav";
@@ -52,6 +56,21 @@ const fraunces = Fraunces({
   style: ["italic"],
   axes: ["opsz", "SOFT", "WONK"],
 });
+
+/* Manav's hero copy, timed to the film's beats (video seconds). Fares are
+   owner-supplied. */
+const HERO_CAPTIONS: HeroCaption[] = [
+  { at: 0, small: "Airport rides", big: "starting ₹399" },
+  { at: 3, small: "Shillong rides", big: "starting ₹2,799" },
+  { at: 7, small: "Outstation rides", big: "starting ₹3,499" },
+  {
+    at: 11,
+    small: "Explore",
+    big: "North East",
+    sub: "with personally curated packages",
+  },
+  { at: 16, small: "Railway station rides", big: "starting ₹199" },
+];
 
 /* The route bar's flags. Each id is a section on this page, in scroll order. */
 const ROUTE_STOPS: RouteStop[] = [
@@ -183,30 +202,9 @@ export default function HomePage() {
             aria-hidden="true"
             className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-[rgba(12,8,5,0.6)] via-[rgba(12,8,5,0.28)] to-transparent"
           />
-          {/* Two-phase title over the film: Manav's fare hook rides the
-              airport beat for the first two seconds, then hands over to the
-              brand line. Both phases share the same spot via a stacked grid. */}
-          <div className="absolute inset-x-0 top-[12%] grid px-6 text-center text-bone [text-shadow:0_1px_28px_rgba(12,8,5,0.55)] [&>*]:col-start-1 [&>*]:row-start-1">
-            <p aria-hidden="true" className="hero-title-a">
-              <span className="block font-[family-name:var(--font-hero-title)] text-[1.625rem] leading-none tracking-[0.02em] text-bone/85">
-                Airport rides
-              </span>
-              <span className="mt-1.5 block font-[family-name:var(--font-hero-funky)] text-[3.25rem] leading-[0.92] font-semibold italic">
-                starting ₹399
-              </span>
-            </p>
-            <p aria-hidden="true" className="hero-title-b">
-              <span className="block font-[family-name:var(--font-hero-title)] text-[1.625rem] leading-none tracking-[0.02em] text-bone/85">
-                Explore
-              </span>
-              <span className="mt-1.5 block font-[family-name:var(--font-hero-funky)] text-[3.5rem] leading-[0.92] font-semibold italic">
-                North East
-              </span>
-            </p>
-            <p className="sr-only">
-              Airport rides starting at ₹399. Explore North East with Smarto.
-            </p>
-          </div>
+          {/* Manav's caption choreography, synced to the film's own clock —
+              each line rides its scene and loops with the video. */}
+          <HeroCaptions videoSelector="#home-top video" captions={HERO_CAPTIONS} />
           <header className="absolute inset-x-0 top-0 flex items-center px-4 pt-5">
             <span aria-hidden="true" className="size-11 shrink-0" />
             <Link
