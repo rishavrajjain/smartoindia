@@ -6,11 +6,9 @@ import { Fraunces, Source_Serif_4 } from "next/font/google";
 import { HeroVideo } from "@/components/sections/hero-video";
 import { HomeMenu } from "@/components/sections/home-menu";
 import { RouteNav, type RouteStop } from "@/components/sections/route-nav";
-import { TripCoverflow } from "@/components/sections/trip-coverflow";
 import { WaCta } from "@/components/ui/wa-cta";
 import { FESTIVALS } from "@/data/festivals";
 import { IMAGES } from "@/data/images";
-import { FEATURED_PACKAGES } from "@/data/packages";
 import { REVIEWS } from "@/data/reviews";
 import { pageMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site";
@@ -54,8 +52,6 @@ const fraunces = Fraunces({
   style: ["italic"],
   axes: ["opsz", "SOFT", "WONK"],
 });
-
-const FEATURED = FEATURED_PACKAGES;
 
 /* The route bar's flags. Each id is a section on this page, in scroll order. */
 const ROUTE_STOPS: RouteStop[] = [
@@ -187,16 +183,30 @@ export default function HomePage() {
             aria-hidden="true"
             className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-[rgba(12,8,5,0.6)] via-[rgba(12,8,5,0.28)] to-transparent"
           />
-          {/* The title arrives a beat after the scene does. "North East" gets
-              the funky, curvy Fraunces treatment for personality. */}
-          <p className="hero-title-reveal absolute inset-x-0 top-[12%] px-6 text-center text-bone [text-shadow:0_1px_28px_rgba(12,8,5,0.55)]">
-            <span className="block font-[family-name:var(--font-hero-title)] text-[1.625rem] leading-none tracking-[0.02em] text-bone/85">
-              Explore
-            </span>
-            <span className="mt-1.5 block font-[family-name:var(--font-hero-funky)] text-[3.5rem] leading-[0.92] font-semibold italic">
-              North East
-            </span>
-          </p>
+          {/* Two-phase title over the film: Manav's fare hook rides the
+              airport beat for the first two seconds, then hands over to the
+              brand line. Both phases share the same spot via a stacked grid. */}
+          <div className="absolute inset-x-0 top-[12%] grid px-6 text-center text-bone [text-shadow:0_1px_28px_rgba(12,8,5,0.55)] [&>*]:col-start-1 [&>*]:row-start-1">
+            <p aria-hidden="true" className="hero-title-a">
+              <span className="block font-[family-name:var(--font-hero-title)] text-[1.625rem] leading-none tracking-[0.02em] text-bone/85">
+                Airport rides
+              </span>
+              <span className="mt-1.5 block font-[family-name:var(--font-hero-funky)] text-[3.25rem] leading-[0.92] font-semibold italic">
+                starting ₹399
+              </span>
+            </p>
+            <p aria-hidden="true" className="hero-title-b">
+              <span className="block font-[family-name:var(--font-hero-title)] text-[1.625rem] leading-none tracking-[0.02em] text-bone/85">
+                Explore
+              </span>
+              <span className="mt-1.5 block font-[family-name:var(--font-hero-funky)] text-[3.5rem] leading-[0.92] font-semibold italic">
+                North East
+              </span>
+            </p>
+            <p className="sr-only">
+              Airport rides starting at ₹399. Explore North East with Smarto.
+            </p>
+          </div>
           <header className="absolute inset-x-0 top-0 flex items-center px-4 pt-5">
             <span aria-hidden="true" className="size-11 shrink-0" />
             <Link
@@ -215,17 +225,6 @@ export default function HomePage() {
             </Link>
             <HomeMenu />
           </header>
-
-          {/* ——— The go-to trips, floating on the water. */}
-          <div className="absolute inset-x-0 bottom-[5.75rem]">
-            <h2
-              id="home-trips"
-              className="px-6 text-center text-[0.6875rem] font-medium tracking-[0.18em] text-bone/90 uppercase [text-shadow:0_1px_14px_rgba(12,8,5,0.5)]"
-            >
-              Our go-to trips
-            </h2>
-            <TripCoverflow trips={FEATURED} />
-          </div>
         </section>
 
         {/* ——— Outstation: the four destination cards. */}
