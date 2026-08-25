@@ -58,10 +58,16 @@ export function HeroCaptions({
           key={caption.at}
           aria-hidden="true"
           className={cn(
-            "transition-all duration-700 ease-out",
-            index === active
-              ? "translate-y-0 opacity-100"
-              : "translate-y-2 opacity-0",
+            // Cinematic hand-off: the leaving line lifts away and blurs out
+            // quickly; a beat of clean film; the arriving line rises slowly
+            // from below. Lines waiting their turn sit below, transition-free,
+            // so the motion always flows upward — even after the loop resets.
+            index === active &&
+              "translate-y-0 scale-100 opacity-100 blur-0 transition-[opacity,transform,filter] delay-[450ms] duration-[1200ms] ease-out",
+            index < active &&
+              "-translate-y-4 scale-[1.02] opacity-0 blur-[6px] transition-[opacity,transform,filter] delay-0 duration-[550ms] ease-in",
+            index > active &&
+              "translate-y-5 scale-[0.985] opacity-0 blur-[6px] transition-none",
           )}
         >
           <span className="block font-[family-name:var(--font-hero-title)] text-[1.625rem] leading-none tracking-[0.02em] text-bone/85">
