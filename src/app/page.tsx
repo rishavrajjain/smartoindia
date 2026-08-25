@@ -10,8 +10,10 @@ import {
 import { HeroVideo } from "@/components/sections/hero-video";
 import { HomeMenu } from "@/components/sections/home-menu";
 import { RouteNav, type RouteStop } from "@/components/sections/route-nav";
+import { TripCoverflow } from "@/components/sections/trip-coverflow";
 import { WaCta } from "@/components/ui/wa-cta";
 import { FESTIVALS } from "@/data/festivals";
+import { FEATURED_PACKAGES } from "@/data/packages";
 import { IMAGES } from "@/data/images";
 import { REVIEWS } from "@/data/reviews";
 import { pageMetadata } from "@/lib/seo";
@@ -82,34 +84,6 @@ const ROUTE_STOPS: RouteStop[] = [
   { id: "home-corporate", label: "Corporate" },
   { id: "home-festivals", label: "Festivals" },
 ];
-
-/* Outstation destinations — the four-card row from Manav's wireframe. */
-const OUTSTATION = [
-  {
-    place: "Shillong",
-    drive: "3 hrs from Guwahati",
-    image: IMAGES.meghalayaFamily,
-    message: enquiry("I would like a cab fare for Guwahati to Shillong."),
-  },
-  {
-    place: "Cherrapunji",
-    drive: "4 hrs from Guwahati",
-    image: IMAGES.meghalayaWaterfalls,
-    message: enquiry("I would like a cab fare for a Cherrapunji trip."),
-  },
-  {
-    place: "Kaziranga",
-    drive: "4.5 hrs from Guwahati",
-    image: IMAGES.assamKaziranga,
-    message: enquiry("I would like a cab fare for a Kaziranga trip."),
-  },
-  {
-    place: "Tawang",
-    drive: "2 days by road",
-    image: IMAGES.arunachalTawang,
-    message: enquiry("I would like to plan a Tawang trip by road."),
-  },
-] as const;
 
 /*
  * Cab services and flat fares from smartocabs.com. Fares are the published
@@ -229,8 +203,9 @@ export default function HomePage() {
         </section>
 
         {/* ——— Outstation: the four destination cards. */}
-        <section id="home-outstation" className="scroll-mt-6 px-6 pt-14">
-          <div className="flex items-end justify-between gap-4">
+        {/* ——— Outstation: the go-to trips, riding the 3D rail. */}
+        <section id="home-outstation" className="scroll-mt-6 pt-14">
+          <div className="flex items-end justify-between gap-4 px-6">
             <div>
               <p className="text-label font-medium text-clay uppercase">
                 Outstation
@@ -246,41 +221,7 @@ export default function HomePage() {
               All trips
             </Link>
           </div>
-          <ul className="mt-6 grid grid-cols-2 gap-3.5">
-            {OUTSTATION.map((card) => (
-              <li key={card.place}>
-                <WaCta
-                  message={card.message}
-                  location="home-cabs"
-                  subject={card.place}
-                  className="group relative block aspect-[4/5] overflow-hidden rounded-2xl bg-sand ring-1 ring-ink/10"
-                >
-                  <span className="absolute inset-0">
-                    <Image
-                      src={card.image.src}
-                      alt=""
-                      fill
-                      loading="lazy"
-                      sizes="200px"
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-                    />
-                  </span>
-                  <span
-                    aria-hidden="true"
-                    className="photo-scrim absolute inset-0"
-                  />
-                  <span className="absolute inset-x-0 bottom-0 p-3.5">
-                    <span className="block font-display text-[1.1875rem] text-bone">
-                      {card.place}
-                    </span>
-                    <span className="mt-0.5 block text-[0.6875rem] font-medium tracking-[0.1em] text-bone/75 uppercase">
-                      {card.drive}
-                    </span>
-                  </span>
-                </WaCta>
-              </li>
-            ))}
-          </ul>
+          <TripCoverflow trips={FEATURED_PACKAGES} />
         </section>
 
         {/* ——— Cabs: the stat, the differentiators, and the fare list. */}

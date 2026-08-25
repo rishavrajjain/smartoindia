@@ -115,7 +115,7 @@ export function TripCoverflow({ trips }: { trips: TravelPackage[] }) {
     <ul
       ref={railRef}
       aria-label="Our go-to trips"
-      className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pt-4 pb-2"
+      className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pt-6 pb-7"
       style={{
         perspective: "1100px",
         // Lets the first and last card rest at the centre of the rail.
@@ -126,7 +126,7 @@ export function TripCoverflow({ trips }: { trips: TravelPackage[] }) {
         <li key={trip.slug} className="shrink-0 snap-center">
           <Link
             href={`/packages/${trip.slug}`}
-            className="relative block h-[17.5rem] w-[13rem] overflow-hidden rounded-[1.25rem] bg-sand shadow-[0_20px_44px_-14px_rgba(10,34,38,0.6)] ring-1 ring-bone/25 will-change-transform"
+            className="relative block h-[17.5rem] w-[13rem] overflow-hidden rounded-[1.25rem] bg-sand shadow-[0_18px_38px_-14px_rgba(14,11,20,0.4)] ring-1 ring-ink/10 will-change-transform"
           >
             <Image
               src={trip.hero.src}
