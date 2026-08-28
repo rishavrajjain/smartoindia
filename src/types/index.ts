@@ -159,3 +159,64 @@ export interface ImpactCommitment {
   description: string;
   status: ContentStatus;
 }
+
+/*
+ * The fifty-journey outstation catalog, transcribed from Manav's
+ * "Smarto Travel — Outstation Packages" PDF (Aug 2026). Owner-supplied,
+ * verified content — every field mirrors the printed catalog.
+ */
+
+export type JourneyLength = "Short escape" | "Mid-length" | "Extended";
+
+export interface JourneyDay {
+  /** 1-indexed day number within the journey. */
+  day: number;
+  title: string;
+  /** Printed drive leg, e.g. "Guwahati to Shillong", or null for local days. */
+  route: string | null;
+  /** Printed drive time/distance, e.g. "3 hours, 100 km", or null. */
+  drive: string | null;
+  body: string;
+  /** Where the traveller sleeps that night, or null on the departure day. */
+  overnight: string | null;
+}
+
+export interface Journey {
+  /** Catalog number as printed, e.g. "01". */
+  num: string;
+  slug: string;
+  title: string;
+  subtitle: string;
+  /** Catalog group chips (Popular, Family, Offbeat, ...) minus length tiers. */
+  styles: string[];
+  /** Length tier, from the catalog's own grouping chips. */
+  length: JourneyLength;
+  /** True when the catalog groups this journey under Multi-state. */
+  multiState: boolean;
+  nights: number;
+  days: number;
+  states: NortheastState[];
+  pace: string;
+  /** The full printed route chain, stop by stop. */
+  route: string[];
+  vehicle: string;
+  bestMonths: string;
+  idealFor: string;
+  itinerary: JourneyDay[];
+  /** "Where you stay" bullets, hotel names and star ratings as printed. */
+  stay: string[];
+  included: string;
+  notIncluded: string;
+  /** Printed permit callout (Arunachal journeys), when the catalog has one. */
+  permit?: string;
+  /** Printed altitude advisory, when the catalog has one. */
+  altitude?: string;
+  /** Printed total-distance line, e.g. "960 km. Longest single driving day is 340 km." */
+  routeNote?: string;
+  /** Printed group-departure note, when the catalog has one. */
+  groupNote?: string;
+  hero: SiteImage;
+  /** Prefilled WhatsApp body for this journey. */
+  enquiry: string;
+  status: ContentStatus;
+}

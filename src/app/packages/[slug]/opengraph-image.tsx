@@ -1,24 +1,25 @@
 import { ImageResponse } from "next/og";
 
-import { PACKAGES, getPackage } from "@/data/packages";
+import { JOURNEYS } from "@/data/journeys";
 
-export const alt = "Smarto travel package";
+export const alt = "A Smarto journey across Northeast India";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-/** Prerender a card for every package rather than generating them on request. */
+/** Prerender a card for every journey rather than generating them on request. */
 export function generateStaticParams() {
-  return PACKAGES.map((item) => ({ slug: item.slug }));
+  return JOURNEYS.map((journey) => ({ slug: journey.slug }));
 }
 
-export default async function PackageOpengraphImage({
+export default async function JourneyOpengraphImage({
   params,
 }: {
   // Async in Next 16, in line with the async request APIs change.
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const item = getPackage(slug);
+  const journey = JOURNEYS.find((item) => item.slug === slug);
+  const title = journey?.title ?? "Northeast India, on one honest price";
 
   return new ImageResponse(
     (
@@ -29,8 +30,9 @@ export default async function PackageOpengraphImage({
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "linear-gradient(100deg, #5b2bd9 0%, #8b2fc9 48%, #e0356b 100%)",
-          padding: "68px 80px",
+          background: "#1c1a45",
+          color: "#ffffff",
+          padding: "72px 84px 0",
           fontFamily: "sans-serif",
         }}
       >
@@ -41,95 +43,73 @@ export default async function PackageOpengraphImage({
             justifyContent: "space-between",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <div style={{ display: "flex", fontSize: 40, fontWeight: 800 }}>
+            Smarto
+          </div>
+          {journey && (
             <div
               style={{
                 display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: 48,
-                height: 48,
-                borderRadius: 14,
-                background: "#fff7ec",
-                color: "#5b2bd9",
-                fontSize: 32,
-                fontWeight: 800,
+                fontSize: 22,
+                letterSpacing: 4,
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.65)",
               }}
             >
-              S
+              Journey {journey.num} · {journey.states.join(" & ")}
             </div>
-            <div style={{ color: "#fff7ec", fontSize: 30, fontWeight: 700 }}>
-              Smarto
-            </div>
-          </div>
+          )}
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
           <div
             style={{
               display: "flex",
-              color: "#ffb020",
-              fontSize: 24,
-              fontWeight: 700,
-              letterSpacing: 2,
-              textTransform: "uppercase",
-            }}
-          >
-            {item?.state ?? "Northeast India"}
-          </div>
-        </div>
-
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div
-            style={{
-              color: "#fff7ec",
-              fontSize: item && item.title.length > 30 ? 62 : 74,
-              fontWeight: 700,
-              lineHeight: 1.06,
-              letterSpacing: -1.8,
+              fontSize: 76,
+              fontWeight: 800,
+              lineHeight: 1.04,
               maxWidth: 980,
             }}
           >
-            {item?.title ?? "Trips across the Northeast"}
+            {title}
           </div>
+          {journey && (
+            <div
+              style={{
+                display: "flex",
+                fontSize: 28,
+                color: "rgba(255,255,255,0.75)",
+                maxWidth: 980,
+              }}
+            >
+              {journey.nights} nights / {journey.days} days ·{" "}
+              {journey.route.slice(0, 5).join(" → ")}
+            </div>
+          )}
           <div
             style={{
-              marginTop: 22,
-              color: "rgba(255,247,236,0.82)",
-              fontSize: 28,
-              lineHeight: 1.4,
-              maxWidth: 900,
+              display: "flex",
+              fontSize: 24,
+              fontWeight: 800,
+              letterSpacing: 3,
+              textTransform: "uppercase",
+              color: "#3eb391",
+              marginBottom: 56,
             }}
           >
-            {item
-              ? item.summary.slice(0, 145)
-              : "Planned routes across Assam, Meghalaya, Arunachal Pradesh, Sikkim, and Nagaland."}
+            All-in price on request · No hidden costs
           </div>
         </div>
 
         <div
           style={{
             display: "flex",
-            alignItems: "center",
-            gap: 18,
-            fontSize: 24,
-            fontWeight: 600,
+            height: 14,
+            margin: "0 -84px",
+            background:
+              "linear-gradient(90deg, #282560 0%, #7b3f7e 50%, #c44868 100%)",
           }}
-        >
-          {item && (
-            <div
-              style={{
-                display: "flex",
-                padding: "10px 22px",
-                borderRadius: 999,
-                background: "#ffb020",
-                color: "#1b1033",
-              }}
-            >
-              {item.durationLabel}
-            </div>
-          )}
-          <div style={{ display: "flex", color: "#fff7ec" }}>
-            Request a quote on WhatsApp
-          </div>
-        </div>
+        />
       </div>
     ),
     size,

@@ -4,7 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
-import type { TravelPackage } from "@/types";
+import type { SiteImage } from "@/types";
+
+/** The card's slice of a trip — packages and journeys both satisfy it. */
+export interface CoverflowTrip {
+  slug: string;
+  title: string;
+  hero: SiteImage;
+  durationLabel: string;
+}
 
 /**
  * Horizontally swipeable trip cards with a cover-flow feel: the card nearest
@@ -13,7 +21,7 @@ import type { TravelPackage } from "@/types";
  * the depth follows the user's thumb; with reduced motion the rail is a flat,
  * ordinary scroller. Cards snap to centre and are plain links throughout.
  */
-export function TripCoverflow({ trips }: { trips: TravelPackage[] }) {
+export function TripCoverflow({ trips }: { trips: CoverflowTrip[] }) {
   const railRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {

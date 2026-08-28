@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { PACKAGES } from "@/data/packages";
+import { JOURNEYS } from "@/data/journeys";
 import { NAV, absoluteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -31,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
-    ...PACKAGES.map((item) => ({
+    ...JOURNEYS.map((item) => ({
       url: absoluteUrl(`/packages/${item.slug}`),
       lastModified,
       changeFrequency: "monthly" as const,

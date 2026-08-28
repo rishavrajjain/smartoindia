@@ -13,7 +13,7 @@ import { RouteNav, type RouteStop } from "@/components/sections/route-nav";
 import { TripCoverflow } from "@/components/sections/trip-coverflow";
 import { WaCta } from "@/components/ui/wa-cta";
 import { FESTIVALS } from "@/data/festivals";
-import { FEATURED_PACKAGES } from "@/data/packages";
+import { JOURNEYS } from "@/data/journeys";
 import { IMAGES } from "@/data/images";
 import { REVIEWS } from "@/data/reviews";
 import { pageMetadata } from "@/lib/seo";
@@ -129,6 +129,16 @@ const CLIENT_LOGOS = [
   { src: "/logos/godrej.webp", name: "Godrej", w: 264, h: 128 },
 ];
 
+/* The rail rides the catalog's own "Popular" five. */
+const FEATURED_TRIPS = JOURNEYS.filter((j) => j.styles.includes("Popular")).map(
+  (j) => ({
+    slug: j.slug,
+    title: j.title,
+    hero: j.hero,
+    durationLabel: `${j.nights} nights, ${j.days} days`,
+  }),
+);
+
 /* Festival cards pair the catalog entry with its generated scene image. */
 const FESTIVAL_IMAGE: Record<string, (typeof IMAGES)[keyof typeof IMAGES]> = {
   "bihu-spring": IMAGES.festBihu,
@@ -204,7 +214,7 @@ export default function HomePage() {
               All trips
             </Link>
           </div>
-          <TripCoverflow trips={FEATURED_PACKAGES} />
+          <TripCoverflow trips={FEATURED_TRIPS} />
         </section>
 
         {/* ——— Cabs: the stat, the differentiators, and the fare list. */}
