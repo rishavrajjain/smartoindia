@@ -31,8 +31,8 @@ export interface OrbitService {
  */
 
 const STEP = 60; // degrees between services
-const RX = 126; // orbit half-width
-const RY = 46; // orbit half-height (the ellipse's squash is the "tilt")
+const RX = 152; // orbit half-width
+const RY = 56; // orbit half-height (the ellipse's squash is the "tilt")
 const SPIN_MS = 950;
 const DWELL_MS = 4000;
 const PAUSE_MS = 7000;
@@ -49,8 +49,8 @@ function place(phi: number) {
   return {
     x: RX * Math.sin(rad),
     y: RY * depth,
-    scale: 0.66 + 0.56 * (depth + 1) * 0.5,
-    opacity: 0.42 + 0.58 * (depth + 1) * 0.5,
+    scale: 0.62 + 0.63 * (depth + 1) * 0.5,
+    opacity: 0.4 + 0.6 * (depth + 1) * 0.5,
     z: 10 + Math.round(depth * 8),
   };
 }
@@ -197,21 +197,26 @@ export function CabOrbit({ services }: { services: readonly OrbitService[] }) {
   return (
     <div>
       {/* ——— The stage. */}
-      <div ref={stageRef} className="relative h-[15rem] touch-pan-y select-none">
+      {/* Full-bleed stage: the ring needs the frame's whole width to keep the
+          services clear of the car. */}
+      <div
+        ref={stageRef}
+        className="relative -mx-6 h-[15.5rem] touch-pan-y select-none"
+      >
         {/* Soft ground wash, the dashed route the services ride, and a halo
             marking the focus spot at the front of the ring. */}
         <div
           aria-hidden="true"
-          className="absolute top-[140px] left-1/2 h-[120px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-[radial-gradient(50%_50%_at_50%_50%,var(--color-clay-soft)_0%,transparent_70%)]"
+          className="absolute top-[138px] left-1/2 h-[140px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-[radial-gradient(50%_50%_at_50%_50%,var(--color-clay-soft)_0%,transparent_70%)]"
         />
         <div
           aria-hidden="true"
-          className="absolute top-[140px] left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[50%] border-[1.5px] border-dashed border-line-strong"
+          className="absolute top-[138px] left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[50%] border-[1.5px] border-dashed border-line-strong"
           style={{ width: RX * 2, height: RY * 2 }}
         />
         <div
           aria-hidden="true"
-          className="absolute top-[186px] left-1/2 size-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,rgba(92,70,155,0.16)_0%,transparent_70%)]"
+          className="absolute top-[194px] left-1/2 size-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,rgba(92,70,155,0.16)_0%,transparent_70%)]"
         />
 
         {/* The cab: floats on CSS, leans on JS while the ring turns. */}
@@ -251,7 +256,7 @@ export function CabOrbit({ services }: { services: readonly OrbitService[] }) {
             onClick={() => api.current?.focus(i)}
             aria-label={service.name}
             aria-current={i === active ? "true" : undefined}
-            className="absolute top-[140px] left-1/2 size-16 rounded-full"
+            className="absolute top-[138px] left-1/2 size-16 rounded-full"
             style={iconStyle(i * STEP)}
           >
             <Image
