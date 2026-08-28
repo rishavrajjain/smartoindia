@@ -56,6 +56,8 @@
 
   --animate-rise: rise 0.7s var(--ease-out-quiet) both;
   --animate-marquee: marquee 46s linear infinite;
+  --animate-cab-float: cab-float 4.6s ease-in-out infinite;
+  --animate-cab-shadow: cab-shadow 4.6s ease-in-out infinite;
 
   @keyframes rise {
     from {
@@ -74,6 +76,29 @@
     }
     to {
       transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  /* The orbit cab hovers gently; its ground shadow breathes in counterpoint. */
+  @keyframes cab-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  @keyframes cab-shadow {
+    0%,
+    100% {
+      transform: translateX(-50%) scaleX(1);
+      opacity: 0.32;
+    }
+    50% {
+      transform: translateX(-50%) scaleX(0.9);
+      opacity: 0.22;
     }
   }
 }

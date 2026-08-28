@@ -518,5 +518,18 @@
     "prompt": "The interior of a lush broadleaf forest in Northeast India with strong sunlight streaming through the canopy in visible shafts, lighting up ferns, moss and translucent green leaves. Vivid fresh greens, sparkling highlights, humid and alive. No path, no people, no text.",
     "model": "gpt-image-2",
     "status": "generated"
+  },
+  {
+    "id": "cab-orbit-hero",
+    "src": "/images/cab-orbit-hero.webp",
+    "width": 480,
+    "height": 267,
+    "aspect": "9:5",
+    "alt": "",
+    "usedOn": "/ — cabs section, centre of the revolving service orbit",
+    "subject": "Glossy 3D miniature of the Smarto cab: white compact sedan, violet gradient door livery with the Smarto wordmark, roof taxi sign; three-quarter front-left view, keyed to transparency",
+    "prompt": "Glossy 3D miniature of a compact white Indian sedan taxi styled as a premium collectible toy: clean glossy white body, a violet-to-purple gradient branding panel across both doors with the word Smarto in small white rounded lettering on the front door, a small white roof-mounted taxi sign, dark tinted windows, simple dark grey wheels with neat silver hubcaps. Three-quarter view from the front-left, camera slightly elevated, premium 3D-emoji style, chroma-key green background (keyed out in scripts/generate-cab-orbit.mjs).",
+    "model": "gpt-image-2",
+    "status": "generated"
   }
 ]

@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Viewport } from "next";
 import { Fraunces, Source_Serif_4 } from "next/font/google";
 
+import { CabOrbit } from "@/components/sections/cab-orbit";
 import {
   HeroCaptions,
   type HeroCaption,
@@ -256,52 +257,9 @@ export default function HomePage() {
             ))}
           </ul>
 
-          <ul className="mt-2">
-            {SERVICES.map((service) => (
-              <li key={service.name} className="border-b border-line">
-                <WaCta
-                  message={service.message}
-                  location="home-cabs"
-                  subject={service.name}
-                  className="flex items-center gap-3.5 py-3.5"
-                >
-                  <Image
-                    src={service.icon}
-                    alt=""
-                    width={240}
-                    height={240}
-                    loading="lazy"
-                    className="size-11 shrink-0 object-contain [filter:drop-shadow(0_4px_6px_rgba(12,8,5,0.14))]"
-                  />
-                  <span className="min-w-0 flex-1">
-                    <span className="block font-display text-[1.125rem] text-ink">
-                      {service.name}
-                    </span>
-                    <span className="mt-0.5 block text-[0.8125rem] leading-relaxed text-taupe">
-                      {service.line}
-                    </span>
-                  </span>
-                  {service.fare ? (
-                    <span className="shrink-0 text-right">
-                      <span className="block text-[0.625rem] font-medium tracking-[0.1em] text-taupe uppercase">
-                        from
-                      </span>
-                      <span className="block font-display text-[1.125rem] text-clay">
-                        {service.fare}
-                      </span>
-                    </span>
-                  ) : (
-                    <span
-                      aria-hidden="true"
-                      className="shrink-0 text-clay"
-                    >
-                      →
-                    </span>
-                  )}
-                </WaCta>
-              </li>
-            ))}
-          </ul>
+          {/* The service turntable: the cab holds the centre, the six
+              services revolve around it, and the front one takes focus. */}
+          <CabOrbit services={SERVICES} />
         </section>
 
         {/* ——— Corporate: a quiet dark band with a revolving client wall. */}
