@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Newsreader } from "next/font/google";
+import { Poppins } from "next/font/google";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -8,16 +8,12 @@ import { SITE } from "@/lib/site";
 
 import "./globals.css";
 
-// Both are variable fonts. Omitting `weight` loads a single variable file per
-// family covering the whole axis, instead of one static file per weight.
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const archivo = Archivo({
-  variable: "--font-archivo",
+// The brand system (docs/smarto-design-system.md) allows exactly two weights:
+// Light 300 for setup lines and body, ExtraBold 800 for payoffs, titles, and
+// labels. Gilroy is proprietary; Poppins 300/800 is the sanctioned fallback.
+const poppins = Poppins({
+  variable: "--font-poppins",
+  weight: ["300", "800"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -38,7 +34,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0c0805",
+  themeColor: "#282560",
   colorScheme: "light",
 };
 
@@ -46,12 +42,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en-IN"
-      className={`${newsreader.variable} ${archivo.variable} h-full`}
+      className={`${poppins.variable} h-full`}
     >
       <body className="flex min-h-full flex-col bg-bone text-ink">
         <a
           href="#main"
-          className="sr-only bg-ink px-5 py-3 text-sm font-medium text-bone focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100"
+          className="sr-only bg-ink px-5 py-3 text-sm font-extrabold text-bone focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100"
         >
           Skip to content
         </a>

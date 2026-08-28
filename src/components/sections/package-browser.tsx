@@ -100,7 +100,7 @@ export function PackageBrowser({ packages }: { packages: TravelPackage[] }) {
   return (
     <div>
       <div className="border-t border-line pt-5 sm:p-6">
-        <label htmlFor="package-search" className="block text-label font-medium text-taupe uppercase">
+        <label htmlFor="package-search" className="block text-label font-extrabold text-taupe uppercase">
           Search destinations
         </label>
         <div className="relative mt-2">
@@ -153,7 +153,7 @@ export function PackageBrowser({ packages }: { packages: TravelPackage[] }) {
 
         {hasAnyFilter && (
           <div className="mt-5 flex items-center justify-between gap-4 border-t border-line pt-4">
-            <p className="text-sm font-semibold text-taupe">
+            <p className="text-sm font-extrabold text-taupe">
               {results.length === packages.length
                 ? `Showing all ${packages.length} trips`
                 : `${results.length} of ${packages.length} trips match`}
@@ -161,7 +161,7 @@ export function PackageBrowser({ packages }: { packages: TravelPackage[] }) {
             <button
               type="button"
               onClick={clearAll}
-              className="link-rule text-sm font-medium text-clay"
+              className="link-rule text-sm font-extrabold text-clay"
             >
               Clear all
             </button>
@@ -208,7 +208,7 @@ export function PackageBrowser({ packages }: { packages: TravelPackage[] }) {
             <button
               type="button"
               onClick={clearAll}
-              className="inline-flex min-h-12 items-center rounded-sm border border-line-strong px-6 text-[0.9375rem] font-medium text-ink transition-colors hover:border-ink/40 hover:bg-sand"
+              className="inline-flex min-h-12 items-center rounded-sm border border-line-strong px-6 text-[0.9375rem] font-extrabold text-ink transition-colors hover:border-ink/40 hover:bg-sand"
             >
               Clear filters
             </button>
@@ -239,7 +239,7 @@ function FilterRow({
 }) {
   return (
     <fieldset>
-      <legend className="text-label font-medium text-taupe uppercase">
+      <legend className="text-label font-extrabold text-taupe uppercase">
         {legend}
       </legend>
       {/* Scrolls horizontally on narrow screens rather than wrapping into a

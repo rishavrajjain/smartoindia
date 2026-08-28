@@ -35,7 +35,7 @@ export function DestinationMarquee() {
                 key={place}
                 className="flex items-center gap-8 pr-8 whitespace-nowrap"
               >
-                <span className="text-label font-medium text-taupe uppercase">
+                <span className="text-label font-extrabold text-taupe uppercase">
                   {place}
                 </span>
                 <span

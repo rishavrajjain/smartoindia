@@ -101,7 +101,7 @@ export default function CorporatePage() {
         <ul className="mt-10 grid gap-x-8 gap-y-9 md:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service) => (
             <li key={service.title} className="reveal border-t border-line pt-5">
-              <h3 className="font-sans text-base font-semibold text-ink">
+              <h3 className="font-sans text-base font-extrabold text-ink">
                 {service.title}
               </h3>
               <p className="mt-2 text-[0.9375rem] leading-relaxed text-taupe">
@@ -124,7 +124,7 @@ export default function CorporatePage() {
               <li key={step.title}>
                 <span
                   aria-hidden="true"
-                  className="flex size-14 items-center justify-center rounded-sm bg-ochre font-display text-2xl font-semibold text-ink tabular-nums"
+                  className="flex size-14 items-center justify-center rounded-sm bg-ochre font-display text-2xl font-extrabold text-ink tabular-nums"
                 >
                   {index + 1}
                 </span>
@@ -181,7 +181,7 @@ export default function CorporatePage() {
                     <path d="m4 10.5 4 4 8-9" />
                   </svg>
                   <div>
-                    <h3 className="font-sans text-base font-semibold text-ink">
+                    <h3 className="font-sans text-base font-extrabold text-ink">
                       {point.title}
                     </h3>
                     <p className="mt-1 text-[0.9375rem] leading-relaxed text-taupe">
@@ -202,7 +202,7 @@ export default function CorporatePage() {
                 Send the routes, timings and passenger numbers. We come back
                 with an arrangement and a monthly figure.
               </p>
-              <ul className="mt-6 space-y-2.5 text-[0.9375rem] font-medium text-ink">
+              <ul className="mt-6 space-y-2.5 text-[0.9375rem] font-extrabold text-ink">
                 <li className="flex gap-2.5">
                   <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-clay" />
                   Pickup points and drop points

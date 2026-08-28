@@ -216,13 +216,13 @@ export function CabOrbit({ services }: { services: readonly OrbitService[] }) {
         />
         <div
           aria-hidden="true"
-          className="absolute top-[194px] left-1/2 size-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,rgba(92,70,155,0.16)_0%,transparent_70%)]"
+          className="absolute top-[194px] left-1/2 size-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,rgba(40,37,96,0.14)_0%,transparent_70%)]"
         />
 
         {/* The cab: floats on CSS, leans on JS while the ring turns. */}
         <div
           aria-hidden="true"
-          className="absolute top-[158px] left-1/2 z-[1] h-3.5 w-[148px] rounded-[50%] bg-[radial-gradient(50%_50%_at_50%_50%,rgba(14,11,20,0.38)_0%,transparent_72%)] motion-safe:animate-cab-shadow"
+          className="absolute top-[158px] left-1/2 z-[1] h-3.5 w-[148px] rounded-[50%] bg-[radial-gradient(50%_50%_at_50%_50%,rgba(28,26,69,0.4)_0%,transparent_72%)] motion-safe:animate-cab-shadow"
           style={{ transform: "translateX(-50%)" }}
         />
         <div
@@ -266,7 +266,7 @@ export function CabOrbit({ services }: { services: readonly OrbitService[] }) {
               height={240}
               loading="lazy"
               sizes="90px"
-              className="size-full object-contain [filter:drop-shadow(0_6px_8px_rgba(14,11,20,0.18))]"
+              className="size-full object-contain [filter:drop-shadow(0_6px_8px_rgba(28,26,69,0.2))]"
             />
           </button>
         ))}
@@ -292,7 +292,7 @@ export function CabOrbit({ services }: { services: readonly OrbitService[] }) {
           </svg>
         </button>
 
-        <div className="relative min-h-[10rem] flex-1">
+        <div className="relative min-h-[11.5rem] flex-1">
           {services.map((service, i) => (
             <div
               key={service.name}
@@ -311,16 +311,24 @@ export function CabOrbit({ services }: { services: readonly OrbitService[] }) {
                 {service.line}
               </p>
               {service.fare ? (
+                /* The fare lockup: confirmed flat fares are green, with the
+                   mandated all-in microcopy beside the number. */
                 <p className="mt-1.5 flex items-baseline gap-1.5">
-                  <span className="text-[0.625rem] font-medium tracking-[0.1em] text-taupe uppercase">
+                  <span className="text-[0.625rem] font-extrabold tracking-[0.2em] text-taupe uppercase">
                     from
                   </span>
-                  <span className="font-display text-[1.375rem] text-clay">
-                    {service.fare}
+                  <span className="font-extrabold text-[1.375rem] tracking-[-0.03em] text-green-deep tabular-nums">
+                    <span className="align-top text-[0.7rem] leading-none opacity-75">
+                      ₹
+                    </span>
+                    {service.fare.replace("₹", "")}
+                  </span>
+                  <span className="text-[0.625rem] font-extrabold tracking-[0.2em] text-green-deep uppercase">
+                    all-in
                   </span>
                 </p>
               ) : (
-                <p className="mt-2.5 text-[0.625rem] font-medium tracking-[0.1em] text-taupe uppercase">
+                <p className="mt-2.5 text-[0.625rem] font-extrabold tracking-[0.2em] text-taupe uppercase">
                   fixed quote on WhatsApp
                 </p>
               )}
@@ -328,7 +336,7 @@ export function CabOrbit({ services }: { services: readonly OrbitService[] }) {
                 message={service.message}
                 location="home-cabs"
                 subject={service.name}
-                className="mt-3.5 inline-flex min-h-11 items-center gap-2 rounded-full bg-clay px-5 text-[0.875rem] font-medium text-bone transition-colors hover:bg-clay-deep"
+                className="mt-3.5 inline-flex min-h-11 items-center gap-2 rounded-full bg-clay px-5 text-[0.875rem] font-extrabold text-bone transition-colors hover:bg-clay-deep"
               >
                 <WhatsAppIcon />
                 Book on WhatsApp

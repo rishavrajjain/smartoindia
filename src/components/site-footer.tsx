@@ -58,7 +58,7 @@ export function SiteFooter() {
           </div>
 
           <nav aria-label="Footer" className="lg:col-span-3">
-            <h2 className="text-label font-medium text-taupe uppercase">
+            <h2 className="text-label font-extrabold text-taupe uppercase">
               Explore
             </h2>
             <ul className="mt-4 space-y-1">
@@ -76,7 +76,7 @@ export function SiteFooter() {
           </nav>
 
           <div className="lg:col-span-4">
-            <h2 className="text-label font-medium text-taupe uppercase">
+            <h2 className="text-label font-extrabold text-taupe uppercase">
               Where we travel
             </h2>
             <p className="mt-4 text-[0.9375rem] leading-relaxed text-ink">
@@ -104,6 +104,8 @@ export function SiteFooter() {
       </Container>
       {/* Clears the fixed mobile CTA bar so the last line is never hidden. */}
       <div aria-hidden="true" className="h-20 lg:hidden" />
+      {/* The signature: every light layout is anchored by the spark band. */}
+      <div aria-hidden="true" className="spark-band" />
     </footer>
   );
 }

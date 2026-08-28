@@ -42,7 +42,7 @@ export function FestivalExplorer({ festivals }: { festivals: Festival[] }) {
   return (
     <div>
       <fieldset>
-        <legend className="text-label font-medium text-clay-deep uppercase">
+        <legend className="text-label font-extrabold text-clay-deep uppercase">
           Choose a month
         </legend>
         <div className="no-scrollbar -mx-5 mt-3 flex gap-2 overflow-x-auto px-5 pb-1 sm:-mx-8 sm:px-8 lg:mx-0 lg:flex-wrap lg:px-0">
@@ -74,7 +74,7 @@ export function FestivalExplorer({ festivals }: { festivals: Festival[] }) {
           : `${visible.length} festivals in ${MONTH_NAMES[month]}`}
       </div>
 
-      <p className="mt-6 text-sm font-semibold text-taupe">
+      <p className="mt-6 text-sm font-extrabold text-taupe">
         {month === "all"
           ? `${visible.length} festivals across the year`
           : `${visible.length} in ${MONTH_NAMES[month]}`}
@@ -142,10 +142,10 @@ function FestivalCard({ festival }: { festival: Festival }) {
   return (
     <article className="flex h-full flex-col border-t border-line pt-6">
       <div className="flex flex-wrap items-center gap-2">
-        <span className="border border-line-strong px-2.5 py-1 text-label font-medium text-taupe uppercase">
+        <span className="border border-line-strong px-2.5 py-1 text-label font-extrabold text-taupe uppercase">
           {festival.state}
         </span>
-        <span className="border border-clay/40 bg-clay-soft px-2.5 py-1 text-label font-medium text-clay uppercase">
+        <span className="border border-clay/40 bg-clay-soft px-2.5 py-1 text-label font-extrabold text-clay uppercase">
           {festival.monthLabel}
         </span>
       </div>
@@ -155,7 +155,7 @@ function FestivalCard({ festival }: { festival: Festival }) {
         {festival.summary}
       </p>
 
-      <h4 className="mt-5 text-sm font-semibold text-ink">
+      <h4 className="mt-5 text-sm font-extrabold text-ink">
         What to expect
       </h4>
       <ul className="mt-2 space-y-1.5">

@@ -29,7 +29,7 @@ export function Label({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 px-3 py-1.5 text-label font-medium uppercase",
+        "inline-flex items-center gap-2 px-3 py-1.5 text-label font-extrabold uppercase",
         variants,
         className,
       )}
@@ -52,7 +52,7 @@ export function Eyebrow({
   return (
     <p
       className={cn(
-        "flex items-center gap-3 text-label font-medium uppercase",
+        "flex items-center gap-3 text-label font-extrabold uppercase",
         tone === "dark" ? "text-bone/60" : "text-clay",
         className,
       )}

@@ -1,58 +1,65 @@
 @import "tailwindcss";
 
 /*
-  Smarto identity — editorial, restrained, in the wordmark's violet.
+  Smarto identity — per Manav's design system (docs/smarto-design-system.md).
 
-  Near-monochrome by design: cool bone paper, near-black ink, and a single
-  brand-violet accent drawn from the logo's indigo→crimson gradient, with the
-  rose and bright-violet steps used only in small doses. The photography
-  carries the warmth; the interface stays quiet and cool. Contrast ratios are
-  noted where they constrain usage.
+  Navy #282560 replaces black everywhere; indigo carries secondary text; the
+  green family is reserved for eco/EV and confirmed fares; the spark gradient
+  (navy → plum → magenta) appears only as the logo, the bottom edge band, and
+  small accents — never as a text fill. Two font weights only: Poppins Light
+  300 (setup, body) and ExtraBold 800 (payoff, titles, labels, stats).
 
-  NOTE: the accent tokens keep their historical names (clay/terracotta/ochre)
-  but now carry the brand violet family — a rename pass across components can
-  follow separately.
+  NOTE: several tokens keep their pre-rebrand names (clay/terracotta/ochre/
+  bone/sand) so ~80 call sites didn't churn — the VALUES are the brand:
+    bone→white ground, sand→mist, ink→navy, taupe→indigo, clay→navy,
+    clay-deep→navy-deep, clay-soft→mist, clay-bright→soft-white-on-dark,
+    terracotta→green, ochre→emerald. A rename pass can follow separately.
+
+  Contrast: ink on bone 13.4:1 · taupe on bone 10.2:1 · bone on ink 13.4:1
+  green-deep on white 3.6:1 — large/bold text and fills only, never body.
 */
 @theme {
-  /* Paper */
-  --color-bone: #faf9fc;
-  --color-sand: #f0edf6;
+  /* Grounds */
+  --color-bone: #ffffff;
+  --color-sand: #eef0f4;
   --color-paper: #ffffff;
 
-  /* Ink — text roles.
-     ink on bone     18.6:1
-     taupe on bone    5.6:1  (AA body)
-     taupe on sand    5.1:1  (AA body) */
-  --color-ink: #0e0b14;
-  --color-taupe: #676080;
+  /* Ink — navy primary, indigo secondary. No black anywhere. */
+  --color-ink: #282560;
+  --color-taupe: #393978;
 
-  /* Accent — the wordmark violet.
-     clay on bone       7.2:1  (AA body)
-     bone on clay       7.2:1  (AA body)
-     terracotta on bone 3.1:1  — fills and rules only, never text
-     ochre on bone      3.9:1  — fills and rules only, never text
-     clay-bright: for text on dark grounds (ink band: 7.4:1) */
-  --color-clay: #5c469b;
-  --color-clay-deep: #443374;
-  --color-clay-soft: #ece7f7;
-  --color-clay-bright: #b3a1e6;
-  --color-terracotta: #d95c73;
-  --color-ochre: #8b6fc7;
+  /* Navy accent roles (historical names, see note above). */
+  --color-clay: #282560;
+  --color-clay-deep: #1c1a45;
+  --color-clay-soft: #eef0f4;
+  --color-clay-bright: #eef0f4;
 
-  /* Hairlines. Rules do the work that colour used to. */
-  --color-line: #e4e0ec;
-  --color-line-strong: #c9c3d9;
+  /* Green family — eco, EV, confirmed/flat fares. */
+  --color-terracotta: #75b884;
+  --color-ochre: #3eb391;
+  --color-green: #75b884;
+  --color-green-deep: #399772;
+  --color-emerald: #3eb391;
+  --color-lime: #b5c07a;
 
-  /* Typography — an editorial serif for display, a quiet grotesque for UI. */
-  --font-display: var(--font-newsreader), ui-serif, Georgia, serif;
-  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  /* Magenta lives inside gradients only — never a flat fill. */
+  --color-magenta: #c44868;
 
-  /* Small letterspaced label, used instead of coloured chips. */
-  --text-label: 0.6875rem;
-  --text-label--line-height: 1.2;
-  --text-label--letter-spacing: 0.18em;
+  /* Hairlines, only where unavoidable — surfaces sit flat. */
+  --color-line: #dfe1ea;
+  --color-line-strong: #c9c9d6;
 
-  --ease-out-quiet: cubic-bezier(0.22, 0.61, 0.36, 1);
+  /* One family, two weights. The Light↔ExtraBold jump is the identity. */
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+
+  /* Micro-label tier: ALL CAPS, ExtraBold, wide tracking. */
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.25;
+  --text-label--letter-spacing: 0.2em;
+
+  /* Confident settle, no bounce (--ease-brand in the system). */
+  --ease-out-quiet: cubic-bezier(0.22, 0.8, 0.28, 1);
 
   --animate-rise: rise 0.7s var(--ease-out-quiet) both;
   --animate-marquee: marquee 46s linear infinite;
@@ -135,16 +142,24 @@
     background-color: var(--color-bone);
     color: var(--color-ink);
     font-family: var(--font-sans);
+    font-weight: 300;
     -webkit-font-smoothing: antialiased;
   }
 
+  /* Headline construction: Light setup → ExtraBold payoff. Headings default
+     to Light; the `.accent` span inside them carries the 800 payoff. */
   h1,
   h2,
   h3 {
     font-family: var(--font-display);
-    font-weight: 500;
+    font-weight: 300;
     text-wrap: balance;
-    letter-spacing: -0.018em;
+    letter-spacing: 0;
+  }
+
+  b,
+  strong {
+    font-weight: 800;
   }
 
   p {
@@ -163,10 +178,30 @@
 }
 
 @layer utilities {
-  /* Emphasis inside a display heading: italic serif rather than a colour block. */
+  /* The ExtraBold payoff inside a Light heading — the brand's signature
+     construction. Weight does the emphasis; the colour stays the heading's. */
   .accent {
-    font-style: italic;
-    color: var(--color-clay);
+    font-weight: 800;
+  }
+
+  /* Display text outside headings (card titles, stats, fares) is always the
+     payoff weight. Generated font-display sets the family; this adds weight. */
+  .font-display {
+    font-weight: 800;
+  }
+
+  /* The signature: a full-width spark-gradient strip anchoring light layouts. */
+  .spark-band {
+    height: 6px;
+    background: linear-gradient(90deg, #282560 0%, #7b3f7e 50%, #c44868 100%);
+  }
+
+  /* The green gradient, reserved for the "Smart Choice" lockup and eco marks. */
+  .text-gradient-green {
+    background: linear-gradient(135deg, #b5c07a 0%, #3eb391 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   /* Text link with a rule that draws itself on hover. */
@@ -190,12 +225,12 @@
     transform: scaleX(0.35);
   }
 
-  /* Darkens the base of a photo so overlaid text keeps AA contrast. */
+  /* The navy scrim — the only sanctioned way to put white type on a photo. */
   .photo-scrim {
     background: linear-gradient(
       to top,
-      color-mix(in oklab, #0c0805 82%, transparent) 0%,
-      color-mix(in oklab, #0c0805 42%, transparent) 45%,
+      color-mix(in oklab, #1c1a45 88%, transparent) 0%,
+      color-mix(in oklab, #1c1a45 46%, transparent) 45%,
       transparent 80%
     );
   }
@@ -286,5 +321,5 @@ body:has([data-page-theme="sunline"]) {
   background-color: #fffdf6;
 }
 body:has([data-page-theme="mobile-frame"]) {
-  background-color: #141816;
+  background-color: #1c1a45;
 }

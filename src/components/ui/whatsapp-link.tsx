@@ -71,8 +71,8 @@ export function WhatsAppLink({
       onClick={() => trackCtaClick({ location, subject })}
       className={cn(
         isLink
-          ? "text-[0.9375rem] font-medium"
-          : "inline-flex items-center justify-center rounded-sm font-medium tracking-[0.01em] transition-colors duration-300",
+          ? "text-[0.9375rem] font-extrabold"
+          : "inline-flex items-center justify-center rounded-sm font-extrabold tracking-[0.01em] transition-colors duration-300",
         TONES[tone],
         !isLink && SIZES[size],
         fullWidth && !isLink && "w-full",

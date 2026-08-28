@@ -92,7 +92,7 @@ export function ReviewCarousel({ reviews }: { reviews: Review[] }) {
                 {review.quote}
               </blockquote>
               <figcaption className="mt-6 text-sm">
-                <span className="font-medium text-bone">{review.author}</span>
+                <span className="font-extrabold text-bone">{review.author}</span>
                 <span className="mt-1 block text-bone/55">
                   {review.context}
                 </span>
@@ -117,7 +117,7 @@ export function ReviewCarousel({ reviews }: { reviews: Review[] }) {
             direction="next"
           />
         </div>
-        <p aria-live="polite" className="text-sm font-semibold text-bone/70">
+        <p aria-live="polite" className="text-sm font-extrabold text-bone/70">
           {Math.min(index + 1, reviews.length)} of {reviews.length}
         </p>
       </div>

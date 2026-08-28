@@ -70,7 +70,7 @@ export default function FestivalsPage() {
             <path d="M10 6.5v4.5M10 13.6v.2" />
           </svg>
           <p className="text-[0.9375rem] leading-relaxed text-ink">
-            <span className="font-semibold text-clay-deep">
+            <span className="font-extrabold text-clay-deep">
               Dates move every year.
             </span>{" "}
             Several of these follow lunar or agricultural calendars rather than

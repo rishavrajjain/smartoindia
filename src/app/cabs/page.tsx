@@ -126,16 +126,16 @@ export default function CabsPage() {
               className="flex h-full flex-col border-t border-line pt-5"
             >
               <div className="flex items-start justify-between gap-3">
-                <h3 className="font-sans text-base font-semibold text-ink">
+                <h3 className="font-sans text-base font-extrabold text-ink">
                   {vehicle.name}
                 </h3>
                 {vehicle.electric && (
-                  <span className="shrink-0 border border-clay/40 bg-clay-soft px-2.5 py-1 text-label font-medium text-clay uppercase">
+                  <span className="shrink-0 border border-clay/40 bg-clay-soft px-2.5 py-1 text-label font-extrabold text-clay uppercase">
                     Electric
                   </span>
                 )}
               </div>
-              <p className="mt-1.5 text-label font-medium text-taupe uppercase">
+              <p className="mt-1.5 text-label font-extrabold text-taupe uppercase">
                 {vehicle.seats}
               </p>
               <p className="mt-3 text-[0.9375rem] leading-relaxed text-taupe">
@@ -225,7 +225,7 @@ function ServiceCard({ service }: { service: CabService }) {
           {service.bestFor.map((use) => (
             <span
               key={use}
-              className="border border-line-strong px-2.5 py-1 text-label font-medium text-taupe uppercase"
+              className="border border-line-strong px-2.5 py-1 text-label font-extrabold text-taupe uppercase"
             >
               {use}
             </span>

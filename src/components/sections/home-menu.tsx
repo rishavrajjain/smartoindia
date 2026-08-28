@@ -62,7 +62,7 @@ export function HomeMenu() {
             className="animate-rise fixed inset-x-0 top-0 bottom-0 z-[60] mx-auto flex max-w-[26.5rem] flex-col bg-bone"
           >
           <div className="flex h-[4.5rem] shrink-0 items-center justify-between px-6">
-            <span className="text-label font-medium text-taupe uppercase">
+            <span className="text-label font-extrabold text-taupe uppercase">
               Menu
             </span>
             <button
@@ -96,7 +96,7 @@ export function HomeMenu() {
                   >
                     <span
                       aria-hidden="true"
-                      className="text-label font-medium text-taupe tabular-nums"
+                      className="text-label font-extrabold text-taupe tabular-nums"
                     >
                       {String(index + 1).padStart(2, "0")}
                     </span>
@@ -118,7 +118,7 @@ export function HomeMenu() {
             <WaCta
               message={enquiry("I would like to plan a trip in the Northeast.")}
               location="header"
-              className="inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-sm bg-ink px-6 text-[0.9375rem] font-medium text-bone transition-colors hover:bg-clay-deep"
+              className="inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-sm bg-ink px-6 text-[0.9375rem] font-extrabold text-bone transition-colors hover:bg-clay-deep"
             >
               Plan on WhatsApp
             </WaCta>

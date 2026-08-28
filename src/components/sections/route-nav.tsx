@@ -190,7 +190,7 @@ export function RouteNav({ stops }: { stops: RouteStop[] }) {
                     <RouteFlag reached={reached} />
                     <span
                       className={cn(
-                        "mt-[0.3rem] text-[0.5rem] font-semibold tracking-[0.02em] whitespace-nowrap uppercase transition-colors duration-300",
+                        "mt-[0.3rem] text-[0.5rem] font-extrabold tracking-[0.02em] whitespace-nowrap uppercase transition-colors duration-300",
                         index === activeStop
                           ? "text-ink"
                           : reached
@@ -236,7 +236,7 @@ export function RouteNav({ stops }: { stops: RouteStop[] }) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackCtaClick({ location: "sticky" })}
-            className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-xl bg-ink px-4 text-sm font-medium text-bone shadow-sm transition-colors duration-300 hover:bg-clay-deep"
+            className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-xl bg-ink px-4 text-sm font-extrabold text-bone shadow-sm transition-colors duration-300 hover:bg-clay-deep"
           >
             <WhatsAppIcon />
             <span>Plan</span>

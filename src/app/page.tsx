@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Viewport } from "next";
-import { Fraunces, Source_Serif_4 } from "next/font/google";
 
 import { CabOrbit } from "@/components/sections/cab-orbit";
 import {
@@ -29,7 +28,7 @@ export const metadata = pageMetadata({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#1d6b98",
+  themeColor: "#1c1a45",
   colorScheme: "light",
 };
 
@@ -42,23 +41,6 @@ export const viewport: Viewport = {
  * between breakpoints. Global site chrome steps aside (data-page-theme); the
  * fixed WhatsApp bar at the bottom is the one persistent action.
  */
-
-/* Hero title faces: a refined serif for "Explore" and a characterful,
-   optically-soft Fraunces for "North East" — funky curves, still premium. */
-const sourceSerif = Source_Serif_4({
-  variable: "--font-hero-title",
-  subsets: ["latin"],
-  display: "swap",
-  weight: "400",
-});
-
-const fraunces = Fraunces({
-  variable: "--font-hero-funky",
-  subsets: ["latin"],
-  display: "swap",
-  style: ["italic"],
-  axes: ["opsz", "SOFT", "WONK"],
-});
 
 /* Manav's hero copy, timed to the film's beats (video seconds). Fares are
    owner-supplied. */
@@ -164,7 +146,7 @@ export default function HomePage() {
         <section
           id="home-top"
           aria-label="A short film of a Smarto journey: landing at Guwahati airport, taking a Smarto cab through the hills, and arriving at the railway station"
-          className={`${sourceSerif.variable} ${fraunces.variable} relative h-svh overflow-hidden`}
+          className="relative h-svh overflow-hidden"
         >
           <HeroVideo
             src="/video/hero-reel.mp4"
@@ -174,11 +156,11 @@ export default function HomePage() {
           {/* Gentle grades so the title and cards stay legible over motion. */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 h-[36%] bg-gradient-to-b from-[rgba(12,8,5,0.55)] via-[rgba(12,8,5,0.24)] to-transparent"
+            className="pointer-events-none absolute inset-x-0 top-0 h-[36%] bg-gradient-to-b from-[rgba(28,26,69,0.6)] via-[rgba(28,26,69,0.26)] to-transparent"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-[rgba(12,8,5,0.6)] via-[rgba(12,8,5,0.28)] to-transparent"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-[rgba(28,26,69,0.66)] via-[rgba(28,26,69,0.3)] to-transparent"
           />
           {/* Manav's caption choreography, synced to the film's own clock —
               each line rides its scene and loops with the video. */}
@@ -208,16 +190,16 @@ export default function HomePage() {
         <section id="home-outstation" className="scroll-mt-6 pt-14">
           <div className="flex items-end justify-between gap-4 px-6">
             <div>
-              <p className="text-label font-medium text-clay uppercase">
+              <p className="text-label font-extrabold text-clay uppercase">
                 Outstation
               </p>
-              <h2 className="mt-3 font-display text-[1.75rem] leading-tight">
-                Roads out of town
+              <h2 className="mt-3 text-[1.75rem] leading-tight">
+                Roads <span className="accent">out of town</span>
               </h2>
             </div>
             <Link
               href="/packages"
-              className="link-rule shrink-0 text-[0.8125rem] font-medium text-ink"
+              className="link-rule shrink-0 text-[0.8125rem] font-extrabold text-ink"
             >
               All trips
             </Link>
@@ -227,9 +209,9 @@ export default function HomePage() {
 
         {/* ——— Cabs: the stat, the differentiators, and the fare list. */}
         <section id="home-cabs" className="scroll-mt-6 px-6 pt-16">
-          <p className="text-label font-medium text-clay uppercase">Cabs</p>
-          <h2 className="mt-3 font-display text-[1.75rem] leading-tight">
-            Flat fares, no surprises
+          <p className="text-label font-extrabold text-clay uppercase">Cabs</p>
+          <h2 className="mt-3 text-[1.75rem] leading-tight">
+            Flat fares, <span className="accent">no surprises</span>
           </h2>
 
           {/* Figure from Manav's wireframe. Owner-supplied — confirm before
@@ -238,7 +220,7 @@ export default function HomePage() {
             <span className="font-display text-[2.75rem] leading-none text-clay">
               50,000+
             </span>
-            <span className="text-label font-medium text-taupe uppercase">
+            <span className="text-label font-extrabold text-taupe uppercase">
               customers
               <br />
               driven so far
@@ -250,7 +232,7 @@ export default function HomePage() {
             {CAB_FEATURES.map((feature) => (
               <li
                 key={feature}
-                className="rounded-full bg-clay-soft px-3 py-1.5 text-[0.75rem] font-medium text-clay-deep"
+                className="rounded-full bg-clay-soft px-3 py-1.5 text-[0.75rem] font-extrabold text-clay-deep"
               >
                 {feature}
               </li>
@@ -268,17 +250,17 @@ export default function HomePage() {
           className="mt-16 scroll-mt-6 bg-ink py-14 text-bone"
         >
           <div className="px-6">
-            <p className="text-label font-medium text-clay-bright uppercase">
+            <p className="text-label font-extrabold text-clay-bright uppercase">
               Corporate
             </p>
-            <h2 className="mt-3 font-display text-[1.75rem] leading-tight text-bone">
-              Teams that arrive on time
+            <h2 className="mt-3 text-[1.75rem] leading-tight text-bone">
+              Teams that <span className="accent">arrive on time</span>
             </h2>
             <p className="mt-3 text-[0.9375rem] leading-relaxed text-bone/70">
               Employee transport, offsites, and everyday movement — one point of
               contact, billing your finance team will not argue with.
             </p>
-            <p className="mt-8 text-label font-medium text-bone/55 uppercase">
+            <p className="mt-8 text-label font-extrabold text-bone/55 uppercase">
               Trusted by teams at
             </p>
           </div>
@@ -313,7 +295,7 @@ export default function HomePage() {
                 "I would like to discuss corporate transport for my team.",
               )}
               location="home-corporate"
-              className="inline-flex min-h-12 items-center gap-2.5 rounded-sm bg-bone px-6 text-[0.9375rem] font-medium text-ink transition-colors hover:bg-white"
+              className="inline-flex min-h-12 items-center gap-2.5 rounded-sm bg-bone px-6 text-[0.9375rem] font-extrabold text-ink transition-colors hover:bg-white"
             >
               Talk to us about your team
             </WaCta>
@@ -322,9 +304,9 @@ export default function HomePage() {
 
         {/* ——— Festivals: a visual grid of the region's big gatherings. */}
         <section id="home-festivals" className="scroll-mt-6 px-6 pt-16">
-          <p className="text-label font-medium text-clay uppercase">Festivals</p>
-          <h2 className="mt-3 font-display text-[1.75rem] leading-tight">
-            Travel by the calendar
+          <p className="text-label font-extrabold text-clay uppercase">Festivals</p>
+          <h2 className="mt-3 text-[1.75rem] leading-tight">
+            Travel <span className="accent">by the calendar</span>
           </h2>
           <ul className="mt-6 grid grid-cols-2 gap-3.5">
             {FESTIVAL_PICKS.map((festival) => (
@@ -345,14 +327,14 @@ export default function HomePage() {
                     aria-hidden="true"
                     className="photo-scrim absolute inset-0"
                   />
-                  <span className="absolute top-3 right-3 rounded-full bg-bone/90 px-2.5 py-1 text-[0.625rem] font-semibold tracking-[0.1em] text-ink uppercase backdrop-blur-sm">
+                  <span className="absolute top-3 right-3 rounded-full bg-bone/90 px-2.5 py-1 text-[0.625rem] font-extrabold tracking-[0.1em] text-ink uppercase backdrop-blur-sm">
                     {festival.month}
                   </span>
                   <span className="absolute inset-x-0 bottom-0 p-3.5">
                     <span className="block font-display text-[1.1875rem] leading-tight text-bone">
                       {festival.name}
                     </span>
-                    <span className="mt-0.5 block text-[0.6875rem] font-medium tracking-[0.1em] text-bone/75 uppercase">
+                    <span className="mt-0.5 block text-[0.6875rem] font-extrabold tracking-[0.1em] text-bone/75 uppercase">
                       {festival.state}
                     </span>
                   </span>
@@ -363,7 +345,7 @@ export default function HomePage() {
           <div className="mt-6">
             <Link
               href="/festivals"
-              className="link-rule text-[0.9375rem] font-medium text-ink"
+              className="link-rule text-[0.9375rem] font-extrabold text-ink"
             >
               The full calendar
             </Link>
@@ -379,19 +361,21 @@ export default function HomePage() {
         <section aria-labelledby="home-reviews" className="pt-16">
           <h2
             id="home-reviews"
-            className="px-6 text-label font-medium text-taupe uppercase"
+            className="px-6 text-label font-extrabold text-taupe uppercase"
           >
             From past trips
           </h2>
           <ul className="no-scrollbar mt-5 flex snap-x snap-mandatory gap-3.5 overflow-x-auto px-6 pb-2">
             {REVIEWS.slice(0, 4).map((review) => (
               <li key={review.id} className="w-[17rem] shrink-0 snap-start">
-                <figure className="flex h-full flex-col rounded-2xl border border-line bg-paper p-5">
-                  <blockquote className="flex-1 font-display text-[1.0625rem] leading-relaxed text-ink">
+                <figure className="flex h-full flex-col rounded-2xl bg-sand p-5">
+                  <blockquote className="flex-1 text-[1.0625rem] leading-relaxed text-ink">
                     &ldquo;{review.quote}&rdquo;
                   </blockquote>
                   <figcaption className="mt-4 border-t border-line pt-3 text-[0.8125rem]">
-                    <span className="font-medium text-ink">{review.author}</span>
+                    <span className="font-extrabold text-ink">
+                      {review.author}
+                    </span>
                     <span className="mt-0.5 block text-taupe">
                       {review.context}
                     </span>
@@ -411,13 +395,19 @@ export default function HomePage() {
           id="home-footer"
           className="mt-16 scroll-mt-6 border-t border-line px-6 pt-10 pb-36 text-center"
         >
-          <p className="font-display text-[1.5rem] leading-tight">
-            Smart People, <span className="accent">Smart Choice</span>.
+          {/* The tagline lockup: Light setup, ExtraBold payoff, "Choice" in
+              the green gradient — per the brand system's logo section. */}
+          <p className="text-[1.5rem] leading-tight text-taupe">
+            Smart People,{" "}
+            <span className="accent">
+              Smart <span className="text-gradient-green">Choice</span>
+            </span>
+            .
           </p>
 
           <dl className="mx-auto mt-7 max-w-xs space-y-4 text-[0.875rem]">
             <div>
-              <dt className="text-label font-medium text-taupe uppercase">
+              <dt className="text-label font-extrabold text-taupe uppercase">
                 WhatsApp &amp; calls
               </dt>
               <dd className="mt-1">
@@ -430,7 +420,7 @@ export default function HomePage() {
               </dd>
             </div>
             <div>
-              <dt className="text-label font-medium text-taupe uppercase">
+              <dt className="text-label font-extrabold text-taupe uppercase">
                 Email
               </dt>
               <dd className="mt-1">
@@ -443,7 +433,7 @@ export default function HomePage() {
               </dd>
             </div>
             <div>
-              <dt className="text-label font-medium text-taupe uppercase">
+              <dt className="text-label font-extrabold text-taupe uppercase">
                 Office
               </dt>
               <dd className="mt-1 leading-relaxed text-taupe">{SITE.address}</dd>
@@ -455,6 +445,9 @@ export default function HomePage() {
             details are confirmed on WhatsApp before travel.
           </p>
         </footer>
+
+        {/* The signature: every light layout is anchored by the spark band. */}
+        <div aria-hidden="true" className="spark-band" />
 
         {/* ——— The route bar: section navigation and the persistent CTA. */}
         <RouteNav stops={ROUTE_STOPS} />

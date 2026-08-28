@@ -58,11 +58,11 @@ export default function ImpactPage() {
             <li key={commitment.id} className="reveal border-t border-line pt-6">
               <span
                 aria-hidden="true"
-                className="font-display text-2xl font-semibold text-terracotta tabular-nums"
+                className="font-display text-2xl font-extrabold text-terracotta tabular-nums"
               >
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <h2 className="mt-1 font-sans text-[1.0625rem] font-semibold text-ink">
+              <h2 className="mt-1 font-sans text-[1.0625rem] font-extrabold text-ink">
                 {commitment.title}
               </h2>
               <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-taupe">

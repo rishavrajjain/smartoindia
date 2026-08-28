@@ -28,17 +28,17 @@ export function PackageCard({ item, sizes, priority = false }: PackageCardProps)
           priority={priority}
           className="zoom-slow object-cover"
         />
-        <span className="absolute top-4 left-4 border border-bone/40 bg-ink/35 px-2.5 py-1 text-label font-medium text-bone uppercase backdrop-blur-sm">
+        <span className="absolute top-4 left-4 border border-bone/40 bg-ink/35 px-2.5 py-1 text-label font-extrabold text-bone uppercase backdrop-blur-sm">
           {item.state}
         </span>
       </div>
 
       <div className="mt-5 flex flex-1 flex-col border-t border-line pt-4">
         <div className="flex items-baseline justify-between gap-4">
-          <p className="text-label font-medium text-taupe uppercase">
+          <p className="text-label font-extrabold text-taupe uppercase">
             {item.durationLabel}
           </p>
-          <p className="text-label font-medium text-clay uppercase">
+          <p className="text-label font-extrabold text-clay uppercase">
             {item.priceLabel}
           </p>
         </div>

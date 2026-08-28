@@ -126,7 +126,7 @@ export function TripCoverflow({ trips }: { trips: TravelPackage[] }) {
         <li key={trip.slug} className="shrink-0 snap-center">
           <Link
             href={`/packages/${trip.slug}`}
-            className="relative block h-[17.5rem] w-[13rem] overflow-hidden rounded-[1.25rem] bg-sand shadow-[0_18px_38px_-14px_rgba(14,11,20,0.4)] ring-1 ring-ink/10 will-change-transform"
+            className="relative block h-[17.5rem] w-[13rem] overflow-hidden rounded-2xl bg-sand shadow-[0_18px_38px_-14px_rgba(28,26,69,0.45)] will-change-transform"
           >
             <Image
               src={trip.hero.src}
@@ -144,7 +144,7 @@ export function TripCoverflow({ trips }: { trips: TravelPackage[] }) {
               <span className="block font-display text-[1.1875rem] leading-snug text-bone">
                 {trip.title}
               </span>
-              <span className="mt-1.5 block text-[0.6875rem] font-medium tracking-[0.16em] text-bone/75 uppercase">
+              <span className="mt-1.5 block text-[0.6875rem] font-extrabold tracking-[0.16em] text-bone/75 uppercase">
                 {trip.durationLabel}
               </span>
             </span>

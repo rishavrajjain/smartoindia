@@ -85,7 +85,7 @@ export default async function PackageDetailPage(
           </WhatsAppLink>
           <Link
             href="/packages"
-            className="link-rule text-[0.9375rem] font-medium text-ink"
+            className="link-rule text-[0.9375rem] font-extrabold text-ink"
           >
             All trips
           </Link>
@@ -190,12 +190,12 @@ export default async function PackageDetailPage(
                     )}
                     <span
                       aria-hidden="true"
-                      className="relative z-10 flex size-11 shrink-0 items-center justify-center rounded-full bg-clay font-display text-base font-semibold text-bone tabular-nums"
+                      className="relative z-10 flex size-11 shrink-0 items-center justify-center rounded-full bg-clay font-display text-base font-extrabold text-bone tabular-nums"
                     >
                       {day.day}
                     </span>
                     <div className="min-w-0 pt-1.5">
-                      <h3 className="font-sans text-[1.0625rem] font-semibold text-ink">
+                      <h3 className="font-sans text-[1.0625rem] font-extrabold text-ink">
                         <span className="sr-only">Day {day.day}: </span>
                         {day.title}
                       </h3>
@@ -203,7 +203,7 @@ export default async function PackageDetailPage(
                         {day.description}
                       </p>
                       <p className="mt-2.5 text-sm text-taupe">
-                        <span className="font-medium text-ink">
+                        <span className="font-extrabold text-ink">
                           {day.stay ? "Overnight: " : "Departure day"}
                         </span>
                         {day.stay}
@@ -257,7 +257,7 @@ export default async function PackageDetailPage(
           {/* Sidebar */}
           <aside className="lg:sticky lg:top-28 lg:self-start">
             <div className="relative overflow-hidden rounded-sm bg-ink p-6 lg:p-7">
-              <p className="text-label font-medium text-ochre uppercase">
+              <p className="text-label font-extrabold text-ochre uppercase">
                 {item.durationLabel}
               </p>
               <h2 className="mt-3 text-[1.75rem] leading-tight text-bone">
@@ -282,20 +282,20 @@ export default async function PackageDetailPage(
               </div>
               <dl className="mt-7 space-y-4 border-t border-bone/20 pt-6 text-sm">
                 <div>
-                  <dt className="font-semibold text-bone/60">Best season</dt>
-                  <dd className="mt-1 font-medium text-bone">{item.bestSeasonLabel}</dd>
+                  <dt className="font-extrabold text-bone/60">Best season</dt>
+                  <dd className="mt-1 font-extrabold text-bone">{item.bestSeasonLabel}</dd>
                 </div>
                 <div>
-                  <dt className="font-semibold text-bone/60">Ideal for</dt>
-                  <dd className="mt-1 font-medium text-bone">{item.idealFor.join(", ")}</dd>
+                  <dt className="font-extrabold text-bone/60">Ideal for</dt>
+                  <dd className="mt-1 font-extrabold text-bone">{item.idealFor.join(", ")}</dd>
                 </div>
                 <div>
-                  <dt className="font-semibold text-bone/60">Style</dt>
+                  <dt className="font-extrabold text-bone/60">Style</dt>
                   <dd className="mt-1.5 flex flex-wrap gap-1.5">
                     {item.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="border border-bone/30 px-2.5 py-1 text-label font-medium text-bone/85 uppercase"
+                        className="border border-bone/30 px-2.5 py-1 text-label font-extrabold text-bone/85 uppercase"
                       >
                         {tag}
                       </span>
@@ -345,7 +345,7 @@ export default async function PackageDetailPage(
 function Fact({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <dt className="text-label font-medium text-clay-deep uppercase">
+      <dt className="text-label font-extrabold text-clay-deep uppercase">
         {label}
       </dt>
       <dd className="mt-2 text-[0.9375rem] text-ink">
@@ -368,7 +368,7 @@ function ListCard({
 
   return (
     <div className="border-t border-line pt-5">
-      <h3 className="font-sans text-base font-semibold text-ink">{title}</h3>
+      <h3 className="font-sans text-base font-extrabold text-ink">{title}</h3>
       <ul className="mt-3.5 space-y-2.5">
         {items.map((entry) => (
           <li key={entry} className="flex gap-3 text-[0.9375rem] leading-relaxed">
@@ -399,7 +399,7 @@ function ListCard({
 function NoteBlock({ title, body }: { title: string; body: string }) {
   return (
     <div className="rounded-sm bg-sand p-5">
-      <h3 className="font-sans text-base font-semibold text-ink">{title}</h3>
+      <h3 className="font-sans text-base font-extrabold text-ink">{title}</h3>
       <p className="mt-2 leading-relaxed text-taupe">{body}</p>
     </div>
   );

@@ -137,7 +137,7 @@ export function SiteHeader() {
                   >
                     <span
                       aria-hidden="true"
-                      className="text-label font-medium text-taupe tabular-nums"
+                      className="text-label font-extrabold text-taupe tabular-nums"
                     >
                       {String(index + 1).padStart(2, "0")}
                     </span>

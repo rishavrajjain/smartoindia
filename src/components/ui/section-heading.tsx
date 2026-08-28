@@ -35,7 +35,7 @@ export function SectionHeading({
       {eyebrow && (
         <p
           className={cn(
-            "text-label font-medium uppercase",
+            "text-label font-extrabold uppercase",
             dark ? "text-bone/60" : "text-clay",
           )}
         >

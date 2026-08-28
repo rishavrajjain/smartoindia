@@ -13,7 +13,7 @@ export const metadata = {
 export default function NotFound() {
   return (
     <Container width="default" className="py-24 lg:py-36">
-      <p className="text-label font-medium text-clay-deep uppercase">
+      <p className="text-label font-extrabold text-clay-deep uppercase">
         404
       </p>
       <h1 className="mt-4 text-[2.5rem] leading-[1.05] text-ink sm:text-[3.5rem]">
@@ -31,7 +31,7 @@ export default function NotFound() {
               href={item.href}
               className="flex h-full flex-col border-t border-line pt-5 transition-colors hover:border-ink/40"
             >
-              <span className="font-sans text-base font-semibold text-ink">
+              <span className="font-sans text-base font-extrabold text-ink">
                 {item.label}
               </span>
               <span className="mt-1 text-sm text-taupe">
@@ -45,7 +45,7 @@ export default function NotFound() {
       <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
         <Link
           href="/"
-          className="inline-flex min-h-12 items-center justify-center rounded-sm bg-ink px-6 text-[0.9375rem] font-medium text-bone transition-colors hover:bg-clay-deep"
+          className="inline-flex min-h-12 items-center justify-center rounded-sm bg-ink px-6 text-[0.9375rem] font-extrabold text-bone transition-colors hover:bg-clay-deep"
         >
           Back to home
         </Link>

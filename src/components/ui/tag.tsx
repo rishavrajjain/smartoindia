@@ -15,7 +15,7 @@ export function Tag({
   return (
     <span
       className={cn(
-        "inline-flex items-center border px-2.5 py-1 text-label font-medium uppercase",
+        "inline-flex items-center border px-2.5 py-1 text-label font-extrabold uppercase",
         tone === "light" && "border-line-strong text-taupe",
         tone === "sand" && "border-line-strong bg-sand text-ink",
         tone === "dark" && "border-bone/25 text-bone/85",
