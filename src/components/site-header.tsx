@@ -71,7 +71,7 @@ export function SiteHeader() {
                   className={cn(
                     "relative inline-flex h-11 items-center text-[0.9375rem] transition-colors",
                     isActive(item.href)
-                      ? "text-ink after:absolute after:inset-x-0 after:bottom-2.5 after:h-px after:bg-clay"
+                      ? "text-ink after:absolute after:inset-x-0 after:bottom-2.5 after:h-px after:bg-[linear-gradient(90deg,#282560_0%,#7b3f7e_50%,#c44868_100%)]"
                       : "text-taupe hover:text-ink",
                   )}
                 >

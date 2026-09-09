@@ -164,10 +164,13 @@ export function RouteNav({ stops }: { stops: RouteStop[] }) {
               {/* Road bed and the fill that trails the cab. Sits below the
                   flags so the route reads left-to-right. */}
               <div className="absolute inset-x-0 top-[1.6rem] h-px bg-line-strong" />
+              {/* The travelled road is the spark gradient, revealed from the
+                  left with a clip rather than scaled, so navy sits at the start
+                  and magenta only arrives with the last stop. */}
               <div
                 aria-hidden="true"
-                className="absolute inset-x-0 top-[1.6rem] h-px origin-left bg-clay transition-transform duration-150"
-                style={{ transform: "scaleX(var(--trip, 0))" }}
+                className="spark-fill absolute inset-x-0 top-[1.6rem] h-px transition-[clip-path] duration-150"
+                style={{ clipPath: "inset(0 calc((1 - var(--trip, 0)) * 100%) 0 0)" }}
               />
 
               {/* Stops: a little route flag planted on the road, its section

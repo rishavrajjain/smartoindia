@@ -234,6 +234,23 @@
     background: linear-gradient(90deg, #282560 0%, #7b3f7e 50%, #c44868 100%);
   }
 
+  /* The same gradient as a fill for hairlines, edges and progress strips.
+     Reveal it with clip-path, never scale it: scaling squashes the colours. */
+  .spark-fill {
+    background: linear-gradient(90deg, #282560 0%, #7b3f7e 50%, #c44868 100%);
+  }
+
+  /* A soft spark glow for the corner of a dark band (the system's "hero glow"). */
+  .spark-glow {
+    background: radial-gradient(
+      closest-side at 50% 50%,
+      rgba(196, 72, 104, 0.55) 0%,
+      rgba(123, 63, 126, 0.32) 45%,
+      transparent 100%
+    );
+    filter: blur(28px);
+  }
+
   /* The green gradient, reserved for the "Smart Choice" lockup and eco marks. */
   .text-gradient-green {
     background: linear-gradient(135deg, #b5c07a 0%, #3eb391 100%);
@@ -255,12 +272,17 @@
     inset-inline: 0;
     bottom: -0.35rem;
     height: 1px;
-    background-color: currentColor;
+    /* The rule under a text link carries the spark on light grounds. */
+    background: linear-gradient(90deg, #282560 0%, #7b3f7e 50%, #c44868 100%);
     transform-origin: left;
     transition: transform 0.45s var(--ease-out-quiet);
   }
   .link-rule:hover::after {
     transform: scaleX(0.35);
+  }
+  /* On dark grounds the gradient would vanish into the navy; use the text colour. */
+  .link-rule-on-dark::after {
+    background: currentColor;
   }
 
   /* The navy scrim, the only sanctioned way to put white type on a photo. */

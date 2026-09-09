@@ -47,8 +47,8 @@ export function FlightsTeaser() {
               <p className="mt-1 truncate text-[0.75rem] text-taupe">{from.city}</p>
             </div>
 
-            {/* The route, with the plane crossing it. */}
-            <div className="relative mb-3 h-px flex-1 bg-line-strong">
+            {/* The route, drawn in the spark, with the plane crossing it. */}
+            <div className="spark-fill relative mb-3 h-px flex-1">
               <span className="absolute top-1/2 left-0 size-1.5 -translate-y-1/2 rounded-full bg-ink" />
               <span className="absolute top-1/2 right-0 size-1.5 -translate-y-1/2 rounded-full bg-ink" />
               <span

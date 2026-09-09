@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
 
+import { ScrollSpark } from "@/components/scroll-spark";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StickyWhatsApp } from "@/components/sticky-whatsapp";
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
+        <ScrollSpark />
         <SiteHeader />
         <main id="main" className="flex-1">
           {children}

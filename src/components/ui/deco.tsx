@@ -57,12 +57,10 @@ export function Eyebrow({
         className,
       )}
     >
+      {/* The rule before the label is a sliver of the spark on light grounds. */}
       <span
         aria-hidden="true"
-        className={cn(
-          "h-px w-8",
-          tone === "dark" ? "bg-bone/35" : "bg-line-strong",
-        )}
+        className={cn("h-px w-8", tone === "dark" ? "bg-bone/35" : "spark-fill")}
       />
       {children}
     </p>

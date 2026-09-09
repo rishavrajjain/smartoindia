@@ -264,9 +264,14 @@ export default function HomePage() {
         {/* --- Corporate: a quiet dark band with a revolving client wall. */}
         <section
           id="home-corporate"
-          className="mt-16 scroll-mt-6 bg-ink py-14 text-bone"
+          className="relative mt-16 scroll-mt-6 overflow-hidden bg-ink py-14 text-bone"
         >
-          <div className="px-6">
+          {/* A spark glow in the corner of the dark band, the system's hero glow. */}
+          <div
+            aria-hidden="true"
+            className="spark-glow pointer-events-none absolute -top-24 -right-16 size-72"
+          />
+          <div className="relative px-6">
             <p className="text-label font-extrabold text-clay-bright uppercase">
               Corporate
             </p>
