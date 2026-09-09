@@ -44,14 +44,10 @@ function config(): ApiResult<{ url: string; key: string }> {
   if (!url || !key) {
     return { ok: false, code: "config", message: "Flight search is not configured." };
   }
-  // Staging inventory is test data; it must never be shown as a real fare.
-  if (process.env.VERCEL_ENV === "production" && /staging/i.test(url)) {
-    return {
-      ok: false,
-      code: "config",
-      message: "Flight search is pointed at a test system.",
-    };
-  }
+  // The vendor's staging system is allowed everywhere, production included,
+  // while the site has no public users (RRJ, Sep 2026). Its fares are stub
+  // data, so the UI labels them "Test fares" wherever they appear. Reinstate a
+  // production check here before launch if real credentials are still pending.
   return { ok: true, value: { url, key } };
 }
 

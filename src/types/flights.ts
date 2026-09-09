@@ -115,7 +115,7 @@ export interface BookingConfirmation {
 }
 
 export type ApiErrorCode =
-  /** Missing key or URL, or staging credentials in production. */
+  /** Missing key or URL. */
   | "config"
   /** Could not reach the API or it timed out. */
   | "network"

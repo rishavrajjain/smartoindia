@@ -41,8 +41,10 @@ block-seat inventory rather than a live GDS, so empty results are normal.
   that issues tickets through `AirBook`. That debits Smarto's agency wallet
   without collecting payment from the visitor, so it stays off until a payment
   process exists. Never test it against a wallet that holds real money.
-- The staging endpoint returns test inventory (one DEL→GAU fare). The client
-  refuses a staging URL in production and labels fares "Test fares" elsewhere.
+- The staging endpoint returns test inventory (one DEL→GAU fare). Fares from it
+  are labelled "Test fares". Production currently points at staging too, by
+  decision, while the site has no public users; swap in real credentials (and
+  consider re-adding a production guard in `agentbazar.ts`) before launch.
 
 ## Scripts
 
