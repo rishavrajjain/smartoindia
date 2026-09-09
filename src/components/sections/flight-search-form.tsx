@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { useId, useState, type ReactNode } from "react";
 import { useFormStatus } from "react-dom";
 
+import { requestScrollToResults } from "@/components/sections/scroll-to-results";
 import { ChevronIcon, PlaneIcon, SwapIcon } from "@/components/ui/flight-icons";
 import { POPULAR_SECTORS, findAirport } from "@/data/airports";
 import { cn } from "@/lib/cn";
@@ -126,7 +127,14 @@ function FlightSearchForm({
   };
 
   return (
-    <Form action="/flights" className="flex min-w-0 flex-col gap-3" aria-labelledby={`${id}-title`}>
+    <Form
+      action="/flights"
+      // Flags the submission so the results scroll into view on phones. No
+      // preventDefault: next/form still owns the navigation.
+      onSubmit={requestScrollToResults}
+      className="flex min-w-0 flex-col gap-3"
+      aria-labelledby={`${id}-title`}
+    >
       <h2 id={`${id}-title`} className="sr-only">
         Search flights
       </h2>
@@ -309,6 +317,7 @@ function FlightSearchForm({
               <li key={`${a}-${b}`} className="shrink-0">
                 <Link
                   href={`/flights?from=${a}&to=${b}&date=${defaultDate}`}
+                  onClick={requestScrollToResults}
                   aria-current={active ? "true" : undefined}
                   className={cn(
                     "inline-flex h-10 items-center gap-2 rounded-full border px-4 text-[0.8125rem] whitespace-nowrap transition-colors duration-200",
