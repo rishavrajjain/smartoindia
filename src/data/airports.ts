@@ -5,11 +5,11 @@ import type { Airport } from "@/types/flights";
  *
  * Curated rather than exhaustive: the Northeast and its gateways first, then
  * the Indian cities people actually fly to the region from. Codes and names are
- * public IATA facts, not business claims. Inventory is a separate question — the
+ * public IATA facts, not business claims. Inventory is a separate question, the
  * upstream is fixed-departure stock, so many pairs will simply return nothing.
  */
 export const AIRPORTS: Airport[] = [
-  // ——— Northeast and its gateways
+  // --- Northeast and its gateways
   {
     code: "GAU",
     city: "Guwahati",
@@ -55,7 +55,7 @@ export const AIRPORTS: Airport[] = [
     region: "northeast",
   },
 
-  // ——— Rest of India
+  // --- Rest of India
   { code: "DEL", city: "Delhi", name: "Indira Gandhi International", state: "Delhi", region: "india" },
   {
     code: "BOM",

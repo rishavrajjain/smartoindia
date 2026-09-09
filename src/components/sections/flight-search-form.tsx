@@ -19,8 +19,8 @@ import {
 import type { Airport, TripType } from "@/types/flights";
 
 /*
- * The search form. Every control is a native element — selects, date inputs,
- * radios, number inputs — dressed as flat mist tiles, so the phone's own
+ * The search form. Every control is a native element, selects, date inputs,
+ * radios, number inputs, dressed as flat mist tiles, so the phone's own
  * pickers do the heavy lifting, screen readers get real semantics, and the
  * form still submits as a plain GET without JavaScript. `next/form` turns that
  * GET into a client-side navigation to /flights?… and prefetches the results
@@ -131,7 +131,7 @@ function FlightSearchForm({
         Search flights
       </h2>
 
-      {/* ——— One way / round trip. Radios under a sliding indicator. */}
+      {/* --- One way / round trip. Radios under a sliding indicator. */}
       <fieldset className="relative grid grid-cols-2 rounded-2xl bg-sand p-1">
         <legend className="sr-only">Trip type</legend>
         <span
@@ -170,7 +170,7 @@ function FlightSearchForm({
         ))}
       </fieldset>
 
-      {/* ——— Where. Two tiles with the swap button riding the seam. */}
+      {/* --- Where. Two tiles with the swap button riding the seam. */}
       <div className="relative grid grid-cols-2 gap-3">
         <AirportTile
           label="From"
@@ -209,7 +209,7 @@ function FlightSearchForm({
         </p>
       )}
 
-      {/* ——— When. */}
+      {/* --- When. */}
       <div className="grid grid-cols-2 gap-3">
         <DateTile
           label="Departure"
@@ -243,7 +243,7 @@ function FlightSearchForm({
         )}
       </div>
 
-      {/* ——— Who. A details tile: the summary reads like the other tiles, the
+      {/* --- Who. A details tile: the summary reads like the other tiles, the
           steppers unfold beneath it. Number inputs carry the values, so the
           form posts correctly whether or not the panel is open. */}
       <details className="group rounded-2xl bg-sand">
@@ -295,7 +295,7 @@ function FlightSearchForm({
 
       <SubmitButton disabled={sameAirport} />
 
-      {/* ——— Quick picks: the sectors people ask us about most. Real links, so
+      {/* --- Quick picks: the sectors people ask us about most. Real links, so
           they work before hydration and can be shared. */}
       <div className="pt-2">
         <p className="text-label font-extrabold text-taupe uppercase">Popular routes</p>
@@ -330,7 +330,7 @@ function FlightSearchForm({
   );
 }
 
-/* ——— Tiles. */
+/* --- Tiles. */
 
 function Tile({
   label,
@@ -411,7 +411,7 @@ function AirportTile({
           <optgroup key={group.label} label={group.label}>
             {group.airports.map((a) => (
               <option key={a.code} value={a.code}>
-                {a.city} ({a.code}) — {a.name}
+                {a.city} ({a.code}), {a.name}
               </option>
             ))}
           </optgroup>

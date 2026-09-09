@@ -21,13 +21,13 @@ import { cn } from "@/lib/cn";
  *
  * Safari/Chrome autoplay rules: `muted` must be set on the element before
  * play is attempted, and React does not reliably render the muted attribute
- * into SSR markup — so it is set imperatively in a ref callback, with
+ * into SSR markup, so it is set imperatively in a ref callback, with
  * `playsInline` for iOS. If autoplay is still blocked (Low Power Mode), the
  * first touch resumes it; failing that, the poster simply stays. Reduced
  * motion never starts the video at all.
  *
  * Desktop gets the picture, not the film: on large screens (≥1024px) the
- * video element is never mounted, so not a byte of it is downloaded — the
+ * video element is never mounted, so not a byte of it is downloaded, the
  * industry-standard treatment for a vertical, mobile-first hero film.
  */
 /**
@@ -63,7 +63,7 @@ export function HeroVideo({
   src: string;
   poster: string;
   alt: string;
-  /** Poster image sizes hint — pass "100vw" for full-width heroes. */
+  /** Poster image sizes hint, pass "100vw" for full-width heroes. */
   sizes?: string;
 }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);

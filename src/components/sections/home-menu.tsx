@@ -11,8 +11,8 @@ import { enquiry, WHATSAPP_DISPLAY } from "@/lib/whatsapp";
 /**
  * Top-right hamburger for the homepage.
  *
- * The homepage has no persistent header nav — the route bar covers in-page
- * jumps — so this opens a full-frame overlay with the site's actual routes.
+ * The homepage has no persistent header nav, the route bar covers in-page
+ * jumps, so this opens a full-frame overlay with the site's actual routes.
  * Rendered inside the hero, so the button is light over the sky; the panel
  * locks scroll and closes on Escape or navigation.
  */

@@ -2,7 +2,7 @@
 
 /*
  * Verified business facts sourced from smartocabs.com (their live site).
- * Confirm with Manav before major changes — especially the WhatsApp number,
+ * Confirm with Manav before major changes, especially the WhatsApp number,
  * which differs from the placeholder previously in the repo.
  */
 export const SITE = {
@@ -12,7 +12,7 @@ export const SITE = {
   slogan: "Smart People, Smart Choice",
   tagline: "Northeast India, travelled well",
   description:
-    "Smarto runs EV airport transfers, outstation rides, and road trips across Assam, Meghalaya, and the wider Northeast — flat fares, no surge, zero cancellation. Plan yours on WhatsApp.",
+    "Smarto runs EV airport transfers, outstation rides, and road trips across Assam, Meghalaya, and the wider Northeast: flat fares, no surge, zero cancellation. Plan yours on WhatsApp.",
   /**
    * Absolute origin used for canonical URLs, sitemap entries, and Open Graph.
    * Vercel sets VERCEL_PROJECT_PRODUCTION_URL on every deployment.

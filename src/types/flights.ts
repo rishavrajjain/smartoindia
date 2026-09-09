@@ -1,7 +1,7 @@
 /**
  * Domain types for the flight search and booking flow.
  *
- * The upstream is AgentBazar's (Tripforu Holidays) Fixed Departure API — series
+ * The upstream is AgentBazar's (Tripforu Holidays) Fixed Departure API, series
  * and block-seat inventory, not a live GDS. Everything the API returns is
  * normalised into these shapes at the boundary in `src/lib/agentbazar.ts`;
  * nothing else on the site sees the raw envelope.
@@ -123,7 +123,7 @@ export type ApiErrorCode =
   | "upstream"
   /** API rejected the request as invalid. */
   | "validation"
-  /** Signatures no longer valid — the visitor must search again. */
+  /** Signatures no longer valid, the visitor must search again. */
   | "expired"
   /** Live ticketing is switched off on this deployment. */
   | "disabled";

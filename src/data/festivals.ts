@@ -6,7 +6,7 @@ import { enquiry } from "@/lib/whatsapp";
  *
  * PLACEHOLDER CONTENT, AND TIMING-SENSITIVE.
  *
- * Most of these festivals move year to year — several follow lunar or
+ * Most of these festivals move year to year, several follow lunar or
  * agricultural calendars rather than fixed dates. Each record therefore stores
  * the month it usually falls in, the year that timing was last sanity-checked,
  * and where it came from, rather than a specific date.
@@ -14,7 +14,7 @@ import { enquiry } from "@/lib/whatsapp";
  * Before production launch, every entry must be re-checked against the relevant
  * state tourism department for the coming year and `status` flipped to
  * `"verified"`. The UI states plainly that dates shift and are confirmed on
- * WhatsApp — do not remove that caveat while these are still `"mock"`.
+ * WhatsApp, do not remove that caveat while these are still `"mock"`.
  */
 const TIMING_YEAR = 2026;
 const TIMING_SOURCE = "General published guidance; not yet confirmed with state tourism for the coming year";

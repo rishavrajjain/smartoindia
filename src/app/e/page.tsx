@@ -12,7 +12,7 @@ import { pageMetadata } from "@/lib/seo";
 import { enquiry, WHATSAPP_DISPLAY } from "@/lib/whatsapp";
 
 /**
- * Concept E — "Index".
+ * Concept E, "Index".
  *
  * Swiss-brutalist: the whole company presented as a typographic index. Paper
  * white, hard black rules, one shot of international orange, tabular data,
@@ -65,14 +65,14 @@ export default function ConceptEPage() {
       style={PALETTE}
       className={`${spaceGrotesk.variable} bg-[var(--e-paper)] font-[family-name:var(--font-e-sans)] text-[var(--e-black)] [&_:is(h1,h2,h3)]:font-[family-name:var(--font-e-sans)]`}
     >
-      {/* ——— Masthead */}
+      {/* --- Masthead */}
       <header className="border-b-2 border-[var(--e-black)]">
         <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-3 sm:px-6">
           <Link href="/e" className="text-[0.9375rem] font-bold tracking-[0.02em] uppercase" aria-label="Smarto concept E home">
             Smarto<sup aria-hidden="true">®</sup>
           </Link>
           <p className="hidden font-mono text-[0.6875rem] tracking-[0.06em] text-[var(--e-grey)] uppercase md:block">
-            Northeast India — Travel index, sheet 01
+            Northeast India: Travel index, sheet 01
           </p>
           <nav aria-label="Site">
             <ul className="flex items-center gap-5 font-mono text-[0.6875rem] tracking-[0.06em] uppercase">
@@ -89,7 +89,7 @@ export default function ConceptEPage() {
         </div>
       </header>
 
-      {/* ——— Headline block */}
+      {/* --- Headline block */}
       <section aria-labelledby="e-hero" className="border-b-2 border-[var(--e-black)]">
         <div className="px-4 py-14 sm:px-6 lg:py-20">
           <h1
@@ -99,7 +99,7 @@ export default function ConceptEPage() {
             Every road
             <br />
             in the{" "}
-            <span className="text-[var(--e-signal)]">north—</span>
+            <span className="text-[var(--e-signal)]">north-</span>
             <br />
             east.
           </h1>
@@ -111,7 +111,7 @@ export default function ConceptEPage() {
             </p>
             <p className="text-[0.9375rem] leading-relaxed sm:max-w-xs">
               Trips and transport across Assam, Meghalaya, Arunachal, Sikkim
-              and Nagaland — planned over WhatsApp, priced on request.
+              and Nagaland, planned over WhatsApp, priced on request.
             </p>
             <div className="sm:justify-self-end">
               <WaCta
@@ -126,11 +126,11 @@ export default function ConceptEPage() {
         </div>
       </section>
 
-      {/* ——— Routes index */}
+      {/* --- Routes index */}
       <section id="e-routes" aria-labelledby="e-routes-heading" className="border-b-2 border-[var(--e-black)]">
         <div className="flex items-baseline justify-between px-4 pt-10 pb-4 sm:px-6">
           <h2 id="e-routes-heading" className="text-[1.5rem] font-bold tracking-[-0.01em] uppercase">
-            01 — Routes
+            01 · Routes
           </h2>
           <p className="font-mono text-[0.6875rem] tracking-[0.06em] text-[var(--e-grey)] uppercase">
             Price: on request
@@ -165,7 +165,7 @@ export default function ConceptEPage() {
         </ul>
       </section>
 
-      {/* ——— Evidence strip */}
+      {/* --- Evidence strip */}
       <section aria-label="From the road" className="grid grid-cols-3 border-b-2 border-[var(--e-black)]">
         {[IMAGES.arunachalTawang, IMAGES.assamKaziranga, IMAGES.meghalayaRootBridge].map((img) => (
           <div key={img.src} className="relative aspect-[4/5] border-r border-[var(--e-black)] last:border-r-0 sm:aspect-[3/2]">
@@ -181,11 +181,11 @@ export default function ConceptEPage() {
         ))}
       </section>
 
-      {/* ——— Services, inverted */}
+      {/* --- Services, inverted */}
       <section id="e-services" aria-labelledby="e-services-heading" className="border-b-2 border-[var(--e-black)] bg-[var(--e-black)] text-[var(--e-paper)]">
         <div className="px-4 py-12 sm:px-6 lg:py-16">
           <h2 id="e-services-heading" className="text-[1.5rem] font-bold tracking-[-0.01em] uppercase">
-            02 — Cabs
+            02 · Cabs
           </h2>
           <ul className="mt-8 grid gap-px bg-[var(--e-paper)]/25 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map(([code, name, meta]) => (
@@ -212,15 +212,15 @@ export default function ConceptEPage() {
         </div>
       </section>
 
-      {/* ——— Festival grid */}
+      {/* --- Festival grid */}
       <section id="e-festivals" aria-labelledby="e-festivals-heading" className="border-b-2 border-[var(--e-black)]">
         <div className="px-4 py-12 sm:px-6 lg:py-16">
           <div className="flex flex-wrap items-baseline justify-between gap-4">
             <h2 id="e-festivals-heading" className="text-[1.5rem] font-bold tracking-[-0.01em] uppercase">
-              03 — Festival calendar
+              03 · Festival calendar
             </h2>
             <p className="max-w-sm font-mono text-[0.6875rem] leading-relaxed tracking-[0.04em] text-[var(--e-grey)] uppercase">
-              Months indicative — dates move with lunar and harvest calendars.
+              Months indicative: dates move with lunar and harvest calendars.
               Confirmed on WhatsApp before booking.
             </p>
           </div>
@@ -253,7 +253,7 @@ export default function ConceptEPage() {
         </div>
       </section>
 
-      {/* ——— Footer */}
+      {/* --- Footer */}
       <footer aria-label="Footer">
         <div className="flex flex-wrap items-baseline justify-between gap-4 px-4 pt-10 sm:px-6">
           <p className="font-mono text-[0.6875rem] tracking-[0.06em] text-[var(--e-grey)] uppercase">
@@ -275,7 +275,7 @@ export default function ConceptEPage() {
         </p>
       </footer>
 
-      {/* ——— Floating CTA */}
+      {/* --- Floating CTA */}
       <div className="fixed right-4 bottom-4 z-40">
         <WaCta
           message={enquiry("I would like to plan a Northeast trip.")}

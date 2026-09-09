@@ -28,7 +28,7 @@ export const viewport: Viewport = {
 /**
  * Concept homepage B, built from Manav's wireframe: cab-services-led, with the
  * page presented as one road trip. The bottom route bar (see JourneyShell) is
- * the wow feature — a Smarto cab drives Guwahati → Tawang as the visitor
+ * the wow feature, a Smarto cab drives Guwahati → Tawang as the visitor
  * scrolls, and each destination dot is also section navigation.
  */
 
@@ -141,7 +141,7 @@ export default function ConceptBPage() {
   return (
     <JourneyShell stops={STOPS}>
       <div data-page-theme="route-manifest" className="bg-bone text-ink">
-        {/* ——— Header: quiet, not sticky; the route bar is the persistent nav. */}
+        {/* --- Header: quiet, not sticky; the route bar is the persistent nav. */}
         <header className="border-b border-line">
           <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-5 sm:px-8">
             <Link href="/b" aria-label={`${SITE.name} concept B home`}>
@@ -176,7 +176,7 @@ export default function ConceptBPage() {
           </div>
         </header>
 
-        {/* ——— Stop 1 · Guwahati: the hero carousel from the wireframe. */}
+        {/* --- Stop 1 · Guwahati: the hero carousel from the wireframe. */}
         <section id="b-guwahati" aria-labelledby="b-hero-heading" className="relative">
           <h2 id="b-hero-heading" className="sr-only">
             What our cabs are for
@@ -189,7 +189,7 @@ export default function ConceptBPage() {
           </div>
         </section>
 
-        {/* ——— Stop 2 · Shillong: outstation, the four-card row. */}
+        {/* --- Stop 2 · Shillong: outstation, the four-card row. */}
         <section
           id="b-shillong"
           aria-labelledby="b-outstation-heading"
@@ -251,7 +251,7 @@ export default function ConceptBPage() {
           </div>
         </section>
 
-        {/* ——— Stop 3 · Cherrapunji: the services board. */}
+        {/* --- Stop 3 · Cherrapunji: the services board. */}
         <section
           id="b-cherrapunji"
           aria-labelledby="b-services-heading"
@@ -319,7 +319,7 @@ export default function ConceptBPage() {
           </div>
         </section>
 
-        {/* ——— Stop 4 · Kaziranga: corporate, as a quiet dark band. */}
+        {/* --- Stop 4 · Kaziranga: corporate, as a quiet dark band. */}
         <section
           id="b-kaziranga"
           aria-labelledby="b-corporate-heading"
@@ -369,7 +369,7 @@ export default function ConceptBPage() {
           </div>
         </section>
 
-        {/* ——— Stop 5 · Tawang: festivals, then the sign-off. */}
+        {/* --- Stop 5 · Tawang: festivals, then the sign-off. */}
         <section
           id="b-tawang"
           aria-labelledby="b-festivals-heading"
@@ -435,7 +435,7 @@ export default function ConceptBPage() {
           </div>
         </section>
 
-        {/* ——— Sign-off and footer strip. */}
+        {/* --- Sign-off and footer strip. */}
         <section aria-labelledby="b-final-heading" className="border-t border-line bg-sand">
           <div className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-24">
             <div className="grid gap-8 lg:grid-cols-12 lg:items-end">

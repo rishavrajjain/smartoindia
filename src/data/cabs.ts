@@ -8,7 +8,7 @@ import { IMAGES } from "./images";
  *
  * PLACEHOLDER CONTENT. Service descriptions are written to a credible shape but
  * are not confirmed operating detail. Fleet counts, vehicle models, and coverage
- * areas must come from Manav before any of this is presented as fact — which is
+ * areas must come from Manav before any of this is presented as fact, which is
  * why no record below states a number of vehicles.
  */
 export const CAB_SERVICES: CabService[] = [

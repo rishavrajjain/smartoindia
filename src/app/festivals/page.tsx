@@ -54,7 +54,7 @@ export default function FestivalsPage() {
         </WhatsAppLink>
       </PageHero>
 
-      {/* Timing caveat — prominent, because these dates genuinely move. */}
+      {/* Timing caveat, prominent, because these dates genuinely move. */}
       <Container width="wide" className="pt-12 lg:pt-16">
         <div className="flex gap-4 rounded-sm border border-line-strong bg-sand p-5">
           <svg

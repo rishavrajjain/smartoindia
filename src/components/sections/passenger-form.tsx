@@ -24,7 +24,7 @@ import type {
 /*
  * The last step. By default it is a WhatsApp handoff: names are optional, the
  * message is rebuilt as the visitor types, and the confirm button is a real
- * link into a chat with Smarto — no payment is taken on the website. Only when
+ * link into a chat with Smarto, no payment is taken on the website. Only when
  * the deployment has live ticketing switched on does the full validated form
  * with a Server Action render instead.
  */
@@ -49,7 +49,7 @@ export function PassengerForm(props: PassengerFormProps) {
   return props.liveBooking ? <LiveForm {...props} /> : <WhatsAppForm {...props} />;
 }
 
-/* ——— Default path: confirm on WhatsApp. */
+/* --- Default path: confirm on WhatsApp. */
 
 function WhatsAppForm({ query, offers, totalFare, quotedAt }: PassengerFormProps) {
   const slots = paxSlots(query);
@@ -70,7 +70,7 @@ function WhatsAppForm({ query, offers, totalFare, quotedAt }: PassengerFormProps
       <div className="px-5 pt-5 sm:px-6 sm:pt-6">
         <p className="text-label font-extrabold text-clay uppercase">Who is flying</p>
         <p className="mt-2 text-[0.875rem] leading-relaxed text-taupe">
-          Names as printed on the ID, if you have them handy. Optional now — we will ask for
+          Names as printed on the ID, if you have them handy. Optional now. We will ask for
           anything missing before the tickets are issued.
         </p>
       </div>
@@ -172,7 +172,7 @@ function paxLabel(type: PaxType, slots: PaxType[], i: number): string {
   return total > 1 ? `${PAX_LABEL[type]} ${nth}` : PAX_LABEL[type];
 }
 
-/* ——— Live path: issue tickets through the airline system. */
+/* --- Live path: issue tickets through the airline system. */
 
 const initialState: BookingFormState = { status: "idle" };
 
@@ -210,7 +210,7 @@ function LiveForm({ query, totalFare, liveBooking, selection }: PassengerFormPro
             {c.passengers.map((p, i) => (
               <li key={i} className="flex items-center justify-between gap-4 py-3 text-[0.9375rem]">
                 <span className="text-ink">{p.name}</span>
-                <span className="font-extrabold text-ink tabular-nums">PNR {p.airlinePnr || "—"}</span>
+                <span className="font-extrabold text-ink tabular-nums">PNR {p.airlinePnr || "pending"}</span>
               </li>
             ))}
           </ul>

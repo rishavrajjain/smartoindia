@@ -17,7 +17,7 @@ export interface OrbitService {
 
 /*
  * The service turntable. The Smarto cab holds the centre while the six
- * services orbit it on a flattened ellipse — front of the ring is close and
+ * services orbit it on a flattened ellipse, front of the ring is close and
  * bright, the back passes small and dim behind the car. Whichever service
  * swings to the front becomes the focus, and its card (tagline, fare,
  * WhatsApp) fades in beneath the stage.
@@ -25,7 +25,7 @@ export interface OrbitService {
  * The "3D" is arithmetic, not CSS perspective: each icon's position, scale,
  * depth order, and opacity derive from its angle on the ellipse, applied
  * directly to styles inside one rAF tween per step. Between steps nothing
- * runs — the only standing motion is the cab's CSS float. Autoplay advances
+ * runs, the only standing motion is the cab's CSS float. Autoplay advances
  * the ring every few seconds, pauses when the visitor interacts, and stops
  * entirely off-screen, in hidden tabs, and under reduced motion.
  */
@@ -72,7 +72,7 @@ export function CabOrbit({ services }: { services: readonly OrbitService[] }) {
   const iconRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const swayRef = useRef<HTMLDivElement>(null);
 
-  // The turntable engine lives entirely inside the effect — plain closure
+  // The turntable engine lives entirely inside the effect, plain closure
   // state, style writes only. JSX handlers reach it through this ref, and
   // `active` alone flows back into React (for the card + aria-current).
   const api = useRef<{ step: (d: number) => void; focus: (i: number) => void }>(
@@ -196,7 +196,7 @@ export function CabOrbit({ services }: { services: readonly OrbitService[] }) {
 
   return (
     <div>
-      {/* ——— The stage. */}
+      {/* --- The stage. */}
       {/* Full-bleed stage: the ring needs the frame's whole width to keep the
           services clear of the car. */}
       <div
@@ -230,7 +230,7 @@ export function CabOrbit({ services }: { services: readonly OrbitService[] }) {
           className="absolute top-[110px] left-1/2 z-10 -ml-[90px] w-[180px]"
           style={{ transform: "translateX(0px)" }}
         >
-          {/* Centering rides a margin, not a transform — the float keyframes
+          {/* Centering rides a margin, not a transform, the float keyframes
               own this element's transform outright. */}
           <div className="motion-safe:animate-cab-float -mt-[50px]">
             <Image
@@ -272,7 +272,7 @@ export function CabOrbit({ services }: { services: readonly OrbitService[] }) {
         ))}
       </div>
 
-      {/* ——— The focused service, with the arrows that steer the ring. */}
+      {/* --- The focused service, with the arrows that steer the ring. */}
       <div className="mt-2 flex items-center gap-3">
         <button
           type="button"

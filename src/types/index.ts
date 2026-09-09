@@ -162,8 +162,8 @@ export interface ImpactCommitment {
 
 /*
  * The fifty-journey outstation catalog, transcribed from Manav's
- * "Smarto Travel — Outstation Packages" PDF (Aug 2026). Owner-supplied,
- * verified content — every field mirrors the printed catalog.
+ * "Smarto Travel, Outstation Packages" PDF (Aug 2026). Owner-supplied,
+ * verified content, every field mirrors the printed catalog.
  */
 
 export type JourneyLength = "Short escape" | "Mid-length" | "Extended";

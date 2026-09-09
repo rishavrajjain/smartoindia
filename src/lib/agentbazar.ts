@@ -17,8 +17,8 @@ import type {
  * Server-only client for AgentBazar's Fixed Departure API (Tripforu Holidays).
  *
  * One endpoint; the operation is chosen by the `api-action` header. The HTTP
- * status is always 200 — success and failure both live in the body's
- * `statuscode` — and the body arrives with leading blank lines in ISO-8859-1,
+ * status is always 200, success and failure both live in the body's
+ * `statuscode`, and the body arrives with leading blank lines in ISO-8859-1,
  * so every response is read as text, trimmed, then parsed. Nothing the API
  * returns is trusted: offers are rebuilt field by field and malformed ones are
  * dropped rather than rendered.
@@ -64,7 +64,7 @@ export function liveBookingEnabled(): boolean {
   return process.env.AGENTBAZAR_LIVE_BOOKING === "true";
 }
 
-/* ——— Transport. */
+/* --- Transport. */
 
 async function call(action: Action, data: Json): Promise<ApiResult<Json>> {
   const cfg = config();
@@ -113,7 +113,7 @@ async function call(action: Action, data: Json): Promise<ApiResult<Json>> {
   return { ok: true, value: body };
 }
 
-/* ——— Boundary guards. */
+/* --- Boundary guards. */
 
 function isRecord(value: unknown): value is Json {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -192,7 +192,7 @@ function offersOf(raw: unknown): FlightOffer[] {
     .filter((o): o is FlightOffer => o !== null);
 }
 
-/* ——— Operations. */
+/* --- Operations. */
 
 export async function searchFlights(q: FlightSearchQuery): Promise<ApiResult<FlightSearchResult>> {
   const result = await call("AirSearch", {
@@ -257,7 +257,7 @@ export interface BookingRequest {
 }
 
 /**
- * Issues tickets. Debits the agency wallet on the vendor's side — guarded by
+ * Issues tickets. Debits the agency wallet on the vendor's side, guarded by
  * AGENTBAZAR_LIVE_BOOKING here and again by every caller.
  */
 export async function bookFlights(req: BookingRequest): Promise<ApiResult<{ bookingId: string; status: string; amount: number }>> {

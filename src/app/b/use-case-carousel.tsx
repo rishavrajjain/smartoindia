@@ -18,7 +18,7 @@ export interface UseCaseSlide {
 
 /**
  * The hero device from Manav's wireframe: "our cabs for ___" with previous/next
- * arrows and dots. No autoplay — the visitor drives it, which also means no
+ * arrows and dots. No autoplay, the visitor drives it, which also means no
  * pause control is needed.
  */
 export function UseCaseCarousel({ slides }: { slides: UseCaseSlide[] }) {

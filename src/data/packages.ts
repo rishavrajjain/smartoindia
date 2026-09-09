@@ -6,7 +6,7 @@ import { IMAGES } from "./images";
 /**
  * Travel package catalog.
  *
- * PLACEHOLDER CONTENT. Every record is `status: "mock"` — routes, timings, and
+ * PLACEHOLDER CONTENT. Every record is `status: "mock"`, routes, timings, and
  * inclusions were written by the build team as a credible starting shape, not
  * supplied by Smarto. Manav owns the real catalog; replace these records in
  * place and flip `status` to `"verified"` as each one is confirmed.

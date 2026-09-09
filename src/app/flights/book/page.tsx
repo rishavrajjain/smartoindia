@@ -59,7 +59,7 @@ export default async function BookFlightPage({ searchParams }: { searchParams: S
       <Notice
         eyebrow="Link incomplete"
         title="This booking link is missing its flight."
-        lead="It may have been cut short when it was copied. Start the search again — it only takes a moment."
+        lead="It may have been cut short when it was copied. Start the search again. It only takes a moment."
         href="/flights"
         action="Search flights"
       />
@@ -165,7 +165,7 @@ export default async function BookFlightPage({ searchParams }: { searchParams: S
   );
 }
 
-/* ——— Pieces. */
+/* --- Pieces. */
 
 function LegCard({ offer, label, index }: { offer: FlightOffer; label: string; index: number }) {
   const t = offerTimes(offer);

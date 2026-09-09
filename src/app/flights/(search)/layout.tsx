@@ -7,7 +7,7 @@ import { addDays, MAX_DAYS_AHEAD, todayIST } from "@/lib/flights";
 
 /*
  * The search screen's frame. Living in a layout, the heading and the form stay
- * mounted while each new search streams its results into `children` — the
+ * mounted while each new search streams its results into `children`, the
  * visitor never watches their own form disappear and come back.
  */
 export default function FlightsSearchLayout({ children }: { children: ReactNode }) {

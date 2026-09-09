@@ -11,7 +11,7 @@ import { enquiry, WHATSAPP_DISPLAY } from "@/lib/whatsapp";
 
 /* Same face as the page (Next dedupes the request). Declared here because the
    menu portals to document.body, outside the page wrapper that carries the
-   font variable and palette — so the panel brings its own. */
+   font variable and palette, so the panel brings its own. */
 const cormorant = Cormorant_Garamond({
   variable: "--font-c-display",
   subsets: ["latin"],

@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 /*
-  Smarto identity — per Manav's design system (docs/smarto-design-system.md).
+  Smarto identity, per Manav's design system (docs/smarto-design-system.md).
 
   Navy #282560 replaces black everywhere; indigo carries secondary text; the
   green family is reserved for eco/EV and confirmed fares; the spark gradient
   (navy → plum → magenta) appears only as the logo, the bottom edge band, and
-  small accents — never as a text fill. Two font weights only: Poppins Light
+  small accents, never as a text fill. Two font weights only: Poppins Light
   300 (setup, body) and ExtraBold 800 (payoff, titles, labels, stats).
 
   NOTE: several tokens keep their pre-rebrand names (clay/terracotta/ochre/
-  bone/sand) so ~80 call sites didn't churn — the VALUES are the brand:
+  bone/sand) so ~80 call sites didn't churn, the VALUES are the brand:
     bone→white ground, sand→mist, ink→navy, taupe→indigo, clay→navy,
     clay-deep→navy-deep, clay-soft→mist, clay-bright→soft-white-on-dark,
     terracotta→green, ochre→emerald. A rename pass can follow separately.
 
   Contrast: ink on bone 13.4:1 · taupe on bone 10.2:1 · bone on ink 13.4:1
-  green-deep on white 3.6:1 — large/bold text and fills only, never body.
+  green-deep on white 3.6:1, large/bold text and fills only, never body.
 */
 @theme {
   /* Grounds */
@@ -24,7 +24,7 @@
   --color-sand: #eef0f4;
   --color-paper: #ffffff;
 
-  /* Ink — navy primary, indigo secondary. No black anywhere. */
+  /* Ink, navy primary, indigo secondary. No black anywhere. */
   --color-ink: #282560;
   --color-taupe: #393978;
 
@@ -34,7 +34,7 @@
   --color-clay-soft: #eef0f4;
   --color-clay-bright: #eef0f4;
 
-  /* Green family — eco, EV, confirmed/flat fares. */
+  /* Green family, eco, EV, confirmed/flat fares. */
   --color-terracotta: #75b884;
   --color-ochre: #3eb391;
   --color-green: #75b884;
@@ -42,7 +42,7 @@
   --color-emerald: #3eb391;
   --color-lime: #b5c07a;
 
-  /* Magenta lives inside gradients only — never a flat fill. */
+  /* Magenta lives inside gradients only, never a flat fill. */
   --color-magenta: #c44868;
 
   /* Fare states and functional UI only: a superseded fare is grey and struck;
@@ -50,7 +50,7 @@
   --color-struck: #9a9ab0;
   --color-error: #c44868;
 
-  /* Hairlines, only where unavoidable — surfaces sit flat. */
+  /* Hairlines, only where unavoidable, surfaces sit flat. */
   --color-line: #dfe1ea;
   --color-line-strong: #c9c9d6;
 
@@ -216,7 +216,7 @@
 }
 
 @layer utilities {
-  /* The ExtraBold payoff inside a Light heading — the brand's signature
+  /* The ExtraBold payoff inside a Light heading, the brand's signature
      construction. Weight does the emphasis; the colour stays the heading's. */
   .accent {
     font-weight: 800;
@@ -263,7 +263,7 @@
     transform: scaleX(0.35);
   }
 
-  /* The navy scrim — the only sanctioned way to put white type on a photo. */
+  /* The navy scrim, the only sanctioned way to put white type on a photo. */
   .photo-scrim {
     background: linear-gradient(
       to top,
@@ -301,7 +301,7 @@
   /*
     Scroll-triggered reveal with no JavaScript, via scroll-driven animations.
     Browsers without support show the content immediately, which is the correct
-    fallback — nothing is ever hidden by default.
+    fallback, nothing is ever hidden by default.
   */
   @supports (animation-timeline: view()) {
     @media (prefers-reduced-motion: no-preference) {

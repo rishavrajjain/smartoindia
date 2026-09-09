@@ -7,7 +7,7 @@
  * Smarto's enquiry line, in wa.me international format (no plus, no spaces).
  *
  * This is the number published on smartocabs.com. It replaces the placeholder
- * (919864148845) that was previously in the repo — confirm with Manav that
+ * (919864148845) that was previously in the repo, confirm with Manav that
  * enquiries should land on this line.
  */
 export const WHATSAPP_NUMBER = "917099013815";

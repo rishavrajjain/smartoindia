@@ -12,11 +12,11 @@ import { pageMetadata } from "@/lib/seo";
 import { enquiry } from "@/lib/whatsapp";
 
 /**
- * Concept F — "Sunline".
+ * Concept F, "Sunline".
  *
  * Bright consumer-app energy: candy colour blocks, big rounded corners, a
  * friendly geometric sans, photo collage, scroll-snap trip rail. The opposite
- * of hushed — the Northeast as pure serotonin.
+ * of hushed, the Northeast as pure serotonin.
  */
 
 const sora = Sora({
@@ -91,7 +91,7 @@ const BLOCKS = [
   {
     bg: "var(--f-mint)",
     title: "EV cabs",
-    line: "Electric for the city — quiet cars, clean hills.",
+    line: "Electric for the city: quiet cars, clean hills.",
     message: enquiry("I would like to book an EV cab."),
     cta: "Ride one",
   },
@@ -111,7 +111,7 @@ export default function ConceptFPage() {
       style={PALETTE}
       className={`${sora.variable} bg-[var(--f-cream)] font-[family-name:var(--font-f-sans)] text-[var(--f-ink)] [&_:is(h1,h2,h3)]:font-[family-name:var(--font-f-sans)]`}
     >
-      {/* ——— Header */}
+      {/* --- Header */}
       <header className="sticky top-0 z-30 bg-[var(--f-cream)]/90 backdrop-blur-md">
         <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-8">
           <Link href="/f" className="text-[1.375rem] font-extrabold tracking-tight" aria-label="Smarto concept F home">
@@ -139,7 +139,7 @@ export default function ConceptFPage() {
         </div>
       </header>
 
-      {/* ——— Hero: type + collage */}
+      {/* --- Hero: type + collage */}
       <section aria-labelledby="f-hero" className="mx-auto max-w-6xl px-5 pt-10 pb-16 sm:px-8 lg:pt-16 lg:pb-24">
         <div className="grid items-center gap-10 lg:grid-cols-12">
           <div className="lg:col-span-6">
@@ -155,7 +155,7 @@ export default function ConceptFPage() {
               <span className="text-[var(--f-jungle)]">We&rsquo;ll drive.</span>
             </h1>
             <p className="mt-6 max-w-md text-[1.0625rem] leading-relaxed">
-              Trips, cabs and festival weekends across five states — planned in
+              Trips, cabs and festival weekends across five states, planned in
               one WhatsApp chat, priced before you pack.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -228,7 +228,7 @@ export default function ConceptFPage() {
         </ul>
       </section>
 
-      {/* ——— Candy service blocks */}
+      {/* --- Candy service blocks */}
       <section aria-labelledby="f-services" className="mx-auto max-w-6xl px-5 sm:px-8">
         <h2 id="f-services" className="text-[2rem] leading-tight font-extrabold tracking-[-0.02em] sm:text-[2.5rem]">
           Whatever moves you.
@@ -253,7 +253,7 @@ export default function ConceptFPage() {
         </ul>
       </section>
 
-      {/* ——— Trip rail */}
+      {/* --- Trip rail */}
       <section aria-labelledby="f-trips" className="py-16 lg:py-24">
         <div className="mx-auto flex max-w-6xl items-end justify-between gap-4 px-5 sm:px-8">
           <h2 id="f-trips" className="text-[2rem] leading-tight font-extrabold tracking-[-0.02em] sm:text-[2.5rem]">
@@ -312,14 +312,14 @@ export default function ConceptFPage() {
         </ul>
       </section>
 
-      {/* ——— Festival months */}
+      {/* --- Festival months */}
       <section aria-labelledby="f-festivals" className="bg-[var(--f-jungle)] py-16 text-[var(--f-cream)] lg:py-24">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <h2 id="f-festivals" className="max-w-lg text-[2rem] leading-tight font-extrabold tracking-[-0.02em] sm:text-[2.5rem]">
             There&rsquo;s always a festival somewhere.
           </h2>
           <p className="mt-4 max-w-md text-[0.9375rem] leading-relaxed text-[var(--f-cream)]/85">
-            Twelve big ones across the year. Dates shift — we confirm the
+            Twelve big ones across the year. Dates shift, so we confirm the
             current calendar before you book.
           </p>
           <ul className="mt-9 flex flex-wrap gap-3">
@@ -347,7 +347,7 @@ export default function ConceptFPage() {
         </div>
       </section>
 
-      {/* ——— Big CTA */}
+      {/* --- Big CTA */}
       <section aria-labelledby="f-cta" className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
         <div className="rounded-[2.5rem] bg-[var(--f-marigold)] px-7 py-12 text-center sm:px-12 lg:py-16">
           <h2 id="f-cta" className="mx-auto max-w-xl text-[2rem] leading-[1.05] font-extrabold tracking-[-0.02em] sm:text-[2.75rem]">
@@ -368,7 +368,7 @@ export default function ConceptFPage() {
         </div>
       </section>
 
-      {/* ——— Footer */}
+      {/* --- Footer */}
       <footer className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 pb-24 sm:px-8 lg:pb-12">
         <p className="text-[0.8125rem] font-semibold">
           © {new Date().getFullYear()} Smarto India · Concept F
@@ -391,7 +391,7 @@ export default function ConceptFPage() {
         </ul>
       </footer>
 
-      {/* ——— Floating CTA (mobile keeps a thumb-reach action) */}
+      {/* --- Floating CTA (mobile keeps a thumb-reach action) */}
       <div className="fixed right-4 bottom-4 z-40 lg:hidden">
         <WaCta
           message={enquiry("I would like to plan a Northeast trip.")}

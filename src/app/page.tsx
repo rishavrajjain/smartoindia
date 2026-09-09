@@ -36,7 +36,7 @@ export const viewport: Viewport = {
 /**
  * Ultra-minimal homepage, phone-first everywhere.
  *
- * One column at phone width on every screen — on desktop it sits centred on a
+ * One column at phone width on every screen, on desktop it sits centred on a
  * dark backdrop. It opens on the valley photograph with nothing written over
  * it; every class in this file is non-responsive so the layout cannot drift
  * between breakpoints. Global site chrome steps aside (data-page-theme); the
@@ -74,7 +74,7 @@ const ROUTE_STOPS: RouteStop[] = [
 
 /*
  * Cab services and flat fares from smartocabs.com. Fares are the published
- * "starting from" rates — confirm current pricing with Manav before launch.
+ * "starting from" rates, confirm current pricing with Manav before launch.
  */
 const SERVICES = [
   {
@@ -156,7 +156,7 @@ export default function HomePage() {
   return (
     <div data-page-theme="mobile-frame">
       <div className="relative mx-auto min-h-svh max-w-[26.5rem] bg-bone text-ink shadow-[0_0_60px_rgba(0,0,0,0.55)]">
-        {/* ——— The film. One journey, airport to platform, on loop. */}
+        {/* --- The film. One journey, airport to platform, on loop. */}
         <section
           id="home-top"
           aria-label="A short film of a Smarto journey: landing at Guwahati airport, taking a Smarto cab through the hills, and arriving at the railway station"
@@ -176,7 +176,7 @@ export default function HomePage() {
             aria-hidden="true"
             className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-[rgba(28,26,69,0.66)] via-[rgba(28,26,69,0.3)] to-transparent"
           />
-          {/* Manav's caption choreography, synced to the film's own clock —
+          {/* Manav's caption choreography, synced to the film's own clock -
               each line rides its scene and loops with the video. */}
           <HeroCaptions videoSelector="#home-top video" captions={HERO_CAPTIONS} />
           <header className="absolute inset-x-0 top-0 flex items-center px-4 pt-5">
@@ -199,8 +199,8 @@ export default function HomePage() {
           </header>
         </section>
 
-        {/* ——— Outstation: the four destination cards. */}
-        {/* ——— Outstation: the go-to trips, riding the 3D rail. */}
+        {/* --- Outstation: the four destination cards. */}
+        {/* --- Outstation: the go-to trips, riding the 3D rail. */}
         <section id="home-outstation" className="scroll-mt-6 pt-14">
           <div className="flex items-end justify-between gap-4 px-6">
             <div>
@@ -221,14 +221,14 @@ export default function HomePage() {
           <TripCoverflow trips={FEATURED_TRIPS} />
         </section>
 
-        {/* ——— Cabs: the stat, the differentiators, and the fare list. */}
+        {/* --- Cabs: the stat, the differentiators, and the fare list. */}
         <section id="home-cabs" className="scroll-mt-6 px-6 pt-16">
           <p className="text-label font-extrabold text-clay uppercase">Cabs</p>
           <h2 className="mt-3 text-[1.75rem] leading-tight">
             Flat fares, <span className="accent">no surprises</span>
           </h2>
 
-          {/* Figure from Manav's wireframe. Owner-supplied — confirm before
+          {/* Figure from Manav's wireframe. Owner-supplied, confirm before
               treating as a published business fact. */}
           <div className="mt-6 flex items-baseline gap-3 border-t border-line pt-5">
             <span className="font-display text-[2.75rem] leading-none text-clay">
@@ -258,10 +258,10 @@ export default function HomePage() {
           <CabOrbit services={SERVICES} />
         </section>
 
-        {/* ——— Flights: the boarding pass into /flights, and the popular routes. */}
+        {/* --- Flights: the boarding pass into /flights, and the popular routes. */}
         <FlightsTeaser />
 
-        {/* ——— Corporate: a quiet dark band with a revolving client wall. */}
+        {/* --- Corporate: a quiet dark band with a revolving client wall. */}
         <section
           id="home-corporate"
           className="mt-16 scroll-mt-6 bg-ink py-14 text-bone"
@@ -274,7 +274,7 @@ export default function HomePage() {
               Teams that <span className="accent">arrive on time</span>
             </h2>
             <p className="mt-3 text-[0.9375rem] leading-relaxed text-bone/70">
-              Employee transport, offsites, and everyday movement — one point of
+              Employee transport, offsites, and everyday movement: one point of
               contact, billing your finance team will not argue with.
             </p>
             <p className="mt-8 text-label font-extrabold text-bone/55 uppercase">
@@ -282,7 +282,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Revolving client logos — two copies for a seamless loop. */}
+          {/* Revolving client logos, two copies for a seamless loop. */}
           <div className="marquee-mask mt-4 overflow-hidden">
             <ul className="flex w-max animate-marquee items-center gap-3">
               {[0, 1].map((copy) =>
@@ -319,7 +319,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ——— Festivals: a visual grid of the region's big gatherings. */}
+        {/* --- Festivals: a visual grid of the region's big gatherings. */}
         <section id="home-festivals" className="scroll-mt-6 px-6 pt-16">
           <p className="text-label font-extrabold text-clay uppercase">Festivals</p>
           <h2 className="mt-3 text-[1.75rem] leading-tight">
@@ -373,7 +373,7 @@ export default function HomePage() {
           </p>
         </section>
 
-        {/* ——— Quiet proof. A simple swipeable rail — fixed-width cards that
+        {/* --- Quiet proof. A simple swipeable rail, fixed-width cards that
             cannot overflow the phone frame. */}
         <section aria-labelledby="home-reviews" className="pt-16">
           <h2
@@ -407,13 +407,13 @@ export default function HomePage() {
           </p>
         </section>
 
-        {/* ——— Footer: real contact details from smartocabs.com. */}
+        {/* --- Footer: real contact details from smartocabs.com. */}
         <footer
           id="home-footer"
           className="mt-16 scroll-mt-6 border-t border-line px-6 pt-10 pb-36 text-center"
         >
           {/* The tagline lockup: Light setup, ExtraBold payoff, "Choice" in
-              the green gradient — per the brand system's logo section. */}
+              the green gradient, per the brand system's logo section. */}
           <p className="text-[1.5rem] leading-tight text-taupe">
             Smart People,{" "}
             <span className="accent">
@@ -466,7 +466,7 @@ export default function HomePage() {
         {/* The signature: every light layout is anchored by the spark band. */}
         <div aria-hidden="true" className="spark-band" />
 
-        {/* ——— The route bar: section navigation and the persistent CTA. */}
+        {/* --- The route bar: section navigation and the persistent CTA. */}
         <RouteNav stops={ROUTE_STOPS} />
       </div>
     </div>

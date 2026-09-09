@@ -25,8 +25,8 @@ export async function generateMetadata({
   const journey = getJourney(slug);
   if (!journey) return {};
   return pageMetadata({
-    title: `${journey.title} — ${journey.nights} nights across ${journey.states.join(" and ")}`,
-    description: `${journey.subtitle} ${journey.route.join(" · ")}. All-in price on request — no hidden costs.`,
+    title: `${journey.title}: ${journey.nights} nights across ${journey.states.join(" and ")}`,
+    description: `${journey.subtitle} ${journey.route.join(" · ")}. All-in price on request, no hidden costs.`,
     path: `/packages/${journey.slug}`,
   });
 }
@@ -46,7 +46,7 @@ export default async function JourneyPage({
 
   return (
     <>
-      {/* ——— Hero: the destination photograph under the journey's identity. */}
+      {/* --- Hero: the destination photograph under the journey's identity. */}
       <div className="relative">
         <div className="relative aspect-[3/2] max-h-[34rem] w-full overflow-hidden sm:aspect-[21/9]">
           <Image
@@ -74,7 +74,7 @@ export default async function JourneyPage({
           {journey.subtitle}
         </p>
 
-        {/* ——— The facts, as printed in the catalog. */}
+        {/* --- The facts, as printed in the catalog. */}
         <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-7 border-y border-line py-8 sm:grid-cols-3 lg:grid-cols-6">
           <Fact label="Duration">
             {journey.nights} nights / {journey.days} days
@@ -86,7 +86,7 @@ export default async function JourneyPage({
           <Fact label="Ideal for">{journey.idealFor}</Fact>
         </dl>
 
-        {/* ——— The route, stop by stop. */}
+        {/* --- The route, stop by stop. */}
         <div className="mt-10">
           <p className="text-label font-extrabold text-taupe uppercase">Route</p>
           <p className="mt-3 max-w-3xl text-[1.1875rem] leading-relaxed">
@@ -112,7 +112,7 @@ export default async function JourneyPage({
           )}
         </div>
 
-        {/* ——— Permits, altitude, group notes — the catalog's callouts. */}
+        {/* --- Permits, altitude, group notes, the catalog's callouts. */}
         {(journey.permit || journey.altitude || journey.groupNote) && (
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {journey.permit && <Callout label="Permits">{journey.permit}</Callout>}
@@ -126,7 +126,7 @@ export default async function JourneyPage({
         )}
       </Container>
 
-      {/* ——— Day by day. */}
+      {/* --- Day by day. */}
       <Container width="wide" className="pt-16 lg:pt-20">
         <h2 className="text-[1.75rem] leading-tight sm:text-[2rem]">
           Day <span className="accent">by day</span>
@@ -165,7 +165,7 @@ export default async function JourneyPage({
         </ol>
       </Container>
 
-      {/* ——— Where you stay + what the all-in bundle covers. */}
+      {/* --- Where you stay + what the all-in bundle covers. */}
       <Container width="wide" className="pt-14 lg:pt-16">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
@@ -202,7 +202,7 @@ export default async function JourneyPage({
         </div>
       </Container>
 
-      {/* ——— The price promise, as printed — and the way in. */}
+      {/* --- The price promise, as printed, and the way in. */}
       <Container width="wide" className="pt-16 lg:pt-20">
         <div className="bg-ink px-6 py-14 sm:px-12">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
@@ -229,7 +229,7 @@ export default async function JourneyPage({
         </div>
       </Container>
 
-      {/* ——— More roads in the same direction. */}
+      {/* --- More roads in the same direction. */}
       {related.length > 0 && (
         <Container width="wide" className="pt-20 lg:pt-24">
           <h2 className="text-[1.75rem] leading-tight">

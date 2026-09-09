@@ -12,7 +12,7 @@ import { enquiry } from "@/lib/whatsapp";
 export const metadata = pageMetadata({
   title: `${JOURNEYS.length} journeys across Northeast India, on one honest price`,
   description:
-    "Curated outstation journeys across Assam, Meghalaya and Arunachal Pradesh — hotels, cars and permits planned end to end, quoted all-in. Filter by state, length and travel style.",
+    "Curated outstation journeys across Assam, Meghalaya and Arunachal Pradesh: hotels, cars and permits planned end to end, quoted all-in. Filter by state, length and travel style.",
   path: "/packages",
 });
 
@@ -54,7 +54,7 @@ function regionCount(state: string) {
 export default function PackagesPage() {
   return (
     <>
-      {/* ——— The catalog's own cover line, as the page hero. */}
+      {/* --- The catalog's own cover line, as the page hero. */}
       <Container width="wide" className="pt-14 lg:pt-24">
         <p className="text-label font-extrabold text-clay uppercase">
           {JOURNEYS.length} journeys · Assam, Meghalaya &amp; Arunachal Pradesh
@@ -64,12 +64,12 @@ export default function PackagesPage() {
         </h1>
         <p className="mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-taupe">
           Curated outstation journeys with hotels, cars and permits planned end
-          to end — by the people who drive these roads. Every price is quoted
+          to end, by the people who drive these roads. Every price is quoted
           all-in. No surge, no bargaining, nothing added at the end.
         </p>
       </Container>
 
-      {/* ——— Four doors in. Each tile pre-sets the state filter below. */}
+      {/* --- Four doors in. Each tile pre-sets the state filter below. */}
       <Container width="wide" className="pt-12 lg:pt-16">
         <ul className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
           {REGIONS.map((region) => (
@@ -108,7 +108,7 @@ export default function PackagesPage() {
         </ul>
       </Container>
 
-      {/* ——— The full catalog with filters. */}
+      {/* --- The full catalog with filters. */}
       <Container width="wide" className="pt-14 lg:pt-20">
         {/* useSearchParams needs a Suspense boundary so the rest of the route
             can still be prerendered as static HTML. */}
@@ -117,7 +117,7 @@ export default function PackagesPage() {
         </Suspense>
       </Container>
 
-      {/* ——— The custom-trip door, for everyone the filters don't fit. */}
+      {/* --- The custom-trip door, for everyone the filters don't fit. */}
       <Container width="wide" className="pt-20 lg:pt-28">
         <div className="bg-ink px-6 py-16 sm:px-12 lg:py-20">
           <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
@@ -127,7 +127,7 @@ export default function PackagesPage() {
                 <span className="accent">quite right?</span>
               </h2>
               <p className="mt-4 text-lg text-bone/80">
-                Every journey here can be reshaped — dates, pace, hotels, route.
+                Every journey here can be reshaped: dates, pace, hotels, route.
                 Send what you have in mind and we will come back with a plan.
               </p>
             </div>

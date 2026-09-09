@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 
 import type { SiteImage } from "@/types";
 
-/** The card's slice of a trip — packages and journeys both satisfy it. */
+/** The card's slice of a trip, packages and journeys both satisfy it. */
 export interface CoverflowTrip {
   slug: string;
   title: string;

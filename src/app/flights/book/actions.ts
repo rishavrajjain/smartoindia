@@ -17,7 +17,7 @@ import type { BookingFormState, Passenger, PaxType } from "@/types/flights";
  * nothing from the form is trusted: the search and the selected fares are
  * re-parsed with the same rules as the URL, the fare is re-checked with the
  * airline system, and a moved fare is bounced back for a second confirmation
- * before AirBook — which issues tickets and debits Smarto's agency wallet — is
+ * before AirBook, which issues tickets and debits Smarto's agency wallet, is
  * ever called. The whole path is inert unless AGENTBAZAR_LIVE_BOOKING is "true".
  */
 
@@ -89,7 +89,7 @@ export async function submitBooking(
     return { status: "error", message: "This fare has expired. Search again." };
   }
 
-  // ——— Passengers.
+  // --- Passengers.
   const errors: Record<string, string> = {};
   const passengers: Passenger[] = [];
   paxSlots(query).forEach((type: PaxType, i) => {
@@ -125,7 +125,7 @@ export async function submitBooking(
     return { status: "error", errors, message: "Check the highlighted details." };
   }
 
-  // ——— Fare check. A moved fare is shown, never silently charged.
+  // --- Fare check. A moved fare is shown, never silently charged.
   const reprice = await repriceFlights(onward, returnLeg);
   if (!reprice.ok) {
     return { status: "error", message: reprice.message };
@@ -140,7 +140,7 @@ export async function submitBooking(
     };
   }
 
-  // ——— Ticket.
+  // --- Ticket.
   const booked = await bookFlights({
     onward,
     returnLeg,

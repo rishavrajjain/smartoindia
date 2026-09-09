@@ -14,11 +14,11 @@ import { pageMetadata } from "@/lib/seo";
 import { enquiry, WHATSAPP_DISPLAY } from "@/lib/whatsapp";
 
 /**
- * Concept C — "Night Drive".
+ * Concept C, "Night Drive".
  *
  * Dark cinematic luxury in the Black Tomato / Avenue H register: near-black
  * green, champagne gold, a whisper-thin serif, photography graded down to
- * embers. Confidence through restraint — short copy, vast space, slow reveals.
+ * embers. Confidence through restraint, short copy, vast space, slow reveals.
  */
 
 const cormorant = Cormorant_Garamond({
@@ -48,7 +48,7 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
-/* Palette — kept in one place. Contrast on #0b0f0c:
+/* Palette, kept in one place. Contrast on #0b0f0c:
    ivory 16.2:1 · mist 8.6:1 · gold 7.2:1. */
 const PALETTE = {
   "--n-bg": "#0b0f0c",
@@ -88,7 +88,7 @@ export default function ConceptCPage() {
       className={`${cormorant.variable} ${manrope.variable} bg-[var(--n-bg)] font-[family-name:var(--font-c-body)] text-[var(--n-ivory)]`}
     >
       <div className="relative mx-auto min-h-svh max-w-[26.5rem] ring-1 ring-[rgba(236,231,219,0.1)]">
-      {/* ——— Header: the wordmark top left, the menu top right. */}
+      {/* --- Header: the wordmark top left, the menu top right. */}
       <header className="absolute inset-x-0 top-0 z-30">
         <div className="flex h-20 items-center justify-between px-6">
           <Link href="/c" aria-label="Smarto concept C home">
@@ -105,13 +105,13 @@ export default function ConceptCPage() {
         </div>
       </header>
 
-      {/* ——— Hero: the journey film, one action, nothing else. */}
+      {/* --- Hero: the journey film, one action, nothing else. */}
       <section
         aria-label="A short film of a Smarto journey across Northeast India"
         className="relative flex min-h-svh items-end overflow-hidden"
       >
         <h1 id="c-hero" className="sr-only">
-          Smarto — private journeys across Northeast India
+          Smarto: private journeys across Northeast India
         </h1>
         <div className="absolute inset-0">
           <HeroVideo
@@ -126,7 +126,7 @@ export default function ConceptCPage() {
 
       </section>
 
-      {/* ——— Manifesto line */}
+      {/* --- Manifesto line */}
       <section aria-label="How Smarto travels" className="border-y border-[var(--n-line)]">
         <div className="mx-auto max-w-[90rem] px-6 py-16 text-center">
           <p className="reveal mx-auto max-w-3xl font-[family-name:var(--font-c-display)] text-[1.75rem] leading-[1.35] font-light text-[var(--n-ivory)] italic">
@@ -139,7 +139,7 @@ export default function ConceptCPage() {
         </div>
       </section>
 
-      {/* ——— Journeys: three editorial rows */}
+      {/* --- Journeys: three editorial rows */}
       <section aria-labelledby="c-journeys" className="mx-auto max-w-[90rem] px-6 py-20">
         <div className="flex items-baseline justify-between gap-6">
           <h2
@@ -207,7 +207,7 @@ export default function ConceptCPage() {
         </div>
       </section>
 
-      {/* ——— Tenets */}
+      {/* --- Tenets */}
       <section aria-labelledby="c-tenets" className="border-t border-[var(--n-line)] bg-[var(--n-bg-lift)]">
         <div className="mx-auto max-w-[90rem] px-6 py-20">
           <h2 id="c-tenets" className="sr-only">
@@ -231,7 +231,7 @@ export default function ConceptCPage() {
         </div>
       </section>
 
-      {/* ——— Festival nocturne */}
+      {/* --- Festival nocturne */}
       <section aria-labelledby="c-festival" className="relative overflow-hidden">
         <div aria-hidden="true" className="absolute inset-0">
           <Image
@@ -270,7 +270,7 @@ export default function ConceptCPage() {
         </div>
       </section>
 
-      {/* ——— Footer */}
+      {/* --- Footer */}
       <footer className="border-t border-[var(--n-line)]">
         <div className="mx-auto max-w-[90rem] px-6 py-14">
           <div className="flex flex-wrap items-end justify-between gap-8">
@@ -297,7 +297,7 @@ export default function ConceptCPage() {
       </footer>
 
 
-      {/* ——— Floating CTA */}
+      {/* --- Floating CTA */}
       <div className="pointer-events-none fixed inset-x-0 bottom-5 z-40 mx-auto flex max-w-[26.5rem] justify-end px-5">
         <WaCta
           message={enquiry("I would like to plan a private Northeast journey.")}

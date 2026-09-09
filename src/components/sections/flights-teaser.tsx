@@ -11,7 +11,7 @@ import { enquiry } from "@/lib/whatsapp";
  * most (into Guwahati), torn along a perforation, with the plane taxiing across
  * the route line. The whole pass is the link to /flights; the chips beneath
  * pre-set a route there without a date, so nothing fires until the visitor
- * picks one. No fares are shown here — those come live from the airline system
+ * picks one. No fares are shown here, those come live from the airline system
  * on the search page.
  */
 export function FlightsTeaser() {
@@ -25,11 +25,11 @@ export function FlightsTeaser() {
         Fly in, <span className="accent">we take it from the kerb</span>
       </h2>
       <p className="mt-3 text-[0.9375rem] leading-relaxed text-taupe">
-        Fixed-departure fares into Guwahati and across the Northeast, confirmed on WhatsApp — with
+        Fixed-departure fares into Guwahati and across the Northeast, confirmed on WhatsApp, with
         a Smarto cab waiting when you land.
       </p>
 
-      {/* ——— The boarding pass. */}
+      {/* --- The boarding pass. */}
       <Link
         href="/flights"
         className="group mt-6 block rounded-2xl bg-sand transition-colors duration-300 hover:bg-[#e6e9ef]"
@@ -99,7 +99,7 @@ export function FlightsTeaser() {
         </div>
       </Link>
 
-      {/* ——— Popular routes, as real links. */}
+      {/* --- Popular routes, as real links. */}
       <ul className="no-scrollbar -mx-6 mt-4 flex gap-2 overflow-x-auto px-6 pb-1">
         {POPULAR_SECTORS.map(([a, b]) => {
           const fromA = findAirport(a);

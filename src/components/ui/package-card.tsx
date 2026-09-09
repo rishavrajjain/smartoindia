@@ -13,7 +13,7 @@ interface PackageCardProps {
 /**
  * Trip card.
  *
- * No border, no shadow, no coloured chips — the photograph and a hairline are
+ * No border, no shadow, no coloured chips, the photograph and a hairline are
  * the whole frame. The image lifts slightly on hover; nothing else moves.
  */
 export function PackageCard({ item, sizes, priority = false }: PackageCardProps) {

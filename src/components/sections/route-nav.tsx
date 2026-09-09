@@ -55,7 +55,7 @@ type RouteProperties = CSSProperties & { "--trip": number };
  * scrolls, the road fills behind it, and each destination dot is a real
  * section link with its name written underneath. The cab is decorative;
  * progress is announced by an aria-live region and the dots' aria-current.
- * Reduced motion still updates position — it just does not tween.
+ * Reduced motion still updates position, it just does not tween.
  */
 export function RouteNav({ stops }: { stops: RouteStop[] }) {
   const barRef = useRef<HTMLDivElement>(null);
@@ -77,7 +77,7 @@ export function RouteNav({ stops }: { stops: RouteStop[] }) {
 
       // A section counts as "reached" once its top nears the top of the
       // viewport. Trip is interpolated piecewise between the anchors, so the
-      // cab arrives at each dot exactly when its section does — and sits on
+      // cab arrives at each dot exactly when its section does, and sits on
       // the first dot while the hero fills the screen.
       const readingLine = window.scrollY + window.innerHeight * 0.12;
       const tops = anchors.map(
@@ -148,7 +148,7 @@ export function RouteNav({ stops }: { stops: RouteStop[] }) {
       className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-[26.5rem] px-2.5 pb-[max(0.6rem,env(safe-area-inset-bottom))]"
     >
       {/* Floating frosted-glass bar: one clean hairline border and a soft
-          lifted shadow — no stacked highlight lines. */}
+          lifted shadow, no stacked highlight lines. */}
       <div
         className="rounded-[1.5rem] border border-white/25 bg-bone/70 px-4 pt-3 pb-2.5 shadow-[0_12px_34px_-12px_rgba(12,8,5,0.45)] backdrop-blur-xl backdrop-saturate-150"
       >

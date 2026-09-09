@@ -11,11 +11,11 @@ import { WhatsAppIcon } from "./whatsapp-icon";
 type Tone = "primary" | "accent" | "onDark" | "quiet" | "link";
 
 const TONES: Record<Tone, string> = {
-  // bone on ink — 18.8:1
+  // bone on ink, 18.8:1
   primary: "bg-ink text-bone hover:bg-clay-deep",
-  // bone on clay — 5.4:1
+  // bone on clay, 5.4:1
   accent: "bg-clay text-bone hover:bg-clay-deep",
-  // ink on bone — 18.8:1
+  // ink on bone, 18.8:1
   onDark: "bg-bone text-ink hover:bg-white",
   quiet: "border border-line-strong text-ink hover:border-ink/40 hover:bg-sand",
   // Underlined text link, for placements where a filled button would compete

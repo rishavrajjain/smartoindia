@@ -8,7 +8,7 @@ const CARD_SIZES =
 
 /**
  * One journey in the catalog grid: photograph on top, facts below, in the
- * destination-card grammar of the brand system — navy scrim on the image,
+ * destination-card grammar of the brand system, navy scrim on the image,
  * name in ExtraBold, and the price line ("all-in", on request) sitting
  * below the photo, never on it.
  */

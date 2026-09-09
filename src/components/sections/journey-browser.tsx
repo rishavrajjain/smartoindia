@@ -34,7 +34,7 @@ const STYLE_ORDER = [
 /**
  * The fifty-journey index: search plus three filter axes (state, length,
  * travel style), all mirrored into the query string so a filtered view can be
- * shared and the back button steps through choices. Search stays local — a
+ * shared and the back button steps through choices. Search stays local, a
  * history entry per keystroke would make back unusable.
  */
 export function JourneyBrowser({ journeys }: { journeys: Journey[] }) {
@@ -94,7 +94,7 @@ export function JourneyBrowser({ journeys }: { journeys: Journey[] }) {
 
   return (
     <div id="journeys" className="scroll-mt-24">
-      {/* ——— The refine bar. */}
+      {/* --- The refine bar. */}
       <div className="border-y border-line py-6">
         <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
           <div className="w-full max-w-sm">
@@ -201,7 +201,7 @@ export function JourneyBrowser({ journeys }: { journeys: Journey[] }) {
         </FilterRow>
       </div>
 
-      {/* ——— Results. */}
+      {/* --- Results. */}
       {results.length > 0 ? (
         <ul className="mt-10 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {results.map((journey, index) => (
@@ -216,7 +216,7 @@ export function JourneyBrowser({ journeys }: { journeys: Journey[] }) {
             Nothing matches that exact mix.
           </p>
           <p className="mx-auto mt-2 max-w-md text-[0.9375rem] leading-relaxed text-taupe">
-            Loosen a filter — or tell us what you have in mind and we will
+            Loosen a filter, or tell us what you have in mind and we will
             shape a journey around it.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4">

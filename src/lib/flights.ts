@@ -2,7 +2,7 @@
  * Shared, isomorphic helpers for the flight flow: URL state in and out, IST
  * date handling, display formatting, and the WhatsApp handoff message.
  *
- * Nothing here touches the network or the API key — that lives in
+ * Nothing here touches the network or the API key, that lives in
  * `agentbazar.ts`, which imports from this file, never the other way round.
  */
 import { AIRPORTS, findAirport } from "@/data/airports";
@@ -24,7 +24,7 @@ export function firstParam(params: Params, key: string): string | null {
   return value ?? null;
 }
 
-/* ——— Dates. The API speaks IST calendar days; so does every visitor. */
+/* --- Dates. The API speaks IST calendar days; so does every visitor. */
 
 const IST_DAY = new Intl.DateTimeFormat("en-CA", {
   timeZone: "Asia/Kolkata",
@@ -108,11 +108,11 @@ export function nowIST(): string {
   }).format(new Date());
 }
 
-/* ——— Money and durations. */
+/* --- Money and durations. */
 
 const INR = new Intl.NumberFormat("en-IN", { maximumFractionDigits: 0 });
 
-/** "2,452" — the rupee sign is set separately by the fare lockup. */
+/** "2,452", the rupee sign is set separately by the fare lockup. */
 export function formatAmount(amount: number): string {
   return INR.format(Math.round(amount));
 }
@@ -135,7 +135,7 @@ export function formatStops(stops: number): string {
   return stops === 1 ? "1 stop" : `${stops} stops`;
 }
 
-/* ——— Airlines. Codes we do not know fall back to the code itself. */
+/* --- Airlines. Codes we do not know fall back to the code itself. */
 
 const AIRLINES: Record<string, string> = {
   "6E": "IndiGo",
@@ -160,7 +160,7 @@ export function airlineName(code: string): string {
   return AIRLINES[code.toUpperCase()] ?? code.toUpperCase();
 }
 
-/* ——— Passengers. */
+/* --- Passengers. */
 
 export function paxSummary(adults: number, children: number, infants: number): string {
   const parts = [`${adults} ${adults === 1 ? "adult" : "adults"}`];
@@ -194,12 +194,12 @@ export function paxSlots(q: Pick<FlightSearchQuery, "adults" | "children" | "inf
   ];
 }
 
-/* ——— Search query: URL ⇄ typed object. */
+/* --- Search query: URL ⇄ typed object. */
 
 export type ParsedSearch =
   | { ok: true; query: FlightSearchQuery }
   | { ok: false; errors: string[] }
-  /** Nothing to search yet — the visitor has not asked for anything. */
+  /** Nothing to search yet, the visitor has not asked for anything. */
   | { ok: false; empty: true; errors: [] }
   /** A route arrived without a date (a homepage quick pick); nothing wrong yet. */
   | { ok: false; pickDate: true; from: string; to: string; errors: [] };
@@ -217,7 +217,7 @@ function toInt(value: string | null, fallback: number): number | null {
 /**
  * Reads a search from the URL and validates it against what the API accepts.
  *
- * Errors are written for the visitor, not the developer — they render in the
+ * Errors are written for the visitor, not the developer, they render in the
  * results column when a shared or hand-edited link is wrong.
  */
 export function parseSearchQuery(params: Params, today = todayIST()): ParsedSearch {
@@ -237,9 +237,9 @@ export function parseSearchQuery(params: Params, today = todayIST()): ParsedSear
   if (from && to && from === to) errors.push("Departure and arrival cannot be the same airport.");
 
   if (!isCalendarDay(date)) errors.push("Pick a departure date.");
-  else if (date < today) errors.push("Departure date has passed — pick a date from today.");
+  else if (date < today) errors.push("Departure date has passed. Pick a date from today.");
   else if (date > addDays(today, MAX_DAYS_AHEAD))
-    errors.push("Airlines only sell about eleven months ahead — pick an earlier date.");
+    errors.push("Airlines only sell about eleven months ahead. Pick an earlier date.");
 
   let returnDate: string | null = null;
   if (ret) {
@@ -292,7 +292,7 @@ export function searchHref(q: FlightSearchQuery): string {
   return `/flights?${searchParamsFor(q)}`;
 }
 
-/* ——— Offer selection carried in the URL between search, results and booking.
+/* --- Offer selection carried in the URL between search, results and booking.
    Signatures are opaque, non-secret tokens for this visitor's own search. */
 
 const MAX_SIGNATURE = 300;
@@ -350,7 +350,7 @@ export function onwardOnlyHref(q: FlightSearchQuery, onward: OfferSelection): st
   return `/flights/book?${sp}`;
 }
 
-/* ——— Display helpers for an offer. */
+/* --- Display helpers for an offer. */
 
 export function offerRoute(offer: FlightOffer): string {
   const from = findAirport(offer.origin);
@@ -379,7 +379,7 @@ export function offerSubject(offer: FlightOffer): string {
   return `${offer.carrier}${offer.flightNumber}-${offer.origin}-${offer.destination}-${date}`;
 }
 
-/* ——— The WhatsApp handoff. */
+/* --- The WhatsApp handoff. */
 
 export interface BookingMessageInput {
   query: FlightSearchQuery;

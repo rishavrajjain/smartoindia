@@ -14,7 +14,7 @@ type MonthFilter = Season | "all";
  *
  * Months with nothing in them are rendered as disabled buttons rather than
  * hidden, so the calendar reads as a full year and a visitor can see at a glance
- * that July is quiet — which is itself useful planning information.
+ * that July is quiet, which is itself useful planning information.
  */
 export function FestivalExplorer({ festivals }: { festivals: Festival[] }) {
   const [month, setMonth] = useState<MonthFilter>("all");

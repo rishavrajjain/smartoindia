@@ -25,7 +25,7 @@ type JourneyProperties = CSSProperties & {
  * The /b concept's connective tissue: the page is presented as one road trip,
  * and this shell drives it.
  *
- * It tracks scroll and exposes two custom properties on the wrapper —
+ * It tracks scroll and exposes two custom properties on the wrapper -
  * `--trip` (0..1 journey progress, interpolated piecewise between the section
  * anchors so the cab arrives at each stop exactly when its section does) and
  * `--drift` (a clamped pixel offset for the hero parallax). The fixed route bar
@@ -210,7 +210,7 @@ function RouteBar({
                 );
               })}
 
-              {/* The cab — Smarto's real one, generated from its airport-cab
+              {/* The cab, Smarto's real one, generated from its airport-cab
                   livery. Purely decorative: progress is announced by the
                   aria-live stop name and the dots' aria-current. */}
               <div

@@ -77,7 +77,7 @@ export async function FlightResults({ params, today }: { params: Params; today: 
           }
           lead={
             result.code === "config"
-              ? "We will find you a fare by hand — send the route and we reply with options."
+              ? "We will find you a fare by hand. Send the route and we reply with options."
               : `${result.message} Or skip the wait and let us find it.`
           }
         >
@@ -107,7 +107,7 @@ export async function FlightResults({ params, today }: { params: Params; today: 
   const onwardChoice = query.returnDate ? parseOnwardSelection(params) : null;
   const testFares = isTestFares();
 
-  // ——— Round trip, step two: the return leg beneath the chosen onward flight.
+  // --- Round trip, step two: the return leg beneath the chosen onward flight.
   if (onwardChoice) {
     const chosen = result.value.onward.find(
       (o) => signatureKey(o.flightSignature) === signatureKey(onwardChoice.flightSignature),
@@ -182,7 +182,7 @@ export async function FlightResults({ params, today }: { params: Params; today: 
     );
   }
 
-  // ——— One way, or round trip step one.
+  // --- One way, or round trip step one.
   const offers = sortByPrice(result.value.onward);
 
   return (
@@ -235,7 +235,7 @@ export async function FlightResults({ params, today }: { params: Params; today: 
   );
 }
 
-/* ——— Pieces. */
+/* --- Pieces. */
 
 function sortByPrice(offers: FlightOffer[]): FlightOffer[] {
   return [...offers].sort((a, b) => a.totalPrice - b.totalPrice);

@@ -19,7 +19,7 @@ import type { FlightOffer, FlightSearchQuery } from "@/types/flights";
  * One fare, laid out like a boarding pass row: the times carry the weight, the
  * route line between them holds the duration, and the fare sits on the right
  * beside the one action. Fares here are what the airline system quoted for the
- * search, so they stay navy — green is reserved for the repriced fare on the
+ * search, so they stay navy, green is reserved for the repriced fare on the
  * booking step.
  */
 export function FlightOfferCard({

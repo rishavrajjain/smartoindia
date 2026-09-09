@@ -22,16 +22,16 @@ function fareParts(big: string): { symbol: string | null; rest: string } {
 
 /**
  * Captions choreographed to the hero film, driven by the video's own clock
- * rather than wall-time — so they stay on the right scene however long the
+ * rather than wall-time, so they stay on the right scene however long the
  * download takes, and they loop with the film. Typeset per the brand system:
  * Light setup line over an ExtraBold payoff, with fares as proper lockups
  * (small raised ₹, tabular figures). The spark-gradient strip along the top
- * is the reel progress bar — the system's own translation of the signature
+ * is the reel progress bar, the system's own translation of the signature
  * edge band for video.
  *
  * Media events do not bubble, so the listener rides the capture phase on
  * document; that also sidesteps mount order (the video mounts lazily on
- * phones). Where there is no video at all — desktop, reduced motion — the
+ * phones). Where there is no video at all, desktop, reduced motion, the
  * first caption simply stands and the progress bar stays hidden.
  */
 export function HeroCaptions({
@@ -54,7 +54,7 @@ export function HeroCaptions({
       const t = video.currentTime;
 
       if (trackRef.current) trackRef.current.style.opacity = "1";
-      // Slide, don't scale — scaling would squash the spark gradient.
+      // Slide, don't scale, scaling would squash the spark gradient.
       if (barRef.current && video.duration > 0)
         barRef.current.style.transform = `translateX(${(-100 * (1 - t / video.duration)).toFixed(2)}%)`;
 
@@ -73,7 +73,7 @@ export function HeroCaptions({
 
   return (
     <>
-      {/* The reel progress bar — spark gradient riding the film's clock. */}
+      {/* The reel progress bar, spark gradient riding the film's clock. */}
       <div
         ref={trackRef}
         aria-hidden="true"
@@ -97,7 +97,7 @@ export function HeroCaptions({
                 // Cinematic hand-off: the leaving line lifts away and blurs out
                 // quickly; a beat of clean film; the arriving line rises slowly
                 // from below. Lines waiting their turn sit below, transition-free,
-                // so the motion always flows upward — even after the loop resets.
+                // so the motion always flows upward, even after the loop resets.
                 index === active &&
                   "translate-y-0 scale-100 opacity-100 blur-0 transition-[opacity,transform,filter] delay-[450ms] duration-[1200ms] ease-out",
                 index < active &&

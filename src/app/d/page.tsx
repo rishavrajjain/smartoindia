@@ -11,7 +11,7 @@ import { pageMetadata } from "@/lib/seo";
 import { enquiry } from "@/lib/whatsapp";
 
 /**
- * Concept D — "Grand Poster".
+ * Concept D, "Grand Poster".
  *
  * A vintage travel-poster world: layered paper hills, a big benevolent sun,
  * postage-stamp destination cards, and ticket-stub festivals. Warm sunset
@@ -117,7 +117,7 @@ export default function ConceptDPage() {
       style={PALETTE}
       className={`${fraunces.variable} ${plexMono.variable} bg-[var(--p-cream)] font-[family-name:var(--font-d-mono)] text-[var(--p-ink)]`}
     >
-      {/* ——— Header */}
+      {/* --- Header */}
       <header className="border-b-2 border-[var(--p-ink)]">
         <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-8">
           <Link
@@ -145,7 +145,7 @@ export default function ConceptDPage() {
         </div>
       </header>
 
-      {/* ——— Hero poster */}
+      {/* --- Hero poster */}
       <section aria-labelledby="d-hero" className="px-4 pt-6 sm:px-8 sm:pt-10">
         <div className="relative mx-auto max-w-6xl overflow-hidden border-2 border-[var(--p-ink)] bg-[var(--p-paper)]">
           {/* Inner poster frame */}
@@ -167,7 +167,7 @@ export default function ConceptDPage() {
               Northeast
             </h1>
             <p className="mx-auto mt-6 max-w-md text-[0.875rem] leading-relaxed">
-              Road trips, festival seasons, and honest cabs — planned on
+              Road trips, festival seasons, and honest cabs, planned on
               WhatsApp by people who actually live here.
             </p>
             <div className="mt-8">
@@ -183,7 +183,7 @@ export default function ConceptDPage() {
         </div>
       </section>
 
-      {/* ——— Ticker */}
+      {/* --- Ticker */}
       <div aria-hidden="true" className="mt-10 overflow-hidden border-y-2 border-[var(--p-ink)] bg-[var(--p-ink)] py-2.5">
         <div className="flex w-max animate-marquee gap-0">
           {[0, 1].map((copy) => (
@@ -199,7 +199,7 @@ export default function ConceptDPage() {
         </div>
       </div>
 
-      {/* ——— Stamps: destinations */}
+      {/* --- Stamps: destinations */}
       <section aria-labelledby="d-stamps" className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
         <div className="text-center">
           <p className="text-[0.6875rem] tracking-[0.4em] text-[var(--p-rust)] uppercase">Collect all four</p>
@@ -250,7 +250,7 @@ export default function ConceptDPage() {
         </ul>
       </section>
 
-      {/* ——— Festival tickets on teal */}
+      {/* --- Festival tickets on teal */}
       <section aria-labelledby="d-tickets" className="border-y-2 border-[var(--p-ink)] bg-[var(--p-teal)] text-[var(--p-cream)]">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
           <div className="flex flex-wrap items-end justify-between gap-6">
@@ -315,7 +315,7 @@ export default function ConceptDPage() {
         </div>
       </section>
 
-      {/* ——— Services on mustard */}
+      {/* --- Services on mustard */}
       <section aria-labelledby="d-services" className="border-b-2 border-[var(--p-ink)] bg-[var(--p-mustard)]">
         <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 lg:py-20">
           <h2 id="d-services" className="font-[family-name:var(--font-d-display)] text-[2rem] leading-tight font-black sm:text-[2.5rem]">
@@ -348,7 +348,7 @@ export default function ConceptDPage() {
         </div>
       </section>
 
-      {/* ——— Footer */}
+      {/* --- Footer */}
       <footer className="bg-[var(--p-cream)]">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-10 sm:px-8">
           <p className="text-[0.75rem] tracking-[0.1em] uppercase">
@@ -363,7 +363,7 @@ export default function ConceptDPage() {
         </div>
       </footer>
 
-      {/* ——— Floating CTA */}
+      {/* --- Floating CTA */}
       <div className="fixed right-5 bottom-5 z-40">
         <WaCta
           message={enquiry("I would like to plan a Northeast trip.")}

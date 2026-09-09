@@ -3,7 +3,7 @@ import type { Review } from "@/types";
 /**
  * Illustrative traveller feedback.
  *
- * PLACEHOLDER CONTENT — NOT REAL CUSTOMERS.
+ * PLACEHOLDER CONTENT, NOT REAL CUSTOMERS.
  *
  * Every entry below is written by the build team using a fictional first name
  * and a generic trip context. None of it is a verified booking, none of it may

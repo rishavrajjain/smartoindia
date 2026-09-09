@@ -77,7 +77,7 @@ export function PackageBrowser({ packages }: { packages: TravelPackage[] }) {
       }
       if (!needle) return true;
 
-      // Search titles, summaries, and destination names — the three things a
+      // Search titles, summaries, and destination names, the three things a
       // visitor is realistically typing.
       const haystack = [
         item.title,
