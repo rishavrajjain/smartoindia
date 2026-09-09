@@ -99,26 +99,30 @@ export function FlightsTeaser() {
         </div>
       </Link>
 
-      {/* --- Popular routes, as real links. */}
-      <ul className="no-scrollbar -mx-6 mt-4 flex gap-2 overflow-x-auto px-6 pb-1">
-        {POPULAR_SECTORS.map(([a, b]) => {
-          const fromA = findAirport(a);
-          const toB = findAirport(b);
-          if (!fromA || !toB) return null;
-          return (
-            <li key={`${a}-${b}`} className="shrink-0">
-              <Link
-                href={`/flights?from=${a}&to=${b}`}
-                className="inline-flex h-10 items-center gap-2 rounded-full border border-line-strong px-4 text-[0.8125rem] whitespace-nowrap text-taupe transition-colors duration-200 hover:border-ink/40 hover:text-ink"
-              >
-                {fromA.city}
-                <PlaneIcon className="size-3.5 opacity-70" />
-                {toB.city}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      {/* --- Popular routes, as real links. The clipping wrapper matters:
+          WebKit lets inline SVGs inside a horizontal scroller widen the whole
+          page on iPhones without it. */}
+      <div className="-mx-6 mt-4 overflow-hidden">
+        <ul className="no-scrollbar flex gap-2 overflow-x-auto px-6 pb-1">
+          {POPULAR_SECTORS.map(([a, b]) => {
+            const fromA = findAirport(a);
+            const toB = findAirport(b);
+            if (!fromA || !toB) return null;
+            return (
+              <li key={`${a}-${b}`} className="shrink-0">
+                <Link
+                  href={`/flights?from=${a}&to=${b}`}
+                  className="inline-flex h-10 items-center gap-2 rounded-full border border-line-strong px-4 text-[0.8125rem] whitespace-nowrap text-taupe transition-colors duration-200 hover:border-ink/40 hover:text-ink"
+                >
+                  {fromA.city}
+                  <PlaneIcon className="size-3.5 opacity-70" />
+                  {toB.city}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
 
       <div className="mt-5">
         <WaCta

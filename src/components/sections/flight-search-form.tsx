@@ -307,7 +307,10 @@ function FlightSearchForm({
           they work before hydration and can be shared. */}
       <div className="pt-2">
         <p className="text-label font-extrabold text-taupe uppercase">Popular routes</p>
-        <ul className="no-scrollbar -mx-1 mt-2.5 flex gap-2 overflow-x-auto px-1 pb-1">
+        {/* The clipping wrapper matters: WebKit lets inline SVGs inside a
+            horizontal scroller widen the whole page on iPhones without it. */}
+        <div className="-mx-1 mt-2.5 overflow-hidden px-1">
+          <ul className="no-scrollbar flex gap-2 overflow-x-auto pb-1">
           {POPULAR_SECTORS.map(([a, b]) => {
             const fromA = findAirport(a);
             const toB = findAirport(b);
@@ -333,7 +336,8 @@ function FlightSearchForm({
               </li>
             );
           })}
-        </ul>
+          </ul>
+        </div>
       </div>
     </Form>
   );
@@ -358,7 +362,9 @@ function Tile({
   return (
     <div
       className={cn(
-        "relative flex min-h-[5.75rem] flex-col justify-center rounded-2xl bg-sand px-4 py-3 transition-[box-shadow,background-color] duration-200 focus-within:bg-bone focus-within:ring-2 focus-within:ring-clay",
+        // overflow-hidden is load-bearing: WebKit sizes the invisible native
+        // select to its widest option and would widen the whole page on iPhones.
+        "relative flex min-h-[5.75rem] flex-col justify-center overflow-hidden rounded-2xl bg-sand px-4 py-3 transition-[box-shadow,background-color] duration-200 focus-within:bg-bone focus-within:ring-2 focus-within:ring-clay",
         invalid && "ring-2 ring-error/60",
         className,
       )}
@@ -414,7 +420,7 @@ function AirportTile({
         aria-label={`${label} airport`}
         aria-invalid={invalid || undefined}
         required
-        className="absolute inset-0 size-full cursor-pointer appearance-none rounded-2xl opacity-0"
+        className="absolute inset-0 size-full max-w-full cursor-pointer appearance-none rounded-2xl opacity-0"
       >
         {groups.map((group) => (
           <optgroup key={group.label} label={group.label}>
