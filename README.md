@@ -1,8 +1,10 @@
 # Smarto India
 
 Marketing site for Smarto, a Northeast India travel and mobility company. The
-single conversion goal is a qualified WhatsApp enquiry — there is no checkout,
-no accounts, and no booking form.
+single conversion goal is a qualified WhatsApp enquiry — there is no checkout
+and no accounts. The one exception to "no forms" is `/flights`, which searches
+live fares through AgentBazar's Fixed Departure API and still hands the booking
+to WhatsApp (see below).
 
 ## Stack
 
@@ -10,7 +12,8 @@ no accounts, and no booking form.
 - Strict TypeScript, React Server Components by default
 - Tailwind CSS v4 with design tokens declared in `src/app/globals.css`
 - `next/font` (Newsreader for display, Archivo for UI)
-- Deployed on Vercel; every route is statically prerendered
+- Deployed on Vercel; every route is statically prerendered except `/flights`
+  and `/flights/book`, which render per request against the airline API
 
 ## Getting started
 
@@ -19,15 +22,34 @@ pnpm install
 pnpm dev
 ```
 
-Copy `.env.example` to `.env.local` before running the image script. No
-environment variables are required to run or build the site itself.
+Copy `.env.example` to `.env.local`. The site builds without any variables;
+`/flights` needs `AGENTBAZAR_API_URL` and `AGENTBAZAR_API_KEY` to show fares and
+falls back to a WhatsApp enquiry when they are missing.
+
+## Flights
+
+`/flights` is the only route that talks to a third party at request time:
+AgentBazar's (Tripforu Holidays) Fixed Departure API, a fixed-departure /
+block-seat inventory rather than a live GDS, so empty results are normal.
+
+- `src/lib/agentbazar.ts` is the server-only client (`import "server-only"`).
+  The API always answers HTTP 200; success and failure live in the body's
+  `statuscode`. Offers are rebuilt field by field at the boundary.
+- Flow: search (URL state) → select → `/flights/book` re-prices the fare → the
+  visitor confirms on WhatsApp. **No payment is taken on the site.**
+- `AGENTBAZAR_LIVE_BOOKING=true` switches the booking page to a validated form
+  that issues tickets through `AirBook`. That debits Smarto's agency wallet
+  without collecting payment from the visitor, so it stays off until a payment
+  process exists. Never test it against a wallet that holds real money.
+- The staging endpoint returns test inventory (one DEL→GAU fare). The client
+  refuses a staging URL in production and labels fares "Test fares" elsewhere.
 
 ## Scripts
 
 | Command                | What it does                                        |
 | ---------------------- | --------------------------------------------------- |
 | `pnpm dev`             | Dev server on :3000                                 |
-| `pnpm build`           | Production build (all routes prerender)             |
+| `pnpm build`           | Production build (static except `/flights`)          |
 | `pnpm start`           | Serve the production build                          |
 | `pnpm lint`            | ESLint                                              |
 | `pnpm typecheck`       | `tsc --noEmit`                                      |

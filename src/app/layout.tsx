@@ -43,6 +43,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en-IN"
       className={`${poppins.variable} h-full`}
+      // globals.css sets smooth scrolling; declaring it here lets the router
+      // suspend it during route transitions instead of animating every jump.
+      data-scroll-behavior="smooth"
     >
       <body className="flex min-h-full flex-col bg-bone text-ink">
         <a

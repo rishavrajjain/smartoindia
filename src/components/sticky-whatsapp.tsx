@@ -9,16 +9,18 @@ import { enquiry } from "@/lib/whatsapp";
  * Persistent enquiry action for small screens.
  *
  * Only rendered below `lg`, where the header CTA is hidden behind the menu
- * button. Package detail pages carry their own context-specific sticky bar, so
- * this one steps aside there rather than stacking two CTAs.
+ * button. Package detail pages and the flight booking step carry their own
+ * context-specific action, so this one steps aside there rather than stacking
+ * two CTAs.
  */
 export function StickyWhatsApp() {
   const pathname = usePathname();
 
   const isPackageDetail =
     pathname.startsWith("/packages/") && pathname !== "/packages";
+  const isFlightBooking = pathname.startsWith("/flights/book");
 
-  if (isPackageDetail) return null;
+  if (isPackageDetail || isFlightBooking) return null;
 
   return (
     <div

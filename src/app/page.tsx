@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Viewport } from "next";
 
 import { CabOrbit } from "@/components/sections/cab-orbit";
+import { FlightsTeaser } from "@/components/sections/flights-teaser";
 import {
   HeroCaptions,
   type HeroCaption,
@@ -64,7 +65,10 @@ const HERO_CAPTIONS: HeroCaption[] = [
 const ROUTE_STOPS: RouteStop[] = [
   { id: "home-top", label: "Trips" },
   { id: "home-cabs", label: "Cabs" },
-  { id: "home-corporate", label: "Corporate" },
+  { id: "home-flights", label: "Flights" },
+  // "Teams" rather than "Corporate": five labels share the bar now, and the
+  // section's own headline is "Teams that arrive on time".
+  { id: "home-corporate", label: "Teams" },
   { id: "home-festivals", label: "Festivals" },
 ];
 
@@ -253,6 +257,9 @@ export default function HomePage() {
               services revolve around it, and the front one takes focus. */}
           <CabOrbit services={SERVICES} />
         </section>
+
+        {/* ——— Flights: the boarding pass into /flights, and the popular routes. */}
+        <FlightsTeaser />
 
         {/* ——— Corporate: a quiet dark band with a revolving client wall. */}
         <section

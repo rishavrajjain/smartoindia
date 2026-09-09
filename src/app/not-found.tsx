@@ -21,7 +21,7 @@ export default function NotFound() {
       </h1>
       <p className="mt-4 max-w-xl text-lg text-taupe">
         It may have moved, or the link may be wrong. Everything on the site is
-        one of these five sections.
+        one of these sections.
       </p>
 
       <ul className="mt-10 grid gap-3 sm:grid-cols-2">

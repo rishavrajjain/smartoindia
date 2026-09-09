@@ -47,6 +47,11 @@ export const NAV: NavItem[] = [
     blurb: "Airport runs, local hires, outstation trips, and electric vehicles.",
   },
   {
+    href: "/flights",
+    label: "Flights",
+    blurb: "Search fares into and out of the Northeast, then book on WhatsApp.",
+  },
+  {
     href: "/corporate",
     label: "Corporate",
     blurb: "Employee transport, offsites, and reliable group movement.",

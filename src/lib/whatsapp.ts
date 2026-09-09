@@ -54,6 +54,12 @@ export type CtaLocation =
   | "festivals-hero"
   | "festival-card"
   | "impact-cta"
+  | "home-flights"
+  | "flights-hero"
+  | "flights-empty-state"
+  | "flights-error"
+  | "flights-book"
+  | "flights-confirmed"
   | "not-found";
 
 /**
