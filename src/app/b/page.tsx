@@ -359,7 +359,7 @@ export default function ConceptBPage() {
                   </WhatsAppLink>
                   <Link
                     href="/corporate"
-                    className="link-rule link-rule-on-dark text-bone/80 hover:text-bone"
+                    className="link-rule text-bone/80 hover:text-bone"
                   >
                     Corporate details
                   </Link>
@@ -424,7 +424,7 @@ export default function ConceptBPage() {
               >
                 Plan a festival trip
               </WhatsAppLink>
-              <Link href="/festivals" className="link-rule link-rule-on-dark text-bone/80 hover:text-bone">
+              <Link href="/festivals" className="link-rule text-bone/80 hover:text-bone">
                 The full calendar
               </Link>
             </div>

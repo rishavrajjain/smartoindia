@@ -272,17 +272,12 @@
     inset-inline: 0;
     bottom: -0.35rem;
     height: 1px;
-    /* The rule under a text link carries the spark on light grounds. */
-    background: linear-gradient(90deg, #282560 0%, #7b3f7e 50%, #c44868 100%);
+    background-color: currentColor;
     transform-origin: left;
     transition: transform 0.45s var(--ease-out-quiet);
   }
   .link-rule:hover::after {
     transform: scaleX(0.35);
-  }
-  /* On dark grounds the gradient would vanish into the navy; use the text colour. */
-  .link-rule-on-dark::after {
-    background: currentColor;
   }
 
   /* The navy scrim, the only sanctioned way to put white type on a photo. */
