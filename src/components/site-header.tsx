@@ -44,7 +44,7 @@ export function SiteHeader() {
       data-site-chrome="header"
       className="sticky top-0 z-50 border-b border-line bg-bone/88 backdrop-blur-md"
     >
-      <div className="mx-auto flex h-16 w-full max-w-7xl items-center gap-8 px-5 sm:px-8 lg:h-[4.75rem]">
+      <div className="mx-auto flex h-16 w-full max-w-7xl items-center gap-6 px-5 sm:px-8 lg:h-[4.75rem] xl:gap-8">
         <Link
           href="/"
           onClick={() => setOpen(false)}
@@ -62,7 +62,7 @@ export function SiteHeader() {
         </Link>
 
         <nav aria-label="Main" className="ml-auto hidden lg:block">
-          <ul className="flex items-center gap-9">
+          <ul className="flex items-center gap-6 xl:gap-9">
             {NAV.map((item) => (
               <li key={item.href}>
                 <Link

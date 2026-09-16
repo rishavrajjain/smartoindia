@@ -62,6 +62,12 @@ export type CtaLocation =
   | "flights-confirmed"
   | "events-brief"
   | "events-enquiry"
+  | "corporate-rate-card"
+  | "corporate-trial"
+  | "corporate-dock"
+  | "partner-register"
+  | "partner-desk"
+  | "partner-dock"
   | "not-found";
 
 /**

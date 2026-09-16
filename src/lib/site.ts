@@ -62,6 +62,11 @@ export const NAV: NavItem[] = [
     blurb: "Employee transport, offsites, and reliable group movement.",
   },
   {
+    href: "/partners",
+    label: "Partners",
+    blurb: "For agents and hotels: book for your guests, earn on every ride.",
+  },
+  {
     href: "/festivals",
     label: "Festivals",
     blurb: "What happens when, and how to plan a trip around it.",

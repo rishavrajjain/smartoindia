@@ -1,241 +1,466 @@
+import Image from "next/image";
+import Link from "next/link";
+
+import { EsgLine } from "@/components/sections/esg-line";
+import { RateCardForm } from "@/components/sections/rate-card-form";
 import { Container } from "@/components/ui/container";
-import { Label } from "@/components/ui/deco";
-import { PageHero } from "@/components/ui/page-hero";
-import { SectionHeading } from "@/components/ui/section-heading";
-import { WhatsAppLink } from "@/components/ui/whatsapp-link";
-import { IMAGES } from "@/data/images";
+import {
+  ArrowIcon,
+  BoltIcon,
+  BuildingIcon,
+  CalendarIcon,
+  ClockIcon,
+  CrossIcon,
+  HeadsetIcon,
+  HouseIcon,
+  InvoiceIcon,
+  PeopleIcon,
+  PhoneCheckIcon,
+  TagIcon,
+} from "@/components/ui/line-icons";
+import { WaCta } from "@/components/ui/wa-cta";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
+import { CLIENT_LOGOS } from "@/data/clients";
 import { pageMetadata } from "@/lib/seo";
 import { enquiry } from "@/lib/whatsapp";
 
 export const metadata = pageMetadata({
-  title: "Corporate and group travel",
+  title: "For business: employee transport, off your desk",
   description:
-    "Employee shuttles, client pickups, offsite logistics, and group movement across Northeast India, with one point of contact and consolidated monthly invoicing.",
+    "A fixed rate card, one named contact, one monthly GST invoice, and an all-electric fleet for employee transport in Guwahati and across the Northeast. Start with a free trial week.",
   path: "/corporate",
 });
 
-const SERVICES = [
+/*
+ * The business page, built from Manav's mobile mockup
+ * (smarto-corporate-mobile.html), as the sibling of /events: same dark hero
+ * grammar, same chip rail, and its own signature, the ESG line. His copy,
+ * lightly edited. Unlike /events, the client-proof section ships with real
+ * logos: the five Manav already publishes on smartocabs.com.
+ */
+
+const CHIPS = [
+  { icon: PeopleIcon, label: <>Dedicated team</> },
+  { icon: HeadsetIcon, label: <><b className="font-extrabold">24×7</b> support</> },
+  { icon: ClockIcon, label: <>No delays</> },
+  { icon: BoltIcon, label: <><b className="font-extrabold">100%</b> electric</> },
+];
+
+const INCLUDES = [
   {
-    title: "Employee transport",
-    body: "Fixed routes and timings for staff, run daily or on a shift pattern. Same drivers each week, so your team is not explaining the route every morning.",
+    icon: PeopleIcon,
+    title: "A dedicated account team",
+    body: "One named contact with a direct number. Not a helpline, not a ticket queue.",
   },
   {
-    title: "Client and guest pickups",
-    body: "Airport collections and hotel runs for visitors, arranged through one contact rather than whoever is free at reception.",
+    icon: HeadsetIcon,
+    title: "24×7 support",
+    body: "A 4 AM airport run and a 4 PM client pickup reach the same team.",
   },
   {
-    title: "Offsites and team trips",
-    body: "Moving twenty people to a hill town and back, with the itinerary, the vehicles, and the timing planned as one thing instead of three.",
+    icon: ClockIcon,
+    title: "No delays, no hassle",
+    body: "We own the fleet, so a car is assigned, not auctioned to whoever accepts. Schedules are held.",
   },
   {
-    title: "Event and conference movement",
-    body: "Shuttles between venue, hotels, and the airport across a multi-day event, with vehicles held on site rather than called each time.",
+    icon: PhoneCheckIcon,
+    title: "Self-serve booking and tracking",
+    body: "Your team books their own rides and watches the car arrive. Admin sees every trip in one place.",
   },
   {
-    title: "Site and project transport",
-    body: "Regular runs to work sites on roads that are hard on vehicles, with drivers who know them.",
+    icon: TagIcon,
+    title: "A fixed rate card",
+    body: "Agreed quarterly, in writing. No surge, no seasonal revision, no renegotiation in the car.",
   },
   {
-    title: "Ad-hoc requests",
-    body: "The things that come up: a late flight, an extra guest, a vehicle at short notice on a Sunday.",
+    icon: InvoiceIcon,
+    title: "One monthly GST invoice",
+    body: "All rides consolidated. No per-trip reimbursements to chase and no petty cash.",
+  },
+  {
+    icon: BoltIcon,
+    title: "A 100% electric fleet",
+    body: "Quiet, clean cars your visitors notice, and a carbon figure your CSR report can use.",
   },
 ];
 
-const HOW_IT_WORKS = [
+const STEPS = [
   {
-    title: "Tell us the pattern",
-    body: "Routes, timings, how many people, how often. A rough shape is enough to start.",
+    title: "A 15-minute call",
+    body: "Routes, volumes, timings. We'll tell you honestly if we're not the right fit.",
   },
   {
-    title: "We quote the arrangement",
-    body: "Monthly, per-trip, or a mix. Driver allowances, tolls, and permits are in the number rather than added later.",
+    title: "Your rate card",
+    body: "Fixed prices for your actual routes, in writing, within two working days.",
   },
   {
-    title: "One contact, one invoice",
-    body: "A single person to message when something changes, and consolidated billing at the end of the month.",
+    title: "A free trial week",
+    body: "Run your real rides on our cars. No commitment, no card, no invoice.",
+  },
+  {
+    title: "Account live",
+    body: "Team onboarded to self-booking, dedicated contact assigned, monthly invoicing begins.",
+  },
+];
+
+const WHO = [
+  {
+    icon: BuildingIcon,
+    title: "Offices, IT and BPO",
+    body: "Shift transport, client pickups, airport runs.",
+  },
+  {
+    icon: HouseIcon,
+    title: "Hotels and resorts",
+    body: "Guest transfers, airport pickups, day-hire sightseeing.",
+  },
+  {
+    icon: CrossIcon,
+    title: "Hospitals and clinics",
+    body: "Patient and attendant transport, predictable and off-peak.",
+  },
+  {
+    icon: CalendarIcon,
+    title: "Event and wedding planners",
+    body: "Guest transport at volume, on a date that can't move.",
+  },
+];
+
+const FAQ = [
+  {
+    q: "Is there a minimum monthly commitment?",
+    a: "No. Start with the volume you actually have. The rate card is set by route, not by a threshold you have to hit.",
+  },
+  {
+    q: "What happens if a car is late?",
+    a: "Your account contact is told before you are, and a replacement is dispatched. We own the fleet, so there is no third-party operator to chase.",
+  },
+  {
+    q: "Can employees book their own rides?",
+    a: "Yes. Each employee books and tracks their own ride within the limits you set. Admin sees every trip, route and fare in one place.",
+  },
+  {
+    q: "How does billing work?",
+    a: "One consolidated GST invoice each month, with a full ride-level breakdown attached. Payment terms are agreed at account setup.",
+  },
+  {
+    q: "Do you cover outstation travel?",
+    a: "Yes: Shillong, Kaziranga, Tezpur and across the Northeast, on the same account and the same invoice.",
   },
 ];
 
 export default function CorporatePage() {
   return (
     <>
-      <PageHero
-        image={IMAGES.corporateHero}
-        eyebrow="Corporate & groups"
-        title={
-          <>
-            Transport your team{" "}
-            <span className="accent">can rely on</span>.
-          </>
-        }
-        lead="Staff routes, client pickups, and offsites. One contact, one invoice."
-        priority
-        stickers={
-          <>
-            <Label>
-              Monthly billing
-            </Label>
-            <Label>
-              One contact
-            </Label>
-          </>
-        }
-      >
-        <WhatsAppLink
-          message={enquiry(
-            "I am enquiring about corporate transport. Here is what my company needs:",
-          )}
-          location="corporate-hero"
-          size="lg"
-        >
-          Request a corporate quote
-        </WhatsAppLink>
-      </PageHero>
-
-      <Container width="wide" className="pt-16 lg:pt-24">
-        <SectionHeading
-          eyebrow="What we cover"
-          title="From a daily shuttle to a week-long offsite"
-          lead="Repetition done properly: same route, same time, same standard."
+      {/* ——— Hero: dark, rate-card-first, with the spark glow in the corner. */}
+      <section className="relative overflow-hidden bg-clay-deep text-bone">
+        <div
+          aria-hidden="true"
+          className="spark-glow absolute -top-40 -right-32 size-[24rem] rounded-full"
         />
-        <ul className="mt-10 grid gap-x-8 gap-y-9 md:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((service) => (
-            <li key={service.title} className="reveal border-t border-line pt-5">
-              <h3 className="font-sans text-base font-extrabold text-ink">
-                {service.title}
+        <Container width="wide" className="relative pt-16 pb-10 lg:pt-24">
+          <p className="text-label font-extrabold text-green uppercase">
+            For business · Employee transport
+          </p>
+          <h1 className="mt-6 max-w-2xl text-[2.375rem] leading-[1.03] tracking-[-0.02em] sm:text-[3.25rem]">
+            Employee transport,{" "}
+            <span className="accent block">off your desk.</span>
+          </h1>
+          <p className="mt-5 max-w-md text-[0.9375rem] leading-relaxed text-bone/70">
+            A fixed rate card, one named contact, one monthly invoice.
+            Guwahati&rsquo;s only all-electric fleet, run by the people who own
+            the cars.
+          </p>
+          <div className="mt-7 flex max-w-md flex-col gap-2.5 sm:max-w-none sm:flex-row">
+            <a
+              href="#rate-card"
+              className="flex min-h-[3.25rem] items-center justify-center gap-2.5 rounded-[10px] bg-green-deep px-6 text-[0.9375rem] font-extrabold text-white transition-transform duration-[180ms] active:scale-[0.985]"
+            >
+              Request a rate card
+              <ArrowIcon className="size-4" />
+            </a>
+            <WaCta
+              message={enquiry(
+                "I would like to start a free trial week of employee transport for my company.",
+              )}
+              location="corporate-trial"
+              className="flex min-h-[3.25rem] items-center justify-center rounded-[10px] border border-white/35 px-6 text-[0.9375rem] font-extrabold text-bone transition-colors hover:bg-white/8"
+            >
+              Start a free trial week
+            </WaCta>
+          </div>
+        </Container>
+        <div className="no-scrollbar relative flex gap-2 overflow-x-auto px-5 pb-7 sm:px-8">
+          {CHIPS.map((chip, index) => (
+            <span
+              key={index}
+              className="flex shrink-0 items-center gap-2 rounded-full bg-white/7 px-4 py-2.5 text-[0.78125rem] whitespace-nowrap"
+            >
+              <chip.icon className="size-[15px] shrink-0 text-green" />
+              <span>{chip.label}</span>
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* ——— The ESG line: the mockup's signature. */}
+      <section className="bg-clay-deep pb-14 text-bone">
+        <Container width="narrow" className="border-t border-white/10 pt-14">
+          <p className="text-label font-extrabold text-green uppercase">
+            The line for your sustainability report
+          </p>
+          <h2 className="mt-4 text-[1.8125rem] leading-[1.09] text-bone">
+            Every ride your team takes{" "}
+            <span className="accent block">is a number you can report.</span>
+          </h2>
+          <p className="mt-4 max-w-md text-[0.90625rem] leading-relaxed text-bone/65">
+            A petrol fleet gives you a cost line. An electric one gives you a
+            cost line and a carbon line. Move the slider to your team&rsquo;s
+            volume.
+          </p>
+          <EsgLine />
+        </Container>
+      </section>
+
+      {/* ——— What an account includes. */}
+      <Container width="narrow" className="pt-16 lg:pt-20">
+        <p className="text-label font-extrabold text-clay uppercase">
+          What an account includes
+        </p>
+        <h2 className="mt-4 text-[1.8125rem] leading-[1.09] sm:text-[2.25rem]">
+          Set it up once.{" "}
+          <span className="accent">Then stop thinking about it.</span>
+        </h2>
+        <ul className="mt-6">
+          {INCLUDES.map((item) => (
+            <li
+              key={item.title}
+              className="reveal flex items-start gap-3.5 border-b border-line py-5 last:border-b-0"
+            >
+              <item.icon className="mt-0.5 size-6 shrink-0 text-ink" />
+              <div>
+                <h3 className="text-[1.03125rem] font-extrabold">
+                  {item.title}
+                </h3>
+                <p className="mt-1 text-[0.875rem] leading-relaxed text-taupe">
+                  {item.body}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </Container>
+
+      {/* ——— From first call to first ride: the route to a live account. */}
+      <div className="mt-16 bg-sand py-14 lg:mt-20">
+        <Container width="narrow">
+          <p className="text-label font-extrabold text-clay uppercase">
+            From first call to first ride
+          </p>
+          <h2 className="mt-4 text-[1.8125rem] leading-[1.09] sm:text-[2.25rem]">
+            Four steps, <span className="accent">about a week.</span>
+          </h2>
+          {/* Drawn like every Smarto journey: numbered stops on a dashed
+              route line, arriving at green when the account is live. */}
+          <ol className="relative mt-9">
+            <span
+              aria-hidden="true"
+              className="absolute top-3 bottom-4 left-[0.875rem] border-l-2 border-dashed border-line-strong"
+            />
+            {STEPS.map((step, index) => (
+              <li
+                key={step.title}
+                className="reveal relative grid grid-cols-[1.75rem_1fr] gap-x-4 pb-8 last:pb-0 sm:gap-x-5"
+              >
+                <span
+                  className={`z-10 inline-flex size-7 items-center justify-center self-start rounded-full text-[0.75rem] font-extrabold text-bone tabular-nums ${
+                    index === STEPS.length - 1 ? "bg-green-deep" : "bg-ink"
+                  }`}
+                >
+                  {index + 1}
+                </span>
+                <div className="pt-0.5">
+                  <h3 className="text-[1.03125rem] leading-snug font-extrabold">
+                    {step.title}
+                  </h3>
+                  <p className="mt-1 max-w-[26rem] text-[0.875rem] leading-relaxed text-taupe">
+                    {step.body}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </Container>
+      </div>
+
+      {/* ——— Who it's for. */}
+      <Container width="narrow" className="pt-16 lg:pt-20">
+        <p className="text-label font-extrabold text-clay uppercase">
+          Who we run for
+        </p>
+        <h2 className="mt-4 text-[1.8125rem] leading-[1.09] sm:text-[2.25rem]">
+          Built for <span className="accent">scheduled, repeating travel.</span>
+        </h2>
+        <ul className="reveal mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-line">
+          {WHO.map((kind) => (
+            <li key={kind.title} className="bg-paper p-5">
+              <kind.icon className="size-[22px] text-ink" />
+              <h3 className="mt-3 text-[0.90625rem] font-extrabold">
+                {kind.title}
               </h3>
-              <p className="mt-2 text-[0.9375rem] leading-relaxed text-taupe">
-                {service.body}
+              <p className="mt-1.5 text-[0.75rem] leading-relaxed text-taupe">
+                {kind.body}
               </p>
             </li>
           ))}
         </ul>
       </Container>
 
-      <section className="relative mt-20 overflow-hidden bg-clay py-16 lg:mt-28 lg:py-24">
-        <Container width="wide" className="relative">
-          <SectionHeading
-            eyebrow="How it works"
-            title="Three steps, then it runs itself"
-            tone="dark"
-          />
-          <ol className="mt-10 grid gap-8 md:grid-cols-3">
-            {HOW_IT_WORKS.map((step, index) => (
-              <li key={step.title}>
-                <span
-                  aria-hidden="true"
-                  className="flex size-14 items-center justify-center rounded-sm bg-ochre font-display text-2xl font-extrabold text-ink tabular-nums"
-                >
-                  {index + 1}
-                </span>
-                <h3 className="mt-5 text-[1.5rem] text-bone">
-                  <span className="sr-only">Step {index + 1}: </span>
-                  {step.title}
-                </h3>
-                <p className="mt-2 leading-relaxed text-bone/75">
-                  {step.body}
-                </p>
+      {/* ——— Proof: the clients Manav already publishes on smartocabs.com. */}
+      <div className="mt-16 bg-sand py-14 lg:mt-20">
+        <Container width="narrow">
+          <p className="text-label font-extrabold text-clay uppercase">
+            Already riding with us
+          </p>
+          <h2 className="mt-4 text-[1.8125rem] leading-[1.09] sm:text-[2.25rem]">
+            The companies{" "}
+            <span className="accent">that stopped worrying about it.</span>
+          </h2>
+          <ul className="reveal mt-8 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+            {CLIENT_LOGOS.map((logo) => (
+              <li
+                key={logo.name}
+                className="flex h-[4.625rem] items-center justify-center rounded-[10px] bg-paper px-5"
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.name}
+                  width={logo.w}
+                  height={logo.h}
+                  loading="lazy"
+                  className="h-8 w-auto object-contain"
+                />
               </li>
             ))}
-          </ol>
+          </ul>
         </Container>
-      </section>
+      </div>
 
-      <Container width="wide" className="pt-16 lg:pt-24">
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-          <div>
-            <SectionHeading
-              eyebrow="What to expect"
-              title="The unglamorous parts we take seriously"
-            />
-            <ul className="mt-7 space-y-5">
-              {[
-                {
-                  title: "Vehicles that are actually clean",
-                  body: "Checked between runs, not once a week. Your visiting client notices this before they notice anything else.",
-                },
-                {
-                  title: "Drivers briefed on the job",
-                  body: "Who they are collecting, where they are going, and what to do if a flight slips. Not just an address forwarded by message.",
-                },
-                {
-                  title: "Cover when something breaks",
-                  body: "A replacement vehicle arranged rather than a phone call telling you it is not coming.",
-                },
-                {
-                  title: "Billing you can reconcile",
-                  body: "Itemised monthly invoicing against the routes you agreed, so finance is not chasing loose receipts.",
-                },
-              ].map((point) => (
-                <li key={point.title} className="flex gap-3.5">
-                  <svg
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                    className="mt-1 size-5 shrink-0 text-clay-deep"
-                  >
-                    <path d="m4 10.5 4 4 8-9" />
-                  </svg>
-                  <div>
-                    <h3 className="font-sans text-base font-extrabold text-ink">
-                      {point.title}
-                    </h3>
-                    <p className="mt-1 text-[0.9375rem] leading-relaxed text-taupe">
-                      {point.body}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="lg:sticky lg:top-28 lg:self-start">
-            <div className="border-t border-line bg-sand p-6 lg:p-8">
-              <h2 className="text-[1.75rem] leading-tight text-ink">
-                Tell us what you need moved
-              </h2>
-              <p className="mt-3 leading-relaxed text-taupe">
-                Send the routes, timings and passenger numbers. We come back
-                with an arrangement and a monthly figure.
-              </p>
-              <ul className="mt-6 space-y-2.5 text-[0.9375rem] font-extrabold text-ink">
-                <li className="flex gap-2.5">
-                  <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-clay" />
-                  Pickup points and drop points
-                </li>
-                <li className="flex gap-2.5">
-                  <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-clay" />
-                  Days, times, and how often
-                </li>
-                <li className="flex gap-2.5">
-                  <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-clay" />
-                  Number of passengers per run
-                </li>
-                <li className="flex gap-2.5">
-                  <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-clay" />
-                  Anything that must not go wrong
-                </li>
-              </ul>
-              <div className="mt-7">
-                <WhatsAppLink
-                  message={enquiry(
-                    "I am enquiring about corporate transport. Here are our routes, timings, and passenger numbers:",
-                  )}
-                  location="corporate-enquiry"
-                  size="md"
-                  fullWidth
+      {/* ——— The procurement questions. */}
+      <Container width="narrow" className="pt-16 lg:pt-20">
+        <p className="text-label font-extrabold text-clay uppercase">
+          Before you ask
+        </p>
+        <h2 className="mt-4 text-[1.8125rem] leading-[1.09] sm:text-[2.25rem]">
+          The questions{" "}
+          <span className="accent">procurement always sends.</span>
+        </h2>
+        <div className="mt-6">
+          {FAQ.map((item) => (
+            <details key={item.q} className="group border-b border-line">
+              <summary className="flex min-h-11 cursor-pointer list-none items-start justify-between gap-4 py-4 text-[0.9375rem] font-extrabold [&::-webkit-details-marker]:hidden">
+                {item.q}
+                <span
+                  aria-hidden="true"
+                  className="text-[1.25rem] leading-none font-extrabold text-green-deep group-open:hidden"
                 >
-                  Request a corporate quote
-                </WhatsAppLink>
-              </div>
-            </div>
-          </div>
+                  +
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="hidden text-[1.25rem] leading-none font-extrabold text-green-deep group-open:inline"
+                >
+                  &ndash;
+                </span>
+              </summary>
+              <p className="pb-5 text-[0.875rem] leading-relaxed text-taupe">
+                {item.a}
+              </p>
+            </details>
+          ))}
         </div>
       </Container>
+
+      {/* ——— Start here: the rate card. */}
+      <div
+        id="rate-card"
+        className="mt-16 scroll-mt-20 bg-ink py-14 text-bone lg:mt-20"
+      >
+        <Container width="narrow" className="text-center">
+          <p className="text-label font-extrabold text-green uppercase">
+            Start here
+          </p>
+          <h2 className="mt-4 text-[1.8125rem] leading-[1.09] text-bone sm:text-[2.25rem]">
+            Tell us your routes.{" "}
+            <span className="accent block">We&rsquo;ll send a rate card.</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-md text-[0.90625rem] leading-relaxed text-bone/70">
+            Two working days, no obligation, and a real person on the other
+            end.
+          </p>
+          <RateCardForm />
+        </Container>
+      </div>
+
+      {/* ——— The other doors: events (one-off) and partners (booking for guests). */}
+      <div className="grid gap-px bg-line sm:grid-cols-2">
+        <div className="bg-sand px-5 py-9 text-center">
+          <p className="text-[0.875rem] leading-relaxed text-taupe">
+            Planning a wedding, conference or
+            <br />
+            one-off event rather than daily travel?
+          </p>
+          <Link
+            href="/events"
+            className="link-rule mt-3 inline-flex items-center gap-2 text-[0.875rem] font-extrabold text-ink"
+          >
+            See Smarto for events
+            <ArrowIcon className="size-[15px]" />
+          </Link>
+        </div>
+        <div className="bg-sand px-5 py-9 text-center">
+          <p className="text-[0.875rem] leading-relaxed text-taupe">
+            Travel agent, tour operator or hotel
+            <br />
+            booking on behalf of your own guests?
+          </p>
+          <Link
+            href="/partners"
+            className="link-rule mt-3 inline-flex items-center gap-2 text-[0.875rem] font-extrabold text-ink"
+          >
+            See the partner programme
+            <ArrowIcon className="size-[15px]" />
+          </Link>
+        </div>
+      </div>
+
+      {/* ——— The business dock: the trial offer, on phones. */}
+      <div className="fixed inset-x-0 bottom-0 z-40 lg:hidden">
+        <div
+          className="flex items-center justify-between gap-3 bg-ink px-4 pt-3.5"
+          style={{ paddingBottom: "calc(0.875rem + env(safe-area-inset-bottom))" }}
+        >
+          <p className="text-[0.6875rem] leading-snug text-bone/60">
+            <span className="block text-[0.90625rem] font-extrabold text-bone">
+              Free trial week
+            </span>
+            No commitment, no card
+          </p>
+          <WaCta
+            message={enquiry(
+              "I would like to start a free trial week of employee transport for my company.",
+            )}
+            location="corporate-dock"
+            className="flex min-h-11 shrink-0 items-center gap-2 rounded-full bg-green-deep px-5 text-[0.875rem] font-extrabold text-white"
+          >
+            <WhatsAppIcon />
+            Talk to us
+          </WaCta>
+        </div>
+        <div aria-hidden="true" className="spark-band" />
+      </div>
+      {/* Clears the fixed dock so the footer's last line is never hidden. */}
+      <div aria-hidden="true" className="h-20 lg:hidden" />
     </>
   );
 }
