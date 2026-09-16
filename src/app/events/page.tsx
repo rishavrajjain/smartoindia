@@ -1,19 +1,18 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { EventBrief } from "@/components/sections/event-brief";
 import { EventPlan } from "@/components/sections/event-plan";
+import { PhotoHero } from "@/components/sections/photo-hero";
 import { Container } from "@/components/ui/container";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import {
   ArrowIcon,
   BoltIcon,
-  BuildingIcon,
-  CalendarIcon,
   CarIcon,
   CheckIcon,
   ClockIcon,
   HeadsetIcon,
-  HeartIcon,
   HouseIcon,
   PeopleIcon,
   PhoneCheckIcon,
@@ -116,22 +115,34 @@ const RUN_SHEET = [
 
 const EVENT_KINDS = [
   {
-    icon: HeartIcon,
+    image: {
+      src: "/images/biz-events.webp",
+      alt: "White sedans queuing through a marigold-decorated wedding gate at dusk",
+    },
     title: "Weddings",
     body: "Multi-day, multi-venue, with families arriving from everywhere at once.",
   },
   {
-    icon: BuildingIcon,
+    image: {
+      src: "/images/biz-corporate.webp",
+      alt: "Electric sedans waiting at the glass porch of a modern office",
+    },
     title: "Corporate events",
     body: "Offsites, launches, client visits and annual days, on one invoice.",
   },
   {
-    icon: PeopleIcon,
+    image: {
+      src: "/images/svc-events-conference.webp",
+      alt: "A line of white sedans on the lit drive of a convention centre at dusk",
+    },
     title: "Conferences",
     body: "Hundreds of delegates arriving in one morning and leaving in one evening.",
   },
   {
-    icon: CalendarIcon,
+    image: {
+      src: "/images/svc-events-festival.webp",
+      alt: "Fairy lights over bamboo pavilions at a festival ground at blue hour",
+    },
     title: "Collaborative events",
     body: "Festivals, exhibitions and anything run with partners and sponsors.",
   },
@@ -200,57 +211,47 @@ const FAQ = [
 export default function EventsPage() {
   return (
     <>
-      {/* ——— Hero: dark, call-first, with the spark glow in the corner. */}
-      <section className="relative overflow-hidden bg-clay-deep text-bone">
-        <div
-          aria-hidden="true"
-          className="spark-glow absolute -top-40 -right-32 size-[24rem] rounded-full"
-        />
-        <Container width="wide" className="relative pt-16 pb-10 lg:pt-24">
-          <p className="text-label font-extrabold text-green uppercase">
-            Events · Weddings · Conferences
-          </p>
-          <h1 className="mt-6 max-w-2xl text-[2.375rem] leading-[1.05] tracking-[-0.02em] sm:text-[3.25rem]">
+      {/* ——— Hero: the convoy at the gate, and the promise beside it. */}
+      <PhotoHero
+        eyebrow="Events · Weddings · Conferences"
+        title={
+          <>
             Nobody at your event{" "}
             <span className="accent block">should be waiting for a car.</span>
-          </h1>
-          <p className="mt-5 max-w-md text-[0.9375rem] leading-relaxed text-bone/70">
-            Weddings, corporate events and conferences, handled end to end:
-            rooms, arrivals, shuttles, departures. One coordinator, one number,
-            one invoice.
-          </p>
-          <div className="mt-7 flex max-w-md flex-col gap-2.5 sm:max-w-none sm:flex-row">
-            <a
-              href={TEL_HREF}
-              className="flex min-h-[3.25rem] items-center justify-center gap-2.5 rounded-[10px] bg-green-deep px-6 text-[0.9375rem] font-extrabold text-white transition-transform duration-[180ms] active:scale-[0.985]"
-            >
-              <PhoneIcon className="size-4" />
-              Call {WHATSAPP_DISPLAY}
-            </a>
-            <a
-              href="#brief"
-              className="flex min-h-[3.25rem] items-center justify-center rounded-[10px] border border-white/35 px-6 text-[0.9375rem] font-extrabold text-bone transition-colors hover:bg-white/8"
-            >
-              Send your event brief
-            </a>
-          </div>
-        </Container>
-        <div className="no-scrollbar relative flex gap-2 overflow-x-auto px-5 pb-7 sm:px-8">
-          {CHIPS.map((chip, index) => (
-            <span
-              key={index}
-              className="flex shrink-0 items-center gap-2 rounded-full bg-white/7 px-4 py-2.5 text-[0.78125rem] whitespace-nowrap"
-            >
-              <chip.icon className="size-[15px] shrink-0 text-green" />
-              <span>{chip.label}</span>
-            </span>
-          ))}
+          </>
+        }
+        sub="Weddings, corporate events and conferences, handled end to end: rooms, arrivals, shuttles, departures. One coordinator, one number, one invoice."
+        image={{
+          src: "/images/biz-events.webp",
+          alt: "A line of white sedans arriving through a marigold-decorated wedding gate at dusk",
+        }}
+        float={{
+          icon: PeopleIcon,
+          title: "One coordinator",
+          line: "One number, one invoice",
+        }}
+        chips={CHIPS}
+      >
+        <div className="flex max-w-md flex-col gap-2.5 sm:max-w-none sm:flex-row">
+          <a
+            href={TEL_HREF}
+            className="flex min-h-[3.25rem] items-center justify-center gap-2.5 rounded-[10px] bg-green-deep px-6 text-[0.9375rem] font-extrabold text-white transition-transform duration-[180ms] active:scale-[0.985]"
+          >
+            <PhoneIcon className="size-4" />
+            Call {WHATSAPP_DISPLAY}
+          </a>
+          <a
+            href="#brief"
+            className="flex min-h-[3.25rem] items-center justify-center rounded-[10px] border border-line-strong px-6 text-[0.9375rem] font-extrabold text-ink transition-colors hover:bg-sand"
+          >
+            Send your event brief
+          </a>
         </div>
-      </section>
+      </PhotoHero>
 
       {/* ——— The movement plan: the mockup's signature. */}
       <section className="bg-clay-deep pb-14 text-bone lg:pb-20">
-        <Container width="wide" className="border-t border-white/10 pt-14">
+        <Container width="wide" className="pt-14">
           <p className="text-label font-extrabold text-green uppercase">
             The shape of your event
           </p>
@@ -372,14 +373,23 @@ export default function EventsPage() {
         <h2 className="mt-4 text-[1.8125rem] leading-[1.09] sm:text-[2.25rem]">
           Different events, <span className="accent">the same discipline.</span>
         </h2>
-        <ul className="reveal mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-line lg:grid-cols-4">
+        <ul className="reveal mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
           {EVENT_KINDS.map((kind) => (
-            <li key={kind.title} className="bg-paper p-5">
-              <kind.icon className="size-[22px] text-ink" />
-              <h3 className="mt-3 text-[0.90625rem] font-extrabold">
+            <li key={kind.title} className="group">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-sand">
+                <Image
+                  src={kind.image.src}
+                  alt={kind.image.alt}
+                  fill
+                  loading="lazy"
+                  sizes="(min-width: 1024px) 24vw, 46vw"
+                  className="zoom-slow object-cover"
+                />
+              </div>
+              <h3 className="mt-3.5 text-[0.96875rem] font-extrabold">
                 {kind.title}
               </h3>
-              <p className="mt-1.5 text-[0.75rem] leading-relaxed text-taupe">
+              <p className="mt-1 text-[0.78125rem] leading-relaxed text-taupe">
                 {kind.body}
               </p>
             </li>

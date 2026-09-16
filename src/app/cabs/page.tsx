@@ -1,18 +1,16 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { CabBookingCard } from "@/components/sections/cab-booking-card";
 import { FareLock } from "@/components/sections/fare-lock";
+import { PhotoHero } from "@/components/sections/photo-hero";
 import { Container } from "@/components/ui/container";
 import {
   ArrowIcon,
   BoltIcon,
-  CarIcon,
-  ClockIcon,
   HeadsetIcon,
-  SendIcon,
   SurgeOffIcon,
   TagIcon,
-  TrainIcon,
 } from "@/components/ui/line-icons";
 import { WaCta } from "@/components/ui/wa-cta";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
@@ -45,37 +43,47 @@ const CHIPS = [
 
 const SERVICES = [
   {
-    icon: CarIcon,
+    image: {
+      src: "/images/svc-cabs-city.webp",
+      alt: "A white electric sedan on a leafy Guwahati avenue in the early morning",
+    },
     title: "City rides",
     fare: null,
     body: "Anywhere in Guwahati at a flat fare. The quoted price is final: in traffic, in rain, at 2 AM.",
     message: enquiry("I need a cab in Guwahati and would like the flat fare."),
   },
   {
-    icon: TrainIcon,
+    image: {
+      src: "/images/svc-cabs-railway.webp",
+      alt: "A cab waiting with its boot open at a railway station forecourt at golden hour",
+    },
     title: "Railway station drops",
     fare: "₹399",
     body: "Early train, late train, same price. We watch the arrival board so you don't have to.",
     message: enquiry("I need a railway station drop."),
   },
   {
-    icon: SendIcon,
+    image: {
+      src: "/images/svc-cabs-airport.webp",
+      alt: "A white sedan at the airport departures kerb at dawn, a suitcase beside it",
+    },
     title: "Airport rides",
     fare: null,
     body: "Fixed airport fares, 24×7. Booked at midnight for a 4 AM flight and priced the same as noon.",
     message: enquiry("I need an airport ride."),
   },
   {
-    icon: ClockIcon,
+    image: {
+      src: "/images/svc-cabs-hourly.webp",
+      alt: "A white sedan parked at a tea-garden viewpoint with its doors open",
+    },
     title: "Hourly rentals",
     fare: null,
     body: "Keep the car and the driver for the day. Flat hourly pricing, premium electric cars.",
     message: enquiry("I would like an hourly cab rental."),
   },
-];
+] as const;
 
-/* The mockup's two placeholder cells (rides completed, CO2 avoided) are
-   left out until Manav supplies real figures. */
 const NUMBERS = [
   { n: "100%", l: "Electric fleet. No tailpipe, no noise." },
   { n: "₹0", l: "Surge charged. Not once, not ever." },
@@ -103,61 +111,33 @@ export default function CabsPage() {
 
   return (
     <>
-      {/* ——— Hero: the promise, with the booking card riding beside it. */}
-      <section className="relative overflow-hidden bg-clay-deep text-bone">
-        <div
-          aria-hidden="true"
-          className="spark-glow absolute -top-40 -right-32 size-[24rem] rounded-full"
-        />
-        <Container width="wide" className="relative pt-16 pb-4 lg:pt-24 lg:pb-10">
-          <div className="lg:grid lg:grid-cols-[1fr_25rem] lg:items-center lg:gap-16">
-            <div>
-              <p className="text-label font-extrabold text-green uppercase">
-                Cabs · Guwahati
-              </p>
-              <h1 className="mt-6 max-w-2xl text-[2.5rem] leading-[1.02] tracking-[-0.02em] sm:text-[3.25rem]">
-                The price you&rsquo;re quoted{" "}
-                <span className="accent block">is the price you pay.</span>
-              </h1>
-              <p className="mt-5 max-w-md text-[0.9375rem] leading-relaxed text-bone/70">
-                Flat fares. No surge. No bargaining. All-electric cabs across
-                Guwahati, 24×7.
-              </p>
-              {/* On desktop the chips sit under the headline; on phones they
-                  ride their own scrolling rail below the card. */}
-              <div className="mt-7 hidden flex-wrap gap-2 lg:flex">
-                {CHIPS.map((chip, index) => (
-                  <span
-                    key={index}
-                    className="flex items-center gap-2 rounded-full bg-white/7 px-4 py-2.5 text-[0.78125rem] whitespace-nowrap"
-                  >
-                    <chip.icon className="size-[15px] shrink-0 text-green" />
-                    <span>{chip.label}</span>
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="mt-7 lg:mt-0">
-              <CabBookingCard />
-            </div>
-          </div>
-        </Container>
-        <div className="no-scrollbar relative flex gap-2 overflow-x-auto px-5 pt-4 pb-7 sm:px-8 lg:hidden">
-          {CHIPS.map((chip, index) => (
-            <span
-              key={index}
-              className="flex shrink-0 items-center gap-2 rounded-full bg-white/7 px-4 py-2.5 text-[0.78125rem] whitespace-nowrap"
-            >
-              <chip.icon className="size-[15px] shrink-0 text-green" />
-              <span>{chip.label}</span>
-            </span>
-          ))}
-        </div>
-      </section>
+      {/* ——— Hero: the promise, the booking card, and the road it buys. */}
+      <PhotoHero
+        eyebrow="Cabs · Guwahati"
+        title={
+          <>
+            The price you&rsquo;re quoted{" "}
+            <span className="accent block">is the price you pay.</span>
+          </>
+        }
+        sub="Flat fares. No surge. No bargaining. All-electric cabs across Guwahati, 24×7."
+        image={{
+          src: "/images/svc-cabs-hero.webp",
+          alt: "A white electric sedan waiting at a misty hill-road viewpoint with travel bags beside it",
+        }}
+        float={{
+          icon: TagIcon,
+          title: "Flat ₹399",
+          line: "Railway station drop",
+        }}
+        chips={CHIPS}
+      >
+        <CabBookingCard />
+      </PhotoHero>
 
       {/* ——— The fare lock: the mockup's signature. */}
-      <section className="bg-clay-deep pb-14 text-bone lg:pb-20">
-        <Container width="wide" className="border-t border-white/10 pt-14">
+      <section className="bg-clay-deep py-14 text-bone lg:py-20">
+        <Container width="wide">
           <div className="max-w-xl">
             <p className="text-label font-extrabold text-green uppercase">
               The fare lock
@@ -182,37 +162,41 @@ export default function CabsPage() {
         <h2 className="mt-4 text-[1.875rem] leading-[1.08] sm:text-[2.25rem]">
           Every one of them <span className="accent">a flat fare.</span>
         </h2>
-        <ul className="mt-6 lg:grid lg:grid-cols-2 lg:gap-x-14">
+        <ul className="mt-8 grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {SERVICES.map((service) => (
-            <li
-              key={service.title}
-              className="reveal border-b border-line py-5 last:border-b-0 lg:nth-3:border-b-0"
-            >
+            <li key={service.title} className="reveal">
               <WaCta
                 message={service.message}
                 location="cabs-service"
                 subject={service.title}
-                className="group flex items-start gap-3.5"
+                className="group block"
               >
-                <service.icon className="mt-0.5 size-6 shrink-0 text-ink" />
-                <span className="min-w-0 flex-1">
-                  <span className="flex flex-wrap items-center gap-2.5 text-[1.09375rem] font-extrabold text-ink">
-                    {service.title}
-                    {service.fare && (
-                      <span className="rounded-[4px] bg-green-deep/10 px-2 py-1 text-[0.625rem] font-extrabold tracking-[0.2em] text-green-deep">
-                        {service.fare}
-                      </span>
-                    )}
-                  </span>
-                  <span className="mt-1 block max-w-[26em] text-[0.875rem] leading-relaxed text-taupe">
-                    {service.body}
+                <span className="relative block aspect-[4/3] overflow-hidden rounded-2xl bg-sand">
+                  <Image
+                    src={service.image.src}
+                    alt={service.image.alt}
+                    fill
+                    loading="lazy"
+                    sizes="(min-width: 1024px) 24vw, (min-width: 640px) 46vw, calc(100vw - 2.5rem)"
+                    className="zoom-slow object-cover"
+                  />
+                  {service.fare && (
+                    <span className="absolute top-3 left-3 rounded-full bg-green-deep px-3 py-1.5 text-[0.6875rem] font-extrabold tracking-[0.1em] text-white uppercase">
+                      Flat {service.fare}
+                    </span>
+                  )}
+                </span>
+                <span className="mt-3.5 flex items-center gap-2 text-[1.03125rem] font-extrabold text-ink">
+                  {service.title}
+                  <span
+                    aria-hidden="true"
+                    className="text-clay opacity-0 transition-opacity group-hover:opacity-100"
+                  >
+                    →
                   </span>
                 </span>
-                <span
-                  aria-hidden="true"
-                  className="mt-1 shrink-0 text-clay opacity-0 transition-opacity group-hover:opacity-100"
-                >
-                  →
+                <span className="mt-1 block text-[0.8125rem] leading-relaxed text-taupe">
+                  {service.body}
                 </span>
               </WaCta>
             </li>

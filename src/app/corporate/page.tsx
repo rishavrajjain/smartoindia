@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { EsgLine } from "@/components/sections/esg-line";
+import { PhotoHero } from "@/components/sections/photo-hero";
 import { RateCardForm } from "@/components/sections/rate-card-form";
 import { Container } from "@/components/ui/container";
 import {
@@ -152,60 +153,56 @@ const FAQ = [
 export default function CorporatePage() {
   return (
     <>
-      {/* ——— Hero: dark, rate-card-first, with the spark glow in the corner. */}
-      <section className="relative overflow-hidden bg-clay-deep text-bone">
-        <div
-          aria-hidden="true"
-          className="spark-glow absolute -top-40 -right-32 size-[24rem] rounded-full"
-        />
-        <Container width="wide" className="relative pt-16 pb-10 lg:pt-24">
-          <p className="text-label font-extrabold text-green uppercase">
-            For business · Employee transport
-          </p>
-          <h1 className="mt-6 max-w-2xl text-[2.375rem] leading-[1.03] tracking-[-0.02em] sm:text-[3.25rem]">
+      {/* ——— Hero: the porch at nine sharp, and the promise beside it. */}
+      <PhotoHero
+        eyebrow="For business · Employee transport"
+        title={
+          <>
             Employee transport,{" "}
             <span className="accent block">off your desk.</span>
-          </h1>
-          <p className="mt-5 max-w-md text-[0.9375rem] leading-relaxed text-bone/70">
+          </>
+        }
+        sub={
+          <>
             A fixed rate card, one named contact, one monthly invoice.
             Guwahati&rsquo;s only all-electric fleet, run by the people who own
             the cars.
-          </p>
-          <div className="mt-7 flex max-w-md flex-col gap-2.5 sm:max-w-none sm:flex-row">
-            <a
-              href="#rate-card"
-              className="flex min-h-[3.25rem] items-center justify-center gap-2.5 rounded-[10px] bg-green-deep px-6 text-[0.9375rem] font-extrabold text-white transition-transform duration-[180ms] active:scale-[0.985]"
-            >
-              Request a rate card
-              <ArrowIcon className="size-4" />
-            </a>
-            <WaCta
-              message={enquiry(
-                "I would like to start a free trial week of employee transport for my company.",
-              )}
-              location="corporate-trial"
-              className="flex min-h-[3.25rem] items-center justify-center rounded-[10px] border border-white/35 px-6 text-[0.9375rem] font-extrabold text-bone transition-colors hover:bg-white/8"
-            >
-              Start a free trial week
-            </WaCta>
-          </div>
-        </Container>
-        <div className="no-scrollbar relative flex gap-2 overflow-x-auto px-5 pb-7 sm:px-8">
-          {CHIPS.map((chip, index) => (
-            <span
-              key={index}
-              className="flex shrink-0 items-center gap-2 rounded-full bg-white/7 px-4 py-2.5 text-[0.78125rem] whitespace-nowrap"
-            >
-              <chip.icon className="size-[15px] shrink-0 text-green" />
-              <span>{chip.label}</span>
-            </span>
-          ))}
+          </>
+        }
+        image={{
+          src: "/images/biz-corporate.webp",
+          alt: "Electric sedans arriving at the glass porch of a modern office on a bright morning",
+        }}
+        float={{
+          icon: TagIcon,
+          title: "Fixed rate card",
+          line: "Agreed quarterly, in writing",
+        }}
+        chips={CHIPS}
+      >
+        <div className="flex max-w-md flex-col gap-2.5 sm:max-w-none sm:flex-row">
+          <a
+            href="#rate-card"
+            className="flex min-h-[3.25rem] items-center justify-center gap-2.5 rounded-[10px] bg-green-deep px-6 text-[0.9375rem] font-extrabold text-white transition-transform duration-[180ms] active:scale-[0.985]"
+          >
+            Request a rate card
+            <ArrowIcon className="size-4" />
+          </a>
+          <WaCta
+            message={enquiry(
+              "I would like to start a free trial week of employee transport for my company.",
+            )}
+            location="corporate-trial"
+            className="flex min-h-[3.25rem] items-center justify-center rounded-[10px] border border-line-strong px-6 text-[0.9375rem] font-extrabold text-ink transition-colors hover:bg-sand"
+          >
+            Start a free trial week
+          </WaCta>
         </div>
-      </section>
+      </PhotoHero>
 
       {/* ——— The ESG line: the mockup's signature. */}
       <section className="bg-clay-deep pb-14 text-bone lg:pb-20">
-        <Container width="wide" className="border-t border-white/10 pt-14">
+        <Container width="wide" className="pt-14">
           <p className="text-label font-extrabold text-green uppercase">
             The line for your sustainability report
           </p>
@@ -292,6 +289,30 @@ export default function CorporatePage() {
           </ol>
         </Container>
       </div>
+
+      {/* ——— The fleet, ready before the shift. */}
+      <Container width="wide" className="pt-16 lg:pt-20">
+        <div className="reveal relative overflow-hidden rounded-[2rem]">
+          <Image
+            src="/images/svc-corporate-fleet.webp"
+            alt="A row of white electric sedans charging at an office campus at dusk"
+            width={1536}
+            height={1024}
+            loading="lazy"
+            sizes="(min-width: 1280px) 1200px, 100vw"
+            className="aspect-[21/9] w-full object-cover"
+          />
+          <span aria-hidden="true" className="photo-scrim absolute inset-0" />
+          <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-4 p-6 sm:p-8">
+            <p className="max-w-md text-[1.25rem] leading-snug font-extrabold text-bone sm:text-[1.5rem]">
+              Charged overnight, at the gate before your first shift.
+            </p>
+            <p className="text-[0.6875rem] font-extrabold tracking-[0.16em] text-bone/75 uppercase">
+              100% electric · zero tailpipe
+            </p>
+          </div>
+        </div>
+      </Container>
 
       {/* ——— Who it's for. */}
       <Container width="narrow" className="pt-16 lg:pt-20">

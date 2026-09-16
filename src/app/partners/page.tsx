@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { PartnerRegisterForm } from "@/components/sections/partner-register-form";
 import { PartnerSplit } from "@/components/sections/partner-split";
+import { PhotoHero } from "@/components/sections/photo-hero";
 import { Container } from "@/components/ui/container";
 import {
   ArrowIcon,
@@ -161,58 +162,48 @@ const FAQ = [
 export default function PartnersPage() {
   return (
     <>
-      {/* ——— Hero: dark, register-first, with the spark glow in the corner. */}
-      <section className="relative overflow-hidden bg-clay-deep text-bone">
-        <div
-          aria-hidden="true"
-          className="spark-glow absolute -top-40 -right-32 size-[24rem] rounded-full"
-        />
-        <Container width="wide" className="relative pt-16 pb-10 lg:pt-24">
-          <p className="text-label font-extrabold text-green uppercase">
-            Partner programme · Agents &amp; hotels
-          </p>
-          <h1 className="mt-6 max-w-2xl text-[2.375rem] leading-[1.03] tracking-[-0.02em] sm:text-[3.25rem]">
+      {/* ——— Hero: the car under the portico, and the promise beside it. */}
+      <PhotoHero
+        eyebrow="Partner programme · Agents &amp; hotels"
+        title={
+          <>
             Book for your guests.{" "}
             <span className="accent block">Earn on every ride.</span>
-          </h1>
-          <p className="mt-5 max-w-md text-[0.9375rem] leading-relaxed text-bone/70">
-            Your guest pays the same flat fare anyone else pays. Your
-            commission comes out of our margin, not their pocket. Up to 10%
-            back on every ride you book.
-          </p>
-          <div className="mt-7 flex max-w-md flex-col gap-2.5 sm:max-w-none sm:flex-row">
-            <a
-              href="#register"
-              className="flex min-h-[3.25rem] items-center justify-center gap-2.5 rounded-[10px] bg-green-deep px-6 text-[0.9375rem] font-extrabold text-white transition-transform duration-[180ms] active:scale-[0.985]"
-            >
-              Create a partner account
-              <ArrowIcon className="size-4" />
-            </a>
-            <WaCta
-              message={DESK_MESSAGE}
-              location="partner-desk"
-              className="flex min-h-[3.25rem] items-center justify-center rounded-[10px] border border-white/35 px-6 text-[0.9375rem] font-extrabold text-bone transition-colors hover:bg-white/8"
-            >
-              Ask the partner desk
-            </WaCta>
-          </div>
-        </Container>
-        <div className="no-scrollbar relative flex gap-2 overflow-x-auto px-5 pb-7 sm:px-8">
-          {CHIPS.map((chip, index) => (
-            <span
-              key={index}
-              className="flex shrink-0 items-center gap-2 rounded-full bg-white/7 px-4 py-2.5 text-[0.78125rem] whitespace-nowrap"
-            >
-              <chip.icon className="size-[15px] shrink-0 text-green" />
-              <span>{chip.label}</span>
-            </span>
-          ))}
+          </>
+        }
+        sub="Your guest pays the same flat fare anyone else pays. Your commission comes out of our margin, not their pocket. Up to 10% back on every ride you book."
+        image={{
+          src: "/images/biz-partners.webp",
+          alt: "A white sedan and a brass luggage cart under the portico of a hillside heritage hotel",
+        }}
+        float={{
+          icon: ShieldIcon,
+          title: "Up to 10% back",
+          line: "On every ride you book",
+        }}
+        chips={CHIPS}
+      >
+        <div className="flex max-w-md flex-col gap-2.5 sm:max-w-none sm:flex-row">
+          <a
+            href="#register"
+            className="flex min-h-[3.25rem] items-center justify-center gap-2.5 rounded-[10px] bg-green-deep px-6 text-[0.9375rem] font-extrabold text-white transition-transform duration-[180ms] active:scale-[0.985]"
+          >
+            Create a partner account
+            <ArrowIcon className="size-4" />
+          </a>
+          <WaCta
+            message={DESK_MESSAGE}
+            location="partner-desk"
+            className="flex min-h-[3.25rem] items-center justify-center rounded-[10px] border border-line-strong px-6 text-[0.9375rem] font-extrabold text-ink transition-colors hover:bg-sand"
+          >
+            Ask the partner desk
+          </WaCta>
         </div>
-      </section>
+      </PhotoHero>
 
       {/* ——— The open split: the mockup's signature. */}
       <section className="bg-clay-deep pb-14 text-bone lg:pb-20">
-        <Container width="wide" className="border-t border-white/10 pt-14">
+        <Container width="wide" className="pt-14">
           <p className="text-label font-extrabold text-green uppercase">
             Where the money goes
           </p>

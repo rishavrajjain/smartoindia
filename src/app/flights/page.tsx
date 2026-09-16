@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Suspense } from "react";
 
 import { FlightResults, ResultsSkeleton } from "@/components/sections/flight-results";
@@ -44,10 +45,31 @@ export default async function FlightsPage({ searchParams }: { searchParams: Sear
   return (
     <>
       <Container width="default" className="pt-8 lg:pt-12">
-        <Eyebrow>Flights</Eyebrow>
-        <h1 className="mt-3 text-[1.75rem] leading-tight sm:text-[2rem]">
-          Search <span className="accent">flights</span>
-        </h1>
+        <div className="flex items-end justify-between gap-8">
+          <div>
+            <Eyebrow>Flights</Eyebrow>
+            <h1 className="mt-3 text-[1.75rem] leading-tight sm:text-[2rem]">
+              Search <span className="accent">flights</span>
+            </h1>
+            <p className="mt-3 max-w-sm text-[0.875rem] leading-relaxed text-taupe">
+              Fixed-departure fares into the Northeast, confirmed on WhatsApp,
+              with a Smarto cab waiting when you land.
+            </p>
+          </div>
+          {/* The morning tarmac, in the spark frame the heroes share. */}
+          <div className="hidden shrink-0 rounded-[1.4375rem] bg-[linear-gradient(135deg,#282560_0%,#7b3f7e_45%,#c44868_100%)] p-[3px] md:block">
+            <div className="relative h-36 w-64 overflow-hidden rounded-[1.25rem] bg-sand lg:h-40 lg:w-80">
+              <Image
+                src="/images/svc-flights-hero.webp"
+                alt="An aircraft on the tarmac of a hillside airport at sunrise"
+                fill
+                priority
+                sizes="320px"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
       </Container>
 
       <Container width="default" className="pt-6 pb-24 lg:pt-8 lg:pb-32">
