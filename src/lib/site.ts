@@ -52,6 +52,11 @@ export const NAV: NavItem[] = [
     blurb: "Search fares into and out of the Northeast, then book on WhatsApp.",
   },
   {
+    href: "/events",
+    label: "Events",
+    blurb: "Weddings, conferences and corporate events, moved end to end.",
+  },
+  {
     href: "/corporate",
     label: "Corporate",
     blurb: "Employee transport, offsites, and reliable group movement.",

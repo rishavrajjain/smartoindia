@@ -19,8 +19,10 @@ export function StickyWhatsApp() {
   const isPackageDetail =
     pathname.startsWith("/packages/") && pathname !== "/packages";
   const isFlightBooking = pathname.startsWith("/flights/book");
+  // The events page carries its own call-first dock.
+  const isEvents = pathname.startsWith("/events");
 
-  if (isPackageDetail || isFlightBooking) return null;
+  if (isPackageDetail || isFlightBooking || isEvents) return null;
 
   return (
     <div

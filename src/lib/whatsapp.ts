@@ -60,6 +60,8 @@ export type CtaLocation =
   | "flights-error"
   | "flights-book"
   | "flights-confirmed"
+  | "events-brief"
+  | "events-enquiry"
   | "not-found";
 
 /**
