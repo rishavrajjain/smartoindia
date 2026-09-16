@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 
 import { JOURNEYS } from "@/data/journeys";
+import { loadOgAssets } from "@/lib/og";
 
 export const alt = "A Smarto journey across Northeast India";
 export const size = { width: 1200, height: 630 };
@@ -20,6 +21,7 @@ export default async function JourneyOpengraphImage({
   const { slug } = await params;
   const journey = JOURNEYS.find((item) => item.slug === slug);
   const title = journey?.title ?? "Northeast India, on one honest price";
+  const { fonts, wordmark } = await loadOgAssets();
 
   return new ImageResponse(
     (
@@ -33,7 +35,8 @@ export default async function JourneyOpengraphImage({
           background: "#1c1a45",
           color: "#ffffff",
           padding: "72px 84px 0",
-          fontFamily: "sans-serif",
+          fontFamily: "Poppins",
+          fontWeight: 300,
         }}
       >
         <div
@@ -43,9 +46,7 @@ export default async function JourneyOpengraphImage({
             justifyContent: "space-between",
           }}
         >
-          <div style={{ display: "flex", fontSize: 40, fontWeight: 800 }}>
-            Smarto
-          </div>
+          <img src={wordmark} alt="" width={180} height={40} />
           {journey && (
             <div
               style={{
@@ -112,6 +113,6 @@ export default async function JourneyOpengraphImage({
         />
       </div>
     ),
-    size,
+    { ...size, fonts },
   );
 }

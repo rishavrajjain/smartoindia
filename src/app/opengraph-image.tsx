@@ -1,19 +1,22 @@
 import { ImageResponse } from "next/og";
 
+import { loadOgAssets } from "@/lib/og";
 import { SITE } from "@/lib/site";
 
 export const alt = `${SITE.name}: ${SITE.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-/**
- * Default social card.
- *
- * Deliberately typographic rather than photographic: it renders identically
- * everywhere, needs no font or image fetch at build time, and stays legible in
- * the small preview most clients actually show.
+/*
+ * Default social card, in the brand system: navy-deep ground, the real
+ * wordmark, the Light→ExtraBold headline jump, green for the promise, and
+ * the spark band along the bottom edge. Poppins is bundled (OFL) so the
+ * card renders identically everywhere, at build time, with no network.
  */
-export default function OpengraphImage() {
+
+export default async function OpengraphImage() {
+  const { fonts, wordmark } = await loadOgAssets();
+
   return new ImageResponse(
     (
       <div
@@ -23,101 +26,131 @@ export default function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "linear-gradient(100deg, #5b2bd9 0%, #8b2fc9 48%, #e0356b 100%)",
-          padding: "72px 80px",
-          fontFamily: "sans-serif",
+          background: "#1c1a45",
+          color: "#ffffff",
+          fontFamily: "Poppins",
+          fontWeight: 300,
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+        {/* The spark glow, tucked into the corner like every dark hero. */}
+        <div
+          style={{
+            position: "absolute",
+            top: -260,
+            right: -200,
+            width: 620,
+            height: 620,
+            borderRadius: 620,
+            background:
+              "radial-gradient(circle, rgba(196,72,104,0.5) 0%, rgba(123,63,126,0.26) 45%, rgba(28,26,69,0) 70%)",
+          }}
+        />
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: "64px 84px 0",
+          }}
+        >
+          <img src={wordmark} alt="" width={216} height={48} />
           <div
             style={{
               display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 56,
-              height: 56,
-              borderRadius: 16,
-              background: "#fff7ec",
-              color: "#5b2bd9",
-              fontSize: 38,
+              fontSize: 21,
               fontWeight: 800,
+              letterSpacing: 5,
+              color: "#75b884",
             }}
           >
-            S
-          </div>
-          <div
-            style={{
-              color: "#fff7ec",
-              fontSize: 34,
-              fontWeight: 700,
-              letterSpacing: -0.5,
-            }}
-          >
-            Smarto
-          </div>
-        </div>
-
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div
-            style={{
-              color: "#ffb020",
-              fontSize: 22,
-              fontWeight: 700,
-              letterSpacing: 3,
-              textTransform: "uppercase",
-            }}
-          >
-            Assam · Meghalaya · Arunachal · Sikkim · Nagaland
-          </div>
-          <div
-            style={{
-              marginTop: 22,
-              color: "#fff7ec",
-              fontSize: 78,
-              fontWeight: 700,
-              lineHeight: 1.05,
-              letterSpacing: -2,
-              maxWidth: 900,
-            }}
-          >
-            Northeast India, travelled well
-          </div>
-          <div
-            style={{
-              marginTop: 24,
-              color: "rgba(255,247,236,0.82)",
-              fontSize: 30,
-              lineHeight: 1.4,
-              maxWidth: 840,
-            }}
-          >
-            Trips and transport planned by people who drive these roads every
-            week.
+            GUWAHATI · NORTHEAST INDIA
           </div>
         </div>
 
         <div
           style={{
             display: "flex",
-            alignItems: "center",
-            gap: 14,
-            color: "#fff7ec",
-            fontSize: 24,
-            fontWeight: 600,
+            flexDirection: "column",
+            padding: "0 84px",
           }}
         >
           <div
             style={{
-              width: 40,
-              height: 4,
-              borderRadius: 2,
-              background: "#ffb020",
+              display: "flex",
+              flexDirection: "column",
+              fontSize: 84,
+              lineHeight: 1.04,
+              letterSpacing: -2,
+            }}
+          >
+            <span>Northeast India,</span>
+            <span style={{ fontWeight: 800 }}>travelled well.</span>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              marginTop: 26,
+              fontSize: 28,
+              lineHeight: 1.4,
+              color: "rgba(255,255,255,0.72)",
+              maxWidth: 760,
+            }}
+          >
+            Flat-fare EV cabs, and fifty curated journeys planned end to end.
+            No surge, no bargaining, nothing added at the end.
+          </div>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 18,
+              padding: "0 84px 56px",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                background: "#399772",
+                color: "#ffffff",
+                fontSize: 24,
+                fontWeight: 800,
+                padding: "18px 34px",
+                borderRadius: 999,
+              }}
+            >
+              Plan on WhatsApp
+            </div>
+            <div
+              style={{
+                display: "flex",
+                fontSize: 24,
+                color: "rgba(255,255,255,0.6)",
+              }}
+            >
+              +91 70990 13815 · 24×7
+            </div>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              height: 14,
+              background:
+                "linear-gradient(90deg, #282560 0%, #7b3f7e 50%, #c44868 100%)",
             }}
           />
-          Plan on WhatsApp
         </div>
       </div>
     ),
-    size,
+    { ...size, fonts },
   );
 }
