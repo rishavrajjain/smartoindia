@@ -10,8 +10,11 @@ import { WHATSAPP_DISPLAY, enquiry } from "@/lib/whatsapp";
 const STATES = ["Assam", "Meghalaya", "Arunachal", "Sikkim", "Nagaland"];
 
 export function SiteFooter() {
+  // The footer owns its ground and paints its own top spacing: on the
+  // homepage the body behind it is navy-deep (mobile-frame theme), not bone,
+  // so a margin here would read as a dark stripe.
   return (
-    <footer data-site-chrome="footer" className="mt-28 lg:mt-40">
+    <footer data-site-chrome="footer" className="bg-bone pt-28 lg:pt-40">
       {/* Sign-off */}
       <div className="border-t border-line bg-sand">
         <Container width="wide" className="py-20 lg:py-28">

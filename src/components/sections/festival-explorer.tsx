@@ -41,11 +41,16 @@ export function FestivalExplorer({ festivals }: { festivals: Festival[] }) {
 
   return (
     <div>
-      <fieldset>
+      {/* min-w-0 defeats the fieldset's min-content floor, which would
+          otherwise stretch the page to the month rail's full width. */}
+      <fieldset className="min-w-0">
         <legend className="text-label font-extrabold text-clay-deep uppercase">
           Choose a month
         </legend>
-        <div className="no-scrollbar -mx-5 mt-3 flex gap-2 overflow-x-auto px-5 pb-1 sm:-mx-8 sm:px-8 lg:mx-0 lg:flex-wrap lg:px-0">
+        {/* relative: the buttons' sr-only labels are absolutely positioned,
+            and without a positioned scroll container they escape its clip and
+            stretch the whole page sideways. */}
+        <div className="no-scrollbar relative -mx-5 mt-3 flex gap-2 overflow-x-auto px-5 pb-1 sm:-mx-8 sm:px-8 lg:mx-0 lg:flex-wrap lg:px-0">
           <MonthButton
             label="All year"
             selected={month === "all"}
