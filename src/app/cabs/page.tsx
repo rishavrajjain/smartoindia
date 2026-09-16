@@ -4,6 +4,7 @@ import Link from "next/link";
 import { CabBookingCard } from "@/components/sections/cab-booking-card";
 import { FareLock } from "@/components/sections/fare-lock";
 import { PhotoHero } from "@/components/sections/photo-hero";
+import { MarqueeBand } from "@/components/ui/marquee-band";
 import { Container } from "@/components/ui/container";
 import {
   ArrowIcon,
@@ -49,7 +50,7 @@ const SERVICES = [
     },
     title: "City rides",
     fare: null,
-    body: "Anywhere in Guwahati at a flat fare. The quoted price is final: in traffic, in rain, at 2 AM.",
+    body: "Anywhere in town. Rain or rush, one price.",
     message: enquiry("I need a cab in Guwahati and would like the flat fare."),
   },
   {
@@ -59,7 +60,7 @@ const SERVICES = [
     },
     title: "Railway station drops",
     fare: "₹399",
-    body: "Early train, late train, same price. We watch the arrival board so you don't have to.",
+    body: "Early train, late train, same ₹399.",
     message: enquiry("I need a railway station drop."),
   },
   {
@@ -69,7 +70,7 @@ const SERVICES = [
     },
     title: "Airport rides",
     fare: null,
-    body: "Fixed airport fares, 24×7. Booked at midnight for a 4 AM flight and priced the same as noon.",
+    body: "A 4 AM flight, priced like noon.",
     message: enquiry("I need an airport ride."),
   },
   {
@@ -79,22 +80,22 @@ const SERVICES = [
     },
     title: "Hourly rentals",
     fare: null,
-    body: "Keep the car and the driver for the day. Flat hourly pricing, premium electric cars.",
+    body: "Car and driver, on your clock.",
     message: enquiry("I would like an hourly cab rental."),
   },
 ] as const;
 
 const NUMBERS = [
-  { n: "100%", l: "Electric fleet. No tailpipe, no noise." },
-  { n: "₹0", l: "Surge charged. Not once, not ever." },
-  { n: "1st", l: "To bring flat pricing to Guwahati." },
-  { n: "24×7", l: "Booking and support, on a real phone." },
+  { n: "100%", l: "Electric fleet" },
+  { n: "₹0", l: "Surge, ever" },
+  { n: "1st", l: "With flat pricing in Guwahati" },
+  { n: "24×7", l: "On a real phone" },
 ];
 
 const STEPS = [
   {
     title: "Tell us where you're going",
-    body: "On WhatsApp or on the site. No app to download.",
+    body: "WhatsApp or the site. No app.",
   },
   {
     title: "See your flat fare",
@@ -102,7 +103,7 @@ const STEPS = [
   },
   {
     title: "Ride. Pay exactly what you saw",
-    body: "No meter, no rounding up, no conversation about it.",
+    body: "No meter, no rounding up.",
   },
 ];
 
@@ -135,6 +136,17 @@ export default function CabsPage() {
         <CabBookingCard />
       </PhotoHero>
 
+      <MarqueeBand
+        items={[
+          "Flat ₹399 railway drop",
+          "No surge",
+          "No meter drama",
+          "100% electric",
+          "24×7",
+          "Book on WhatsApp",
+        ]}
+      />
+
       {/* ——— The fare lock: the mockup's signature. */}
       <section className="bg-clay-deep py-14 text-bone lg:py-20">
         <Container width="wide">
@@ -146,8 +158,8 @@ export default function CabsPage() {
               Go on. Try to make it <span className="accent">go up.</span>
             </h2>
             <p className="mt-4 text-[0.90625rem] leading-relaxed text-bone/65">
-              Zoo Road to Guwahati railway station. Tap anything that would
-              normally cost you more.
+              Zoo Road to the railway station. Tap what usually makes prices
+              jump.
             </p>
           </div>
           <FareLock />
@@ -214,13 +226,22 @@ export default function CabsPage() {
             The numbers we&rsquo;re{" "}
             <span className="accent">willing to print.</span>
           </h2>
-          <dl className="reveal mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-line lg:grid-cols-4">
-            {NUMBERS.map((item) => (
-              <div key={item.n} className="bg-paper px-4 py-6">
-                <dd className="text-[2rem] leading-none font-extrabold tracking-[-0.035em] text-ink">
+          <dl className="reveal mt-8 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
+            {NUMBERS.map((item, index) => (
+              <div
+                key={item.n}
+                className={`rounded-2xl px-5 py-7 transition-transform duration-[260ms] hover:-translate-y-1 ${
+                  ["bg-clay-soft", "bg-green-deep/10", "bg-sand", "bg-clay-soft"][index]
+                }`}
+              >
+                <dd
+                  className={`text-[2.375rem] leading-none font-extrabold tracking-[-0.035em] ${
+                    index === 1 ? "text-green-deep" : "text-ink"
+                  }`}
+                >
                   {item.n}
                 </dd>
-                <dt className="mt-2 text-[0.75rem] leading-relaxed text-taupe">
+                <dt className="mt-2.5 text-[0.78125rem] leading-snug font-extrabold text-taupe">
                   {item.l}
                 </dt>
               </div>
@@ -278,12 +299,16 @@ export default function CabsPage() {
             What people say <span className="accent">after the ride.</span>
           </h2>
           <ul className="no-scrollbar -mx-5 mt-7 flex snap-x snap-mandatory gap-3.5 overflow-x-auto px-5 pb-2 sm:mx-0 sm:px-0 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible">
-            {reviews.map((review) => (
+            {reviews.map((review, index) => (
               <li
                 key={review.id}
                 className="w-[17rem] shrink-0 snap-start lg:w-auto"
               >
-                <figure className="flex h-full flex-col rounded-2xl bg-paper p-5">
+                <figure
+                  className={`flex h-full flex-col rounded-2xl bg-paper p-5 ring-1 ring-line transition-transform duration-[260ms] hover:rotate-0 ${
+                    index % 2 === 0 ? "motion-safe:rotate-[1.2deg]" : "motion-safe:-rotate-[1.2deg]"
+                  }`}
+                >
                   <blockquote className="flex-1 text-[0.9375rem] leading-relaxed text-ink">
                     &ldquo;{review.quote}&rdquo;
                   </blockquote>
@@ -325,9 +350,8 @@ export default function CabsPage() {
                 <span className="accent block">Shillong, in a quiet car.</span>
               </h2>
               <p className="mt-4 text-[0.9375rem] leading-relaxed text-bone/70">
-                Complete outstation packages: cars, hotels and flights
-                together, all-in. No hidden costs, and nothing added at the
-                end.
+                Cars, hotels and flights together, all-in. Nothing added at
+                the end.
               </p>
             </div>
             <Link

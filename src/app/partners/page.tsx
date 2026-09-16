@@ -3,6 +3,8 @@ import Link from "next/link";
 import { PartnerRegisterForm } from "@/components/sections/partner-register-form";
 import { PartnerSplit } from "@/components/sections/partner-split";
 import { PhotoHero } from "@/components/sections/photo-hero";
+import { FactTiles } from "@/components/ui/fact-tiles";
+import { MarqueeBand } from "@/components/ui/marquee-band";
 import { Container } from "@/components/ui/container";
 import {
   ArrowIcon,
@@ -53,59 +55,31 @@ const CHIPS = [
 ];
 
 const GETS = [
-  {
-    icon: PhoneCheckIcon,
-    title: "Book it yourself, see the rate as you go",
-    body: "Enter the trip and the fare appears before you confirm. No waiting on a quote, no calling to check.",
-  },
-  {
-    icon: PinIcon,
-    title: "Track every ride you've booked",
-    body: "Watch the car reach your guest without phoning anyone. You'll know before they do if something moves.",
-  },
-  {
-    icon: PeopleIcon,
-    title: "A dedicated partner desk",
-    body: "One team who knows your account, on a direct number, 24×7. Not the same queue as the public.",
-  },
-  {
-    icon: ClockIcon,
-    title: "No delays, no hassle",
-    body: "We own the cars. A booking is assigned to a driver, not offered to whoever feels like accepting it.",
-  },
-  {
-    icon: TagIcon,
-    title: "A fare your guest can't be surprised by",
-    body: "No surge, no bargaining at the door, no meter conversation. The complaint you never get is the one worth most to you.",
-  },
-  {
-    icon: BoltIcon,
-    title: "An all-electric fleet",
-    body: "Quiet, clean cars. If you market yourself as a green property or operator, this is a line you can use.",
-  },
-  {
-    icon: ShieldIcon,
-    title: "The whole Northeast, one operator",
-    body: "Guwahati city, railway, airport, Shillong, Kaziranga, Tezpur. One account, one contact, one invoice.",
-  },
+  { icon: PhoneCheckIcon, label: "See the fare before you confirm" },
+  { icon: PinIcon, label: "Track every ride you book" },
+  { icon: PeopleIcon, label: "A dedicated partner desk, 24×7" },
+  { icon: ClockIcon, label: "Cars assigned, never auctioned" },
+  { icon: TagIcon, label: "No surprises for your guest" },
+  { icon: BoltIcon, label: "An all-electric fleet" },
+  { icon: ShieldIcon, label: "The whole Northeast, one account" },
 ];
 
 const STEPS = [
   {
     title: "Register your agency",
-    body: "Name, GST and a phone number. We verify and open your account, usually the same day.",
+    body: "Name, GST, phone. Verified same day.",
   },
   {
     title: "Book through the desk",
-    body: "Send the trip and the fare comes back before you confirm, along with what you'll earn on it.",
+    body: "Send the trip, see the fare and your cut.",
   },
   {
     title: "Your guest rides",
-    body: "They pay the flat fare. You're told where the car is without asking. Nobody haggles with anybody.",
+    body: "Flat fare, tracked car, zero haggling.",
   },
   {
     title: "Commission credited",
-    body: "Settled monthly against your booking statement, with every ride itemised.",
+    body: "Monthly, every ride itemised.",
   },
 ];
 
@@ -113,22 +87,22 @@ const WHO = [
   {
     icon: SuitcaseIcon,
     title: "Travel agents",
-    body: "Transfers and day trips for your own clients.",
+    body: "Transfers and day trips for clients.",
   },
   {
     icon: HouseIcon,
     title: "Hotels and resorts",
-    body: "Guest pickups and sightseeing, booked at the desk.",
+    body: "Pickups booked at the desk.",
   },
   {
     icon: SendIcon,
     title: "Tour operators",
-    body: "Multi-day Northeast itineraries with one fleet behind them.",
+    body: "Itineraries with one fleet behind them.",
   },
   {
     icon: CalendarIcon,
     title: "Event planners",
-    body: "Guest transport at volume, on a date that can't move.",
+    body: "Volume, on a date that can't move.",
   },
 ];
 
@@ -171,7 +145,7 @@ export default function PartnersPage() {
             <span className="accent block">Earn on every ride.</span>
           </>
         }
-        sub="Your guest pays the same flat fare anyone else pays. Your commission comes out of our margin, not their pocket. Up to 10% back on every ride you book."
+        sub="Your guest pays the flat fare. Your cut comes out of our margin, not their pocket."
         image={{
           src: "/images/biz-partners.webp",
           alt: "A white sedan and a brass luggage cart under the portico of a hillside heritage hotel",
@@ -201,6 +175,17 @@ export default function PartnersPage() {
         </div>
       </PhotoHero>
 
+      <MarqueeBand
+        items={[
+          "Up to 10% back",
+          "Same-day onboarding",
+          "No deposit",
+          "No minimum",
+          "Your guest pays the flat fare",
+          "24×7 partner desk",
+        ]}
+      />
+
       {/* ——— The open split: the mockup's signature. */}
       <section className="bg-clay-deep pb-14 text-bone lg:pb-20">
         <Container width="wide" className="pt-14">
@@ -212,8 +197,8 @@ export default function PartnersPage() {
             <span className="accent block">the whole split.</span>
           </h2>
           <p className="mt-4 max-w-md text-[0.90625rem] leading-relaxed text-bone/65">
-            Most operators won&rsquo;t tell a partner what they keep.
-            Here&rsquo;s ours, on a ₹399 railway station drop.
+            Most operators hide what they keep. Here&rsquo;s ours, on a ₹399
+            railway drop.
           </p>
           <PartnerSplit />
           <p className="mt-5 max-w-2xl text-[0.65625rem] leading-relaxed text-bone/35">
@@ -234,24 +219,7 @@ export default function PartnersPage() {
           Your name is on the ride.{" "}
           <span className="accent">We treat it that way.</span>
         </h2>
-        <ul className="mt-6 lg:grid lg:grid-cols-2 lg:gap-x-14">
-          {GETS.map((item) => (
-            <li
-              key={item.title}
-              className="reveal flex items-start gap-3.5 border-b border-line py-5 last:border-b-0"
-            >
-              <item.icon className="mt-0.5 size-6 shrink-0 text-ink" />
-              <div>
-                <h3 className="text-[1.03125rem] font-extrabold">
-                  {item.title}
-                </h3>
-                <p className="mt-1 text-[0.875rem] leading-relaxed text-taupe">
-                  {item.body}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <FactTiles items={GETS} />
       </Container>
 
       {/* ——— How it works: the route to the first booking. */}

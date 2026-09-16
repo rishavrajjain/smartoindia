@@ -4,6 +4,8 @@ import Link from "next/link";
 import { EventBrief } from "@/components/sections/event-brief";
 import { EventPlan } from "@/components/sections/event-plan";
 import { PhotoHero } from "@/components/sections/photo-hero";
+import { FactTiles } from "@/components/ui/fact-tiles";
+import { MarqueeBand } from "@/components/ui/marquee-band";
 import { Container } from "@/components/ui/container";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import {
@@ -60,22 +62,22 @@ const SCOPE = [
     icon: HouseIcon,
     title: "Hospitality",
     items: [
-      "Hotel rooms blocked and allocated across your guest list",
-      "Check-in coordinated so nobody queues at a desk with luggage",
-      "Flights arranged for guests travelling in, as part of the event",
-      "Welcome and hospitality desk at the hotel or venue",
-      "Outstation stays for destination events across the Northeast",
+      "Rooms blocked across your guest list",
+      "Check-in without the queue",
+      "Flights folded into the event",
+      "A welcome desk at the venue",
+      "Destination stays across the Northeast",
     ],
   },
   {
     icon: CarIcon,
     title: "Guest transport",
     items: [
-      "Airport and railway pickups against real arrival times, not guesses",
-      "Hotel-to-venue shuttle loops running to a published schedule",
-      "Dedicated cars for family, VIPs and the couple or the keynote",
-      "Vendor and crew movement, which everyone forgets to plan",
-      "Departure waves managed against flight and train times",
+      "Pickups against real arrival times",
+      "Venue shuttles on a published loop",
+      "Dedicated cars for family and VIPs",
+      "Vendor and crew movement, planned",
+      "Departure waves against flight times",
     ],
   },
 ];
@@ -84,32 +86,32 @@ const RUN_SHEET = [
   {
     time: "05:30",
     title: "Fleet check",
-    body: "Every car charged, cleaned and assigned before the first driver leaves.",
+    body: "Charged, cleaned, assigned. Before sunrise.",
   },
   {
     time: "06:15",
     title: "First airport wave",
-    body: "Cars positioned before the flight lands. Guests walk out to a name board, not a phone call.",
+    body: "Cars in place before the flight lands.",
   },
   {
     time: "09:00",
     title: "Railway arrivals",
-    body: "Held against the live arrival board. A late train moves the car, not the guest.",
+    body: "A late train moves the car, not the guest.",
   },
   {
     time: "11:00",
     title: "Hotel to venue, loop one",
-    body: "Published shuttle times in every room, running every twenty minutes.",
+    body: "Every twenty minutes, times in every room.",
   },
   {
     time: "16:00",
     title: "Family and VIP cars",
-    body: "Held on site, not dispatched. They leave when your people are ready.",
+    body: "Held on site. They leave when you're ready.",
   },
   {
     time: "23:30",
     title: "Last loop home",
-    body: "Nobody stranded at the venue. The desk stays open until the last guest is back.",
+    body: "Nobody stranded. The desk waits for the last guest.",
   },
 ];
 
@@ -120,7 +122,7 @@ const EVENT_KINDS = [
       alt: "White sedans queuing through a marigold-decorated wedding gate at dusk",
     },
     title: "Weddings",
-    body: "Multi-day, multi-venue, with families arriving from everywhere at once.",
+    body: "Multi-day, multi-venue, everyone at once.",
   },
   {
     image: {
@@ -128,7 +130,7 @@ const EVENT_KINDS = [
       alt: "Electric sedans waiting at the glass porch of a modern office",
     },
     title: "Corporate events",
-    body: "Offsites, launches, client visits and annual days, on one invoice.",
+    body: "Offsites and launches, one invoice.",
   },
   {
     image: {
@@ -136,7 +138,7 @@ const EVENT_KINDS = [
       alt: "A line of white sedans on the lit drive of a convention centre at dusk",
     },
     title: "Conferences",
-    body: "Hundreds of delegates arriving in one morning and leaving in one evening.",
+    body: "Hundreds in by morning, out by evening.",
   },
   {
     image: {
@@ -144,41 +146,17 @@ const EVENT_KINDS = [
       alt: "Fairy lights over bamboo pavilions at a festival ground at blue hour",
     },
     title: "Collaborative events",
-    body: "Festivals, exhibitions and anything run with partners and sponsors.",
+    body: "Festivals and exhibitions, with partners.",
   },
 ];
 
 const WHY = [
-  {
-    icon: PeopleIcon,
-    title: "One coordinator, one number",
-    body: "The same person from the first call to the last departure. You never explain your event twice.",
-  },
-  {
-    icon: HeadsetIcon,
-    title: "A control desk, 24×7",
-    body: "From the day before to the day after. A 2 AM arrival reaches a person, not a voicemail.",
-  },
-  {
-    icon: ClockIcon,
-    title: "No delays, no hassle",
-    body: "Cars are assigned to your event, not accepted by whoever is nearby. Nothing is subcontracted out of our sight.",
-  },
-  {
-    icon: PhoneCheckIcon,
-    title: "Your guests book and track their own rides",
-    body: "Give them a link instead of a WhatsApp group. They see the car coming; you stop being the dispatcher.",
-  },
-  {
-    icon: TagIcon,
-    title: "A price agreed up front, in writing",
-    body: "No surge on the wedding date, no extras discovered on the last day. What we quote is what you are invoiced.",
-  },
-  {
-    icon: BoltIcon,
-    title: "An all-electric fleet",
-    body: "Quiet cars, no fumes at the porch, and a sustainability line your company or your venue can use.",
-  },
+  { icon: PeopleIcon, label: "One coordinator, one number" },
+  { icon: HeadsetIcon, label: "A control desk, 24×7" },
+  { icon: ClockIcon, label: "Cars assigned, never auctioned" },
+  { icon: PhoneCheckIcon, label: "Guests track their own rides" },
+  { icon: TagIcon, label: "Price agreed up front, in writing" },
+  { icon: BoltIcon, label: "An all-electric fleet" },
 ];
 
 const FAQ = [
@@ -220,7 +198,7 @@ export default function EventsPage() {
             <span className="accent block">should be waiting for a car.</span>
           </>
         }
-        sub="Weddings, corporate events and conferences, handled end to end: rooms, arrivals, shuttles, departures. One coordinator, one number, one invoice."
+        sub="Rooms, arrivals, shuttles, departures. One coordinator, one number, one invoice."
         image={{
           src: "/images/biz-events.webp",
           alt: "A line of white sedans arriving through a marigold-decorated wedding gate at dusk",
@@ -249,6 +227,17 @@ export default function EventsPage() {
         </div>
       </PhotoHero>
 
+      <MarqueeBand
+        items={[
+          "Weddings",
+          "Conferences",
+          "Offsites",
+          "500 guests, one number",
+          "24×7 control desk",
+          "One GST invoice",
+        ]}
+      />
+
       {/* ——— The movement plan: the mockup's signature. */}
       <section className="bg-clay-deep pb-14 text-bone lg:pb-20">
         <Container width="wide" className="pt-14">
@@ -260,8 +249,7 @@ export default function EventsPage() {
             <span className="accent block">We&rsquo;ll show you the shape.</span>
           </h2>
           <p className="mt-4 max-w-md text-[0.90625rem] leading-relaxed text-bone/65">
-            Most people underestimate guest movement by half. Here is what an
-            event your size actually involves.
+            Most people underestimate guest movement by half. See yours.
           </p>
 
           <EventPlan />
@@ -296,9 +284,7 @@ export default function EventsPage() {
           <span className="accent">to the last departure.</span>
         </h2>
         <p className="mt-4 max-w-xl text-[0.9375rem] leading-relaxed text-taupe">
-          You can hand us the whole guest experience, or only the moving parts.
-          Most people start with transport and give us the rest by the second
-          event.
+          Hand us everything, or just the moving parts.
         </p>
         <div className="mt-8 grid gap-5 lg:grid-cols-2">
           {SCOPE.map((card) => (
@@ -407,24 +393,7 @@ export default function EventsPage() {
             We own the cars.{" "}
             <span className="accent">That changes everything.</span>
           </h2>
-          <ul className="mt-6 lg:grid lg:grid-cols-2 lg:gap-x-14">
-            {WHY.map((item) => (
-              <li
-                key={item.title}
-                className="reveal flex items-start gap-3.5 border-b border-line py-5 last:border-b-0"
-              >
-                <item.icon className="mt-0.5 size-6 shrink-0 text-ink" />
-                <div>
-                  <h3 className="text-[1.03125rem] font-extrabold">
-                    {item.title}
-                  </h3>
-                  <p className="mt-1 text-[0.875rem] leading-relaxed text-taupe">
-                    {item.body}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <FactTiles items={WHY} />
         </Container>
       </div>
 

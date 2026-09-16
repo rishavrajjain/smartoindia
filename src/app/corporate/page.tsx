@@ -3,6 +3,8 @@ import Link from "next/link";
 
 import { EsgLine } from "@/components/sections/esg-line";
 import { PhotoHero } from "@/components/sections/photo-hero";
+import { FactTiles } from "@/components/ui/fact-tiles";
+import { MarqueeBand } from "@/components/ui/marquee-band";
 import { RateCardForm } from "@/components/sections/rate-card-form";
 import { Container } from "@/components/ui/container";
 import {
@@ -48,59 +50,31 @@ const CHIPS = [
 ];
 
 const INCLUDES = [
-  {
-    icon: PeopleIcon,
-    title: "A dedicated account team",
-    body: "One named contact with a direct number. Not a helpline, not a ticket queue.",
-  },
-  {
-    icon: HeadsetIcon,
-    title: "24×7 support",
-    body: "A 4 AM airport run and a 4 PM client pickup reach the same team.",
-  },
-  {
-    icon: ClockIcon,
-    title: "No delays, no hassle",
-    body: "We own the fleet, so a car is assigned, not auctioned to whoever accepts. Schedules are held.",
-  },
-  {
-    icon: PhoneCheckIcon,
-    title: "Self-serve booking and tracking",
-    body: "Your team books their own rides and watches the car arrive. Admin sees every trip in one place.",
-  },
-  {
-    icon: TagIcon,
-    title: "A fixed rate card",
-    body: "Agreed quarterly, in writing. No surge, no seasonal revision, no renegotiation in the car.",
-  },
-  {
-    icon: InvoiceIcon,
-    title: "One monthly GST invoice",
-    body: "All rides consolidated. No per-trip reimbursements to chase and no petty cash.",
-  },
-  {
-    icon: BoltIcon,
-    title: "A 100% electric fleet",
-    body: "Quiet, clean cars your visitors notice, and a carbon figure your CSR report can use.",
-  },
+  { icon: PeopleIcon, label: "A named contact, direct number" },
+  { icon: HeadsetIcon, label: "24×7, a person answers" },
+  { icon: ClockIcon, label: "Cars assigned, never auctioned" },
+  { icon: PhoneCheckIcon, label: "Self-serve booking and tracking" },
+  { icon: TagIcon, label: "Fixed rate card, in writing" },
+  { icon: InvoiceIcon, label: "One monthly GST invoice" },
+  { icon: BoltIcon, label: "A 100% electric fleet" },
 ];
 
 const STEPS = [
   {
     title: "A 15-minute call",
-    body: "Routes, volumes, timings. We'll tell you honestly if we're not the right fit.",
+    body: "Routes, volumes, timings. Honest fit-check included.",
   },
   {
     title: "Your rate card",
-    body: "Fixed prices for your actual routes, in writing, within two working days.",
+    body: "Your routes, priced in writing, two days.",
   },
   {
     title: "A free trial week",
-    body: "Run your real rides on our cars. No commitment, no card, no invoice.",
+    body: "Real rides, our cars. No card, no invoice.",
   },
   {
     title: "Account live",
-    body: "Team onboarded to self-booking, dedicated contact assigned, monthly invoicing begins.",
+    body: "Team onboarded, contact assigned, invoicing begins.",
   },
 ];
 
@@ -108,22 +82,22 @@ const WHO = [
   {
     icon: BuildingIcon,
     title: "Offices, IT and BPO",
-    body: "Shift transport, client pickups, airport runs.",
+    body: "Shifts, client pickups, airport runs.",
   },
   {
     icon: HouseIcon,
     title: "Hotels and resorts",
-    body: "Guest transfers, airport pickups, day-hire sightseeing.",
+    body: "Guest transfers and day hires.",
   },
   {
     icon: CrossIcon,
     title: "Hospitals and clinics",
-    body: "Patient and attendant transport, predictable and off-peak.",
+    body: "Predictable, off-peak, gentle.",
   },
   {
     icon: CalendarIcon,
     title: "Event and wedding planners",
-    body: "Guest transport at volume, on a date that can't move.",
+    body: "Volume, on a date that can't move.",
   },
 ];
 
@@ -162,13 +136,7 @@ export default function CorporatePage() {
             <span className="accent block">off your desk.</span>
           </>
         }
-        sub={
-          <>
-            A fixed rate card, one named contact, one monthly invoice.
-            Guwahati&rsquo;s only all-electric fleet, run by the people who own
-            the cars.
-          </>
-        }
+        sub="A fixed rate card, one named contact, one monthly invoice. Run by the people who own the cars."
         image={{
           src: "/images/biz-corporate.webp",
           alt: "Electric sedans arriving at the glass porch of a modern office on a bright morning",
@@ -200,6 +168,17 @@ export default function CorporatePage() {
         </div>
       </PhotoHero>
 
+      <MarqueeBand
+        items={[
+          "Fixed rate card",
+          "Free trial week",
+          "One GST invoice",
+          "Zero surge",
+          "CO₂ you can report",
+          "24×7 on a real phone",
+        ]}
+      />
+
       {/* ——— The ESG line: the mockup's signature. */}
       <section className="bg-clay-deep pb-14 text-bone lg:pb-20">
         <Container width="wide" className="pt-14">
@@ -211,9 +190,8 @@ export default function CorporatePage() {
             <span className="accent block">is a number you can report.</span>
           </h2>
           <p className="mt-4 max-w-md text-[0.90625rem] leading-relaxed text-bone/65">
-            A petrol fleet gives you a cost line. An electric one gives you a
-            cost line and a carbon line. Move the slider to your team&rsquo;s
-            volume.
+            A petrol fleet gives you a cost line. Ours gives you a carbon
+            line too. Slide to your volume.
           </p>
           <EsgLine />
         </Container>
@@ -228,24 +206,7 @@ export default function CorporatePage() {
           Set it up once.{" "}
           <span className="accent">Then stop thinking about it.</span>
         </h2>
-        <ul className="mt-6 lg:grid lg:grid-cols-2 lg:gap-x-14">
-          {INCLUDES.map((item) => (
-            <li
-              key={item.title}
-              className="reveal flex items-start gap-3.5 border-b border-line py-5 last:border-b-0"
-            >
-              <item.icon className="mt-0.5 size-6 shrink-0 text-ink" />
-              <div>
-                <h3 className="text-[1.03125rem] font-extrabold">
-                  {item.title}
-                </h3>
-                <p className="mt-1 text-[0.875rem] leading-relaxed text-taupe">
-                  {item.body}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <FactTiles items={INCLUDES} />
       </Container>
 
       {/* ——— From first call to first ride: the route to a live account. */}
