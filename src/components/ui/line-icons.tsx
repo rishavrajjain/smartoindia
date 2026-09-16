@@ -156,6 +156,29 @@ export const SendIcon = icon(
   </>,
 );
 
+export const LockIcon = icon(
+  <>
+    <rect x="4" y="10.5" width="16" height="10" rx="3" strokeWidth="2.4" />
+    <path d="M8 10.5V7a4 4 0 0 1 8 0v3.5" strokeWidth="2.4" />
+  </>,
+);
+
+export const TrainIcon = icon(
+  <>
+    <rect x="5" y="3" width="14" height="13.5" rx="3.5" />
+    <path d="M5 10.5h14" />
+    <path d="M9.5 16.5 7 21M14.5 16.5 17 21M9 20h6" />
+  </>,
+);
+
+export const SurgeOffIcon = icon(
+  <>
+    <path d="M3 16l5-5 3.5 3.5L19 7" />
+    <path d="M14.5 7H19v4.5" />
+    <path d="M4 20 20 4" />
+  </>,
+);
+
 export const SuitcaseIcon = icon(
   <>
     <rect x="2.5" y="7" width="19" height="13" rx="3" />

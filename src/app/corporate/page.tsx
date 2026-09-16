@@ -204,8 +204,8 @@ export default function CorporatePage() {
       </section>
 
       {/* ——— The ESG line: the mockup's signature. */}
-      <section className="bg-clay-deep pb-14 text-bone">
-        <Container width="narrow" className="border-t border-white/10 pt-14">
+      <section className="bg-clay-deep pb-14 text-bone lg:pb-20">
+        <Container width="wide" className="border-t border-white/10 pt-14">
           <p className="text-label font-extrabold text-green uppercase">
             The line for your sustainability report
           </p>
@@ -223,7 +223,7 @@ export default function CorporatePage() {
       </section>
 
       {/* ——— What an account includes. */}
-      <Container width="narrow" className="pt-16 lg:pt-20">
+      <Container width="wide" className="pt-16 lg:pt-20">
         <p className="text-label font-extrabold text-clay uppercase">
           What an account includes
         </p>
@@ -231,7 +231,7 @@ export default function CorporatePage() {
           Set it up once.{" "}
           <span className="accent">Then stop thinking about it.</span>
         </h2>
-        <ul className="mt-6">
+        <ul className="mt-6 lg:grid lg:grid-cols-2 lg:gap-x-14">
           {INCLUDES.map((item) => (
             <li
               key={item.title}
@@ -301,7 +301,7 @@ export default function CorporatePage() {
         <h2 className="mt-4 text-[1.8125rem] leading-[1.09] sm:text-[2.25rem]">
           Built for <span className="accent">scheduled, repeating travel.</span>
         </h2>
-        <ul className="reveal mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-line">
+        <ul className="reveal mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-line lg:grid-cols-4">
           {WHO.map((kind) => (
             <li key={kind.title} className="bg-paper p-5">
               <kind.icon className="size-[22px] text-ink" />

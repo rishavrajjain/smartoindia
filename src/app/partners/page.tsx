@@ -211,8 +211,8 @@ export default function PartnersPage() {
       </section>
 
       {/* ——— The open split: the mockup's signature. */}
-      <section className="bg-clay-deep pb-14 text-bone">
-        <Container width="narrow" className="border-t border-white/10 pt-14">
+      <section className="bg-clay-deep pb-14 text-bone lg:pb-20">
+        <Container width="wide" className="border-t border-white/10 pt-14">
           <p className="text-label font-extrabold text-green uppercase">
             Where the money goes
           </p>
@@ -225,7 +225,7 @@ export default function PartnersPage() {
             Here&rsquo;s ours, on a ₹399 railway station drop.
           </p>
           <PartnerSplit />
-          <p className="mt-5 text-[0.65625rem] leading-relaxed text-bone/35">
+          <p className="mt-5 max-w-2xl text-[0.65625rem] leading-relaxed text-bone/35">
             Illustrative, based on a ₹399 railway station drop. Airport,
             rental and outstation rides carry higher fares, so your actual
             figure will be higher. Tier thresholds shown in brackets are
@@ -235,7 +235,7 @@ export default function PartnersPage() {
       </section>
 
       {/* ——— What you get besides the commission. */}
-      <Container width="narrow" className="pt-16 lg:pt-20">
+      <Container width="wide" className="pt-16 lg:pt-20">
         <p className="text-label font-extrabold text-clay uppercase">
           What you get besides the commission
         </p>
@@ -243,7 +243,7 @@ export default function PartnersPage() {
           Your name is on the ride.{" "}
           <span className="accent">We treat it that way.</span>
         </h2>
-        <ul className="mt-6">
+        <ul className="mt-6 lg:grid lg:grid-cols-2 lg:gap-x-14">
           {GETS.map((item) => (
             <li
               key={item.title}
@@ -312,7 +312,7 @@ export default function PartnersPage() {
           If you book cars{" "}
           <span className="accent">on someone else&rsquo;s behalf.</span>
         </h2>
-        <ul className="reveal mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-line">
+        <ul className="reveal mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-line lg:grid-cols-4">
           {WHO.map((kind) => (
             <li key={kind.title} className="bg-paper p-5">
               <kind.icon className="size-[22px] text-ink" />

@@ -36,7 +36,7 @@ export function RateCardForm() {
 
   return (
     <form
-      className="mt-7 flex flex-col gap-2.5 text-left"
+      className="mx-auto mt-7 flex w-full max-w-md flex-col gap-2.5 text-left"
       onSubmit={(event) => {
         event.preventDefault();
         submit();

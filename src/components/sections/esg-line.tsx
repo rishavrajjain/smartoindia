@@ -43,7 +43,8 @@ export function EsgLine() {
   };
 
   return (
-    <div>
+    <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-14">
+      <div>
       <div className="mt-8">
         <div className="flex items-baseline justify-between">
           <label htmlFor="esg-rides" className="text-[0.75rem] text-bone/60">
@@ -79,7 +80,9 @@ export function EsgLine() {
         </p>
       </div>
 
-      <figure className="mt-7 rounded-[14px] bg-white/6 p-5">
+      </div>
+
+      <figure className="mt-7 rounded-[14px] bg-white/6 p-5 lg:mt-8">
         <figcaption className="text-[0.625rem] font-extrabold tracking-[0.2em] text-green uppercase">
           Paste this into your report
         </figcaption>

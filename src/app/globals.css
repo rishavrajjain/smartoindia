@@ -135,6 +135,21 @@
     }
   }
 
+  /* The fare lock's little celebration when a surge condition lands. */
+  --animate-fare-pulse: fare-pulse 420ms var(--ease-out-quiet);
+
+  @keyframes fare-pulse {
+    0% {
+      transform: scale(1);
+    }
+    40% {
+      transform: scale(1.045);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
   @keyframes cab-shadow {
     0%,
     100% {

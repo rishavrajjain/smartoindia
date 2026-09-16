@@ -34,7 +34,8 @@ export function PartnerSplit() {
   const nextTier = tier < TIERS.length - 1 ? TIERS[tier + 1] : null;
 
   return (
-    <div>
+    <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-14">
+      <div>
       {/* The split itself, row by row. */}
       <div className="mt-7 flex flex-col gap-px overflow-hidden rounded-[14px] bg-white/10">
         <div className="flex items-center justify-between gap-3.5 bg-clay-deep px-4 py-4">
@@ -79,8 +80,11 @@ export function PartnerSplit() {
         for a rupee more. Your margin is our cost, not theirs.
       </p>
 
+      </div>
+
+      <div>
       {/* Volume in, tier and total out. */}
-      <div className="mt-8">
+      <div className="mt-8 lg:mt-7">
         <div className="flex items-baseline justify-between">
           <label htmlFor="partner-rides" className="text-[0.75rem] text-bone/60">
             Rides you book a month
@@ -138,6 +142,7 @@ export function PartnerSplit() {
             ? `${nextTier.min - rides} more rides a month takes you to ${nextTier.rate * 100}%.`
             : "You're at the top tier."}
         </p>
+      </div>
       </div>
     </div>
   );

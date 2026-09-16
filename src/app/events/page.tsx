@@ -249,8 +249,8 @@ export default function EventsPage() {
       </section>
 
       {/* ——— The movement plan: the mockup's signature. */}
-      <section className="bg-clay-deep pb-14 text-bone">
-        <Container width="narrow" className="border-t border-white/10 pt-14">
+      <section className="bg-clay-deep pb-14 text-bone lg:pb-20">
+        <Container width="wide" className="border-t border-white/10 pt-14">
           <p className="text-label font-extrabold text-green uppercase">
             The shape of your event
           </p>
@@ -265,7 +265,7 @@ export default function EventsPage() {
 
           <EventPlan />
 
-          <ul className="mt-5 flex flex-col gap-px overflow-hidden rounded-xl bg-white/10">
+          <ul className="mt-5 grid gap-px overflow-hidden rounded-xl bg-white/10 lg:grid-cols-2">
             {PLAN_INCLUSIONS.map((line) => (
               <li
                 key={line}
@@ -276,7 +276,7 @@ export default function EventsPage() {
               </li>
             ))}
           </ul>
-          <p className="mt-5 text-[0.65625rem] leading-relaxed text-bone/35">
+          <p className="mt-5 max-w-2xl text-[0.65625rem] leading-relaxed text-bone/35">
             An estimate to start the conversation, not a quote. It assumes
             roughly three guests per car and that most guests need transport at
             both ends. Your real plan is built against your actual arrival

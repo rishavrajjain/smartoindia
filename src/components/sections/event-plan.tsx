@@ -47,7 +47,8 @@ export function EventPlan() {
   const cars = Math.max(2, Math.ceil((guests * type.peak) / SEATS_PER_CAR));
 
   return (
-    <div>
+    <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-14">
+      <div>
       <div
         role="group"
         aria-label="Type of event"
@@ -116,22 +117,26 @@ export function EventPlan() {
         />
       </div>
 
-      <div aria-live="polite" className="mt-9 text-center">
-        <p className="text-[4.25rem] leading-[0.94] font-extrabold tracking-[-0.045em] text-green tabular-nums">
-          {fmt(journeys)}
-        </p>
-        <p className="mt-3 text-[0.8125rem] leading-relaxed text-bone/60">
-          guest journeys to plan, book and run
-          <br />
-          across your event.
-        </p>
       </div>
 
-      <dl className="mt-7 grid grid-cols-3 gap-px overflow-hidden rounded-xl bg-white/10">
-        <Stat value={fmt(cars)} label={<>cars in rotation<br />at peak</>} />
-        <Stat value={String(type.waves)} label={<>arrival and<br />departure waves</>} />
-        <Stat value={String(days + 2)} label={<>days of<br />coverage</>} />
-      </dl>
+      <div>
+        <div aria-live="polite" className="mt-9 text-center lg:mt-7">
+          <p className="text-[4.25rem] leading-[0.94] font-extrabold tracking-[-0.045em] text-green tabular-nums">
+            {fmt(journeys)}
+          </p>
+          <p className="mt-3 text-[0.8125rem] leading-relaxed text-bone/60">
+            guest journeys to plan, book and run
+            <br />
+            across your event.
+          </p>
+        </div>
+
+        <dl className="mt-7 grid grid-cols-3 gap-px overflow-hidden rounded-xl bg-white/10">
+          <Stat value={fmt(cars)} label={<>cars in rotation<br />at peak</>} />
+          <Stat value={String(type.waves)} label={<>arrival and<br />departure waves</>} />
+          <Stat value={String(days + 2)} label={<>days of<br />coverage</>} />
+        </dl>
+      </div>
     </div>
   );
 }
