@@ -170,6 +170,14 @@
     display: none;
   }
 
+  /* The homepage keeps its own chrome inside the phone frame, but at desktop
+     widths it lays out as a full page and the standard chrome returns. */
+  @media (min-width: 64rem) {
+    body:has([data-page-theme="mobile-frame"]) > [data-site-chrome] {
+      display: block;
+    }
+  }
+
   /* Focus rings that stay visible on each concept's ground. */
   [data-page-theme="night-drive"] :focus-visible {
     outline-color: #c9a962;

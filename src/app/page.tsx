@@ -3,6 +3,8 @@ import Link from "next/link";
 import type { Viewport } from "next";
 
 import { CabOrbit } from "@/components/sections/cab-orbit";
+import { FilmCard } from "@/components/sections/film-card";
+import { FareLock } from "@/components/sections/fare-lock";
 import { FlightsTeaser } from "@/components/sections/flights-teaser";
 import {
   HeroCaptions,
@@ -12,7 +14,19 @@ import { HeroVideo } from "@/components/sections/hero-video";
 import { HomeMenu } from "@/components/sections/home-menu";
 import { RouteNav, type RouteStop } from "@/components/sections/route-nav";
 import { TripCoverflow } from "@/components/sections/trip-coverflow";
+import { Container } from "@/components/ui/container";
+import {
+  ArrowIcon,
+  BoltIcon,
+  BuildingIcon,
+  CalendarIcon,
+  SendIcon,
+  ShieldIcon,
+  SuitcaseIcon,
+  SurgeOffIcon,
+} from "@/components/ui/line-icons";
 import { WaCta } from "@/components/ui/wa-cta";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { FESTIVALS } from "@/data/festivals";
 import { CLIENT_LOGOS } from "@/data/clients";
 import { JOURNEYS } from "@/data/journeys";
@@ -148,6 +162,8 @@ const FESTIVAL_PICKS = FESTIVALS.filter((f) => FESTIVAL_IMAGE[f.id]);
 export default function HomePage() {
   return (
     <div data-page-theme="mobile-frame">
+      {/* ——— The phone experience, untouched, below lg. */}
+      <div className="lg:hidden">
       <div className="relative mx-auto min-h-svh max-w-[26.5rem] bg-bone text-ink shadow-[0_0_60px_rgba(0,0,0,0.55)]">
         {/* --- The film. One journey, airport to platform, on loop. */}
         <section
@@ -466,6 +482,244 @@ export default function HomePage() {
 
         {/* --- The route bar: section navigation and the persistent CTA. */}
         <RouteNav stops={ROUTE_STOPS} />
+      </div>
+      </div>
+
+      <DesktopHome />
+    </div>
+  );
+}
+
+/*
+ * The desktop homepage (lg and up). The standard site chrome returns here
+ * (see globals.css), the film plays inside a spark-ringed circular cutout
+ * with the fare captions on its own clock, and the page becomes a set of
+ * doors: the journey rail, the fare lock, the business pages, festivals.
+ */
+function DesktopHome() {
+  return (
+    <div className="hidden lg:block">
+      {/* ——— Hero: the promise on the left, the film in the circle. */}
+      <section className="relative overflow-hidden bg-clay-deep text-bone">
+        <div
+          aria-hidden="true"
+          className="spark-glow absolute -top-44 -left-40 size-[26rem] rounded-full"
+        />
+        <Container width="wide" className="relative py-20 xl:py-24">
+          <div className="grid grid-cols-[1fr_auto] items-center gap-16">
+            <div>
+              <p className="text-label font-extrabold text-green uppercase">
+                Guwahati · Northeast India
+              </p>
+              <h1 className="mt-6 max-w-xl text-[3rem] leading-[1.03] tracking-[-0.02em] xl:text-[3.5rem]">
+                The whole Northeast,{" "}
+                <span className="accent block">on one honest price.</span>
+              </h1>
+              <p className="mt-6 max-w-md text-[1rem] leading-relaxed text-bone/70">
+                All-electric cabs with flat fares in Guwahati, and fifty
+                curated journeys across Assam, Meghalaya and Arunachal
+                Pradesh. Hotels, cars and permits, planned end to end.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <WaCta
+                  message={enquiry("I would like to plan a trip in the Northeast.")}
+                  location="home-hero"
+                  className="flex min-h-[3.25rem] items-center justify-center gap-2.5 rounded-[10px] bg-green-deep px-7 text-[0.9375rem] font-extrabold text-white transition-transform duration-[180ms] active:scale-[0.985]"
+                >
+                  <WhatsAppIcon />
+                  Plan on WhatsApp
+                </WaCta>
+                <Link
+                  href="/packages"
+                  className="flex min-h-[3.25rem] items-center justify-center gap-2.5 rounded-[10px] border border-white/35 px-7 text-[0.9375rem] font-extrabold text-bone transition-colors hover:bg-white/8"
+                >
+                  See the fifty journeys
+                  <ArrowIcon className="size-4" />
+                </Link>
+              </div>
+              <div className="mt-9 flex flex-wrap gap-2">
+                {[
+                  { icon: BoltIcon, label: "EV fleet" },
+                  { icon: SurgeOffIcon, label: "No surge pricing" },
+                  { icon: ShieldIcon, label: "Zero cancellation" },
+                ].map((chip) => (
+                  <span
+                    key={chip.label}
+                    className="flex items-center gap-2 rounded-full bg-white/7 px-4 py-2.5 text-[0.78125rem] whitespace-nowrap"
+                  >
+                    <chip.icon className="size-[15px] shrink-0 text-green" />
+                    {chip.label}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <FilmCard
+              src="/video/hero-reel.mp4"
+              poster="/images/hero-video-poster.webp"
+              alt="A young traveller with a backpack walking across the tarmac at Guwahati airport, a plane behind her"
+              captions={HERO_CAPTIONS}
+            />
+          </div>
+        </Container>
+      </section>
+
+      <div className="bg-bone">
+        {/* ——— The journey rail, riding the catalog's Popular five. */}
+        <Container width="wide" className="pt-18">
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <p className="text-label font-extrabold text-clay uppercase">
+                Outstation
+              </p>
+              <h2 className="mt-3 text-[2rem] leading-tight">
+                Roads <span className="accent">out of town</span>
+              </h2>
+            </div>
+            <Link
+              href="/packages"
+              className="link-rule shrink-0 text-[0.875rem] font-extrabold text-ink"
+            >
+              All {JOURNEYS.length} journeys
+            </Link>
+          </div>
+        </Container>
+        <TripCoverflow trips={FEATURED_TRIPS} />
+
+        {/* ——— The fare lock, the cab promise demonstrated. */}
+        <section className="mt-16 bg-clay-deep py-16 text-bone">
+          <Container width="wide">
+            <div className="max-w-xl">
+              <p className="text-label font-extrabold text-green uppercase">
+                Cabs · The fare lock
+              </p>
+              <h2 className="mt-4 text-[2rem] leading-[1.08] text-bone">
+                Go on. Try to make it <span className="accent">go up.</span>
+              </h2>
+              <p className="mt-4 text-[0.90625rem] leading-relaxed text-bone/65">
+                Zoo Road to Guwahati railway station. Tap anything that would
+                normally cost you more.
+              </p>
+            </div>
+            <FareLock />
+            <div className="mt-10 text-center">
+              <Link
+                href="/cabs"
+                className="link-rule inline-flex items-center gap-2 text-[0.875rem] font-extrabold text-bone"
+              >
+                Everything about our cabs
+                <ArrowIcon className="size-4" />
+              </Link>
+            </div>
+          </Container>
+        </section>
+
+        {/* ——— The doors: everything else Smarto runs. */}
+        <Container width="wide" className="pt-16">
+          <p className="text-label font-extrabold text-clay uppercase">
+            More ways we move you
+          </p>
+          <h2 className="mt-3 text-[2rem] leading-tight">
+            One fleet, <span className="accent">many doors.</span>
+          </h2>
+          <ul className="mt-8 grid grid-cols-4 gap-5">
+            {[
+              {
+                icon: SendIcon,
+                title: "Flights",
+                line: "Fares into and out of the Northeast, booked on WhatsApp.",
+                href: "/flights" as const,
+              },
+              {
+                icon: CalendarIcon,
+                title: "Events",
+                line: "Weddings and conferences, moved end to end.",
+                href: "/events" as const,
+              },
+              {
+                icon: BuildingIcon,
+                title: "Corporate",
+                line: "Employee transport on a fixed rate card, off your desk.",
+                href: "/corporate" as const,
+              },
+              {
+                icon: SuitcaseIcon,
+                title: "Partners",
+                line: "Agents and hotels earn on every ride they book.",
+                href: "/partners" as const,
+              },
+            ].map((door) => (
+              <li key={door.title}>
+                <Link
+                  href={door.href}
+                  className="group flex h-full flex-col rounded-2xl bg-sand p-6 transition-colors hover:bg-clay-soft"
+                >
+                  <door.icon className="size-6 text-ink" />
+                  <span className="mt-4 text-[1.125rem] font-extrabold text-ink">
+                    {door.title}
+                  </span>
+                  <span className="mt-1.5 flex-1 text-[0.8125rem] leading-relaxed text-taupe">
+                    {door.line}
+                  </span>
+                  <span className="link-rule mt-5 inline-flex items-center gap-2 self-start text-[0.8125rem] font-extrabold text-ink">
+                    Explore
+                    <ArrowIcon className="size-3.5" />
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Container>
+
+        {/* ——— Festivals, by the calendar. */}
+        <Container width="wide" className="py-16 xl:py-20">
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <p className="text-label font-extrabold text-clay uppercase">
+                Festivals
+              </p>
+              <h2 className="mt-3 text-[2rem] leading-tight">
+                Travel <span className="accent">by the calendar</span>
+              </h2>
+            </div>
+            <Link
+              href="/festivals"
+              className="link-rule shrink-0 text-[0.875rem] font-extrabold text-ink"
+            >
+              The full calendar
+            </Link>
+          </div>
+          <ul className="mt-8 grid grid-cols-4 gap-5">
+            {FESTIVAL_PICKS.map((festival) => (
+              <li key={festival.id}>
+                <Link
+                  href="/festivals"
+                  className="group relative block aspect-[4/5] overflow-hidden rounded-2xl bg-sand"
+                >
+                  <Image
+                    src={FESTIVAL_IMAGE[festival.id].src}
+                    alt={FESTIVAL_IMAGE[festival.id].alt}
+                    fill
+                    loading="lazy"
+                    sizes="(min-width: 1024px) 24vw, 46vw"
+                    className="zoom-slow object-cover"
+                  />
+                  <span aria-hidden="true" className="photo-scrim absolute inset-0" />
+                  <span className="absolute top-3 right-3 rounded-full bg-bone/90 px-2.5 py-1 text-[0.625rem] font-extrabold tracking-[0.1em] text-ink uppercase backdrop-blur-sm">
+                    {festival.month}
+                  </span>
+                  <span className="absolute inset-x-0 bottom-0 p-4">
+                    <span className="block text-[1.1875rem] leading-tight font-extrabold text-bone">
+                      {festival.name}
+                    </span>
+                    <span className="mt-0.5 block text-[0.6875rem] font-extrabold tracking-[0.1em] text-bone/75 uppercase">
+                      {festival.state}
+                    </span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Container>
       </div>
     </div>
   );
