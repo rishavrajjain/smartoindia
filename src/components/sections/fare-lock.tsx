@@ -82,10 +82,11 @@ export function FareLock() {
 
   return (
     <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-14">
+      <div className="lg:mt-8">
       <div
         role="group"
         aria-label="Things that usually make a fare go up"
-        className="mt-7 flex flex-wrap gap-2 lg:mt-8"
+        className="mt-7 flex flex-wrap gap-2 lg:mt-0"
       >
         {CONDITIONS.map((condition, index) => (
           <button
@@ -103,6 +104,14 @@ export function FareLock() {
             {condition.label}
           </button>
         ))}
+      </div>
+      <p className="mt-10 hidden text-[1.75rem] leading-snug font-extrabold lg:block">
+        Same ride. Same rain.
+        <span className="block text-green">Same price.</span>
+      </p>
+      <p className="mt-3 hidden text-[0.6875rem] leading-relaxed text-bone/40 lg:block">
+        Surge figures are illustrative. The ₹399 is not.
+      </p>
       </div>
 
       <div className="lg:row-span-2">
@@ -142,10 +151,10 @@ export function FareLock() {
           </div>
         </div>
 
-        <p className="mt-7 text-center text-[1.375rem] leading-snug font-extrabold">
+        <p className="mt-7 text-center text-[1.375rem] leading-snug font-extrabold lg:hidden">
           Same ride. Same rain. Same price.
         </p>
-        <p className="mt-3 text-center text-[0.6875rem] leading-relaxed text-bone/40">
+        <p className="mt-3 text-center text-[0.6875rem] leading-relaxed text-bone/40 lg:hidden">
           Surge figures are illustrative. The ₹399 is not.
         </p>
       </div>

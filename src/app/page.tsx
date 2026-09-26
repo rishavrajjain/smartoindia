@@ -4,7 +4,6 @@ import type { Viewport } from "next";
 
 import { CabOrbit } from "@/components/sections/cab-orbit";
 import { FilmCard } from "@/components/sections/film-card";
-import { FareLock } from "@/components/sections/fare-lock";
 import { FlightsTeaser } from "@/components/sections/flights-teaser";
 import {
   HeroCaptions,
@@ -585,30 +584,53 @@ function DesktopHome() {
         </Container>
         <TripCoverflow trips={FEATURED_TRIPS} />
 
-        {/* ——— The fare lock, the cab promise demonstrated. */}
-        <section className="mt-16 bg-clay-deep py-16 text-bone">
+        {/* ——— Cabs: the turntable, exactly as the phones love it. */}
+        <section className="mt-16 bg-sand py-16">
           <Container width="wide">
-            <div className="max-w-xl">
-              <p className="text-label font-extrabold text-green uppercase">
-                Cabs · The fare lock
-              </p>
-              <h2 className="mt-4 text-[2rem] leading-[1.08] text-bone">
-                Go on. Try to make it <span className="accent">go up.</span>
-              </h2>
-              <p className="mt-4 text-[0.90625rem] leading-relaxed text-bone/65">
-                Zoo Road to Guwahati railway station. Tap anything that would
-                normally cost you more.
-              </p>
-            </div>
-            <FareLock />
-            <div className="mt-10 text-center">
-              <Link
-                href="/cabs"
-                className="link-rule inline-flex items-center gap-2 text-[0.875rem] font-extrabold text-bone"
-              >
-                Everything about our cabs
-                <ArrowIcon className="size-4" />
-              </Link>
+            <div className="grid items-center gap-x-12 gap-y-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,29rem)]">
+              <div>
+                <p className="text-label font-extrabold text-clay uppercase">
+                  Cabs · Guwahati
+                </p>
+                <h2 className="mt-4 text-[2rem] leading-[1.08]">
+                  Flat fares, <span className="accent">no surprises</span>
+                </h2>
+                <p className="mt-4 max-w-md text-[0.9375rem] leading-relaxed text-taupe">
+                  The quoted price is final. Rain, rush hour or 2 AM.
+                </p>
+                <div className="mt-7 flex items-baseline gap-3">
+                  <span className="font-display text-[2.75rem] leading-none text-clay">
+                    50,000+
+                  </span>
+                  <span className="text-label font-extrabold text-taupe uppercase">
+                    customers
+                    <br />
+                    driven so far
+                  </span>
+                </div>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {CAB_FEATURES.map((feature) => (
+                    <span
+                      key={feature}
+                      className="rounded-full bg-paper px-3.5 py-1.5 text-[0.78125rem] font-extrabold text-clay-deep"
+                    >
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+                <Link
+                  href="/cabs"
+                  className="link-rule mt-8 inline-flex items-center gap-2 text-[0.875rem] font-extrabold text-ink"
+                >
+                  Everything about our cabs
+                  <ArrowIcon className="size-4" />
+                </Link>
+              </div>
+              {/* The orbit is tuned for a phone column; give it one. Its
+                  stage bleeds to this wrapper's px-6 edges. */}
+              <div className="mx-auto w-full max-w-[26.5rem] px-6">
+                <CabOrbit services={SERVICES} />
+              </div>
             </div>
           </Container>
         </section>
