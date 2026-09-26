@@ -29,6 +29,37 @@ export function toTrailJourney(journey: Journey): TrailJourney {
   };
 }
 
+/* Photographs of stops that appear on the printed routes, so a rail can
+   show a different place on the same route instead of repeating a photo. */
+const STOP_IMAGE: Record<string, string> = {
+  Shillong: "/images/dest-shillong.webp",
+  Cherrapunjee: "/images/pkg-meghalaya-waterfalls.webp",
+  Kaziranga: "/images/pkg-assam-kaziranga.webp",
+  Tawang: "/images/dest-tawang-winter.webp",
+  Dirang: "/images/dest-sela.webp",
+  Bomdila: "/images/pkg-arunachal-tawang.webp",
+  Tezpur: "/images/dest-nameri.webp",
+  Umiam: "/images/dest-umiam.webp",
+  Ziro: "/images/dest-ziro.webp",
+  Jorhat: "/images/pkg-assam-tea.webp",
+  Dibrugarh: "/images/pkg-assam-tea.webp",
+  Dawki: "/images/dest-dawki.webp",
+};
+
+/** Keeps every card in a rail on its own photograph. */
+export function distinctThumbs(list: TrailJourney[]): TrailJourney[] {
+  const used = new Set<string>();
+  return list.map((j) => {
+    const candidates = [
+      j.hero.src,
+      ...j.stops.flatMap((s) => s.split("/")).map((s) => STOP_IMAGE[s.trim()]),
+    ].filter((c): c is string => Boolean(c));
+    const pick = candidates.find((c) => !used.has(c)) ?? j.hero.src;
+    used.add(pick);
+    return pick === j.hero.src ? j : { ...j, hero: { ...j.hero, src: pick, alt: "" } };
+  });
+}
+
 /**
  * The same predicate the /packages search uses, so a count printed on a tile
  * here always equals the results that page shows for `?q=`.
@@ -104,14 +135,16 @@ const TRAVELLER_SPECS = [
 export const TRAVELLERS: Traveller[] = TRAVELLER_SPECS.map((spec) => ({
   ...spec,
   styles: [...spec.styles],
-  journeys: JOURNEYS.filter((j) =>
-    j.styles.some((s) => (spec.styles as readonly string[]).includes(s)),
-  ).map(toTrailJourney),
+  journeys: distinctThumbs(
+    JOURNEYS.filter((j) =>
+      j.styles.some((s) => (spec.styles as readonly string[]).includes(s)),
+    ).map(toTrailJourney),
+  ),
 }));
 
-export const POPULAR: TrailJourney[] = JOURNEYS.filter((j) =>
-  j.styles.includes("Popular"),
-).map(toTrailJourney);
+export const POPULAR: TrailJourney[] = distinctThumbs(
+  JOURNEYS.filter((j) => j.styles.includes("Popular")).map(toTrailJourney),
+);
 
 /* --- Places: real stops from the printed routes, with honest counts. */
 
@@ -124,11 +157,11 @@ export interface Place {
 
 const PLACE_SPECS = [
   { name: "Shillong", line: "Pine hills and cafés", image: "/images/dest-shillong.webp" },
-  { name: "Cherrapunjee", line: "Waterfalls and root bridges", image: "/images/pkg-meghalaya-waterfalls.webp" },
+  { name: "Cherrapunjee", line: "Waterfall country", image: "/images/pkg-meghalaya-waterfalls.webp" },
   { name: "Kaziranga", line: "Rhino country", image: "/images/pkg-assam-kaziranga.webp" },
   { name: "Tawang", line: "Monasteries up high", image: "/images/dest-tawang-winter.webp" },
-  { name: "Dawki", line: "The glass-clear river", image: "/images/dest-dawki.webp" },
-  { name: "Umiam", line: "The lake on the hill road", image: "/images/dest-umiam.webp" },
+  { name: "Dawki", line: "Glass-clear water", image: "/images/dest-dawki.webp" },
+  { name: "Umiam", line: "A lake in the pines", image: "/images/dest-umiam.webp" },
   { name: "Ziro", line: "Rice fields and pine", image: "/images/dest-ziro.webp" },
 ];
 

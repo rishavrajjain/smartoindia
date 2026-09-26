@@ -111,12 +111,14 @@ export function TravellerPicker({
                 </>
               )}
             </p>
-            <Link
-              href={seeAll}
-              className="link-rule shrink-0 text-[0.8125rem] font-extrabold text-green"
-            >
-              See all
-            </Link>
+            <span className="hidden sm:inline-flex">
+              <Link
+                href={seeAll}
+                className="link-rule shrink-0 text-[0.8125rem] font-extrabold text-green"
+              >
+                See all
+              </Link>
+            </span>
           </div>
         }
       >

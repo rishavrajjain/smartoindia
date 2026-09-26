@@ -139,7 +139,7 @@ export default function CorporatePage() {
         sub="A fixed rate card, one named contact, one monthly invoice. Run by the people who own the cars."
         image={{
           src: "/images/biz-corporate.webp",
-          alt: "Electric sedans arriving at the glass porch of a modern office on a bright morning",
+          alt: "Smarto electric cabs arriving at the glass porch of a modern office on a bright morning",
         }}
         float={{
           icon: TagIcon,
@@ -256,7 +256,7 @@ export default function CorporatePage() {
         <div className="reveal relative overflow-hidden rounded-[2rem]">
           <Image
             src="/images/svc-corporate-fleet.webp"
-            alt="A row of white electric sedans charging at an office campus at dusk"
+            alt="A row of Smarto electric cabs charging at an office campus at dusk"
             width={1536}
             height={1024}
             loading="lazy"

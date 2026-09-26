@@ -119,7 +119,7 @@ const EVENT_KINDS = [
   {
     image: {
       src: "/images/biz-events.webp",
-      alt: "White sedans queuing through a marigold-decorated wedding gate at dusk",
+      alt: "Smarto electric cabs lined up beneath a marigold-decorated wedding gate at dusk",
     },
     title: "Weddings",
     body: "Multi-day, multi-venue, everyone at once.",
@@ -127,7 +127,7 @@ const EVENT_KINDS = [
   {
     image: {
       src: "/images/biz-corporate.webp",
-      alt: "Electric sedans waiting at the glass porch of a modern office",
+      alt: "Smarto electric cabs waiting at the glass porch of a modern office",
     },
     title: "Corporate events",
     body: "Offsites and launches, one invoice.",
@@ -135,7 +135,7 @@ const EVENT_KINDS = [
   {
     image: {
       src: "/images/svc-events-conference.webp",
-      alt: "A line of white sedans on the lit drive of a convention centre at dusk",
+      alt: "A line of Smarto electric cabs on the lit drive of a convention centre at dusk",
     },
     title: "Conferences",
     body: "Hundreds in by morning, out by evening.",
@@ -201,7 +201,7 @@ export default function EventsPage() {
         sub="Rooms, arrivals, shuttles, departures. One coordinator, one number, one invoice."
         image={{
           src: "/images/biz-events.webp",
-          alt: "A line of white sedans arriving through a marigold-decorated wedding gate at dusk",
+          alt: "Smarto electric cabs lined up beneath a marigold-decorated wedding gate at dusk",
         }}
         float={{
           icon: PeopleIcon,

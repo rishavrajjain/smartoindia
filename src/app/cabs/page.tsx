@@ -46,7 +46,7 @@ const SERVICES = [
   {
     image: {
       src: "/images/svc-cabs-city.webp",
-      alt: "A white electric sedan on a leafy Guwahati avenue in the early morning",
+      alt: "A white Smarto electric cab on a leafy Guwahati avenue in the early morning",
     },
     title: "City rides",
     fare: null,
@@ -56,7 +56,7 @@ const SERVICES = [
   {
     image: {
       src: "/images/svc-cabs-railway.webp",
-      alt: "A cab waiting with its boot open at a railway station forecourt at golden hour",
+      alt: "A Smarto electric cab waiting with its boot open at a railway station forecourt at golden hour",
     },
     title: "Railway station drops",
     fare: "₹399",
@@ -66,7 +66,7 @@ const SERVICES = [
   {
     image: {
       src: "/images/svc-cabs-airport.webp",
-      alt: "A white sedan at the airport departures kerb at dawn, a suitcase beside it",
+      alt: "A Smarto electric cab at the airport departures kerb at dawn, a suitcase beside it",
     },
     title: "Airport rides",
     fare: null,
@@ -76,7 +76,7 @@ const SERVICES = [
   {
     image: {
       src: "/images/svc-cabs-hourly.webp",
-      alt: "A white sedan parked at a tea-garden viewpoint with its doors open",
+      alt: "A Smarto electric cab parked at a tea-garden viewpoint in Assam",
     },
     title: "Hourly rentals",
     fare: null,
@@ -124,7 +124,7 @@ export default function CabsPage() {
         sub="Flat fares. No surge. No bargaining. All-electric cabs across Guwahati, 24×7."
         image={{
           src: "/images/svc-cabs-hero.webp",
-          alt: "A white electric sedan waiting at a misty hill-road viewpoint with travel bags beside it",
+          alt: "A Smarto electric cab at a misty hill-road viewpoint, rear door open and travel bags beside it",
         }}
         float={{
           icon: TagIcon,

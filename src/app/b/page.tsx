@@ -132,14 +132,14 @@ export default function ConceptBPage() {
         </div>
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 top-0 -z-10 h-2/5 bg-gradient-to-b from-[rgba(28,26,69,0.55)] to-transparent"
+          className="absolute inset-x-0 top-0 -z-10 h-2/5 bg-gradient-to-b from-[rgba(28,26,69,0.55)] to-transparent lg:h-3/5 lg:from-[rgba(28,26,69,0.7)] lg:via-[rgba(28,26,69,0.35)]"
         />
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 -z-10 h-3/5 bg-gradient-to-t from-[rgba(28,26,69,0.85)] via-[rgba(28,26,69,0.35)] to-transparent"
+          className="absolute inset-x-0 bottom-0 -z-10 h-3/5 bg-gradient-to-t from-[rgba(28,26,69,0.85)] via-[rgba(28,26,69,0.35)] to-transparent lg:h-1/4 lg:from-[rgba(28,26,69,0.6)] lg:via-transparent"
         />
 
-        <div className="w-full max-w-4xl px-5 pb-24 text-center sm:px-8 lg:pb-28">
+        <div className="w-full max-w-4xl px-5 pb-24 text-center sm:px-8 lg:mt-28 lg:mb-auto lg:pb-0">
           <p className="inline-flex items-center gap-2.5 rounded-full bg-clay-deep/45 px-4 py-2 text-[0.75rem] ring-1 ring-white/20 backdrop-blur-md sm:text-[0.8125rem]">
             <span aria-hidden="true" className="size-2 rounded-full bg-green shadow-[0_0_10px_#75b884]" />
             <span>
@@ -202,7 +202,7 @@ export default function ConceptBPage() {
               </span>{" "}
               <span className="accent">fare</span>
             </h2>
-            <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-green/15 px-3.5 py-2 text-[0.8125rem] font-extrabold text-green-deep">
+            <p className="mt-3 inline-flex items-center gap-2 text-[0.8125rem] font-extrabold text-green-deep lg:mt-5 lg:rounded-full lg:bg-green/15 lg:px-3.5 lg:py-2">
               <SurgeOffIcon className="size-4" />
               No surge · zero cancellation
             </p>
@@ -210,7 +210,7 @@ export default function ConceptBPage() {
               Rain, rush hour or 2 AM, the quoted price is the price.
             </p>
           </div>
-          <CabDeals />
+          <CabDeals className="mt-7 lg:mt-0" />
         </div>
         <p className="mx-auto mt-3 max-w-7xl px-5 text-[0.6875rem] text-taupe/75 sm:px-8">
           Starting fares from Smarto&rsquo;s published rate list, confirmed on
@@ -223,7 +223,7 @@ export default function ConceptBPage() {
         <h2 className="text-center text-[1.5rem] leading-tight lg:text-[2rem]">
           Why travellers <span className="accent">pick Smarto</span>
         </h2>
-        <div className="mt-8 grid grid-cols-2 items-center gap-3 rounded-[2rem] bg-sand p-4 sm:gap-4 sm:p-6 lg:grid-cols-5 lg:gap-2 lg:px-8 lg:py-9">
+        <div className="mt-8 grid grid-cols-2 gap-3 rounded-[2rem] bg-sand p-4 sm:gap-4 sm:p-6 lg:grid-cols-5 lg:items-center lg:gap-2 lg:px-8 lg:py-9">
           <Stat icon={PeopleIcon} value="50,000+" label="customers driven" />
           <Stat icon={BoltIcon} value="EV" label="fleet in the city" />
           <div className="order-first col-span-2 flex flex-col items-center py-2 text-center lg:order-none lg:col-span-1">
@@ -367,62 +367,70 @@ export default function ConceptBPage() {
 
       {/* --- Promo banners. */}
       <section className="mx-auto grid max-w-7xl gap-5 px-5 pt-14 sm:px-8 lg:grid-cols-2 lg:gap-6 lg:pt-20">
-        <div className="relative isolate flex min-h-[20rem] flex-col justify-end overflow-hidden rounded-[1.75rem] bg-clay-deep p-7 text-bone lg:min-h-[24rem] lg:p-10">
-          <Image
-            src="/images/svc-cabs-hero.webp"
-            alt="A white electric sedan waiting at a misty hill-road viewpoint with travel bags beside it"
-            fill
-            sizes="(min-width: 1024px) 40rem, 100vw"
-            className="-z-10 object-cover"
-          />
-          <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-[rgba(28,26,69,0.92)] via-[rgba(28,26,69,0.45)] to-transparent" />
-          <p className="text-label font-extrabold text-green uppercase">Cabs · Guwahati</p>
-          <h2 className="mt-3 max-w-sm text-[1.75rem] leading-[1.1] lg:text-[2.125rem]">
-            Rain, rush hour or 2 AM. <span className="accent">Same fare.</span>
-          </h2>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <WaCta
-              message={enquiry("I would like to book a cab in Guwahati.")}
-              location="b-banner-cabs"
-              className="inline-flex min-h-12 items-center gap-2.5 rounded-full bg-green-deep px-6 text-[0.875rem] font-extrabold text-white"
-            >
-              <WhatsAppIcon />
-              Book a cab
-            </WaCta>
-            <Link
-              href="/cabs"
-              className="inline-flex min-h-12 items-center rounded-full px-5 text-[0.875rem] font-extrabold text-bone ring-1 ring-white/40 transition-colors hover:bg-white/10"
-            >
-              See all fares
-            </Link>
+        <div className="relative isolate flex flex-col overflow-hidden rounded-[1.75rem] bg-clay-deep text-bone lg:min-h-[24rem] lg:justify-end lg:p-10">
+          <div className="relative aspect-[16/10] lg:absolute lg:inset-0 lg:-z-10 lg:aspect-auto">
+            <Image
+              src="/images/svc-cabs-hero.webp"
+              alt="A Smarto electric cab at a misty hill-road viewpoint, rear door open and travel bags beside it"
+              fill
+              sizes="(min-width: 1024px) 40rem, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <div aria-hidden="true" className="absolute inset-0 -z-10 hidden bg-gradient-to-t from-[rgba(28,26,69,0.95)] via-[rgba(28,26,69,0.72)] via-50% to-[rgba(28,26,69,0.12)] lg:block" />
+          <div className="p-7 lg:p-0">
+            <p className="text-label font-extrabold text-green uppercase">Cabs · Guwahati</p>
+            <h2 className="mt-3 max-w-sm text-[1.75rem] leading-[1.1] lg:text-[2.125rem]">
+              Rain, rush hour or 2 AM. <span className="accent">Same fare.</span>
+            </h2>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <WaCta
+                message={enquiry("I would like to book a cab in Guwahati.")}
+                location="b-banner-cabs"
+                className="inline-flex min-h-12 items-center gap-2.5 rounded-full bg-green-deep px-6 text-[0.875rem] font-extrabold text-white"
+              >
+                <WhatsAppIcon />
+                Book a cab
+              </WaCta>
+              <Link
+                href="/cabs"
+                className="inline-flex min-h-12 items-center rounded-full px-5 text-[0.875rem] font-extrabold text-bone ring-1 ring-white/40 transition-colors hover:bg-white/10"
+              >
+                See all fares
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="relative isolate flex min-h-[20rem] flex-col justify-end overflow-hidden rounded-[1.75rem] bg-clay-deep p-7 text-bone lg:min-h-[24rem] lg:p-10">
-          <Image
-            src="/images/biz-corporate.webp"
-            alt="Electric sedans arriving at the glass porch of a modern office on a bright morning"
-            fill
-            sizes="(min-width: 1024px) 40rem, 100vw"
-            className="-z-10 object-cover"
-          />
-          <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-[rgba(28,26,69,0.92)] via-[rgba(28,26,69,0.45)] to-transparent" />
-          <p className="text-label font-extrabold text-green uppercase">Corporate &amp; events</p>
-          <h2 className="mt-3 max-w-sm text-[1.75rem] leading-[1.1] lg:text-[2.125rem]">
-            Moving a whole team? <span className="accent">One rate card.</span>
-          </h2>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href="/corporate"
-              className="inline-flex min-h-12 items-center rounded-full bg-bone px-6 text-[0.875rem] font-extrabold text-ink transition-colors hover:bg-sand"
-            >
-              Corporate travel
-            </Link>
-            <Link
-              href="/events"
-              className="inline-flex min-h-12 items-center rounded-full px-5 text-[0.875rem] font-extrabold text-bone ring-1 ring-white/40 transition-colors hover:bg-white/10"
-            >
-              Weddings &amp; events
-            </Link>
+        <div className="relative isolate flex flex-col overflow-hidden rounded-[1.75rem] bg-clay-deep text-bone lg:min-h-[24rem] lg:justify-end lg:p-10">
+          <div className="relative aspect-[16/10] lg:absolute lg:inset-0 lg:-z-10 lg:aspect-auto">
+            <Image
+              src="/images/biz-corporate.webp"
+              alt="Smarto electric cabs arriving at the glass porch of a modern office on a bright morning"
+              fill
+              sizes="(min-width: 1024px) 40rem, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <div aria-hidden="true" className="absolute inset-0 -z-10 hidden bg-gradient-to-t from-[rgba(28,26,69,0.95)] via-[rgba(28,26,69,0.72)] via-50% to-[rgba(28,26,69,0.12)] lg:block" />
+          <div className="p-7 lg:p-0">
+            <p className="text-label font-extrabold text-green uppercase">Corporate &amp; events</p>
+            <h2 className="mt-3 max-w-sm text-[1.75rem] leading-[1.1] lg:text-[2.125rem]">
+              Moving a whole team? <span className="accent">One rate card.</span>
+            </h2>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href="/corporate"
+                className="inline-flex min-h-12 items-center rounded-full bg-bone px-6 text-[0.875rem] font-extrabold text-ink transition-colors hover:bg-sand"
+              >
+                Corporate travel
+              </Link>
+              <Link
+                href="/events"
+                className="inline-flex min-h-12 items-center rounded-full px-5 text-[0.875rem] font-extrabold text-bone ring-1 ring-white/40 transition-colors hover:bg-white/10"
+              >
+                Weddings &amp; events
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -440,19 +448,19 @@ export default function ConceptBPage() {
                 title: "Planned day by day",
                 line: "Every journey is printed with its drive times and stays.",
                 src: "/images/b-hero-passes.webp",
-                alt: "A white car on a high mountain road under prayer flags, snow peaks behind",
+                alt: "A Smarto cab on a high mountain road under prayer flags, snow peaks behind",
               },
               {
                 title: "Electric in the city",
                 line: "Guwahati rides on an EV fleet, on a flat fare.",
                 src: "/images/svc-corporate-fleet.webp",
-                alt: "A row of white electric sedans charging at an office campus at dusk",
+                alt: "A row of Smarto electric cabs charging at an office campus at dusk",
               },
               {
                 title: "One WhatsApp thread",
                 line: "Cars, hotels and permits sorted in one conversation.",
                 src: "/images/svc-cabs-airport.webp",
-                alt: "A white sedan at the airport departures kerb at dawn, a suitcase beside it",
+                alt: "A Smarto electric cab at the airport departures kerb at dawn, a suitcase beside it",
               },
             ].map((card) => (
               <li key={card.title} className="text-center">
@@ -527,13 +535,13 @@ function Stat({
   label: string;
 }) {
   return (
-    <div className="flex items-center gap-3 rounded-2xl bg-bone p-4 lg:justify-center lg:bg-transparent lg:p-0">
-      <span className="grid size-11 shrink-0 place-items-center rounded-full bg-green/15 text-green-deep lg:size-12">
+    <div className="flex h-full min-w-0 flex-col items-start gap-3 rounded-2xl bg-bone p-4 lg:flex-row lg:items-center lg:justify-center lg:bg-transparent lg:p-0">
+      <span className="grid size-10 shrink-0 place-items-center rounded-full bg-green/15 text-green-deep lg:size-12">
         <Icon className="size-5" />
       </span>
-      <span className="leading-tight">
+      <span className="min-w-0 leading-tight">
         <span className="block text-[1.375rem] font-extrabold text-ink lg:text-[1.625rem]">{value}</span>
-        <span className="block text-[0.75rem] text-taupe">{label}</span>
+        <span className="mt-0.5 block text-[0.75rem] text-taupe">{label}</span>
       </span>
     </div>
   );
@@ -565,7 +573,7 @@ function ChatPhone() {
         <div className="overflow-hidden rounded-t-[2rem] bg-[#ece5dd]">
           <div className="flex items-center gap-2.5 bg-clay px-4 pt-5 pb-3 text-bone">
             <span className="grid size-8 place-items-center rounded-full bg-bone">
-              <Image src="/brand/smarto-cab.webp" alt="" width={24} height={24} className="h-4 w-auto" />
+              <Image src="/brand/smarto-cab.webp" alt="" width={360} height={141} className="h-3 w-auto" />
             </span>
             <span className="text-[0.8125rem] font-extrabold">Smarto</span>
           </div>

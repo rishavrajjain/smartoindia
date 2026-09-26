@@ -223,7 +223,7 @@ export function RouteNav({ stops }: { stops: RouteStop[] }) {
                   src="/brand/smarto-cab.webp"
                   alt=""
                   width={360}
-                  height={136}
+                  height={141}
                   priority
                   className="mx-auto h-[1.05rem] w-auto"
                 />

@@ -60,7 +60,7 @@ export function LengthBento({
             {t.label}
             <span
               className={cn(
-                "text-[0.6875rem]",
+                "hidden text-[0.6875rem] sm:inline",
                 tier === t.id ? "text-bone/70" : "text-taupe/70",
               )}
             >
@@ -81,6 +81,7 @@ export function LengthBento({
             className={cn(
               "motion-safe:animate-rise",
               i === 0 ? "col-span-2 aspect-[16/10] lg:aspect-auto" : "aspect-[4/5] lg:aspect-auto",
+              i === 5 && "hidden lg:block",
               PLACEMENT[i],
             )}
             style={{ animationDelay: `${i * 50}ms` }}

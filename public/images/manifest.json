@@ -523,13 +523,13 @@
     "id": "cab-orbit-hero",
     "src": "/images/cab-orbit-hero.webp",
     "width": 480,
-    "height": 267,
+    "height": 259,
     "aspect": "9:5",
     "alt": "",
     "usedOn": "/ — cabs section, centre of the revolving service orbit",
-    "subject": "Glossy 3D miniature of the Smarto cab: white compact sedan, violet gradient door livery with the Smarto wordmark, roof taxi sign; three-quarter front-left view, keyed to transparency",
+    "subject": "Glossy 3D Smarto Tata Tigor EV cab in three-quarter view, keyed out",
     "prompt": "Glossy 3D miniature of a compact white Indian sedan taxi styled as a premium collectible toy: clean glossy white body, a violet-to-purple gradient branding panel across both doors with the word Smarto in small white rounded lettering on the front door, a small white roof-mounted taxi sign, dark tinted windows, simple dark grey wheels with neat silver hubcaps. Three-quarter view from the front-left, camera slightly elevated, premium 3D-emoji style, chroma-key green background (keyed out in scripts/generate-cab-orbit.mjs).",
-    "model": "gpt-image-2",
+    "model": "gpt-image-2 (images/edits with Tata Tigor EV references)",
     "status": "generated"
   },
   {
@@ -670,9 +670,9 @@
     "aspect": "3:2",
     "alt": "",
     "usedOn": "/events — hero + weddings card",
-    "subject": "White sedans arriving through a marigold-garlanded wedding gate at dusk",
-    "prompt": "See scripts/generate-biz-scenes.mjs / generate-service-scenes.mjs",
-    "model": "gpt-image-2",
+    "subject": "An Indian wedding venue at dusk: a convoy of five identical copies of the car lined up on the drive beneath a tall ornate gateway draped in marigold garlands an",
+    "prompt": "An Indian wedding venue at dusk: a convoy of five identical copies of the car lined up on the drive beneath a tall ornate gateway draped in marigold garlands and warm fairy lights, palm trees and a lit marquee beyond, festive but calm. No people. The car is the exact vehicle in the reference photos: a white Tata Tigor EV compact sedan with its thin teal-blue accent line along the lower grille and headlamps, small EV badges, and Smarto livery: the Smarto wordmark decal across the bonnet, a pale lilac-white panel on the front door carrying the Smarto wordmark, and a deep purple-to-violet gradient panel on the rear door. No roof sign. Keep all lettering to the Smarto wordmark only: no phone numbers, prices, QR codes or other words. Number plates are plain green with no characters.",
+    "model": "gpt-image-2 (images/edits with smartocabs.com Tata Tigor EV reference photos)",
     "status": "generated"
   },
   {
@@ -683,9 +683,9 @@
     "aspect": "3:2",
     "alt": "",
     "usedOn": "/corporate hero + /events corporate card",
-    "subject": "Electric sedans at the glass porch of a modern office, morning",
-    "prompt": "See scripts/generate-biz-scenes.mjs / generate-service-scenes.mjs",
-    "model": "gpt-image-2",
+    "subject": "Two copies of the car arriving under the glass porch of a modern office building on a bright morning, one in front at three-quarter view and one behind, polishe",
+    "prompt": "Two copies of the car arriving under the glass porch of a modern office building on a bright morning, one in front at three-quarter view and one behind, polished stone paving, planters and trees, calm corporate mood. No people. The car is the exact vehicle in the reference photos: a white Tata Tigor EV compact sedan with its thin teal-blue accent line along the lower grille and headlamps, small EV badges, and Smarto livery: the Smarto wordmark decal across the bonnet, a pale lilac-white panel on the front door carrying the Smarto wordmark, and a deep purple-to-violet gradient panel on the rear door. No roof sign. Keep all lettering to the Smarto wordmark only: no phone numbers, prices, QR codes or other words. Number plates are plain green with no characters.",
+    "model": "gpt-image-2 (images/edits with smartocabs.com Tata Tigor EV reference photos)",
     "status": "generated"
   },
   {
@@ -696,9 +696,9 @@
     "aspect": "3:2",
     "alt": "",
     "usedOn": "/partners hero",
-    "subject": "White sedan and brass luggage cart under a hillside heritage hotel portico",
-    "prompt": "See scripts/generate-biz-scenes.mjs / generate-service-scenes.mjs",
-    "model": "gpt-image-2",
+    "subject": "The columned porch of a heritage hill hotel in Shillong in warm morning light: the car parked at the entrance seen from the front three-quarter, a brass luggage",
+    "prompt": "The columned porch of a heritage hill hotel in Shillong in warm morning light: the car parked at the entrance seen from the front three-quarter, a brass luggage trolley with suitcases beside it, pine-covered hills behind. No people. The car is the exact vehicle in the reference photos: a white Tata Tigor EV compact sedan with its thin teal-blue accent line along the lower grille and headlamps, small EV badges, and Smarto livery: the Smarto wordmark decal across the bonnet, a pale lilac-white panel on the front door carrying the Smarto wordmark, and a deep purple-to-violet gradient panel on the rear door. No roof sign. Keep all lettering to the Smarto wordmark only: no phone numbers, prices, QR codes or other words. Number plates are plain green with no characters.",
+    "model": "gpt-image-2 (images/edits with smartocabs.com Tata Tigor EV reference photos)",
     "status": "generated"
   },
   {
@@ -709,9 +709,9 @@
     "aspect": "3:2",
     "alt": "",
     "usedOn": "/cabs hero",
-    "subject": "White EV at a misty hill-road viewpoint, rear door open, luggage beside it",
-    "prompt": "See scripts/generate-biz-scenes.mjs / generate-service-scenes.mjs",
-    "model": "gpt-image-2",
+    "subject": "The car parked at a scenic pull-off on a winding hill road in Meghalaya, rear door open, a small stack of travel bags beside it, morning mist lifting off green ",
+    "prompt": "The car parked at a scenic pull-off on a winding hill road in Meghalaya, rear door open, a small stack of travel bags beside it, morning mist lifting off green ridges behind, dew on the tarmac, fresh soft light. Seen from the front three-quarter. No people. The car is the exact vehicle in the reference photos: a white Tata Tigor EV compact sedan with its thin teal-blue accent line along the lower grille and headlamps, small EV badges, and Smarto livery: the Smarto wordmark decal across the bonnet, a pale lilac-white panel on the front door carrying the Smarto wordmark, and a deep purple-to-violet gradient panel on the rear door. No roof sign. Keep all lettering to the Smarto wordmark only: no phone numbers, prices, QR codes or other words. Number plates are plain green with no characters.",
+    "model": "gpt-image-2 (images/edits with smartocabs.com Tata Tigor EV reference photos)",
     "status": "generated"
   },
   {
@@ -722,9 +722,9 @@
     "aspect": "3:2",
     "alt": "",
     "usedOn": "/cabs — city rides card",
-    "subject": "White EV on a leafy wet Guwahati avenue, early morning",
-    "prompt": "See scripts/generate-biz-scenes.mjs / generate-service-scenes.mjs",
-    "model": "gpt-image-2",
+    "subject": "The car driving down a leafy avenue in Guwahati in early morning: wet asphalt reflecting soft light, old trees arching overhead, a few distant pedestrians seen ",
+    "prompt": "The car driving down a leafy avenue in Guwahati in early morning: wet asphalt reflecting soft light, old trees arching overhead, a few distant pedestrians seen from behind, calm city mood. The car is the exact vehicle in the reference photos: a white Tata Tigor EV compact sedan with its thin teal-blue accent line along the lower grille and headlamps, small EV badges, and Smarto livery: the Smarto wordmark decal across the bonnet, a pale lilac-white panel on the front door carrying the Smarto wordmark, and a deep purple-to-violet gradient panel on the rear door. No roof sign. Keep all lettering to the Smarto wordmark only: no phone numbers, prices, QR codes or other words. Number plates are plain green with no characters.",
+    "model": "gpt-image-2 (images/edits with smartocabs.com Tata Tigor EV reference photos)",
     "status": "generated"
   },
   {
@@ -735,9 +735,9 @@
     "aspect": "3:2",
     "alt": "",
     "usedOn": "/cabs — railway drops card",
-    "subject": "Cab with boot open at a railway station forecourt, golden hour",
-    "prompt": "See scripts/generate-biz-scenes.mjs / generate-service-scenes.mjs",
-    "model": "gpt-image-2",
+    "subject": "The forecourt of an Indian railway station at golden hour: the car waiting at the kerb with its boot open, a trolley of luggage beside it, the station building ",
+    "prompt": "The forecourt of an Indian railway station at golden hour: the car waiting at the kerb with its boot open, a trolley of luggage beside it, the station building warm and softly out of focus behind with no readable signs, one traveller seen from behind walking toward the car. The car is the exact vehicle in the reference photos: a white Tata Tigor EV compact sedan with its thin teal-blue accent line along the lower grille and headlamps, small EV badges, and Smarto livery: the Smarto wordmark decal across the bonnet, a pale lilac-white panel on the front door carrying the Smarto wordmark, and a deep purple-to-violet gradient panel on the rear door. No roof sign. Keep all lettering to the Smarto wordmark only: no phone numbers, prices, QR codes or other words. Number plates are plain green with no characters.",
+    "model": "gpt-image-2 (images/edits with smartocabs.com Tata Tigor EV reference photos)",
     "status": "generated"
   },
   {
@@ -748,9 +748,9 @@
     "aspect": "3:2",
     "alt": "",
     "usedOn": "/cabs — airport rides card",
-    "subject": "White EV at the departures kerb of a small airport at dawn",
-    "prompt": "See scripts/generate-biz-scenes.mjs / generate-service-scenes.mjs",
-    "model": "gpt-image-2",
+    "subject": "The departures kerb of a small modern Indian airport at dawn: the car at the drop-off, a suitcase on the kerb beside it, the glass terminal glowing warmly, hill",
+    "prompt": "The departures kerb of a small modern Indian airport at dawn: the car at the drop-off, a suitcase on the kerb beside it, the glass terminal glowing warmly, hills faint in the distance, quiet early light. No people. The car is the exact vehicle in the reference photos: a white Tata Tigor EV compact sedan with its thin teal-blue accent line along the lower grille and headlamps, small EV badges, and Smarto livery: the Smarto wordmark decal across the bonnet, a pale lilac-white panel on the front door carrying the Smarto wordmark, and a deep purple-to-violet gradient panel on the rear door. No roof sign. Keep all lettering to the Smarto wordmark only: no phone numbers, prices, QR codes or other words. Number plates are plain green with no characters.",
+    "model": "gpt-image-2 (images/edits with smartocabs.com Tata Tigor EV reference photos)",
     "status": "generated"
   },
   {
@@ -761,9 +761,9 @@
     "aspect": "3:2",
     "alt": "",
     "usedOn": "/cabs — hourly rentals card",
-    "subject": "White EV parked on a lane between tea bushes on an Assam estate",
-    "prompt": "See scripts/generate-biz-scenes.mjs / generate-service-scenes.mjs",
-    "model": "gpt-image-2",
+    "subject": "The car parked at a tea-garden viewpoint in Assam, seen from the front three-quarter with all doors closed, rows of tea bushes rolling away under tall shade tre",
+    "prompt": "The car parked at a tea-garden viewpoint in Assam, seen from the front three-quarter with all doors closed, rows of tea bushes rolling away under tall shade trees, warm late-morning light. No people. The car is the exact vehicle in the reference photos: a white Tata Tigor EV compact sedan with its thin teal-blue accent line along the lower grille and headlamps, small EV badges, and Smarto livery: the Smarto wordmark decal across the bonnet, a pale lilac-white panel on the front door carrying the Smarto wordmark, and a deep purple-to-violet gradient panel on the rear door. No roof sign. Keep all lettering to the Smarto wordmark only: no phone numbers, prices, QR codes or other words. Number plates are plain green with no characters.",
+    "model": "gpt-image-2 (images/edits with smartocabs.com Tata Tigor EV reference photos)",
     "status": "generated"
   },
   {
@@ -787,9 +787,9 @@
     "aspect": "3:2",
     "alt": "",
     "usedOn": "/events — conferences card",
-    "subject": "White sedans queued along a convention centre drive at dusk",
-    "prompt": "See scripts/generate-biz-scenes.mjs / generate-service-scenes.mjs",
-    "model": "gpt-image-2",
+    "subject": "The covered drive of a modern Indian convention centre in the evening: a line of four identical copies of the car queued along the drive, glass facade glowing, ",
+    "prompt": "The covered drive of a modern Indian convention centre in the evening: a line of four identical copies of the car queued along the drive, glass facade glowing, soft blue dusk sky, lanterns along the walkway. No people. The car is the exact vehicle in the reference photos: a white Tata Tigor EV compact sedan with its thin teal-blue accent line along the lower grille and headlamps, small EV badges, and Smarto livery: the Smarto wordmark decal across the bonnet, a pale lilac-white panel on the front door carrying the Smarto wordmark, and a deep purple-to-violet gradient panel on the rear door. No roof sign. Keep all lettering to the Smarto wordmark only: no phone numbers, prices, QR codes or other words. Number plates are plain green with no characters.",
+    "model": "gpt-image-2 (images/edits with smartocabs.com Tata Tigor EV reference photos)",
     "status": "generated"
   },
   {
@@ -813,9 +813,9 @@
     "aspect": "3:2",
     "alt": "",
     "usedOn": "/corporate — fleet band",
-    "subject": "Row of white EVs charging at an office campus at dusk",
-    "prompt": "See scripts/generate-biz-scenes.mjs / generate-service-scenes.mjs",
-    "model": "gpt-image-2",
+    "subject": "A neat row of five identical copies of the car charging at sleek charging posts in an office campus car park at dusk, charge-port lights glowing green, a modern",
+    "prompt": "A neat row of five identical copies of the car charging at sleek charging posts in an office campus car park at dusk, charge-port lights glowing green, a modern glass building softly lit behind, clean calm mood. No people. The car is the exact vehicle in the reference photos: a white Tata Tigor EV compact sedan with its thin teal-blue accent line along the lower grille and headlamps, small EV badges, and Smarto livery: the Smarto wordmark decal across the bonnet, a pale lilac-white panel on the front door carrying the Smarto wordmark, and a deep purple-to-violet gradient panel on the rear door. No roof sign. Keep all lettering to the Smarto wordmark only: no phone numbers, prices, QR codes or other words. Number plates are plain green with no characters.",
+    "model": "gpt-image-2 (images/edits with smartocabs.com Tata Tigor EV reference photos)",
     "status": "generated"
   },
   {
@@ -826,9 +826,9 @@
     "aspect": "3:2",
     "alt": "",
     "usedOn": "/b: desktop hero crossfade (decorative)",
-    "subject": "A clean white electric SUV driving along a ridge road high above a sea of low morning cloud in the Meghalaya hills, first sunlight catching ",
-    "prompt": "A clean white electric SUV driving along a ridge road high above a sea of low morning cloud in the Meghalaya hills, first sunlight catching green grassy slopes, the road curving in from the lower left, wide cinematic composition with calm open sky across the upper half. No people visible. Editorial travel photography, natural daylight, grounded realistic colours, believable Northeast Indian setting, shot on a full-frame camera, gentle depth of field, natural skin texture, candid body language, no oversaturation, no readable text, signage, logos or number plates.",
-    "model": "gpt-image-2",
+    "subject": "The car driving along a ridge road high above a sea of low morning cloud in the Meghalaya hills, first sunlight on green grassy slopes, the road curving in from",
+    "prompt": "The car driving along a ridge road high above a sea of low morning cloud in the Meghalaya hills, first sunlight on green grassy slopes, the road curving in from the lower left, wide cinematic composition with calm open sky across the upper half. No people visible. The car is the exact vehicle in the reference photos: a white Tata Tigor EV compact sedan with its thin teal-blue accent line along the lower grille and headlamps, small EV badges, and Smarto livery: the Smarto wordmark decal across the bonnet, a pale lilac-white panel on the front door carrying the Smarto wordmark, and a deep purple-to-violet gradient panel on the rear door. No roof sign. Keep all lettering to the Smarto wordmark only: no phone numbers, prices, QR codes or other words. Number plates are plain green with no characters.",
+    "model": "gpt-image-2 (images/edits with smartocabs.com Tata Tigor EV reference photos)",
     "status": "generated"
   },
   {
@@ -839,9 +839,9 @@
     "aspect": "3:2",
     "alt": "",
     "usedOn": "/b: desktop hero crossfade (decorative)",
-    "subject": "A white car rounding a bend on a high mountain road in western Arunachal Pradesh beneath strings of faded prayer flags, snow-dusted peaks fa",
-    "prompt": "A white car rounding a bend on a high mountain road in western Arunachal Pradesh beneath strings of faded prayer flags, snow-dusted peaks far behind, crisp clear blue sky, dry alpine grass and rock, wide composition with calm sky across the upper half. No people visible. Editorial travel photography, natural daylight, grounded realistic colours, believable Northeast Indian setting, shot on a full-frame camera, gentle depth of field, natural skin texture, candid body language, no oversaturation, no readable text, signage, logos or number plates.",
-    "model": "gpt-image-2",
+    "subject": "The car rounding a bend on a high mountain road in western Arunachal Pradesh beneath strings of faded prayer flags, snow-dusted peaks far behind, crisp clear bl",
+    "prompt": "The car rounding a bend on a high mountain road in western Arunachal Pradesh beneath strings of faded prayer flags, snow-dusted peaks far behind, crisp clear blue sky, dry alpine grass and rock, the car small in a wide composition with calm sky across the upper half. No people visible. The car is the exact vehicle in the reference photos: a white Tata Tigor EV compact sedan with its thin teal-blue accent line along the lower grille and headlamps, small EV badges, and Smarto livery: the Smarto wordmark decal across the bonnet, a pale lilac-white panel on the front door carrying the Smarto wordmark, and a deep purple-to-violet gradient panel on the rear door. No roof sign. Keep all lettering to the Smarto wordmark only: no phone numbers, prices, QR codes or other words. Number plates are plain green with no characters.",
+    "model": "gpt-image-2 (images/edits with smartocabs.com Tata Tigor EV reference photos)",
     "status": "generated"
   },
   {
@@ -852,9 +852,9 @@
     "aspect": "3:2",
     "alt": "",
     "usedOn": "/b: desktop hero crossfade (decorative)",
-    "subject": "A white sedan parked on a narrow estate road through an Assam tea garden at sunrise, neat rows of tea bushes rolling toward tall shade trees",
-    "prompt": "A white sedan parked on a narrow estate road through an Assam tea garden at sunrise, neat rows of tea bushes rolling toward tall shade trees, soft ground mist, warm low sun, wide composition with a calm hazy sky across the upper half. No people visible. Editorial travel photography, natural daylight, grounded realistic colours, believable Northeast Indian setting, shot on a full-frame camera, gentle depth of field, natural skin texture, candid body language, no oversaturation, no readable text, signage, logos or number plates.",
-    "model": "gpt-image-2",
+    "subject": "The car parked on a narrow estate road through an Assam tea garden at sunrise, neat rows of tea bushes rolling toward tall shade trees, soft ground mist, warm l",
+    "prompt": "The car parked on a narrow estate road through an Assam tea garden at sunrise, neat rows of tea bushes rolling toward tall shade trees, soft ground mist, warm low sun, wide composition with a calm hazy sky across the upper half. No people visible. The car is the exact vehicle in the reference photos: a white Tata Tigor EV compact sedan with its thin teal-blue accent line along the lower grille and headlamps, small EV badges, and Smarto livery: the Smarto wordmark decal across the bonnet, a pale lilac-white panel on the front door carrying the Smarto wordmark, and a deep purple-to-violet gradient panel on the rear door. No roof sign. Keep all lettering to the Smarto wordmark only: no phone numbers, prices, QR codes or other words. Number plates are plain green with no characters.",
+    "model": "gpt-image-2 (images/edits with smartocabs.com Tata Tigor EV reference photos)",
     "status": "generated"
   },
   {

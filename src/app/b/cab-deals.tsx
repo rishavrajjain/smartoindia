@@ -112,7 +112,7 @@ const FILTERS: { id: Kind | "all"; label: string }[] = [
   { id: "teams", label: "Teams & events" },
 ];
 
-export function CabDeals() {
+export function CabDeals({ className }: { className?: string }) {
   const [filter, setFilter] = useState<Kind | "all">("all");
   const deals = DEALS.filter((d) => filter === "all" || d.kind === filter);
 
@@ -120,6 +120,7 @@ export function CabDeals() {
     <Rail
       label="cab rides"
       resetKey={filter}
+      className={className}
       header={
         <div
           role="group"
@@ -169,7 +170,7 @@ export function CabDeals() {
               <h3 className="text-[1.0625rem] font-extrabold text-ink">
                 {deal.title}
               </h3>
-              <p className="mt-1 text-[0.8125rem] leading-relaxed text-taupe">
+              <p className="mt-1 mb-4 text-[0.8125rem] leading-relaxed text-taupe">
                 {deal.line}
               </p>
               <div className="mt-auto flex items-end justify-between gap-3 border-t border-line pt-3.5">

@@ -148,7 +148,7 @@ export default function PartnersPage() {
         sub="Your guest pays the flat fare. Your cut comes out of our margin, not their pocket."
         image={{
           src: "/images/biz-partners.webp",
-          alt: "A white sedan and a brass luggage cart under the portico of a hillside heritage hotel",
+          alt: "A Smarto electric cab and a brass luggage cart under the portico of a hillside heritage hotel",
         }}
         float={{
           icon: ShieldIcon,

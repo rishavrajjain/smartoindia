@@ -237,7 +237,7 @@ export function CabOrbit({ services }: { services: readonly OrbitService[] }) {
               src="/images/cab-orbit-hero.webp"
               alt=""
               width={480}
-              height={267}
+              height={259}
               loading="lazy"
               sizes="180px"
               className="h-auto w-full"
