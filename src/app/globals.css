@@ -353,6 +353,39 @@
     }
   }
 
+  /* Concept B's desktop hero: three stills crossfading with a slow pull-back.
+     The first still is opaque by default, so reduced motion (which ends every
+     animation at once) and pre-paint both show a finished picture. */
+  .hero-still {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    animation: hero-still 21s linear infinite;
+  }
+  .hero-still-first {
+    opacity: 1;
+  }
+  @keyframes hero-still {
+    0% {
+      opacity: 0;
+      transform: scale(1.08);
+    }
+    5% {
+      opacity: 1;
+    }
+    33% {
+      opacity: 1;
+    }
+    40% {
+      opacity: 0;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1);
+    }
+  }
+
   /* Slow zoom on a photograph while its card is hovered. */
   .zoom-slow {
     transition: transform 1.1s var(--ease-out-quiet);
@@ -427,5 +460,8 @@ body:has([data-page-theme="sunline"]) {
   background-color: #fffdf6;
 }
 body:has([data-page-theme="mobile-frame"]) {
+  background-color: #1c1a45;
+}
+body:has([data-page-theme="trail"]) {
   background-color: #1c1a45;
 }

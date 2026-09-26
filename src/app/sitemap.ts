@@ -19,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
-    ...["/b", "/c", "/d", "/e", "/f"].map((path) => ({
+    ...["/c", "/d", "/e", "/f"].map((path) => ({
       url: absoluteUrl(path),
       lastModified,
       changeFrequency: "monthly" as const,

@@ -42,7 +42,8 @@ export function JourneyBrowser({ journeys }: { journeys: Journey[] }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const [query, setQuery] = useState("");
+  // A search handed over from elsewhere (?q=) seeds the box once.
+  const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
   const deferredQuery = useDeferredValue(query);
 
   const activeState = searchParams.get("state");
