@@ -520,8 +520,8 @@
     "status": "generated"
   },
   {
-    "id": "cab-orbit-hero",
-    "src": "/images/cab-orbit-hero.webp",
+    "id": "fleet-orbit-cab",
+    "src": "/images/fleet-orbit-cab.webp",
     "width": 480,
     "height": 259,
     "aspect": "9:5",
@@ -663,8 +663,8 @@
     "status": "generated"
   },
   {
-    "id": "biz-events",
-    "src": "/images/biz-events.webp",
+    "id": "fleet-events-wedding",
+    "src": "/images/fleet-events-wedding.webp",
     "width": 1536,
     "height": 1024,
     "aspect": "3:2",
@@ -676,8 +676,8 @@
     "status": "generated"
   },
   {
-    "id": "biz-corporate",
-    "src": "/images/biz-corporate.webp",
+    "id": "fleet-corporate-porch",
+    "src": "/images/fleet-corporate-porch.webp",
     "width": 1536,
     "height": 1024,
     "aspect": "3:2",
@@ -689,8 +689,8 @@
     "status": "generated"
   },
   {
-    "id": "biz-partners",
-    "src": "/images/biz-partners.webp",
+    "id": "fleet-partners-hotel",
+    "src": "/images/fleet-partners-hotel.webp",
     "width": 1536,
     "height": 1024,
     "aspect": "3:2",
@@ -702,8 +702,8 @@
     "status": "generated"
   },
   {
-    "id": "svc-cabs-hero",
-    "src": "/images/svc-cabs-hero.webp",
+    "id": "fleet-cabs-hero",
+    "src": "/images/fleet-cabs-hero.webp",
     "width": 1536,
     "height": 1024,
     "aspect": "3:2",
@@ -715,8 +715,8 @@
     "status": "generated"
   },
   {
-    "id": "svc-cabs-city",
-    "src": "/images/svc-cabs-city.webp",
+    "id": "fleet-cabs-city",
+    "src": "/images/fleet-cabs-city.webp",
     "width": 1536,
     "height": 1024,
     "aspect": "3:2",
@@ -728,8 +728,8 @@
     "status": "generated"
   },
   {
-    "id": "svc-cabs-railway",
-    "src": "/images/svc-cabs-railway.webp",
+    "id": "fleet-cabs-railway",
+    "src": "/images/fleet-cabs-railway.webp",
     "width": 1536,
     "height": 1024,
     "aspect": "3:2",
@@ -741,8 +741,8 @@
     "status": "generated"
   },
   {
-    "id": "svc-cabs-airport",
-    "src": "/images/svc-cabs-airport.webp",
+    "id": "fleet-cabs-airport",
+    "src": "/images/fleet-cabs-airport.webp",
     "width": 1536,
     "height": 1024,
     "aspect": "3:2",
@@ -754,8 +754,8 @@
     "status": "generated"
   },
   {
-    "id": "svc-cabs-hourly",
-    "src": "/images/svc-cabs-hourly.webp",
+    "id": "fleet-cabs-hourly",
+    "src": "/images/fleet-cabs-hourly.webp",
     "width": 1536,
     "height": 1024,
     "aspect": "3:2",
@@ -780,8 +780,8 @@
     "status": "generated"
   },
   {
-    "id": "svc-events-conference",
-    "src": "/images/svc-events-conference.webp",
+    "id": "fleet-events-conference",
+    "src": "/images/fleet-events-conference.webp",
     "width": 1536,
     "height": 1024,
     "aspect": "3:2",
@@ -806,8 +806,8 @@
     "status": "generated"
   },
   {
-    "id": "svc-corporate-fleet",
-    "src": "/images/svc-corporate-fleet.webp",
+    "id": "fleet-corporate-charging",
+    "src": "/images/fleet-corporate-charging.webp",
     "width": 1536,
     "height": 1024,
     "aspect": "3:2",
@@ -819,8 +819,8 @@
     "status": "generated"
   },
   {
-    "id": "b-hero-clouds",
-    "src": "/images/b-hero-clouds.webp",
+    "id": "fleet-hero-clouds",
+    "src": "/images/fleet-hero-clouds.webp",
     "width": 1536,
     "height": 1024,
     "aspect": "3:2",
@@ -832,8 +832,8 @@
     "status": "generated"
   },
   {
-    "id": "b-hero-passes",
-    "src": "/images/b-hero-passes.webp",
+    "id": "fleet-hero-passes",
+    "src": "/images/fleet-hero-passes.webp",
     "width": 1536,
     "height": 1024,
     "aspect": "3:2",
@@ -845,8 +845,8 @@
     "status": "generated"
   },
   {
-    "id": "b-hero-tea",
-    "src": "/images/b-hero-tea.webp",
+    "id": "fleet-hero-tea",
+    "src": "/images/fleet-hero-tea.webp",
     "width": 1536,
     "height": 1024,
     "aspect": "3:2",

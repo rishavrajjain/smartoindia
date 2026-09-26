@@ -234,7 +234,7 @@ export function CabOrbit({ services }: { services: readonly OrbitService[] }) {
               own this element's transform outright. */}
           <div className="motion-safe:animate-cab-float -mt-[50px]">
             <Image
-              src="/images/cab-orbit-hero.webp"
+              src="/images/fleet-orbit-cab.webp"
               alt=""
               width={480}
               height={259}

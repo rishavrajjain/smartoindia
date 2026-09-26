@@ -118,7 +118,7 @@ const RUN_SHEET = [
 const EVENT_KINDS = [
   {
     image: {
-      src: "/images/biz-events.webp",
+      src: "/images/fleet-events-wedding.webp",
       alt: "Smarto electric cabs lined up beneath a marigold-decorated wedding gate at dusk",
     },
     title: "Weddings",
@@ -126,7 +126,7 @@ const EVENT_KINDS = [
   },
   {
     image: {
-      src: "/images/biz-corporate.webp",
+      src: "/images/fleet-corporate-porch.webp",
       alt: "Smarto electric cabs waiting at the glass porch of a modern office",
     },
     title: "Corporate events",
@@ -134,7 +134,7 @@ const EVENT_KINDS = [
   },
   {
     image: {
-      src: "/images/svc-events-conference.webp",
+      src: "/images/fleet-events-conference.webp",
       alt: "A line of Smarto electric cabs on the lit drive of a convention centre at dusk",
     },
     title: "Conferences",
@@ -200,7 +200,7 @@ export default function EventsPage() {
         }
         sub="Rooms, arrivals, shuttles, departures. One coordinator, one number, one invoice."
         image={{
-          src: "/images/biz-events.webp",
+          src: "/images/fleet-events-wedding.webp",
           alt: "Smarto electric cabs lined up beneath a marigold-decorated wedding gate at dusk",
         }}
         float={{

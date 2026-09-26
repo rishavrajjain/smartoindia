@@ -220,7 +220,7 @@ export function RouteNav({ stops }: { stops: RouteStop[] }) {
                 }}
               >
                 <Image
-                  src="/brand/smarto-cab.webp"
+                  src="/brand/smarto-cab-tigor.webp"
                   alt=""
                   width={360}
                   height={141}

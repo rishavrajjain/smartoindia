@@ -63,9 +63,9 @@ export const viewport: Viewport = {
 const PLAN = enquiry("I would like to plan a trip in the Northeast.");
 
 const HERO_STILLS = [
-  { src: "/images/b-hero-clouds.webp", w: 1536, h: 1024 },
-  { src: "/images/b-hero-passes.webp", w: 1536, h: 1024 },
-  { src: "/images/b-hero-tea.webp", w: 1536, h: 1024 },
+  { src: "/images/fleet-hero-clouds.webp", w: 1536, h: 1024 },
+  { src: "/images/fleet-hero-passes.webp", w: 1536, h: 1024 },
+  { src: "/images/fleet-hero-tea.webp", w: 1536, h: 1024 },
 ];
 
 const MARQUEE = [
@@ -370,7 +370,7 @@ export default function ConceptBPage() {
         <div className="relative isolate flex flex-col overflow-hidden rounded-[1.75rem] bg-clay-deep text-bone lg:min-h-[24rem] lg:justify-end lg:p-10">
           <div className="relative aspect-[16/10] lg:absolute lg:inset-0 lg:-z-10 lg:aspect-auto">
             <Image
-              src="/images/svc-cabs-hero.webp"
+              src="/images/fleet-cabs-hero.webp"
               alt="A Smarto electric cab at a misty hill-road viewpoint, rear door open and travel bags beside it"
               fill
               sizes="(min-width: 1024px) 40rem, 100vw"
@@ -404,7 +404,7 @@ export default function ConceptBPage() {
         <div className="relative isolate flex flex-col overflow-hidden rounded-[1.75rem] bg-clay-deep text-bone lg:min-h-[24rem] lg:justify-end lg:p-10">
           <div className="relative aspect-[16/10] lg:absolute lg:inset-0 lg:-z-10 lg:aspect-auto">
             <Image
-              src="/images/biz-corporate.webp"
+              src="/images/fleet-corporate-porch.webp"
               alt="Smarto electric cabs arriving at the glass porch of a modern office on a bright morning"
               fill
               sizes="(min-width: 1024px) 40rem, 100vw"
@@ -447,19 +447,19 @@ export default function ConceptBPage() {
               {
                 title: "Planned day by day",
                 line: "Every journey is printed with its drive times and stays.",
-                src: "/images/b-hero-passes.webp",
+                src: "/images/fleet-hero-passes.webp",
                 alt: "A Smarto cab on a high mountain road under prayer flags, snow peaks behind",
               },
               {
                 title: "Electric in the city",
                 line: "Guwahati rides on an EV fleet, on a flat fare.",
-                src: "/images/svc-corporate-fleet.webp",
+                src: "/images/fleet-corporate-charging.webp",
                 alt: "A row of Smarto electric cabs charging at an office campus at dusk",
               },
               {
                 title: "One WhatsApp thread",
                 line: "Cars, hotels and permits sorted in one conversation.",
-                src: "/images/svc-cabs-airport.webp",
+                src: "/images/fleet-cabs-airport.webp",
                 alt: "A Smarto electric cab at the airport departures kerb at dawn, a suitcase beside it",
               },
             ].map((card) => (
@@ -573,7 +573,7 @@ function ChatPhone() {
         <div className="overflow-hidden rounded-t-[2rem] bg-[#ece5dd]">
           <div className="flex items-center gap-2.5 bg-clay px-4 pt-5 pb-3 text-bone">
             <span className="grid size-8 place-items-center rounded-full bg-bone">
-              <Image src="/brand/smarto-cab.webp" alt="" width={360} height={141} className="h-3 w-auto" />
+              <Image src="/brand/smarto-cab-tigor.webp" alt="" width={360} height={141} className="h-3 w-auto" />
             </span>
             <span className="text-[0.8125rem] font-extrabold">Smarto</span>
           </div>
