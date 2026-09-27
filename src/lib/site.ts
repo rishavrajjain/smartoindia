@@ -32,7 +32,7 @@ export const SITE = {
 export const SOCIAL = [
   { id: "instagram", label: "Instagram", href: "https://instagram.com/smartocabs" },
   { id: "facebook", label: "Facebook", href: "https://facebook.com/smartocabs" },
-  { id: "youtube", label: "YouTube", href: "https://www.youtube.com/@Smartocabs" },
+  { id: "youtube", label: "YouTube", href: "https://www.youtube.com/@SmartoIndia" },
   { id: "x", label: "X (Twitter)", href: "https://x.com/smartocabs" },
 ] as const;
 
