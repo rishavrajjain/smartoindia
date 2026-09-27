@@ -6,8 +6,9 @@ import { FlightsTeaser } from "@/components/sections/flights-teaser";
 import { HeroVideo } from "@/components/sections/hero-video";
 import {
   BoltIcon,
+  HeadsetIcon,
+  HeartIcon,
   PeopleIcon,
-  ShieldIcon,
   SurgeOffIcon,
 } from "@/components/ui/line-icons";
 import { WaCta } from "@/components/ui/wa-cta";
@@ -50,10 +51,10 @@ export const viewport: Viewport = {
 /*
  * The homepage: PickYourTrail's homepage rhythm (video hero with a
  * glowing search, the four Smarto services where PickYourTrail asks
- * "who's coming along", card rails, a length bento,
- * dark story cards, a chat banner) rebuilt in Smarto's own brand and fed
- * only by real catalog data. Every figure here is either counted from the
- * catalog or already published on the live site.
+ * "who's coming along", card rails, dark story cards, a chat banner)
+ * rebuilt in Smarto's own brand and fed only by real catalog data. Every
+ * figure here is counted from the catalog, already published on the live
+ * site, or supplied by the business (the Google rating).
  */
 
 const PLAN = enquiry("I would like to plan a trip in the Northeast.");
@@ -263,8 +264,10 @@ export default function HomePage() {
           Why travellers <span className="accent">pick Smarto</span>
         </h2>
         <div className="mt-8 grid grid-cols-2 gap-3 rounded-[2rem] bg-sand p-4 sm:gap-4 sm:p-6 lg:grid-cols-5 lg:items-center lg:gap-2 lg:px-8 lg:py-9">
-          <Stat icon={PeopleIcon} value="50,000+" label="customers driven" />
-          <Stat icon={BoltIcon} value="EV" label="fleet in the city" />
+          {/* Smarto as a whole, not just the cabs. The rating is the
+              business's own figure; it stays out of structured data. */}
+          <Stat icon={StarIcon} value="4.9+" label="Google rating" />
+          <Stat icon={HeadsetIcon} value="24×7" label="customer support" />
           <div className="order-first col-span-2 flex flex-col items-center py-2 text-center lg:order-none lg:col-span-1">
             <span aria-hidden="true" className="spark-fill mb-4 h-1 w-12 rounded-full" />
             <p className="text-[1.25rem] leading-tight text-taupe lg:text-[1.375rem]">
@@ -275,8 +278,8 @@ export default function HomePage() {
               </span>
             </p>
           </div>
-          <Stat icon={SurgeOffIcon} value="₹0" label="surge, ever" />
-          <Stat icon={ShieldIcon} value="Zero" label="cancellation" />
+          <Stat icon={PeopleIcon} value="50,000+" label="customers served" />
+          <Stat icon={HeartIcon} value="Every" label="customer matters" />
         </div>
       </section>
 
@@ -645,6 +648,15 @@ function Stat({
         <span className="mt-0.5 block text-[0.75rem] text-taupe">{label}</span>
       </span>
     </div>
+  );
+}
+
+/* A line star in the line-icons style, for the rating stat. */
+function StarIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className={className}>
+      <path d="m12 3 2.7 5.5 6 .9-4.35 4.25 1 6L12 16.8l-5.35 2.85 1-6L3.3 9.4l6-.9z" />
+    </svg>
   );
 }
 
