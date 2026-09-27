@@ -33,20 +33,24 @@ export function FlightsTeaser({
     return (
       <section id={id} className="scroll-mt-24 px-5 pt-14 sm:px-8 lg:pt-20">
         <div className="relative isolate mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-clay-deep text-bone">
-          <Image
-            src="/images/svc-flights-hero.webp"
-            alt=""
-            fill
-            sizes="(min-width: 1280px) 80rem, 100vw"
-            className="-z-10 object-cover"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 -z-10 bg-gradient-to-t from-[rgba(28,26,69,0.97)] via-[rgba(28,26,69,0.78)] via-55% to-[rgba(28,26,69,0.25)] lg:bg-gradient-to-r lg:from-[rgba(28,26,69,0.95)] lg:via-[rgba(28,26,69,0.72)] lg:via-45% lg:to-[rgba(28,26,69,0.15)]"
-          />
+          {/* Phones and tablets: a photo strip framing the aircraft, fading
+              into the navy. Desktop: the photo fills the panel behind. */}
+          <div className="relative h-48 sm:h-64 lg:absolute lg:inset-0 lg:-z-10 lg:h-auto">
+            <Image
+              src="/images/svc-flights-hero.webp"
+              alt=""
+              fill
+              sizes="(min-width: 1280px) 80rem, 100vw"
+              className="object-cover"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gradient-to-t from-clay-deep via-[rgba(28,26,69,0.35)] to-transparent lg:bg-gradient-to-r lg:from-[rgba(28,26,69,0.95)] lg:via-[rgba(28,26,69,0.72)] lg:via-45% lg:to-[rgba(28,26,69,0.15)]"
+            />
+          </div>
           <div aria-hidden="true" className="spark-glow absolute -bottom-32 -left-24 -z-10 size-96 opacity-70" />
 
-          <div className="grid grid-cols-1 gap-9 px-6 pt-44 pb-7 sm:px-10 sm:pt-56 sm:pb-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:items-center lg:gap-12 lg:p-14">
+          <div className="relative -mt-8 grid grid-cols-1 gap-9 px-6 pb-7 sm:-mt-10 sm:px-10 sm:pb-10 lg:mt-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:items-center lg:gap-12 lg:p-14">
             <div>
               <p className="text-label font-extrabold text-green uppercase">Flights</p>
               <h2 className="mt-3 text-[1.875rem] leading-[1.08] text-bone lg:text-[2.625rem]">
