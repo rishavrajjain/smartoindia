@@ -198,19 +198,6 @@
     }
   }
 
-  /* Focus rings that stay visible on each concept's ground. */
-  [data-page-theme="night-drive"] :focus-visible {
-    outline-color: #c9a962;
-  }
-  [data-page-theme="grand-poster"] :focus-visible {
-    outline-color: #c14e1f;
-  }
-  [data-page-theme="index-sheet"] :focus-visible {
-    outline-color: #e04400;
-  }
-  [data-page-theme="sunline"] :focus-visible {
-    outline-color: #0e6e52;
-  }
 
   html {
     scroll-behavior: smooth;
@@ -486,18 +473,6 @@
 */
 body:has([data-page-theme="travel-atelier"]) {
   background-color: #f4f0e7;
-}
-body:has([data-page-theme="night-drive"]) {
-  background-color: #0b0f0c;
-}
-body:has([data-page-theme="grand-poster"]) {
-  background-color: #f7ecd9;
-}
-body:has([data-page-theme="index-sheet"]) {
-  background-color: #f4f4ef;
-}
-body:has([data-page-theme="sunline"]) {
-  background-color: #fffdf6;
 }
 body:has([data-page-theme="mobile-frame"]) {
   background-color: #1c1a45;

@@ -19,12 +19,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
-    ...["/c", "/d", "/e", "/f"].map((path) => ({
-      url: absoluteUrl(path),
-      lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    })),
     ...NAV.map((item) => ({
       url: absoluteUrl(item.href),
       lastModified,
