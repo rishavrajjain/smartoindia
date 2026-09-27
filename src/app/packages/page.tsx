@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 
 import { JourneyBrowser } from "@/components/sections/journey-browser";
+import { PackagesSwitch } from "@/components/sections/packages-switch";
 import { Container } from "@/components/ui/container";
 import { WhatsAppLink } from "@/components/ui/whatsapp-link";
 import { JOURNEYS } from "@/data/journeys";
@@ -17,8 +18,11 @@ export const metadata = pageMetadata({
 export default function PackagesPage() {
   return (
     <>
-      {/* --- The catalog's own cover line, as the page hero. */}
-      <Container width="wide" className="pt-14 lg:pt-24">
+      {/* --- Northeast or international, then the catalog's own cover line. */}
+      <Container width="wide" className="pt-6 lg:pt-10">
+        <PackagesSwitch active="northeast" northeastCount={JOURNEYS.length} />
+      </Container>
+      <Container width="wide" className="pt-10 lg:pt-16">
         <p className="text-label font-extrabold text-clay uppercase">
           {JOURNEYS.length} journeys · Assam, Meghalaya &amp; Arunachal Pradesh
         </p>

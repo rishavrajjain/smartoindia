@@ -44,6 +44,7 @@ export type CtaLocation =
   | "b-whatsapp-banner"
   | "packages-index"
   | "packages-empty-state"
+  | "packages-international"
   | "package-detail"
   | "package-detail-sticky"
   | "cabs-hero"

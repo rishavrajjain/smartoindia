@@ -973,5 +973,57 @@
     "prompt": "A glossy 3D little boutique hill hotel: a two-storey white cottage with a deep navy pitched roof, warmly lit windows, a small wooden balcony and a tiny violet door, sitting on a rounded grassy mound among a few rounded pine trees. No signs, no text. Rendered as a single centred object in the style of a premium mobile-app category icon or modern 3D emoji: smooth rounded forms, realistic glossy materials with soft highlights, soft even studio lighting, gentle ambient occlusion and a soft subtle contact shadow directly beneath. Palette of white, deep navy (#282560), violet (#7b3f7e) and fresh green (#75b884) accents. The object fills about 70% of the frame with generous margins. The entire background is one solid flat uniform very light cool grey (#eef0f4) with nothing else in it.",
     "model": "gpt-image-2",
     "status": "generated"
+  },
+  {
+    "id": "intl-himalaya",
+    "src": "/images/intl-himalaya.webp",
+    "width": 1400,
+    "height": 933,
+    "aspect": "3:2",
+    "alt": "",
+    "usedOn": "/packages/international region tile",
+    "subject": "A Himalayan valley in Bhutan or Nepal on a clear autumn morning: terraced rice fields stepping down a green hillside, a few whitewashed farmhouses wit",
+    "prompt": "A Himalayan valley in Bhutan or Nepal on a clear autumn morning: terraced rice fields stepping down a green hillside, a few whitewashed farmhouses with small timber windows, strings of faded prayer flags on a ridge, snow peaks far behind under a deep blue sky. No people. Editorial travel photography, natural daylight, grounded realistic colours, believable Northeast Indian setting, shot on a full-frame camera, gentle depth of field, natural skin texture, candid body language, no oversaturation, no readable text, signage, logos or number plates.",
+    "model": "gpt-image-2",
+    "status": "generated"
+  },
+  {
+    "id": "intl-southeast-asia",
+    "src": "/images/intl-southeast-asia.webp",
+    "width": 1400,
+    "height": 933,
+    "aspect": "3:2",
+    "alt": "",
+    "usedOn": "/packages/international region tile",
+    "subject": "A quiet tropical bay in Southeast Asia in soft late-afternoon light: turquoise water, a curve of pale sand, green limestone cliffs rising from the sea",
+    "prompt": "A quiet tropical bay in Southeast Asia in soft late-afternoon light: turquoise water, a curve of pale sand, green limestone cliffs rising from the sea, two wooden longtail boats moored near the shore, palms at the edge. No people. Editorial travel photography, natural daylight, grounded realistic colours, believable Northeast Indian setting, shot on a full-frame camera, gentle depth of field, natural skin texture, candid body language, no oversaturation, no readable text, signage, logos or number plates.",
+    "model": "gpt-image-2",
+    "status": "generated"
+  },
+  {
+    "id": "intl-middle-east",
+    "src": "/images/intl-middle-east.webp",
+    "width": 1400,
+    "height": 933,
+    "aspect": "3:2",
+    "alt": "",
+    "usedOn": "/packages/international region tile",
+    "subject": "Rolling golden desert dunes in the Arabian Peninsula at sunset, long soft shadows across the ridges, a few low acacia shrubs, a warm hazy sky, a faint",
+    "prompt": "Rolling golden desert dunes in the Arabian Peninsula at sunset, long soft shadows across the ridges, a few low acacia shrubs, a warm hazy sky, a faint distant city skyline as simple soft shapes on the horizon with no recognisable buildings. No people. Editorial travel photography, natural daylight, grounded realistic colours, believable Northeast Indian setting, shot on a full-frame camera, gentle depth of field, natural skin texture, candid body language, no oversaturation, no readable text, signage, logos or number plates.",
+    "model": "gpt-image-2",
+    "status": "generated"
+  },
+  {
+    "id": "intl-europe",
+    "src": "/images/intl-europe.webp",
+    "width": 1400,
+    "height": 933,
+    "aspect": "3:2",
+    "alt": "",
+    "usedOn": "/packages/international region tile",
+    "subject": "An alpine lake village in Europe on a bright summer morning: pastel old houses and a small white church with a plain steeple along the water, green me",
+    "prompt": "An alpine lake village in Europe on a bright summer morning: pastel old houses and a small white church with a plain steeple along the water, green meadows and pine forest behind, mountains with a little snow, a calm reflection on the lake. No people, no signs. Editorial travel photography, natural daylight, grounded realistic colours, believable Northeast Indian setting, shot on a full-frame camera, gentle depth of field, natural skin texture, candid body language, no oversaturation, no readable text, signage, logos or number plates.",
+    "model": "gpt-image-2",
+    "status": "generated"
   }
 ]

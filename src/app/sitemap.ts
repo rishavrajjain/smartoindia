@@ -25,6 +25,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
+    {
+      url: absoluteUrl("/packages/international"),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     ...JOURNEYS.map((item) => ({
       url: absoluteUrl(`/packages/${item.slug}`),
       lastModified,
