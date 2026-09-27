@@ -6,7 +6,7 @@
  * the smartocabs.com Tata Tigor EV reference photos so it is the real car.
  * No airline, hotel or other third-party branding appears anywhere.
  *
- *   node scripts/generate-service-doors.mjs [id ...]
+ *   node scripts/generate-service-doors.mjs [id ...] [--from-cache]
  */
 
 import { readFile, writeFile, mkdir } from 'node:fs/promises'
@@ -100,17 +100,55 @@ async function render(apiKey, door, refs) {
 
   const png = Buffer.from(b64, 'base64')
   await writeFile(path.join(RAW, `${door.id}-raw.png`), png)
-  const out = await sharp(png).resize({ width: 768 }).webp({ quality: 84, effort: 6 }).toBuffer()
-  await writeFile(path.join(ROOT, 'public', 'images', `${door.id}.webp`), out)
-  console.log(`${door.id}: ${(out.length / 1024).toFixed(0)}kb`)
+  await tighten(door.id, png)
+}
+
+/*
+ * Crops a render to its object plus a little air, centred on a 4:3 canvas
+ * of the render's own background tone, so every tile frames its object the
+ * same way. Writes public/images/service-<name>.webp (new names: the
+ * earlier door-*.webp files are already cached immutably).
+ */
+async function tighten(id, png) {
+  const { data, info } = await sharp(png).raw().toBuffer({ resolveWithObject: true })
+  const [r, g, b] = [data[0], data[1], data[2]]
+  const trimmed = await sharp(png)
+    .trim({ background: { r, g, b }, threshold: 14 })
+    .toBuffer({ resolveWithObject: true })
+  const { width: w, height: h } = trimmed.info
+  const pad = Math.round(Math.max(w, h) * 0.07)
+  let W = w + pad * 2
+  let H = h + pad * 2
+  if (W / H > 4 / 3) H = Math.round((W * 3) / 4)
+  else W = Math.round((H * 4) / 3)
+  const out = await sharp(trimmed.data)
+    .extend({
+      top: Math.floor((H - h) / 2),
+      bottom: Math.ceil((H - h) / 2),
+      left: Math.floor((W - w) / 2),
+      right: Math.ceil((W - w) / 2),
+      background: { r, g, b },
+    })
+    .resize({ width: 640 })
+    .webp({ quality: 84, effort: 6 })
+    .toBuffer()
+  const name = id.replace(/^door-/, 'service-')
+  await writeFile(path.join(ROOT, 'public', 'images', `${name}.webp`), out)
+  console.log(`${name}: ${(out.length / 1024).toFixed(0)}kb (from ${info.width}px, object ${w}x${h})`)
 }
 
 async function main() {
   await mkdir(RAW, { recursive: true })
+  const args = process.argv.slice(2)
+  const only = args.filter((a) => !a.startsWith('--'))
+  const queue = only.length ? DOORS.filter((d) => only.includes(d.id)) : DOORS
+  // --from-cache re-crops the saved raw renders without calling the API.
+  if (args.includes('--from-cache')) {
+    for (const d of queue) await tighten(d.id, await readFile(path.join(RAW, `${d.id}-raw.png`)))
+    return
+  }
   const apiKey = await loadKey()
   const refs = await Promise.all(REFS.map((f) => readFile(f)))
-  const only = process.argv.slice(2)
-  const queue = only.length ? DOORS.filter((d) => only.includes(d.id)) : DOORS
   const results = await Promise.allSettled(queue.map((d) => render(apiKey, d, refs)))
   results.filter((r) => r.status === 'rejected').forEach((r) => console.error(String(r.reason)))
 }

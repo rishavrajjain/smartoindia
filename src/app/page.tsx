@@ -223,8 +223,8 @@ export default function HomePage() {
       <FlightsTeaser layout="wide" id="b-flights" location="b-flights" />
 
       {/* --- Hotels: the catalog's Shillong and Cherrapunjee stays, town by town. */}
-      <section id="b-hotels" className="mx-auto max-w-7xl scroll-mt-24 px-5 pt-14 sm:px-8 lg:pt-20">
-        <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-3">
+      <section id="b-hotels" className="scroll-mt-24 pt-14 lg:pt-20">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-end justify-between gap-x-10 gap-y-3 px-5 sm:px-8">
           <div>
             <p className="text-label font-extrabold text-clay uppercase">Hotels</p>
             <h2 className="mt-3 text-[1.875rem] leading-[1.08] lg:text-[2.5rem]">
@@ -240,9 +240,7 @@ export default function HomePage() {
             five-star to easy on the wallet. Booked with the trip, quoted all-in.
           </p>
         </div>
-        <div className="mt-7">
-          <HotelStays stays={STAY_CARDS} />
-        </div>
+        <HotelStays stays={STAY_CARDS} className="mt-7" />
       </section>
 
       {/* --- Why Smarto: the stats strip. */}

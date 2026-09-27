@@ -5,9 +5,10 @@ import { SITE } from "@/lib/site";
 
 /*
  * The four Smarto services, where PickYourTrail asks "who's coming along":
- * a compact row of tiles, each with its 3D render, the real Smarto wordmark beside the
- * service name, and one line. The renders sit on the same mist tone they
- * were generated on, so the card and picture read as one surface.
+ * a compact row of tiles, each with its 3D render (cropped tight to the
+ * object), the real Smarto wordmark over the service name, and one line.
+ * The renders sit on the mist tone they were generated on, so the card and
+ * picture read as one surface.
  */
 
 const DOORS = [
@@ -15,25 +16,25 @@ const DOORS = [
     name: "Cabs",
     line: "Flat fares, no surge",
     href: "/cabs",
-    image: "/images/door-cabs.webp",
-  },
-  {
-    name: "Flights",
-    line: "Into the Northeast",
-    href: "/flights",
-    image: "/images/door-flights.webp",
+    image: "/images/service-cabs.webp",
   },
   {
     name: "Packages",
     line: "Domestic & international",
     href: "/packages",
-    image: "/images/door-packages.webp",
+    image: "/images/service-packages.webp",
+  },
+  {
+    name: "Flights",
+    line: "Into the Northeast",
+    href: "/flights",
+    image: "/images/service-flights.webp",
   },
   {
     name: "Hotels",
     line: "For every budget",
     href: "#b-hotels",
-    image: "/images/door-hotels.webp",
+    image: "/images/service-hotels.webp",
   },
 ] as const;
 
@@ -61,16 +62,16 @@ export function ServiceDoors() {
                 href={door.href}
                 className="group relative flex h-full flex-col overflow-hidden rounded-[1.25rem] bg-sand text-ink transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(0,0,0,0.3),0_0_0_2px_rgba(117,184,132,0.9)] focus-visible:-translate-y-1"
               >
-                <span className="relative block aspect-[5/4]">
+                <span className="relative block aspect-[4/3]">
                   <Image
                     src={door.image}
                     alt=""
                     fill
                     sizes="(min-width: 1024px) 12.5rem, (min-width: 640px) 10rem, 8.75rem"
-                    className="object-contain p-1.5 transition-transform duration-500 ease-out group-hover:scale-[1.08] group-hover:-rotate-1"
+                    className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.06] group-hover:-rotate-1"
                   />
                 </span>
-                <span className="flex flex-1 flex-col justify-end px-3 pt-0.5 pb-3 sm:px-3.5 sm:pb-3.5">
+                <span className="flex flex-1 flex-col px-3 pt-1.5 pb-3 sm:px-3.5 sm:pb-3.5">
                   <Image
                     src="/brand/smarto-wordmark.webp"
                     alt={SITE.name}

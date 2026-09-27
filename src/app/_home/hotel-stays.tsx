@@ -9,10 +9,11 @@ import { cn } from "@/lib/cn";
 import { enquiry } from "@/lib/whatsapp";
 
 import type { StayCard } from "./data";
+import { Rail } from "./rail";
 
 /*
- * The catalog's stays, town by town: a photograph of each town with its
- * hotels as tickets laid over it, filtered by star rating. The photographs
+ * The catalog's stays, town by town: a swipeable row of town photographs,
+ * each carrying up to three hotels as tickets, filtered by star rating. The photographs
  * are of the towns and say so; no hotel gets a generated picture under its
  * name. The budget tier is an offer to suggest rooms, not a named hotel.
  */
@@ -39,49 +40,65 @@ const TOWNS = [
   },
 ];
 
-export function HotelStays({ stays }: { stays: StayCard[] }) {
+/* Tickets shown per town at once; a tier filter can still reach the rest. */
+const PER_TOWN = 3;
+
+export function HotelStays({
+  stays,
+  className,
+}: {
+  stays: StayCard[];
+  className?: string;
+}) {
   const [filter, setFilter] = useState<StayTier | "all">("all");
 
   return (
-    <div>
-      <div
-        role="group"
-        aria-label="Filter stays by rating"
-        className="no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 sm:mx-0 sm:flex-wrap sm:px-0"
-      >
-        {FILTERS.map((f) => (
-          <button
-            key={f.id}
-            type="button"
-            aria-pressed={filter === f.id}
-            onClick={() => setFilter(f.id)}
-            className={cn(
-              "min-h-10 shrink-0 rounded-full px-4 text-[0.8125rem] transition-colors",
-              filter === f.id
-                ? "bg-ink font-extrabold text-bone"
-                : "bg-sand text-taupe hover:bg-clay-soft hover:text-ink",
-            )}
-          >
-            {f.label}
-          </button>
-        ))}
-      </div>
-
-      <div className="mt-6 grid gap-5 lg:grid-cols-2 lg:gap-6">
-        {TOWNS.map((town) => {
-          const all = stays.filter((s) => s.place === town.place);
-          const shown = all.filter((s) => filter === "all" || s.tier === filter);
-          const named = all.filter((s) => s.kind === "named").length;
-          return (
-            <article
-              key={town.place}
-              className="relative isolate flex min-h-[30rem] flex-col justify-end overflow-hidden rounded-[2rem] bg-clay-deep text-bone lg:min-h-[40rem]"
+    <Rail
+      label="hotels by town"
+      resetKey={filter}
+      className={className}
+      header={
+        <div
+          role="group"
+          aria-label="Filter stays by rating"
+          className="no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 sm:mx-0 sm:flex-wrap sm:px-0"
+        >
+          {FILTERS.map((f) => (
+            <button
+              key={f.id}
+              type="button"
+              aria-pressed={filter === f.id}
+              onClick={() => setFilter(f.id)}
+              className={cn(
+                "min-h-10 shrink-0 rounded-full px-4 text-[0.8125rem] transition-colors",
+                filter === f.id
+                  ? "bg-ink font-extrabold text-bone"
+                  : "bg-sand text-taupe hover:bg-clay-soft hover:text-ink",
+              )}
             >
+              {f.label}
+            </button>
+          ))}
+        </div>
+      }
+    >
+      {TOWNS.map((town) => {
+        const all = stays.filter((s) => s.place === town.place);
+        const shown = all
+          .filter((s) => filter === "all" || s.tier === filter)
+          .slice(0, PER_TOWN);
+        const named = all.filter((s) => s.kind === "named").length;
+        return (
+          <li
+            key={town.place}
+            className="w-[85vw] max-w-[24rem] shrink-0 snap-start sm:w-[28rem] sm:max-w-none lg:w-[36rem]"
+          >
+            <article className="relative isolate flex h-full min-h-[27rem] flex-col justify-end overflow-hidden rounded-[2rem] bg-clay-deep text-bone lg:min-h-[29rem]">
               <Image
                 src={town.image}
                 alt={town.alt}
                 fill
-                sizes="(min-width: 1024px) 40rem, 100vw"
+                sizes="(min-width: 1024px) 36rem, (min-width: 640px) 28rem, 85vw"
                 className="-z-10 object-cover"
               />
               <div
@@ -89,15 +106,15 @@ export function HotelStays({ stays }: { stays: StayCard[] }) {
                 className="absolute inset-0 -z-10 bg-gradient-to-b from-[rgba(28,26,69,0.3)] via-[rgba(28,26,69,0.5)] via-35% to-[rgba(28,26,69,0.96)]"
               />
 
-              <div className="px-5 pt-40 pb-5 sm:px-6 sm:pb-6 lg:pt-6">
+              <div className="px-4 pt-24 pb-4 sm:px-5 sm:pb-5 lg:pt-6">
                 <p className="text-[0.6875rem] font-extrabold tracking-[0.2em] text-bone/85 uppercase [text-shadow:0_1px_12px_rgba(28,26,69,0.6)]">
                   {town.line} · {named} {named === 1 ? "hotel" : "hotels"} on our journeys
                 </p>
-                <h3 className="mt-1 text-[2.25rem] leading-none font-extrabold [text-shadow:0_2px_24px_rgba(28,26,69,0.55)] lg:text-[2.75rem]">
+                <h3 className="mt-1 text-[2rem] leading-none font-extrabold [text-shadow:0_2px_24px_rgba(28,26,69,0.55)] lg:text-[2.5rem]">
                   {town.place}
                 </h3>
 
-                <ul key={filter} className="mt-5 space-y-2.5">
+                <ul key={filter} className="mt-4 space-y-2">
                   {shown.length ? (
                     shown.map((stay, i) => (
                       <li
@@ -116,10 +133,10 @@ export function HotelStays({ stays }: { stays: StayCard[] }) {
                 </ul>
               </div>
             </article>
-          );
-        })}
-      </div>
-    </div>
+          </li>
+        );
+      })}
+    </Rail>
   );
 }
 
@@ -134,7 +151,7 @@ function StayTicket({ stay }: { stay: StayCard }) {
   return (
     <div
       className={cn(
-        "flex items-center gap-3 rounded-2xl p-3.5 text-ink sm:gap-4 sm:p-4",
+        "flex items-center gap-3 rounded-2xl px-3.5 py-3 text-ink sm:gap-4 sm:px-4",
         onRequest
           ? "border-2 border-dashed border-white/40 bg-bone/85 backdrop-blur-sm"
           : "bg-bone shadow-[0_10px_24px_rgba(0,0,0,0.18)]",
@@ -147,13 +164,13 @@ function StayTicket({ stay }: { stay: StayCard }) {
             {stay.tier}
           </span>
         </div>
-        <p className="mt-1 text-[0.9375rem] leading-snug font-extrabold sm:text-[1rem]">
+        <p className="mt-0.5 text-[0.9375rem] leading-snug font-extrabold sm:text-[1rem]">
           {stay.name.replace(`, ${stay.place}`, "")}
         </p>
-        <p className="mt-0.5 line-clamp-2 text-[0.75rem] leading-snug text-taupe">
+        <p className="mt-0.5 line-clamp-1 text-[0.75rem] leading-snug text-taupe">
           {stay.note}
         </p>
-        <p className="mt-1.5 text-[0.6875rem] text-taupe/85">
+        <p className="mt-1 truncate text-[0.6875rem] text-taupe/85">
           {onRequest ? (
             stay.features.join(" · ")
           ) : (

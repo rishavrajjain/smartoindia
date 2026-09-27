@@ -216,12 +216,12 @@ export function LoginPanel() {
       <p className="mt-7 border-t border-line pt-5 text-[0.8125rem] text-taupe">
         New {current.label.toLowerCase()}?{" "}
         <WaCta
-          message={enquiry(`I would like ${current.label.toLowerCase()} access to Smarto.`)}
+          message={enquiry(`I would like to register as a ${current.label.toLowerCase()} with Smarto.`)}
           location="login-access"
           subject={role}
           className="font-extrabold text-ink underline decoration-line-strong underline-offset-4 hover:decoration-ink"
         >
-          Request access on WhatsApp
+          Register
         </WaCta>
       </p>
     </div>
