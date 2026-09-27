@@ -42,7 +42,7 @@ import { TrailSearch } from "./_home/trail-search";
 export const metadata = pageMetadata({
   title: "Smarto: Northeast India, travelled well",
   description:
-    "Flat-fare EV cabs in Guwahati, flights into the Northeast, hand-picked hotels, and fifty planned journeys across Assam, Meghalaya and Arunachal Pradesh. No surge, zero cancellation. Plan it all on WhatsApp.",
+    "Flat-fare EV cabs in Guwahati, flights across India, hand-picked hotels, and fifty planned journeys across Assam, Meghalaya and Arunachal Pradesh. No surge, zero cancellation. Plan it all on WhatsApp.",
   path: "/",
 });
 

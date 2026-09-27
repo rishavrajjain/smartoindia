@@ -26,7 +26,7 @@ const DOORS = [
   },
   {
     name: "Flights",
-    line: "Into the Northeast",
+    line: "All of India",
     href: "/flights",
     image: "/images/service-flights.webp",
   },

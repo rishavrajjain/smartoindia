@@ -57,8 +57,8 @@ export function FlightsTeaser({
                 Fly in, <span className="accent">we take it from the kerb</span>
               </h2>
               <p className="mt-4 max-w-md text-[0.9375rem] leading-relaxed text-bone/75">
-                Fixed-departure fares into Guwahati and across the Northeast,
-                confirmed on WhatsApp, with a Smarto cab waiting when you land.
+                Fixed-departure fares across India, confirmed on WhatsApp.
+                Land in Guwahati and a Smarto cab is waiting at the kerb.
               </p>
               <div className="-mx-6 mt-6 overflow-hidden sm:-mx-10 lg:mx-0">
                 <RouteChips
