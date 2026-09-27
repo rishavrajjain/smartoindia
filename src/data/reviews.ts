@@ -45,7 +45,7 @@ export const REVIEWS: Review[] = [
     context: "Tawang, eight days",
     quote:
       "Sela was shut on our day. They told us at breakfast instead of driving us up there to find out, and rearranged the rest without fuss.",
-    highlight: "Sela was shut. They told us at breakfast and rearranged the rest.",
+    highlight: "Sela was shut, so they rearranged the rest.",
     status: "mock",
   },
   {
@@ -54,7 +54,7 @@ export const REVIEWS: Review[] = [
     context: "Corporate offsite transport",
     quote:
       "Eleven people, three pickup points, one invoice at the end of the month. That was the whole reason we switched.",
-    highlight: "Three pickup points, one invoice. That is why we switched.",
+    highlight: "Three pickup points, one invoice.",
     status: "mock",
   },
   {

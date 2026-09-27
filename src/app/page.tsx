@@ -176,20 +176,20 @@ export default function HomePage() {
                   aria-hidden={copy === 1 ? true : undefined}
                   className="flex shrink-0 items-center"
                 >
-                  <figure className="flex items-center gap-3 rounded-2xl bg-bone py-2 pr-4 pl-2 shadow-[0_6px_16px_rgba(28,26,69,0.12)]">
+                  <figure className="flex w-[16.5rem] items-start gap-2.5 rounded-2xl bg-bone py-3 pr-3.5 pl-2.5 shadow-[0_6px_16px_rgba(28,26,69,0.12)]">
                     <span
                       aria-hidden="true"
-                      className="grid size-9 shrink-0 place-items-center rounded-full bg-clay-deep text-green"
+                      className="grid size-8 shrink-0 place-items-center rounded-full bg-clay-deep text-green"
                     >
-                      <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="size-3.5">
                         <path d="M4 18v-5.2C4 8.6 6 6 10 5l.8 1.6C8.6 7.5 7.6 9 7.5 11H10v7zm9.5 0v-5.2c0-4.2 2-6.8 6-7.8l.8 1.6c-2.2.9-3.2 2.4-3.3 4.4h2.5v7z" />
                       </svg>
                     </span>
-                    <span className="leading-tight whitespace-nowrap">
-                      <blockquote className="text-[0.8125rem] font-extrabold text-ink">
+                    <span className="min-w-0 leading-tight">
+                      <blockquote className="line-clamp-2 text-[0.8125rem] leading-snug font-extrabold text-ink">
                         {review.highlight}
                       </blockquote>
-                      <figcaption className="mt-0.5 text-[0.6875rem] text-taupe">
+                      <figcaption className="mt-1 truncate text-[0.6875rem] text-taupe">
                         {review.author} · {review.context}
                       </figcaption>
                     </span>
