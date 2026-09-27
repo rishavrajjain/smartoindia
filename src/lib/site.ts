@@ -28,6 +28,16 @@ export const SITE = {
   address: "F20, 1st Floor, Grand Plaza, AT Road, Paltan Bazaar, Guwahati 781008",
 } as const;
 
+/** Social accounts, as published on smartocabs.com. */
+export const SOCIAL = [
+  { id: "instagram", label: "Instagram", href: "https://instagram.com/smartocabs" },
+  { id: "facebook", label: "Facebook", href: "https://facebook.com/smartocabs" },
+  { id: "youtube", label: "YouTube", href: "https://www.youtube.com/@Smartocabs" },
+  { id: "x", label: "X (Twitter)", href: "https://x.com/smartocabs" },
+] as const;
+
+export type SocialId = (typeof SOCIAL)[number]["id"];
+
 export interface NavItem {
   href: string;
   label: string;

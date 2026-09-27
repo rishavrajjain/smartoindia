@@ -18,7 +18,7 @@ import { FESTIVALS } from "@/data/festivals";
 import { IMAGES } from "@/data/images";
 import { REVIEWS } from "@/data/reviews";
 import { pageMetadata } from "@/lib/seo";
-import { SITE } from "@/lib/site";
+import { SITE, SOCIAL, type SocialId } from "@/lib/site";
 import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, enquiry } from "@/lib/whatsapp";
 import type { Season } from "@/types";
 
@@ -702,6 +702,31 @@ function ChatPhone() {
   );
 }
 
+/* Brand glyphs for the social links, drawn to sit with the line icons. */
+function SocialGlyph({ id, className }: { id: SocialId; className?: string }) {
+  if (id === "instagram") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" className={className}>
+        <rect x="3" y="3" width="18" height="18" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" />
+      </svg>
+    );
+  }
+  const paths: Record<Exclude<SocialId, "instagram">, string> = {
+    facebook:
+      "M14 8.6V6.9c0-.8.2-1.3 1.4-1.3H17V2.7c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2H8.2V12h2.6v9.4H14V12h2.6l.4-3.4z",
+    youtube:
+      "M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4a2.5 2.5 0 0 0-1.8 1.8A26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z",
+    x: "M17.6 3h3.1l-6.8 7.8 8 10.2h-6.3l-4.9-6.4L5.1 21H2l7.3-8.3L1.6 3H8l4.4 5.8zm-1.1 16.2h1.7L7.3 4.7H5.5z",
+  };
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+      <path d={paths[id]} />
+    </svg>
+  );
+}
+
 function TrailFooter() {
   const columns = [
     {
@@ -733,8 +758,52 @@ function TrailFooter() {
 
   return (
     <footer className="mt-16 bg-clay-deep text-bone lg:mt-24">
-      <div className="mx-auto max-w-7xl px-5 pt-14 sm:px-8 lg:pt-16">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,2fr)] lg:gap-16">
+      <div className="mx-auto max-w-7xl px-5 pt-12 sm:px-8 lg:pt-14">
+        {/* Affiliation and social accounts, above the company description. */}
+        <div className="grid gap-8 border-b border-white/10 pb-10 sm:grid-cols-2 sm:items-end">
+          <div>
+            <h2 className="text-[0.6875rem] font-extrabold tracking-[0.18em] text-bone/50 uppercase">
+              Affiliated organisation
+            </h2>
+            <a
+              href="https://netta.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex rounded-2xl bg-bone px-5 py-3.5 transition-transform duration-200 hover:-translate-y-0.5"
+            >
+              <Image
+                src="/logos/netta.webp"
+                alt="NETTA, North East Travel Trade Association"
+                width={868}
+                height={199}
+                className="h-10 w-auto sm:h-11"
+              />
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </div>
+          <div className="sm:justify-self-end">
+            <h2 className="text-[0.6875rem] font-extrabold tracking-[0.18em] text-bone/50 uppercase sm:text-right">
+              Follow Smarto
+            </h2>
+            <ul className="mt-4 flex gap-2.5">
+              {SOCIAL.map((account) => (
+                <li key={account.id}>
+                  <a
+                    href={account.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="grid size-12 place-items-center rounded-full bg-white/[0.08] text-bone ring-1 ring-white/15 transition-colors duration-200 hover:bg-green hover:text-clay-deep hover:ring-green"
+                  >
+                    <SocialGlyph id={account.id} className="size-5" />
+                    <span className="sr-only">Smarto on {account.label} (opens in a new tab)</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,2fr)] lg:gap-16">
           <div>
             <Image src="/brand/smarto-wordmark-light.webp" alt={SITE.name} width={720} height={160} className="h-7 w-auto" />
             <p className="mt-5 max-w-md text-[0.875rem] leading-relaxed text-bone/65">
