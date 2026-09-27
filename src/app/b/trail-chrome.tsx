@@ -43,15 +43,27 @@ export function TrailChrome({
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
 
+  // Measured on scroll and resize rather than observed: an observer can miss
+  // the change when the viewport resizes mid-scroll (rotation, window drag).
   useEffect(() => {
     const sentinel = document.getElementById(sentinelId);
     if (!sentinel) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setSolid(!entry.isIntersecting && entry.boundingClientRect.top < 0),
-      { rootMargin: "-72px 0px 0px 0px" },
-    );
-    observer.observe(sentinel);
-    return () => observer.disconnect();
+    let frame = 0;
+    const measure = () => {
+      frame = 0;
+      setSolid(sentinel.getBoundingClientRect().top < 72);
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(measure);
+    };
+    schedule();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
   }, [sentinelId]);
 
   useEffect(() => {

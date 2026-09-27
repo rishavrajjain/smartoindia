@@ -38,6 +38,7 @@ export type CtaLocation =
   | "b-header"
   | "b-float"
   | "b-cabs"
+  | "b-flights"
   | "b-festivals"
   | "b-banner-cabs"
   | "b-whatsapp-banner"

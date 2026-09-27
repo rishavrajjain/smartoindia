@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata, Viewport } from "next";
 
+import { FlightsTeaser } from "@/components/sections/flights-teaser";
 import { HeroVideo } from "@/components/sections/hero-video";
 import {
   BoltIcon,
@@ -217,6 +218,9 @@ export default function ConceptBPage() {
           WhatsApp before you ride.
         </p>
       </section>
+
+      {/* --- Flights: the homepage's boarding pass, laid out wide. */}
+      <FlightsTeaser layout="wide" id="b-flights" location="b-flights" />
 
       {/* --- Why Smarto: the stats strip. */}
       <section className="mx-auto max-w-7xl px-5 pt-14 sm:px-8 lg:pt-20">
