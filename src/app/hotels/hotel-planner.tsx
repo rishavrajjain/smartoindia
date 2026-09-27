@@ -1,7 +1,8 @@
 "use client";
 
-import { useId, useState, type ReactNode } from "react";
+import { useId, useState } from "react";
 
+import { DateTile, Stepper, Tile, longDate } from "@/components/ui/form-tiles";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { trackCtaClick } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
@@ -17,16 +18,6 @@ import { whatsappUrl } from "@/lib/whatsapp";
 const SUGGESTIONS = ["Shillong", "Cherrapunjee", "Guwahati", "Kaziranga", "Tawang", "Bali", "Dubai", "Bangkok"];
 
 const STAY_TYPES = ["Any", "5-star", "4-star", "3-star & budget"] as const;
-
-function longDate(iso: string): string {
-  const [y, m, d] = iso.split("-").map(Number);
-  return new Date(Date.UTC(y, m - 1, d)).toLocaleDateString("en-IN", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-    timeZone: "UTC",
-  });
-}
 
 function nightsBetween(a: string, b: string): number {
   const [y1, m1, d1] = a.split("-").map(Number);
@@ -66,6 +57,7 @@ export function HotelPlanner() {
   return (
     <form
       id="plan"
+      noValidate
       className="flex scroll-mt-28 flex-col gap-3"
       onSubmit={(e) => {
         e.preventDefault();
@@ -153,117 +145,5 @@ export function HotelPlanner() {
         We reply with a few stays and their rates. Nothing is booked until you say yes.
       </p>
     </form>
-  );
-}
-
-function Tile({
-  label,
-  htmlFor,
-  children,
-  className,
-}: {
-  label: string;
-  htmlFor?: string;
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn(
-        "relative flex min-h-[5.75rem] flex-col justify-center overflow-hidden rounded-2xl bg-sand px-4 py-3 transition-[box-shadow,background-color] duration-200 focus-within:bg-bone focus-within:ring-2 focus-within:ring-clay",
-        className,
-      )}
-    >
-      {htmlFor ? (
-        <label htmlFor={htmlFor} className="text-label font-extrabold text-taupe uppercase">
-          {label}
-        </label>
-      ) : (
-        <span className="text-label font-extrabold text-taupe uppercase">{label}</span>
-      )}
-      {children}
-    </div>
-  );
-}
-
-function DateTile({
-  label,
-  value,
-  min,
-  onChange,
-}: {
-  label: string;
-  value: string;
-  min?: string;
-  onChange: (v: string) => void;
-}) {
-  const shown = value ? longDate(value) : "";
-  return (
-    <Tile label={label}>
-      <span className={cn("mt-1 text-[1.25rem] leading-tight font-extrabold", value ? "text-ink" : "font-light text-taupe/60")}>
-        {shown ? shown.split(" ").slice(0, 2).join(" ") : "Add date"}
-      </span>
-      <span className="mt-0.5 text-[0.75rem] text-taupe">{shown ? shown.split(" ")[2] : "Optional"}</span>
-      <input
-        type="date"
-        value={value}
-        min={min}
-        aria-label={`${label} date`}
-        onChange={(e) => onChange(e.target.value)}
-        onClick={(e) => {
-          try {
-            e.currentTarget.showPicker?.();
-          } catch {
-            /* the native input remains keyboard-editable */
-          }
-        }}
-        className="absolute inset-0 size-full cursor-pointer appearance-none rounded-2xl opacity-0"
-      />
-    </Tile>
-  );
-}
-
-function Stepper({
-  label,
-  value,
-  min,
-  max,
-  onChange,
-}: {
-  label: string;
-  value: number;
-  min: number;
-  max: number;
-  onChange: (v: number) => void;
-}) {
-  return (
-    <div className="flex min-h-[5.75rem] items-center justify-between gap-2 rounded-2xl bg-sand px-4 py-3">
-      <span>
-        <span className="block text-label font-extrabold text-taupe uppercase">{label}</span>
-        <span aria-live="polite" className="mt-1 block text-[1.375rem] leading-tight font-extrabold text-ink tabular-nums">
-          {value}
-        </span>
-      </span>
-      <span className="flex gap-1.5">
-        <button
-          type="button"
-          onClick={() => onChange(Math.max(min, value - 1))}
-          disabled={value <= min}
-          aria-label={`Fewer ${label.toLowerCase()}`}
-          className="grid size-10 place-items-center rounded-full bg-bone text-lg font-extrabold text-ink transition-colors hover:bg-ink hover:text-bone disabled:opacity-30 disabled:hover:bg-bone disabled:hover:text-ink"
-        >
-          −
-        </button>
-        <button
-          type="button"
-          onClick={() => onChange(Math.min(max, value + 1))}
-          disabled={value >= max}
-          aria-label={`More ${label.toLowerCase()}`}
-          className="grid size-10 place-items-center rounded-full bg-bone text-lg font-extrabold text-ink transition-colors hover:bg-ink hover:text-bone disabled:opacity-30 disabled:hover:bg-bone disabled:hover:text-ink"
-        >
-          +
-        </button>
-      </span>
-    </div>
   );
 }

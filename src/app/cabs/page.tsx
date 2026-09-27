@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { CabBookingCard } from "@/components/sections/cab-booking-card";
+import { CabQuickServices } from "@/components/sections/cab-quick-services";
 import { FareLock } from "@/components/sections/fare-lock";
 import { PhotoHero } from "@/components/sections/photo-hero";
 import { TrustAndFaqs } from "@/components/sections/trust-and-faqs";
@@ -137,8 +137,27 @@ export default function CabsPage() {
         }}
         chips={CHIPS}
       >
-        <CabBookingCard />
+        <div className="flex flex-wrap gap-3">
+          <a
+            href="#book"
+            className="inline-flex min-h-[3.25rem] items-center gap-2.5 rounded-full bg-green-deep px-6 text-[0.9375rem] font-extrabold text-white shadow-[0_14px_30px_rgba(57,151,114,0.3)] transition-transform duration-150 active:scale-[0.985]"
+          >
+            Book a ride
+            <ArrowIcon className="size-4 rotate-90" />
+          </a>
+          <WaCta
+            message={enquiry("I need a cab in Guwahati.")}
+            location="cabs-hero"
+            className="inline-flex min-h-[3.25rem] items-center gap-2.5 rounded-full px-6 text-[0.9375rem] font-extrabold text-ink ring-1 ring-line-strong transition-colors hover:bg-sand"
+          >
+            <WhatsAppIcon />
+            Book on WhatsApp
+          </WaCta>
+        </div>
       </PhotoHero>
+
+      {/* ——— Quick services: every kind of ride, each with its own booking card. */}
+      <CabQuickServices />
 
       <MarqueeBand
         items={[

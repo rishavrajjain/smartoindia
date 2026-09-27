@@ -186,3 +186,45 @@ export const SuitcaseIcon = icon(
     <path d="M2.5 12.5h19" />
   </>,
 );
+
+export const AirportIcon = icon(
+  <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />,
+);
+
+export const KeyIcon = icon(
+  <>
+    <circle cx="7.5" cy="15.5" r="5" />
+    <path d="m11 12 9.5-9.5M17 6l2.5 2.5M14.5 8.5 16.5 10.5" />
+  </>,
+);
+
+export const MountainIcon = icon(
+  <>
+    <path d="m8.5 5 4 7 3-3.5L22 20H2z" />
+    <path d="m6.2 9 2.3 2 2-1.6" />
+  </>,
+);
+
+export const RoadIcon = icon(
+  <path d="M9 3 4.5 21M15 3l4.5 18M12 4.5v2.5M12 10.5V13M12 16.5V20" />,
+);
+
+export const RouteIcon = icon(
+  <>
+    <circle cx="6" cy="19" r="2.5" />
+    <circle cx="18" cy="5" r="2.5" />
+    <path d="M8.5 19H17a3.5 3.5 0 0 0 0-7H7a3.5 3.5 0 0 1 0-7h8.5" />
+  </>,
+);
+
+export const LocateIcon = icon(
+  <>
+    <circle cx="12" cy="12" r="6.5" />
+    <circle cx="12" cy="12" r="2.2" />
+    <path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3" />
+  </>,
+);
+
+export const CloseIcon = icon(<path d="M18 6 6 18M6 6l12 12" />);
+
+export const PlusIcon = icon(<path d="M12 5v14M5 12h14" />);
