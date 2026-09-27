@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Metadata, Viewport } from "next";
 
 import { pageMetadata } from "@/lib/seo";
@@ -43,8 +44,18 @@ export default function LoginPage() {
   return (
     <div
       data-page-theme="login"
-      className="grid min-h-svh bg-bone lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]"
+      className="relative grid min-h-svh bg-bone lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]"
     >
+      {/* The way out: back to the homepage from anywhere on the page. */}
+      <Link
+        href="/"
+        className="absolute top-4 right-4 z-20 grid size-11 place-items-center rounded-full bg-bone text-ink shadow-[0_8px_24px_rgba(28,26,69,0.22)] ring-1 ring-line transition-colors hover:bg-ink hover:text-bone sm:top-5 sm:right-5 lg:top-6 lg:right-6"
+      >
+        <span className="sr-only">Close and go to the homepage</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" aria-hidden="true" className="size-5">
+          <path d="M6 6l12 12M18 6 6 18" />
+        </svg>
+      </Link>
       {/* --- The overview: Smarto's services, drifting. */}
       <section
         aria-label="What Smarto runs"

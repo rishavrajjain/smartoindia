@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
@@ -289,27 +290,50 @@ function signatureKey(signature: string): string {
 
 function Idle({ route }: { route?: string }) {
   return (
-    <div className="flex min-h-[18rem] flex-col items-center justify-center rounded-2xl border border-dashed border-line-strong px-6 py-12 text-center">
-      <div className="relative h-px w-40 bg-line-strong">
-        <span className="absolute top-1/2 left-0 size-1.5 -translate-y-1/2 rounded-full bg-ink" />
-        <PlaneIcon className="absolute top-1/2 left-1/2 size-5 -translate-x-1/2 -translate-y-1/2 bg-bone px-0.5 text-clay" />
-        <span className="absolute top-1/2 right-0 size-1.5 -translate-y-1/2 rounded-full bg-ink" />
+    <div className="overflow-hidden rounded-[2rem] bg-sand">
+      {/* The morning tarmac, in the spark frame the heroes share. */}
+      <div className="rounded-[2rem] bg-[linear-gradient(135deg,#282560_0%,#7b3f7e_45%,#c44868_100%)] p-[3px]">
+        <div className="relative aspect-[16/9] overflow-hidden rounded-[1.875rem] bg-sand">
+          <Image
+            src="/images/svc-flights-hero.webp"
+            alt="An aircraft on the tarmac of a hillside airport at sunrise"
+            fill
+            priority
+            sizes="(min-width: 1024px) 40rem, 100vw"
+            className="object-cover"
+          />
+        </div>
       </div>
-      <p className="mt-6 text-[1.125rem] leading-snug text-ink">
-        {route ? (
-          <>
-            {route}. Now pick a date, <span className="accent">then search.</span>
-          </>
-        ) : (
-          <>
-            Pick a route and a date, <span className="accent">then search.</span>
-          </>
-        )}
-      </p>
-      <p className="mt-2 max-w-xs text-[0.875rem] leading-relaxed text-taupe">
-        Fares come from our airline partner&rsquo;s fixed-departure seats. We confirm on WhatsApp
-        before anything is ticketed.
-      </p>
+      <div className="px-6 pt-6 pb-7 sm:px-8 sm:pt-7 sm:pb-8">
+        <div className="relative h-px w-32 bg-line-strong">
+          <span className="absolute top-1/2 left-0 size-1.5 -translate-y-1/2 rounded-full bg-ink" />
+          <PlaneIcon className="absolute top-1/2 left-1/2 size-5 -translate-x-1/2 -translate-y-1/2 bg-sand px-0.5 text-clay" />
+          <span className="absolute top-1/2 right-0 size-1.5 -translate-y-1/2 rounded-full bg-ink" />
+        </div>
+        <p className="mt-5 text-[1.25rem] leading-snug text-ink sm:text-[1.375rem]">
+          {route ? (
+            <>
+              {route}. Now pick a date, <span className="accent">then search.</span>
+            </>
+          ) : (
+            <>
+              Pick a route and a date, <span className="accent">then search.</span>
+            </>
+          )}
+        </p>
+        <ul className="mt-5 grid gap-2.5 sm:grid-cols-3">
+          {[
+            ["Fixed-departure seats", "Fares from our airline partner."],
+            ["Confirmed on WhatsApp", "Nothing is ticketed until you say yes."],
+            ["A cab when you land", "A Smarto ride waiting in Guwahati."],
+          ].map(([title, body]) => (
+            <li key={title} className="rounded-2xl bg-bone px-4 py-3.5">
+              <span className="block text-[0.8125rem] font-extrabold text-ink">{title}</span>
+              <span className="mt-0.5 block text-[0.75rem] leading-snug text-taupe">{body}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

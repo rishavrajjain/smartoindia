@@ -33,7 +33,7 @@ const DOORS = [
   {
     name: "Hotels",
     line: "For every budget",
-    href: "#b-hotels",
+    href: "/hotels",
     image: "/images/service-hotels.webp",
   },
 ] as const;

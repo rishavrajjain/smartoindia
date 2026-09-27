@@ -1259,5 +1259,18 @@
     "prompt": "A fiord in New Zealand: sheer green cliffs dropping straight into dark still water, thin waterfalls tumbling down the rock, low cloud on the peaks. No people. Editorial travel photography, natural daylight, grounded realistic colours, believable Northeast Indian setting, shot on a full-frame camera, gentle depth of field, natural skin texture, candid body language, no oversaturation, no readable text, signage, logos or number plates.",
     "model": "gpt-image-2",
     "status": "generated"
+  },
+  {
+    "id": "hotels-hero",
+    "src": "/images/hotels-hero.webp",
+    "width": 1600,
+    "height": 1067,
+    "aspect": "3:2",
+    "alt": "A hotel balcony at dawn with tea on a small table, looking over misty pine hills",
+    "usedOn": "/hotels hero",
+    "subject": "Hotel balcony at dawn over misty pine hills, no people or branding",
+    "prompt": "See scripts/generate-hotels-scene.mjs",
+    "model": "gpt-image-2",
+    "status": "generated"
   }
 ]

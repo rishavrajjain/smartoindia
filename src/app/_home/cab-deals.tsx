@@ -8,13 +8,12 @@ import { WaCta } from "@/components/ui/wa-cta";
 import { cn } from "@/lib/cn";
 import { enquiry } from "@/lib/whatsapp";
 
-import { Rail } from "./rail";
+import { Rail } from "@/components/ui/rail";
 
 /*
  * Flat-fare rides as bookable cards, filtered by kind. Fares are the
- * owner-published "starting from" rates already live on the homepage; the
- * railway-station fare stays off this page until Manav reconciles the two
- * figures in circulation.
+ * owner-supplied "starting from" rates (railway rides from ₹249 per RRJ,
+ * 27 Sep 2026).
  */
 
 type Kind = "city" | "outstation" | "teams";
@@ -44,6 +43,16 @@ const DEALS: Deal[] = [
     image: "/images/fleet-cabs-airport.webp",
     fare: "₹399",
     message: enquiry("I need an airport ride in Guwahati."),
+  },
+  {
+    id: "railway",
+    kind: "city",
+    strip: "Railway station · Guwahati",
+    title: "Railway station rides",
+    line: "Early train or late, there on train time.",
+    image: "/images/fleet-cabs-railway.webp",
+    fare: "₹249",
+    message: enquiry("I need a railway station ride in Guwahati."),
   },
   {
     id: "shillong",

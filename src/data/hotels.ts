@@ -1,3 +1,4 @@
+import { JOURNEYS } from "@/data/journeys";
 import type { ContentStatus } from "@/types";
 
 /*
@@ -105,3 +106,17 @@ export const STAYS: Stay[] = [
     status: "mock",
   },
 ];
+
+/* The stays with the number of catalog journeys each one appears on. */
+export interface StayCard extends Stay {
+  journeys: number;
+}
+
+export const STAY_CARDS: StayCard[] = STAYS.map((stay) => ({
+  ...stay,
+  journeys:
+    stay.kind === "named"
+      ? JOURNEYS.filter((j) => j.stay.some((line) => line.includes(stay.name)))
+          .length
+      : 0,
+}));

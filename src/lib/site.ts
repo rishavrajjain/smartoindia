@@ -68,6 +68,12 @@ export const NAV: NavItem[] = [
     short: "Fares across India",
   },
   {
+    href: "/hotels",
+    label: "Hotels",
+    blurb: "Five-star to budget stays in any city, in India or abroad.",
+    short: "Stays in any city",
+  },
+  {
     href: "/events",
     label: "Events",
     blurb: "Weddings, conferences and corporate events, moved end to end.",

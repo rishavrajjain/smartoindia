@@ -12,6 +12,9 @@ import type { Review } from "@/types";
  */
 export const GOOGLE_RATING = { score: "4.9", count: "2,000+" } as const;
 
+/** Smarto Cabs on Google Maps, where every review lives. */
+export const GOOGLE_REVIEWS_URL = "https://www.google.com/maps?cid=8183920777346941104";
+
 export const REVIEWS: Review[] = [
   {
     id: "google-ambarish",

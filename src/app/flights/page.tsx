@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Suspense } from "react";
 
 import { FlightResults, ResultsSkeleton } from "@/components/sections/flight-results";
@@ -21,9 +20,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const params = await searchParams;
   const base = pageMetadata({
-    title: "Flights to and from the Northeast",
+    title: "Flights across India",
     description:
-      "Search fixed-departure fares into Guwahati, Bagdogra and across the Northeast, then confirm your booking on WhatsApp with a Smarto cab waiting on arrival.",
+      "Search fixed-departure fares across India, then confirm your booking on WhatsApp. Land in Guwahati and a Smarto cab is waiting.",
     path: "/flights",
   });
   // Every search is its own URL; only the plain page should be indexed.
@@ -43,60 +42,38 @@ export default async function FlightsPage({ searchParams }: { searchParams: Sear
   const today = todayIST();
 
   return (
-    <>
-      <Container width="default" className="pt-8 lg:pt-12">
-        <div className="flex items-end justify-between gap-8">
-          <div>
-            <Eyebrow>Flights</Eyebrow>
-            <h1 className="mt-3 text-[1.75rem] leading-tight sm:text-[2rem]">
-              Search <span className="accent">flights</span>
-            </h1>
-            <p className="mt-3 max-w-sm text-[0.875rem] leading-relaxed text-taupe">
-              Fixed-departure fares into the Northeast, confirmed on WhatsApp,
-              with a Smarto cab waiting when you land.
-            </p>
-          </div>
-          {/* The morning tarmac, in the spark frame the heroes share. */}
-          <div className="hidden shrink-0 rounded-[1.4375rem] bg-[linear-gradient(135deg,#282560_0%,#7b3f7e_45%,#c44868_100%)] p-[3px] md:block">
-            <div className="relative h-36 w-64 overflow-hidden rounded-[1.25rem] bg-sand lg:h-40 lg:w-80">
-              <Image
-                src="/images/svc-flights-hero.webp"
-                alt="An aircraft on the tarmac of a hillside airport at sunrise"
-                fill
-                priority
-                sizes="320px"
-                className="object-cover"
+    <Container width="default" className="pt-8 pb-24 lg:pt-12 lg:pb-32">
+      {/* min-w-0: the chip rail inside the form is a scroll container whose
+          intrinsic width would otherwise stretch the column past the phone. */}
+      <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+        <div className="min-w-0 lg:col-span-5">
+          <Eyebrow>Flights</Eyebrow>
+          <h1 className="mt-3 text-[1.75rem] leading-tight sm:text-[2rem] lg:text-[2.5rem]">
+            Search <span className="accent">flights</span>
+          </h1>
+          <p className="mt-3 max-w-sm text-[0.875rem] leading-relaxed text-taupe">
+            Fixed-departure fares across India, confirmed on WhatsApp. Land in
+            Guwahati and a Smarto cab is waiting.
+          </p>
+          <div className="mt-6 lg:sticky lg:top-24">
+            <Suspense fallback={<FormSkeleton />}>
+              <FlightSearchPanel
+                today={today}
+                maxDate={addDays(today, MAX_DAYS_AHEAD)}
+                defaultDate={addDays(today, 7)}
               />
-            </div>
-          </div>
-        </div>
-      </Container>
-
-      <Container width="default" className="pt-6 pb-24 lg:pt-8 lg:pb-32">
-        {/* min-w-0: the chip rail inside the form is a scroll container whose
-            intrinsic width would otherwise stretch the column past the phone. */}
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-          <div className="min-w-0 lg:col-span-5">
-            <div className="lg:sticky lg:top-24">
-              <Suspense fallback={<FormSkeleton />}>
-                <FlightSearchPanel
-                  today={today}
-                  maxDate={addDays(today, MAX_DAYS_AHEAD)}
-                  defaultDate={addDays(today, 7)}
-                />
-              </Suspense>
-            </div>
-          </div>
-          <div className="min-w-0 lg:col-span-7">
-            {/* Keyed on the query so a new search always shows the skeleton
-                rather than yesterday's fares while the next answer streams. */}
-            <Suspense key={JSON.stringify(params)} fallback={<ResultsSkeleton />}>
-              <FlightResults params={params} today={today} />
             </Suspense>
           </div>
         </div>
-      </Container>
-    </>
+        <div className="min-w-0 lg:col-span-7">
+          {/* Keyed on the query so a new search always shows the skeleton
+              rather than yesterday's fares while the next answer streams. */}
+          <Suspense key={JSON.stringify(params)} fallback={<ResultsSkeleton />}>
+            <FlightResults params={params} today={today} />
+          </Suspense>
+        </div>
+      </div>
+    </Container>
   );
 }
 

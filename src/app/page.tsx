@@ -2,8 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Viewport } from "next";
 
+import { FaqSection } from "@/components/sections/faq-section";
 import { FlightsTeaser } from "@/components/sections/flights-teaser";
+import { GoogleReviews } from "@/components/sections/google-reviews";
+import { HotelStays } from "@/components/sections/hotel-stays";
 import { HeroVideo } from "@/components/sections/hero-video";
+import { WhySmarto } from "@/components/sections/why-smarto";
 import {
   BoltIcon,
   HeadsetIcon,
@@ -11,9 +15,12 @@ import {
   PeopleIcon,
   SurgeOffIcon,
 } from "@/components/ui/line-icons";
+import { Rail } from "@/components/ui/rail";
 import { WaCta } from "@/components/ui/wa-cta";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { CLIENT_LOGOS } from "@/data/clients";
+import { GENERAL_FAQS } from "@/data/faqs";
+import { STAY_CARDS } from "@/data/hotels";
 import { FESTIVALS } from "@/data/festivals";
 import { IMAGES } from "@/data/images";
 import { GOOGLE_RATING, REVIEWS } from "@/data/reviews";
@@ -28,11 +35,8 @@ import {
   PLACES,
   POPULAR,
   SEARCH_INDEX,
-  STAY_CARDS,
 } from "./_home/data";
-import { HotelStays } from "./_home/hotel-stays";
 import { PopularRail } from "./_home/popular-rail";
-import { Rail } from "./_home/rail";
 import { ServiceDoors } from "./_home/service-doors";
 import { TrailChrome } from "./_home/trail-chrome";
 import { TrailSearch } from "./_home/trail-search";
@@ -269,11 +273,9 @@ export default function HomePage() {
               Cherrapunjee to start.
             </p>
           </div>
-          {/* The one way in to book a stay; points at WhatsApp until the
-              hotels booking page exists. */}
-          <WaCta
-            message={enquiry("I would like to book a hotel. My destination, dates and budget are:")}
-            location="b-hotels"
+          {/* The one way in to book a stay: the hotels page. */}
+          <Link
+            href="/hotels"
             className="group inline-flex min-h-[3.5rem] items-center gap-3 rounded-full bg-green-deep py-2 pr-6 pl-2 text-[0.9375rem] font-extrabold text-white shadow-[0_14px_30px_rgba(57,151,114,0.35)] transition-transform duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
           >
             <span className="grid size-10 place-items-center rounded-full bg-white/15">
@@ -285,7 +287,7 @@ export default function HomePage() {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="size-4 transition-transform duration-200 group-hover:translate-x-0.5">
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
-          </WaCta>
+          </Link>
         </div>
         <HotelStays stays={STAY_CARDS} className="mt-7" />
       </section>
@@ -537,6 +539,11 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* --- Why Smarto, what travellers say, and the questions people ask. */}
+      <WhySmarto className="pt-16 lg:pt-24" />
+      <GoogleReviews className="pt-16 lg:pt-24" />
+      <FaqSection faqs={GENERAL_FAQS} location="home-faq" className="pt-16 lg:pt-24" />
+
       {/* --- WhatsApp: an open section on the page, not another card. */}
       <section className="mx-auto max-w-7xl px-5 pt-16 sm:px-8 lg:pt-24">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1fr)_auto_auto] lg:gap-14">
@@ -762,6 +769,7 @@ function TrailFooter() {
       links: [
         { label: "Cabs & EV", href: "/cabs" },
         { label: "Flights", href: "/flights" },
+        { label: "Hotels", href: "/hotels" },
         { label: "Events", href: "/events" },
         { label: "Corporate", href: "/corporate" },
         { label: "Partners", href: "/partners" },

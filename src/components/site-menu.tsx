@@ -48,6 +48,9 @@ const LeafGlyph = glyph(
   </>,
 );
 const ArrowGlyph = glyph(<path d="M5 12h14M13 6l6 6-6 6" />);
+const BedGlyph = glyph(
+  <path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8M2 16h20M6 10V7.5A1.5 1.5 0 0 1 7.5 6h3A1.5 1.5 0 0 1 12 7.5V10" />,
+);
 const UserGlyph = glyph(
   <>
     <circle cx="12" cy="8" r="4" />
@@ -59,6 +62,7 @@ const MENU_ICON: Record<string, React.ComponentType<GlyphProps>> = {
   "/packages": SuitcaseIcon,
   "/cabs": CarIcon,
   "/flights": SendIcon,
+  "/hotels": BedGlyph,
   "/events": CalendarIcon,
   "/corporate": BuildingIcon,
   "/partners": PeopleIcon,
@@ -142,11 +146,12 @@ export function SiteMenu({
 
         <nav aria-label="Site" className="mt-4">
           <ul className="grid grid-cols-2 gap-2">
-            {NAV.map((item) => {
+            {NAV.map((item, index) => {
               const Icon = MENU_ICON[item.href] ?? ArrowGlyph;
               const current = isCurrent(item.href);
+              const lastOfOdd = NAV.length % 2 === 1 && index === NAV.length - 1;
               return (
-                <li key={item.href}>
+                <li key={item.href} className={lastOfOdd ? "col-span-2" : undefined}>
                   <Link
                     href={item.href}
                     onClick={onClose}

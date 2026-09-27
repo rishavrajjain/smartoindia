@@ -4,7 +4,7 @@ import Link from "next/link";
 import { SITE } from "@/lib/site";
 
 import { JOURNEY_COUNT, type TrailJourney } from "./data";
-import { Rail } from "./rail";
+import { Rail } from "@/components/ui/rail";
 
 /*
  * The catalog's popular packages as compact dark cards, under the service
@@ -25,18 +25,31 @@ export function PopularRail({ journeys }: { journeys: TrailJourney[] }) {
         className="mt-8 lg:mt-10"
         header={
           <div>
-            <p className="flex items-center gap-2">
-              <Image
-                src="/brand/smarto-wordmark-light.webp"
-                alt={SITE.name}
-                width={720}
-                height={160}
-                className="h-4 w-auto lg:h-[1.125rem]"
-              />
-              <span className="rounded-full bg-green px-2.5 py-0.5 text-[0.6875rem] font-extrabold tracking-[0.12em] text-clay-deep uppercase">
-                Packages
-              </span>
-            </p>
+            <div className="flex items-center justify-between gap-3">
+              <p className="flex items-center gap-2">
+                <Image
+                  src="/brand/smarto-wordmark-light.webp"
+                  alt={SITE.name}
+                  width={720}
+                  height={160}
+                  className="h-4 w-auto lg:h-[1.125rem]"
+                />
+                <span className="rounded-full bg-green px-2.5 py-0.5 text-[0.6875rem] font-extrabold tracking-[0.12em] text-clay-deep uppercase">
+                  Packages
+                </span>
+              </p>
+              {/* Phones get their own way to the full list; wider screens
+                  have "See all" and the arrows beside the heading. */}
+              <Link
+                href="/packages"
+                className="inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-full bg-white/10 pr-3 pl-4 text-[0.8125rem] font-extrabold text-bone ring-1 ring-white/20 transition-colors hover:bg-white/15 sm:hidden"
+              >
+                Explore all
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="size-4 text-green">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </Link>
+            </div>
             <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
               <h2 className="text-[1.375rem] leading-tight text-bone lg:text-[1.75rem]">
                 Popular packages, <span className="accent">where first trips start</span>
@@ -46,7 +59,7 @@ export function PopularRail({ journeys }: { journeys: TrailJourney[] }) {
                   href="/packages"
                   className="link-rule shrink-0 text-[0.8125rem] font-extrabold text-green"
                 >
-                  See all {JOURNEY_COUNT} packages
+                  Explore all
                 </Link>
               </span>
             </div>

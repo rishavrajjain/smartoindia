@@ -25,6 +25,7 @@ const HEADER_LINKS = [
   { href: "/packages", label: "Journeys" },
   { href: "/cabs", label: "Cabs" },
   { href: "/flights", label: "Flights" },
+  { href: "/hotels", label: "Hotels" },
   { href: "/festivals", label: "Festivals" },
   { href: "/corporate", label: "Corporate" },
 ] as const;
