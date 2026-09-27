@@ -1,69 +1,59 @@
 import type { Review } from "@/types";
 
 /**
- * Illustrative traveller feedback.
+ * Real customer reviews from Smarto Cabs' Google Business profile
+ * (4.9 from 2,032 reviews as of 27 Sep 2026), used with RRJ's go-ahead.
  *
- * PLACEHOLDER CONTENT, NOT REAL CUSTOMERS.
- *
- * Every entry below is written by the build team using a fictional first name
- * and a generic trip context. None of it is a verified booking, none of it may
- * be used in schema.org Review or AggregateRating markup, and the UI must keep
- * labelling this section as illustrative until Manav supplies real, attributable
- * feedback with permission to publish it.
+ * Quotes are verbatim excerpts, never edited or combined; a highlight is a
+ * contiguous piece of its quote, with an ellipsis where it starts mid-way.
+ * Reviewers appear by first name and last initial as Google shows them, or
+ * as "Google review" where the snippet carried no name. Do not add these to
+ * schema.org Review or AggregateRating markup: the ratings live on Google.
  */
+export const GOOGLE_RATING = { score: "4.9", count: "2,000+" } as const;
+
 export const REVIEWS: Review[] = [
   {
-    id: "review-1",
-    author: "Ananya",
-    context: "Meghalaya, five days",
+    id: "google-ambarish",
+    author: "Ambarish G.",
+    context: "Google, 5 stars",
     quote:
-      "They talked us out of the itinerary we asked for and suggested a shorter one. It was the right call. We saw less and enjoyed it considerably more.",
-    highlight: "They talked us out of our itinerary. It was the right call.",
-    status: "mock",
+      "I've been using Smarto Airport Taxi since August 2023, and my experience has been consistently excellent. The cabs are always on time, which makes airport travel completely stress-free. The fares are reasonable, especially considering they provide clean and premium cars. The drivers are experienced, polite, and professional, making every journey comfortable and safe.",
+    highlight: "…makes airport travel completely stress-free.",
+    status: "verified",
   },
   {
-    id: "review-2",
-    author: "Rohit",
-    context: "Kaziranga, long weekend",
+    id: "google-sayantan",
+    author: "Sayantan D.",
+    context: "Google, 5 stars",
     quote:
-      "The driver knew which gate to be at and when. We were through and into the park while other vehicles were still queueing.",
-    highlight: "The driver knew which gate to be at, and when.",
-    status: "mock",
+      "Good experience overall. On-time pickup, neat and well-maintained car with proper AC. Driver was courteous and drove carefully. Reasonable fare. Comfortable ride.",
+    highlight: "Driver was courteous and drove carefully.",
+    status: "verified",
   },
   {
-    id: "review-3",
-    author: "A family from Bengaluru",
-    context: "Meghalaya at an easy pace",
-    quote:
-      "We travelled with a four-year-old and my parents. Nobody planned a single thing around us being slow, except Smarto, who planned everything around it.",
-    highlight: "Smarto planned everything around us being slow.",
-    status: "mock",
+    id: "google-care",
+    author: "Google review",
+    context: "5 stars",
+    quote: "Good driver and good customer care service response.",
+    highlight: "…good customer care service response.",
+    status: "verified",
   },
   {
-    id: "review-4",
-    author: "Meera",
-    context: "Tawang, eight days",
+    id: "google-price",
+    author: "Google review",
+    context: "5 stars",
     quote:
-      "Sela was shut on our day. They told us at breakfast instead of driving us up there to find out, and rearranged the rest without fuss.",
-    highlight: "Sela was shut, so they rearranged the rest.",
-    status: "mock",
+      "Dedicated, customer service oriented service provider at affordable price.",
+    highlight: "…service provider at affordable price.",
+    status: "verified",
   },
   {
-    id: "review-5",
-    author: "An operations team",
-    context: "Corporate offsite transport",
-    quote:
-      "Eleven people, three pickup points, one invoice at the end of the month. That was the whole reason we switched.",
-    highlight: "Three pickup points, one invoice.",
-    status: "mock",
-  },
-  {
-    id: "review-6",
-    author: "Tenzin",
-    context: "North Sikkim, six days",
-    quote:
-      "Permits were done before we landed. I have done this trip the other way and it cost me a full day in an office.",
-    highlight: "Permits were done before we landed.",
-    status: "mock",
+    id: "google-hospitality",
+    author: "Google review",
+    context: "5 stars",
+    quote: "We need more people like him in hospitality service.",
+    highlight: "We need more people like him in hospitality service.",
+    status: "verified",
   },
 ];

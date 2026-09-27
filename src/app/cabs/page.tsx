@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/line-icons";
 import { WaCta } from "@/components/ui/wa-cta";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
-import { REVIEWS } from "@/data/reviews";
+import { GOOGLE_RATING, REVIEWS } from "@/data/reviews";
 import { pageMetadata } from "@/lib/seo";
 import { enquiry } from "@/lib/whatsapp";
 
@@ -31,8 +31,8 @@ export const metadata = pageMetadata({
  * and laid out properly for desktop: booking card beside the headline, the
  * fare lock in two columns, services and numbers in grids. His copy,
  * lightly edited. The mockup's placeholder stat cells (rides completed,
- * CO2 avoided) and placeholder reviews stay out or run as labelled
- * illustrative content until real figures arrive.
+ * CO2 avoided) stay out until real figures arrive; the reviews are real,
+ * from Smarto's Google profile (src/data/reviews.ts).
  */
 
 const CHIPS = [
@@ -335,8 +335,8 @@ export default function CabsPage() {
             ))}
           </ul>
           <p className="mt-4 text-[0.6875rem] text-taupe/70">
-            Illustrative feedback shown while we gather permission to publish
-            real reviews.
+            From Smarto&rsquo;s Google reviews: {GOOGLE_RATING.score} from{" "}
+            {GOOGLE_RATING.count} reviews.
           </p>
         </Container>
       </div>

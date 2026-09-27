@@ -28,10 +28,11 @@ export const SITE = {
   address: "F20, 1st Floor, Grand Plaza, AT Road, Paltan Bazaar, Guwahati 781008",
 } as const;
 
-/** Social accounts, as published on smartocabs.com. */
+/** Social accounts (smartocabs.com lists most; LinkedIn and YouTube per RRJ). */
 export const SOCIAL = [
   { id: "instagram", label: "Instagram", href: "https://instagram.com/smartocabs" },
   { id: "facebook", label: "Facebook", href: "https://facebook.com/smartocabs" },
+  { id: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/company/smartoindia/" },
   { id: "youtube", label: "YouTube", href: "https://www.youtube.com/@SmartoIndia" },
   { id: "x", label: "X (Twitter)", href: "https://x.com/smartocabs" },
 ] as const;

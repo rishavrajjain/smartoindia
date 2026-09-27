@@ -30,7 +30,7 @@ import { FESTIVALS } from "@/data/festivals";
 import { CLIENT_LOGOS } from "@/data/clients";
 import { JOURNEYS } from "@/data/journeys";
 import { IMAGES } from "@/data/images";
-import { REVIEWS } from "@/data/reviews";
+import { GOOGLE_RATING, REVIEWS } from "@/data/reviews";
 import { pageMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, enquiry } from "@/lib/whatsapp";
@@ -420,8 +420,8 @@ export default function ClassicHomePage() {
             ))}
           </ul>
           <p className="mt-3 px-6 text-[0.6875rem] text-taupe/70">
-            Illustrative feedback shown while we gather permission to publish
-            real reviews.
+            From Smarto&rsquo;s Google reviews: {GOOGLE_RATING.score} from{" "}
+            {GOOGLE_RATING.count} reviews.
           </p>
         </section>
 

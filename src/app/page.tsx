@@ -16,7 +16,7 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { CLIENT_LOGOS } from "@/data/clients";
 import { FESTIVALS } from "@/data/festivals";
 import { IMAGES } from "@/data/images";
-import { REVIEWS } from "@/data/reviews";
+import { GOOGLE_RATING, REVIEWS } from "@/data/reviews";
 import { pageMetadata } from "@/lib/seo";
 import { SITE, SOCIAL, type SocialId } from "@/lib/site";
 import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, enquiry } from "@/lib/whatsapp";
@@ -164,13 +164,31 @@ export default function HomePage() {
 
       {/* --- The green band: traveller feedback, drifting past. */}
       <section aria-label="Traveller feedback" className="bg-green text-clay-deep">
-        <div className="marquee-mask overflow-hidden pt-3">
+        <div className="marquee-mask overflow-hidden py-3">
           <ul
             className="flex w-max items-center motion-safe:animate-marquee hover:[animation-play-state:paused]"
             style={{ animationDuration: "90s" }}
           >
-            {[0, 1].map((copy) =>
-              REVIEWS.map((review) => (
+            {[0, 1].map((copy) => [
+              <li
+                key={`${copy}-rating`}
+                aria-hidden={copy === 1 ? true : undefined}
+                className="flex shrink-0 items-center"
+              >
+                <p className="flex h-[4.875rem] flex-col justify-center rounded-2xl bg-clay-deep px-5 text-bone shadow-[0_6px_16px_rgba(28,26,69,0.18)]">
+                  <span className="flex items-center gap-1.5 text-[1.375rem] leading-none font-extrabold">
+                    {GOOGLE_RATING.score}
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="size-4 text-green">
+                      <path d="m12 3 2.7 5.5 6 .9-4.35 4.25 1 6L12 16.8l-5.35 2.85 1-6L3.3 9.4l6-.9z" />
+                    </svg>
+                  </span>
+                  <span className="mt-1 text-[0.6875rem] whitespace-nowrap text-bone/70">
+                    {GOOGLE_RATING.count} Google reviews
+                  </span>
+                </p>
+                <BoltIcon className="mx-5 size-4 shrink-0 text-clay-deep/60" />
+              </li>,
+              ...REVIEWS.map((review) => (
                 <li
                   key={`${copy}-${review.id}`}
                   aria-hidden={copy === 1 ? true : undefined}
@@ -197,12 +215,9 @@ export default function HomePage() {
                   <BoltIcon className="mx-5 size-4 shrink-0 text-clay-deep/60" />
                 </li>
               )),
-            )}
+            ])}
           </ul>
         </div>
-        <p className="pt-1.5 pb-2 text-center text-[0.625rem] text-clay-deep/65">
-          Illustrative feedback while we gather permission to publish real reviews.
-        </p>
       </section>
 
       {/* --- Cabs: PickYourTrail's "recently booked" layout. */}
@@ -720,6 +735,8 @@ function SocialGlyph({ id, className }: { id: SocialId; className?: string }) {
   const paths: Record<Exclude<SocialId, "instagram">, string> = {
     facebook:
       "M14 8.6V6.9c0-.8.2-1.3 1.4-1.3H17V2.7c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2H8.2V12h2.6v9.4H14V12h2.6l.4-3.4z",
+    linkedin:
+      "M6.9 8.8H3.6V20h3.3zM5.25 3.6a1.9 1.9 0 1 0 0 3.8 1.9 1.9 0 0 0 0-3.8zM20.4 13.4c0-3-.7-5-4.1-5-1.6 0-2.7.9-3.2 1.7V8.8H9.9V20h3.3v-5.5c0-1.5.3-2.9 2.1-2.9s1.8 1.7 1.8 3V20h3.3z",
     youtube:
       "M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4a2.5 2.5 0 0 0-1.8 1.8A26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z",
     x: "M17.6 3h3.1l-6.8 7.8 8 10.2h-6.3l-4.9-6.4L5.1 21H2l7.3-8.3L1.6 3H8l4.4 5.8zm-1.1 16.2h1.7L7.3 4.7H5.5z",

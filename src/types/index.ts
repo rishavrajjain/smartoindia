@@ -145,9 +145,9 @@ export interface Festival {
 
 export interface Review {
   id: string;
-  /** Fictional first name or neutral label. Never a real named customer. */
+  /** Reviewer's first name and last initial as Google shows it, or "Google review". */
   author: string;
-  /** Trip context, not a verified booking record. */
+  /** Where the review is from and its rating, e.g. "Google, 5 stars". */
   context: string;
   quote: string;
   /** One-line pull quote for compact tiles, drawn from `quote`. */
