@@ -1,3 +1,4 @@
+import { STAYS, type Stay } from "@/data/hotels";
 import { JOURNEYS } from "@/data/journeys";
 import type { Journey, JourneyLength, SiteImage } from "@/types";
 
@@ -276,3 +277,19 @@ export const LENGTH_COUNTS: Record<JourneyLength, number> = {
 };
 
 export const JOURNEY_COUNT = JOURNEYS.length;
+
+/* --- Stays: the catalog's Shillong and Cherrapunjee hotels, with the
+   number of journeys each one appears on. */
+
+export interface StayCard extends Stay {
+  journeys: number;
+}
+
+export const STAY_CARDS: StayCard[] = STAYS.map((stay) => ({
+  ...stay,
+  journeys:
+    stay.kind === "named"
+      ? JOURNEYS.filter((j) => j.stay.some((line) => line.includes(stay.name)))
+          .length
+      : 0,
+}));

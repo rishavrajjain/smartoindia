@@ -95,7 +95,7 @@ export function TrailChrome({
       >
         <div className="mx-auto flex h-16 w-full max-w-7xl items-center gap-4 px-5 sm:px-8 lg:h-[4.5rem] lg:gap-8">
           <Link
-            href="/b"
+            href="/"
             aria-label={`${SITE.name} home`}
             className={cn("shrink-0", solid && "hidden sm:block")}
           >

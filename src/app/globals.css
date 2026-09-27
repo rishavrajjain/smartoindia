@@ -386,6 +386,26 @@
     }
   }
 
+  /* A boarding pass with two real notches punched at its perforation, so
+     whatever sits behind shows through. The pass's top block is exactly
+     --notch tall, which puts the holes on the dashed line. */
+  .ticket-mask {
+    --notch: 8.75rem;
+    -webkit-mask-image:
+      radial-gradient(circle 11px at 0 var(--notch), transparent 10px, #000 11px),
+      radial-gradient(circle 11px at 100% var(--notch), transparent 10px, #000 11px);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      radial-gradient(circle 11px at 0 var(--notch), transparent 10px, #000 11px),
+      radial-gradient(circle 11px at 100% var(--notch), transparent 10px, #000 11px);
+    mask-composite: intersect;
+  }
+  @media (min-width: 40rem) {
+    .ticket-mask {
+      --notch: 10rem;
+    }
+  }
+
   /* Slow zoom on a photograph while its card is hovered. */
   .zoom-slow {
     transition: transform 1.1s var(--ease-out-quiet);
