@@ -1,6 +1,6 @@
 import { STAYS, type Stay } from "@/data/hotels";
 import { JOURNEYS } from "@/data/journeys";
-import type { Journey, JourneyLength, SiteImage } from "@/types";
+import type { Journey, SiteImage } from "@/types";
 
 /*
  * Server-side shaping for the /b homepage. Client components receive these
@@ -160,55 +160,6 @@ export const SEARCH_INDEX: SearchEntry[] = [
     hay: `${j.title} ${j.subtitle} ${j.route.join(" ")} ${j.states.join(" ")} ${j.styles.join(" ")}`.toLowerCase(),
   })),
 ];
-
-/* --- Journeys by length: six tiles per tier, no photograph twice. */
-
-export const LENGTH_TIERS: { id: JourneyLength; label: string; nights: string }[] = [
-  { id: "Short escape", label: "Short escapes", nights: "2 to 3 nights" },
-  { id: "Mid-length", label: "Mid-length", nights: "4 to 6 nights" },
-  { id: "Extended", label: "Extended", nights: "7 nights or more" },
-];
-
-function pickDistinct(pool: Journey[], n: number): Journey[] {
-  const seen = new Set<string>();
-  const picked: Journey[] = [];
-  // Styled journeys first, so each tier leads with the catalog's highlights.
-  const ordered = [...pool].sort(
-    (a, b) => Number(b.styles.length > 0) - Number(a.styles.length > 0),
-  );
-  for (const j of ordered) {
-    if (seen.has(j.hero.src)) continue;
-    seen.add(j.hero.src);
-    picked.push(j);
-    if (picked.length === n) return picked;
-  }
-  for (const j of ordered) {
-    if (picked.length === n) break;
-    if (!picked.includes(j)) picked.push(j);
-  }
-  return picked;
-}
-
-export const BY_LENGTH: Record<JourneyLength, TrailJourney[]> = {
-  "Short escape": pickDistinct(
-    JOURNEYS.filter((j) => j.length === "Short escape"),
-    6,
-  ).map(toTrailJourney),
-  "Mid-length": pickDistinct(
-    JOURNEYS.filter((j) => j.length === "Mid-length"),
-    6,
-  ).map(toTrailJourney),
-  Extended: pickDistinct(
-    JOURNEYS.filter((j) => j.length === "Extended"),
-    6,
-  ).map(toTrailJourney),
-};
-
-export const LENGTH_COUNTS: Record<JourneyLength, number> = {
-  "Short escape": JOURNEYS.filter((j) => j.length === "Short escape").length,
-  "Mid-length": JOURNEYS.filter((j) => j.length === "Mid-length").length,
-  Extended: JOURNEYS.filter((j) => j.length === "Extended").length,
-};
 
 export const JOURNEY_COUNT = JOURNEYS.length;
 

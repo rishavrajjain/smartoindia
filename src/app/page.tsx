@@ -22,17 +22,13 @@ import type { Season } from "@/types";
 
 import { CabDeals } from "./_home/cab-deals";
 import {
-  BY_LENGTH,
   JOURNEY_COUNT,
-  LENGTH_COUNTS,
-  LENGTH_TIERS,
   PLACES,
   POPULAR,
   SEARCH_INDEX,
   STAY_CARDS,
 } from "./_home/data";
 import { HotelStays } from "./_home/hotel-stays";
-import { LengthBento } from "./_home/length-bento";
 import { PopularRail } from "./_home/popular-rail";
 import { Rail } from "./_home/rail";
 import { ServiceDoors } from "./_home/service-doors";
@@ -224,7 +220,7 @@ export default function HomePage() {
 
       {/* --- Hotels: the catalog's Shillong and Cherrapunjee stays, town by town. */}
       <section id="b-hotels" className="scroll-mt-24 pt-14 lg:pt-20">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-end justify-between gap-x-10 gap-y-3 px-5 sm:px-8">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-end justify-between gap-x-10 gap-y-6 px-5 sm:px-8">
           <div>
             <p className="text-label font-extrabold text-clay uppercase">Hotels</p>
             <h2 className="mt-3 text-[1.875rem] leading-[1.08] lg:text-[2.5rem]">
@@ -234,11 +230,28 @@ export default function HomePage() {
                 <Swoosh className="absolute -bottom-2.5 left-0 h-3.5 w-full text-green" />
               </span>
             </h2>
+            <p className="mt-5 max-w-md text-[0.875rem] leading-relaxed text-taupe">
+              The hotels on our Shillong and Cherrapunjee journeys, from
+              five-star to easy on the wallet. Booked with the trip, quoted all-in.
+            </p>
           </div>
-          <p className="max-w-sm text-[0.875rem] leading-relaxed text-taupe">
-            The hotels on our Shillong and Cherrapunjee journeys, from
-            five-star to easy on the wallet. Booked with the trip, quoted all-in.
-          </p>
+          {/* The one way in to book a stay; points at WhatsApp until the
+              hotels booking page exists. */}
+          <WaCta
+            message={enquiry("I would like to book a hotel. My destination, dates and budget are:")}
+            location="b-hotels"
+            className="group inline-flex min-h-[3.5rem] items-center gap-3 rounded-full bg-green-deep py-2 pr-6 pl-2 text-[0.9375rem] font-extrabold text-white shadow-[0_14px_30px_rgba(57,151,114,0.35)] transition-transform duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
+          >
+            <span className="grid size-10 place-items-center rounded-full bg-white/15">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="size-5">
+                <path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8M2 16h20M6 10V7.5A1.5 1.5 0 0 1 7.5 6h3A1.5 1.5 0 0 1 12 7.5V10" />
+              </svg>
+            </span>
+            Book hotels
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="size-4 transition-transform duration-200 group-hover:translate-x-0.5">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </WaCta>
         </div>
         <HotelStays stays={STAY_CARDS} className="mt-7" />
       </section>
@@ -381,14 +394,6 @@ export default function HomePage() {
             </li>
           ))}
         </Rail>
-      </section>
-
-      {/* --- Journeys by length: the bento. */}
-      <section className="mx-auto max-w-7xl px-5 pt-14 sm:px-8 lg:pt-20">
-        <h2 className="text-[1.75rem] leading-tight lg:text-[2.25rem]">
-          Journeys <span className="accent">by length</span>
-        </h2>
-        <LengthBento tiers={LENGTH_TIERS} journeys={BY_LENGTH} counts={LENGTH_COUNTS} />
       </section>
 
       {/* --- Festivals: dark arch cards (PickYourTrail's traveller stories). */}
