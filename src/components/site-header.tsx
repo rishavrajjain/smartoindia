@@ -3,8 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useState } from "react";
+import { useCallback, useId, useState } from "react";
 
+import { SiteMenu } from "@/components/site-menu";
 import { WhatsAppLink } from "@/components/ui/whatsapp-link";
 import { cn } from "@/lib/cn";
 import { NAV, SITE } from "@/lib/site";
@@ -15,26 +16,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const panelId = useId();
 
-  // The panel is closed from the link handlers below rather than from a route
-  // effect, which would trigger a cascading render on every navigation.
-
-  // While the panel is open: lock the page behind it and let Escape dismiss it.
-  useEffect(() => {
-    if (!open) return;
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
-    };
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [open]);
+  const closeMenu = useCallback(() => setOpen(false), []);
 
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(`${href}/`);
@@ -118,55 +100,13 @@ export function SiteHeader() {
         </button>
       </div>
 
-      {/* Mobile panel. Rendered only when open so its links stay out of the tab
-          order otherwise, without needing an inert polyfill. */}
       {open && (
-        <div
+        <SiteMenu
           id={panelId}
-          className="animate-rise border-t border-line bg-bone lg:hidden"
-        >
-          <nav aria-label="Mobile" className="px-5 py-2 sm:px-8">
-            <ul className="divide-y divide-line">
-              {NAV.map((item, index) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    aria-current={isActive(item.href) ? "page" : undefined}
-                    onClick={() => setOpen(false)}
-                    className="flex items-baseline gap-4 py-4"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="text-label font-extrabold text-taupe tabular-nums"
-                    >
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span
-                      className={cn(
-                        "font-display text-2xl",
-                        isActive(item.href) ? "text-clay italic" : "text-ink",
-                      )}
-                    >
-                      {item.label}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div className="py-5">
-              <WhatsAppLink
-                message={enquiry(
-                  "I would like to plan a trip in the Northeast.",
-                )}
-                location="header"
-                size="md"
-                fullWidth
-              >
-                Plan on WhatsApp
-              </WhatsAppLink>
-            </div>
-          </nav>
-        </div>
+          onClose={closeMenu}
+          location="header"
+          currentPath={pathname}
+        />
       )}
     </header>
   );
