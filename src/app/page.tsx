@@ -620,34 +620,67 @@ function Swoosh({ className }: { className?: string }) {
   );
 }
 
-/* An example exchange, drawn in CSS so it stays crisp and editable. */
+/* Smarto's WhatsApp greeting, drawn in CSS so it stays crisp and editable:
+   the visitor's prefilled opener, then the auto-reply with every service
+   and the button back to the site, as the real business account shows it. */
+const GREETING_SERVICES = [
+  "Airport",
+  "Rentals",
+  "Railway",
+  "City",
+  "Packages",
+  "Events",
+  "Flights",
+  "Hotels",
+];
+
 function ChatPhone() {
   return (
-    <figure className="relative mx-auto mt-10 w-[16.5rem] lg:mt-12 lg:self-end">
+    <figure className="relative mx-auto mt-10 w-[17rem] lg:mt-12 lg:self-end">
       <div className="rounded-t-[2.5rem] bg-[#0f0e2b] p-2.5 pb-0 shadow-[0_-10px_50px_rgba(0,0,0,0.35)] ring-1 ring-white/10">
         <div className="overflow-hidden rounded-t-[2rem] bg-[#ece5dd]">
           <div className="flex items-center gap-2.5 bg-clay px-4 pt-5 pb-3 text-bone">
             <span className="grid size-8 place-items-center rounded-full bg-bone">
               <Image src="/brand/smarto-cab-tigor.webp" alt="" width={360} height={141} className="h-3 w-auto" />
             </span>
-            <span className="text-[0.8125rem] font-extrabold">Smarto</span>
+            <span className="leading-tight">
+              <span className="block text-[0.8125rem] font-extrabold">Smarto</span>
+              <span className="block text-[0.625rem] text-bone/65">Business account</span>
+            </span>
           </div>
           <div className="space-y-2.5 px-3 pt-4 pb-6 text-[0.75rem] leading-snug text-[#1f1f1f]">
-            <p className="ml-auto max-w-[85%] rounded-xl rounded-tr-sm bg-[#d9fdd3] px-3 py-2 shadow-sm">
-              Hi Smarto, five days in Meghalaya with my parents in November.
-              Something gentle?
-            </p>
-            <p className="max-w-[88%] rounded-xl rounded-tl-sm bg-white px-3 py-2 shadow-sm">
-              November is a lovely window. Slow Meghalaya is five nights at an
-              easy pace. Shall I send the day by day?
-            </p>
-            <p className="ml-auto max-w-[40%] rounded-xl rounded-tr-sm bg-[#d9fdd3] px-3 py-2 text-right shadow-sm">
-              Yes please!
-            </p>
+            <div className="ml-auto max-w-[85%] rounded-xl rounded-tr-sm bg-[#d9fdd3] px-3 pt-2 pb-1.5 shadow-sm">
+              <p>Hi Smarto, I would like to plan a trip in the Northeast.</p>
+              <p className="mt-0.5 text-right text-[0.5625rem] text-[#667781]">
+                10:21 PM <span className="text-[#53bdeb]">✓✓</span>
+              </p>
+            </div>
+            <div className="max-w-[92%] overflow-hidden rounded-xl rounded-tl-sm bg-white shadow-sm">
+              <div className="px-3 pt-2 pb-1.5">
+                <p>
+                  Thank you for reaching out to Smarto: Smart People, Smart
+                  Choice.
+                </p>
+                <p className="mt-2 leading-relaxed">
+                  {GREETING_SERVICES.map((service) => `•${service}`).join(" ")}
+                </p>
+                <p className="mt-0.5 text-right text-[0.5625rem] text-[#667781]">10:22 PM</p>
+              </div>
+              <p className="flex items-center justify-center gap-1.5 border-t border-[#e9edef] py-2 text-[0.75rem] text-[#111b21]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#027eb5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="size-3.5">
+                  <path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" />
+                </svg>
+                Smarto
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <figcaption className="sr-only">An example WhatsApp conversation</figcaption>
+      <figcaption className="sr-only">
+        An example WhatsApp exchange: a visitor asks to plan a trip, and
+        Smarto&rsquo;s greeting lists airport rides, rentals, railway drops,
+        city rides, packages, events, flights and hotels.
+      </figcaption>
     </figure>
   );
 }
