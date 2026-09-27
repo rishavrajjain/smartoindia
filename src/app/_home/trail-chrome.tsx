@@ -4,6 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+import {
+  BuildingIcon,
+  CalendarIcon,
+  CarIcon,
+  PeopleIcon,
+  SendIcon,
+  SuitcaseIcon,
+} from "@/components/ui/line-icons";
 import { WaCta } from "@/components/ui/wa-cta";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { cn } from "@/lib/cn";
@@ -29,6 +37,44 @@ const HEADER_LINKS = [
 ] as const;
 
 const PLAN = enquiry("I would like to plan a trip in the Northeast.");
+
+type GlyphProps = { className?: string };
+
+function glyph(path: React.ReactNode) {
+  return function Glyph({ className }: GlyphProps) {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className={className}>
+        {path}
+      </svg>
+    );
+  };
+}
+
+const SparkGlyph = glyph(<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6" />);
+const LeafGlyph = glyph(
+  <>
+    <path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14z" />
+    <path d="M5 19 13 11" />
+  </>,
+);
+const ArrowGlyph = glyph(<path d="M5 12h14M13 6l6 6-6 6" />);
+const UserGlyph = glyph(
+  <>
+    <circle cx="12" cy="8" r="4" />
+    <path d="M4 21a8 8 0 0 1 16 0" />
+  </>,
+);
+
+const MENU_ICON: Record<string, React.ComponentType<GlyphProps>> = {
+  "/packages": SuitcaseIcon,
+  "/cabs": CarIcon,
+  "/flights": SendIcon,
+  "/events": CalendarIcon,
+  "/corporate": BuildingIcon,
+  "/partners": PeopleIcon,
+  "/festivals": SparkGlyph,
+  "/impact": LeafGlyph,
+};
 
 export function TrailChrome({
   index,
@@ -177,17 +223,23 @@ export function TrailChrome({
       </header>
 
       {menu && (
-        <div
-          id="trail-menu"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Menu"
-          className="fixed inset-0 z-[60] overflow-y-auto bg-clay-deep text-bone motion-safe:animate-rise"
-        >
-          <div className="mx-auto flex min-h-full w-full max-w-7xl flex-col px-5 pt-4 pb-10 sm:px-8">
-            <div className="flex h-12 items-center justify-between">
+        <>
+          <div
+            aria-hidden="true"
+            onClick={() => setMenu(false)}
+            className="fixed inset-0 z-[60] bg-clay-deep/45 backdrop-blur-sm motion-safe:animate-fade-in"
+          />
+          <div
+            id="trail-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu"
+            className="fixed inset-x-3 top-3 z-[61] max-h-[calc(100svh-1.5rem)] overflow-y-auto rounded-[1.75rem] bg-bone p-4 text-ink shadow-[0_30px_80px_rgba(10,9,30,0.45)] motion-safe:animate-rise sm:inset-x-auto sm:right-6 sm:w-[34rem] sm:p-5 lg:top-4"
+          >
+            <span aria-hidden="true" className="spark-fill absolute inset-x-8 top-0 h-1 rounded-b-full" />
+            <div className="flex items-center justify-between pl-1">
               <Image
-                src="/brand/smarto-wordmark-light.webp"
+                src="/brand/smarto-wordmark.webp"
                 alt={SITE.name}
                 width={720}
                 height={160}
@@ -197,7 +249,7 @@ export function TrailChrome({
                 ref={closeRef}
                 type="button"
                 onClick={() => setMenu(false)}
-                className="grid size-11 place-items-center rounded-full ring-1 ring-white/25 hover:bg-white/10"
+                className="grid size-11 place-items-center rounded-full bg-sand text-ink transition-colors hover:bg-ink hover:text-bone"
               >
                 <span className="sr-only">Close menu</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true" className="size-5">
@@ -205,45 +257,56 @@ export function TrailChrome({
                 </svg>
               </button>
             </div>
-            <nav aria-label="Site" className="mt-8">
-              <ul className="grid gap-x-10 sm:grid-cols-2">
-                {NAV.map((item) => (
-                  <li key={item.href} className="border-b border-white/10">
-                    <Link
-                      href={item.href}
-                      onClick={() => setMenu(false)}
-                      className="group flex flex-col py-4"
-                    >
-                      <span className="text-[1.5rem] font-extrabold transition-colors group-hover:text-green">
-                        {item.label}
-                      </span>
-                      <span className="mt-0.5 text-[0.8125rem] text-bone/60">
-                        {item.blurb}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
+
+            <nav aria-label="Site" className="mt-4">
+              <ul className="grid grid-cols-2 gap-2">
+                {NAV.map((item) => {
+                  const Icon = MENU_ICON[item.href] ?? ArrowGlyph;
+                  return (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        onClick={() => setMenu(false)}
+                        className="group flex h-full items-start gap-2.5 rounded-2xl bg-sand p-3 transition-colors duration-200 hover:bg-clay-soft hover:ring-1 hover:ring-line-strong"
+                      >
+                        <span className="grid size-9 shrink-0 place-items-center rounded-full bg-bone text-ink transition-colors duration-200 group-hover:bg-green-deep group-hover:text-white">
+                          <Icon className="size-[1.125rem]" />
+                        </span>
+                        <span className="min-w-0 pt-0.5">
+                          <span className="block text-[0.875rem] leading-tight font-extrabold sm:text-[0.9375rem]">
+                            {item.label}
+                          </span>
+                          <span className="mt-0.5 block text-[0.6875rem] leading-snug text-taupe sm:text-[0.75rem]">
+                            {item.short}
+                          </span>
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </nav>
-            <div className="mt-10 flex flex-wrap items-center gap-3">
+
+            <div className="mt-3 grid grid-cols-2 gap-2">
               <WaCta
                 message={PLAN}
                 location="b-header"
-                className="inline-flex min-h-[3.25rem] items-center justify-center gap-2.5 rounded-full bg-green-deep px-7 text-[0.9375rem] font-extrabold text-white"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-green-deep px-3 text-[0.875rem] font-extrabold text-white"
               >
                 <WhatsAppIcon />
-                Plan on WhatsApp
+                Plan a trip
               </WaCta>
               <Link
                 href="/login"
                 onClick={() => setMenu(false)}
-                className="inline-flex min-h-[3.25rem] items-center rounded-full px-6 text-[0.9375rem] font-extrabold text-bone ring-1 ring-white/30 hover:bg-white/10"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl text-[0.875rem] font-extrabold text-ink ring-1 ring-line-strong transition-colors hover:bg-sand"
               >
+                <UserGlyph className="size-[1.125rem]" />
                 Log in
               </Link>
             </div>
           </div>
-        </div>
+        </>
       )}
 
       {/* Mounted only once the hero is gone, so it never sits in the tab

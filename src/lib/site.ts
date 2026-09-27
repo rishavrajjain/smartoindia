@@ -43,48 +43,58 @@ export interface NavItem {
   label: string;
   /** Short description used in the footer and the mobile menu. */
   blurb: string;
+  /** Three or four words for compact menu tiles. */
+  short: string;
 }
 
 export const NAV: NavItem[] = [
   {
     href: "/packages",
     label: "Packages",
-    blurb: "Planned routes across the Northeast, shaped around your pace.",
+    blurb: "Domestic and international trips, planned around your pace.",
+    short: "Domestic & international",
   },
   {
     href: "/cabs",
     label: "Cabs & EV",
     blurb: "Airport runs, local hires, outstation trips, and electric vehicles.",
+    short: "Flat fares, no surge",
   },
   {
     href: "/flights",
     label: "Flights",
-    blurb: "Search fares into and out of the Northeast, then book on WhatsApp.",
+    blurb: "Search fares across India, then book on WhatsApp.",
+    short: "Fares across India",
   },
   {
     href: "/events",
     label: "Events",
     blurb: "Weddings, conferences and corporate events, moved end to end.",
+    short: "Weddings & conferences",
   },
   {
     href: "/corporate",
     label: "Corporate",
     blurb: "Employee transport, offsites, and reliable group movement.",
+    short: "Teams & offsites",
   },
   {
     href: "/partners",
     label: "Partners",
     blurb: "For agents and hotels: book for your guests, earn on every ride.",
+    short: "Agents & hotels earn",
   },
   {
     href: "/festivals",
     label: "Festivals",
     blurb: "What happens when, and how to plan a trip around it.",
+    short: "Plan by the calendar",
   },
   {
     href: "/impact",
     label: "Impact",
     blurb: "How we try to keep our footprint small and the money local.",
+    short: "Our footprint, kept small",
   },
 ];
 

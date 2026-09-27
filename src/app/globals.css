@@ -73,6 +73,16 @@
   --animate-plane-hop: plane-hop 1.1s var(--ease-out-quiet) infinite;
   --animate-plane-taxi: plane-taxi 7s var(--ease-out-quiet) infinite;
   --animate-drift: drift 48s linear infinite;
+  --animate-fade-in: fade-in 200ms ease-out both;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
   --animate-drift-reverse: drift-reverse 48s linear infinite;
 
   /* The sign-in page's photo columns, drifting past each other. */

@@ -522,20 +522,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* --- The WhatsApp banner (PickYourTrail's app download). */}
-      <section className="mx-auto max-w-7xl px-5 pt-14 sm:px-8 lg:pt-20">
-        <div className="relative isolate overflow-hidden rounded-[2rem] bg-clay-deep px-6 pt-10 text-bone sm:px-10 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_auto] lg:items-center lg:gap-12 lg:px-14 lg:pt-0">
-          <div aria-hidden="true" className="spark-glow absolute -top-24 -left-20 -z-10 size-80" />
-          <div aria-hidden="true" className="absolute -right-24 -bottom-32 -z-10 size-96 rounded-full bg-green/15 blur-3xl" />
-          <div className="lg:py-14">
-            <p className="inline-flex rounded-full bg-white/10 px-3.5 py-1.5 text-[0.75rem] font-extrabold text-green ring-1 ring-white/15">
+      {/* --- WhatsApp: an open section on the page, not another card. */}
+      <section className="mx-auto max-w-7xl px-5 pt-16 sm:px-8 lg:pt-24">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1fr)_auto_auto] lg:gap-14">
+          <div>
+            <p className="inline-flex items-center gap-2 rounded-full bg-green/15 px-3.5 py-1.5 text-[0.75rem] font-extrabold text-green-deep">
+              <WhatsAppIcon className="size-3.5" />
               No app to download
             </p>
-            <h2 className="mt-4 max-w-md text-[1.875rem] leading-[1.08] lg:text-[2.5rem]">
+            <h2 className="mt-4 max-w-xl text-[1.875rem] leading-[1.08] text-ink lg:text-[2.5rem]">
               Your best way to plan a trip?{" "}
-              <span className="accent">One WhatsApp message.</span>
+              <span className="accent block">One WhatsApp message.</span>
             </h2>
-            <p className="mt-4 max-w-md text-[0.9375rem] leading-relaxed text-bone/70">
+            <p className="mt-5 max-w-md text-[0.9375rem] leading-relaxed text-taupe">
               Tell us who&rsquo;s coming, when, and how you like to travel. We
               come back with a plan you can say yes to.
             </p>
@@ -543,24 +542,29 @@ export default function HomePage() {
               <WaCta
                 message={PLAN}
                 location="b-whatsapp-banner"
-                className="inline-flex min-h-[3.25rem] items-center gap-2.5 rounded-full bg-green-deep px-7 text-[0.9375rem] font-extrabold text-white transition-transform duration-150 active:scale-[0.98]"
+                className="inline-flex min-h-[3.25rem] items-center gap-2.5 rounded-full bg-green-deep px-7 text-[0.9375rem] font-extrabold text-white shadow-[0_14px_30px_rgba(57,151,114,0.3)] transition-transform duration-150 active:scale-[0.98]"
               >
                 <WhatsAppIcon />
                 Start on WhatsApp
               </WaCta>
-              <a href={`tel:+${WHATSAPP_NUMBER}`} className="text-[0.875rem] text-bone/75 hover:text-bone">
+              <a href={`tel:+${WHATSAPP_NUMBER}`} className="text-[0.875rem] text-taupe hover:text-ink">
                 or call {WHATSAPP_DISPLAY}
               </a>
             </div>
           </div>
 
-          <ChatPhone />
+          {/* The phone stands on a soft backdrop instead of inside a card. */}
+          <div className="relative isolate mx-auto">
+            <div aria-hidden="true" className="absolute top-1/2 left-1/2 -z-10 size-[19rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sand sm:size-[22rem]" />
+            <div aria-hidden="true" className="absolute -top-2 -right-6 -z-10 size-28 rounded-full bg-green/25 blur-2xl" />
+            <ChatPhone />
+          </div>
 
           <figure className="hidden flex-col items-center gap-3 lg:flex">
-            <span className="rounded-2xl bg-bone p-3 shadow-[0_18px_40px_rgba(0,0,0,0.3)]">
+            <span className="rounded-2xl bg-bone p-3 shadow-[0_18px_40px_rgba(40,37,96,0.12)] ring-1 ring-line">
               <Image src="/images/b-whatsapp-qr.svg" alt="QR code that opens a WhatsApp chat with Smarto" width={132} height={132} unoptimized />
             </span>
-            <figcaption className="text-[0.75rem] text-bone/65">Scan to chat</figcaption>
+            <figcaption className="text-[0.75rem] text-taupe">Scan to chat</figcaption>
           </figure>
         </div>
       </section>
@@ -653,9 +657,9 @@ const GREETING_SERVICES = [
 
 function ChatPhone() {
   return (
-    <figure className="relative mx-auto mt-10 w-[17rem] lg:mt-12 lg:self-end">
-      <div className="rounded-t-[2.5rem] bg-[#0f0e2b] p-2.5 pb-0 shadow-[0_-10px_50px_rgba(0,0,0,0.35)] ring-1 ring-white/10">
-        <div className="overflow-hidden rounded-t-[2rem] bg-[#ece5dd]">
+    <figure className="relative mx-auto w-[17rem]">
+      <div className="rounded-[2.5rem] bg-[#0f0e2b] p-2.5 shadow-[0_28px_60px_rgba(28,26,69,0.35)] ring-1 ring-white/10">
+        <div className="overflow-hidden rounded-[2rem] bg-[#ece5dd]">
           <div className="flex items-center gap-2.5 bg-clay px-4 pt-5 pb-3 text-bone">
             <span className="grid size-8 place-items-center rounded-full bg-bone">
               <Image src="/brand/smarto-cab-tigor.webp" alt="" width={360} height={141} className="h-3 w-auto" />
@@ -807,10 +811,11 @@ function TrailFooter() {
           <div>
             <Image src="/brand/smarto-wordmark-light.webp" alt={SITE.name} width={720} height={160} className="h-7 w-auto" />
             <p className="mt-5 max-w-md text-[0.875rem] leading-relaxed text-bone/65">
-              Smarto is a Guwahati travel and mobility company. We run electric
-              cabs on flat fares across the city and {JOURNEY_COUNT} planned
-              road journeys through Assam, Meghalaya and Arunachal Pradesh, all
-              arranged on WhatsApp. No surge pricing, zero cancellation.
+              Smarto is a Guwahati travel company that plans the whole trip:
+              electric cabs on flat fares, flights across India, hand-picked
+              hotels, and domestic and international packages, plus transport
+              for companies, weddings and events. One WhatsApp chat, a team on
+              call 24&times;7, and every price quoted all-in.
             </p>
             <dl className="mt-6 space-y-3 text-[0.8125rem]">
               <div>
