@@ -28,13 +28,15 @@ const TABS = [
 export function PackagesSwitch({
   active,
   northeastCount,
+  internationalCount,
 }: {
   active: (typeof TABS)[number]["id"];
   northeastCount: number;
+  internationalCount: number;
 }) {
   const sub = {
     northeast: `${northeastCount} planned journeys`,
-    international: "Planned on request",
+    international: `${internationalCount} destinations`,
   } as const;
 
   return (

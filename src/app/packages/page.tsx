@@ -4,6 +4,7 @@ import { JourneyBrowser } from "@/components/sections/journey-browser";
 import { PackagesSwitch } from "@/components/sections/packages-switch";
 import { Container } from "@/components/ui/container";
 import { WhatsAppLink } from "@/components/ui/whatsapp-link";
+import { INTL_TRIPS } from "@/data/international-trips";
 import { JOURNEYS } from "@/data/journeys";
 import { pageMetadata } from "@/lib/seo";
 import { enquiry } from "@/lib/whatsapp";
@@ -20,7 +21,7 @@ export default function PackagesPage() {
     <>
       {/* --- Northeast or international, then the catalog's own cover line. */}
       <Container width="wide" className="pt-6 lg:pt-10">
-        <PackagesSwitch active="northeast" northeastCount={JOURNEYS.length} />
+        <PackagesSwitch active="northeast" northeastCount={JOURNEYS.length} internationalCount={INTL_TRIPS.length} />
       </Container>
       <Container width="wide" className="pt-10 lg:pt-16">
         <p className="text-label font-extrabold text-clay uppercase">

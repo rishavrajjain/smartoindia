@@ -1,26 +1,28 @@
-import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 
 import { PackagesSwitch } from "@/components/sections/packages-switch";
 import { Container } from "@/components/ui/container";
 import { WaCta } from "@/components/ui/wa-cta";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
-import { INTL_REGIONS } from "@/data/international";
+import { INTL_TRIPS } from "@/data/international-trips";
 import { JOURNEYS } from "@/data/journeys";
 import { pageMetadata } from "@/lib/seo";
 import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, enquiry } from "@/lib/whatsapp";
 
+import { IntlCatalog } from "./intl-catalog";
+
 export const metadata = pageMetadata({
   title: "International trips, planned the Smarto way",
   description:
-    "Bhutan and Nepal, Southeast Asia, Dubai, Europe and beyond: tell Smarto where and when, and get one plan and one all-in quote on WhatsApp.",
+    "Thailand, Bali, Dubai, Europe, Japan, the Maldives and more: sample itineraries that never double back, tailored and quoted all-in on WhatsApp.",
   path: "/packages/international",
 });
 
 /*
- * The international half of Smarto's packages. There is no printed
- * international catalog yet, so this page is built around enquiry: pick a
- * region (or name any place) and the conversation starts on WhatsApp.
+ * The international half of Smarto's packages: a catalog of sample
+ * itineraries (src/data/international-trips.ts), each tailored and quoted
+ * on WhatsApp, plus a door for anywhere not listed.
  */
 
 const STEPS = [
@@ -33,20 +35,21 @@ export default function InternationalPackagesPage() {
   return (
     <>
       <Container width="wide" className="pt-6 lg:pt-10">
-        <PackagesSwitch active="international" northeastCount={JOURNEYS.length} />
+        <PackagesSwitch active="international" northeastCount={JOURNEYS.length} internationalCount={INTL_TRIPS.length} />
       </Container>
 
       {/* --- Hero. */}
       <Container width="wide" className="pt-10 lg:pt-16">
         <p className="text-label font-extrabold text-clay uppercase">
-          International · Planned on request
+          {INTL_TRIPS.length} destinations · Planned around you
         </p>
         <h1 className="mt-5 max-w-3xl text-[2.5rem] leading-[1.04] sm:text-[3.25rem] lg:text-[4rem]">
           The world, <span className="accent">planned the Smarto way.</span>
         </h1>
         <p className="mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-taupe">
-          Tell us where and when. We plan the route, the stays and the days in
-          between, and send one all-in quote on WhatsApp.
+          Sample itineraries that go one way, never back on themselves. Pick
+          one, tell us your dates, and we tailor it and quote all-in on
+          WhatsApp.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
           <WaCta
@@ -63,78 +66,37 @@ export default function InternationalPackagesPage() {
         </div>
       </Container>
 
-      {/* --- Regions. */}
+      {/* --- The catalog. */}
       <Container width="wide" className="pt-14 lg:pt-20">
         <h2 className="text-[1.75rem] leading-tight lg:text-[2.25rem]">
-          Pick a region <span className="accent">to start</span>
+          Pick a destination <span className="accent">to start</span>
         </h2>
-        <ul className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-          {INTL_REGIONS.map((region) => (
-            <li key={region.id}>
-              <article className="group relative isolate flex h-full min-h-[22rem] flex-col justify-end overflow-hidden rounded-[1.75rem] bg-clay-deep text-bone">
-                <Image
-                  src={region.image}
-                  alt={region.alt}
-                  fill
-                  sizes="(min-width: 1024px) 26rem, (min-width: 640px) 50vw, 100vw"
-                  className="-z-10 object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.05]"
-                />
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-[rgba(28,26,69,0.35)] via-40% to-[rgba(28,26,69,0.95)]"
-                />
-                <div className="p-5">
-                  <h3 className="text-[1.625rem] leading-tight font-extrabold">{region.name}</h3>
-                  <p className="mt-1 text-[0.8125rem] text-bone/80">{region.line}</p>
-                  <ul className="mt-3 flex flex-wrap gap-1.5">
-                    {region.places.map((place) => (
-                      <li
-                        key={place}
-                        className="rounded-full bg-white/12 px-2.5 py-1 text-[0.6875rem] font-extrabold text-bone ring-1 ring-white/20 backdrop-blur-sm"
-                      >
-                        {place}
-                      </li>
-                    ))}
-                  </ul>
+        <div className="mt-6">
+          <Suspense fallback={<div aria-hidden="true" className="h-[40rem] rounded-[1.75rem] bg-sand" />}>
+            <IntlCatalog>
+              <li className="sm:col-span-2 lg:col-span-2">
+                <article className="flex h-full min-h-[14rem] flex-col justify-center rounded-[1.75rem] border-2 border-dashed border-line-strong bg-sand p-6 sm:p-8">
+                  <p className="text-label font-extrabold text-clay uppercase">Anywhere else</p>
+                  <h3 className="mt-3 max-w-md text-[1.625rem] leading-tight">
+                    Somewhere <span className="accent">not on this list?</span>
+                  </h3>
+                  <p className="mt-2 max-w-md text-[0.875rem] leading-relaxed text-taupe">
+                    Name the place. If it is on the map, we will plan it.
+                  </p>
                   <WaCta
-                    message={enquiry(`I would like to plan a trip to ${region.name}. My dates and number of travellers are:`)}
+                    message={enquiry("I would like to plan an international trip to a place not listed. The destination and dates are:")}
                     location="packages-international"
-                    subject={region.id}
-                    className="mt-4 flex min-h-12 items-center justify-between gap-3 rounded-2xl bg-bone py-2 pr-2 pl-4 text-ink transition-transform duration-200 hover:-translate-y-0.5"
+                    subject="anywhere"
+                    className="mt-5 inline-flex min-h-12 items-center gap-2.5 self-start rounded-full bg-ink px-6 text-[0.875rem] font-extrabold text-bone transition-colors hover:bg-clay-deep"
                   >
-                    <span className="text-[0.875rem] font-extrabold">Plan this trip</span>
-                    <span aria-hidden="true" className="grid size-8 place-items-center rounded-xl bg-green-deep text-white">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" className="size-4">
-                        <path d="M5 12h14M13 6l6 6-6 6" />
-                      </svg>
-                    </span>
-                    <span className="sr-only"> to {region.name}</span>
+                    <WhatsAppIcon />
+                    Tell us where
                   </WaCta>
-                </div>
-              </article>
-            </li>
-          ))}
-          <li className="sm:col-span-2 lg:col-span-2">
-            <article className="flex h-full min-h-[14rem] flex-col justify-center rounded-[1.75rem] border-2 border-dashed border-line-strong bg-sand p-6 sm:p-8">
-              <p className="text-label font-extrabold text-clay uppercase">Anywhere else</p>
-              <h3 className="mt-3 max-w-md text-[1.625rem] leading-tight">
-                Somewhere <span className="accent">not on this list?</span>
-              </h3>
-              <p className="mt-2 max-w-md text-[0.875rem] leading-relaxed text-taupe">
-                Name the place. If it is on the map, we will plan it.
-              </p>
-              <WaCta
-                message={enquiry("I would like to plan an international trip to a place not listed. The destination and dates are:")}
-                location="packages-international"
-                subject="anywhere"
-                className="mt-5 inline-flex min-h-12 items-center gap-2.5 self-start rounded-full bg-ink px-6 text-[0.875rem] font-extrabold text-bone transition-colors hover:bg-clay-deep"
-              >
-                <WhatsAppIcon />
-                Tell us where
-              </WaCta>
-            </article>
-          </li>
-        </ul>
+                </article>
+              </li>
+            </IntlCatalog>
+          </Suspense>
+        </div>
       </Container>
 
       {/* --- How it works. */}
