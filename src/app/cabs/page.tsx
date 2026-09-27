@@ -50,6 +50,7 @@ const SERVICES = [
     },
     title: "City rides",
     fare: null,
+    unit: null,
     body: "Anywhere in town. Rain or rush, one price.",
     message: enquiry("I need a cab in Guwahati and would like the flat fare."),
   },
@@ -60,6 +61,7 @@ const SERVICES = [
     },
     title: "Railway station drops",
     fare: "₹399",
+    unit: null,
     body: "Early train, late train, same ₹399.",
     message: enquiry("I need a railway station drop."),
   },
@@ -70,6 +72,7 @@ const SERVICES = [
     },
     title: "Airport rides",
     fare: null,
+    unit: null,
     body: "A 4 AM flight, priced like noon.",
     message: enquiry("I need an airport ride."),
   },
@@ -79,7 +82,8 @@ const SERVICES = [
       alt: "A Smarto electric cab parked at a tea-garden viewpoint in Assam",
     },
     title: "Hourly rentals",
-    fare: null,
+    fare: "₹349",
+    unit: "/hr",
     body: "Car and driver, on your clock.",
     message: enquiry("I would like an hourly cab rental."),
   },
@@ -194,7 +198,7 @@ export default function CabsPage() {
                   />
                   {service.fare && (
                     <span className="absolute top-3 left-3 rounded-full bg-green-deep px-3 py-1.5 text-[0.6875rem] font-extrabold tracking-[0.1em] text-white uppercase">
-                      Flat {service.fare}
+                      {service.unit ? `From ${service.fare}${service.unit}` : `Flat ${service.fare}`}
                     </span>
                   )}
                 </span>

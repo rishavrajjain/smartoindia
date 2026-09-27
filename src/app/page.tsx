@@ -231,8 +231,9 @@ export default function HomePage() {
               </span>
             </h2>
             <p className="mt-5 max-w-md text-[0.875rem] leading-relaxed text-taupe">
-              The hotels on our Shillong and Cherrapunjee journeys, from
-              five-star to easy on the wallet. Booked with the trip, quoted all-in.
+              Hand-picked stays wherever you are headed, from five-star to
+              easy on the wallet. A few favourites from Shillong and
+              Cherrapunjee to start.
             </p>
           </div>
           {/* The one way in to book a stay; points at WhatsApp until the

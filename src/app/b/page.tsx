@@ -126,7 +126,8 @@ const SERVICES = [
   {
     name: "Hourly rental",
     line: "A car and driver on your clock.",
-    fare: null,
+    fare: "₹349",
+    unit: "per hour",
     icon: "/icons/ic-clock.webp",
     message: enquiry("I would like an hourly cab rental."),
   },

@@ -11,6 +11,8 @@ export interface OrbitService {
   name: string;
   line: string;
   fare: string | null;
+  /** Replaces "all-in" for metered fares, e.g. "per hour". */
+  unit?: string;
   icon: string;
   message: string;
 }
@@ -324,7 +326,7 @@ export function CabOrbit({ services }: { services: readonly OrbitService[] }) {
                     {service.fare.replace("₹", "")}
                   </span>
                   <span className="text-[0.625rem] font-extrabold tracking-[0.2em] text-green-deep uppercase">
-                    all-in
+                    {service.unit ?? "all-in"}
                   </span>
                 </p>
               ) : (
@@ -369,7 +371,9 @@ export function CabOrbit({ services }: { services: readonly OrbitService[] }) {
         {services.map((service) => (
           <li key={service.name}>
             {service.name}: {service.line}
-            {service.fare ? ` From ${service.fare}.` : " Fixed quote on WhatsApp."}
+            {service.fare
+              ? ` From ${service.fare}${service.unit ? ` ${service.unit}` : ""}.`
+              : " Fixed quote on WhatsApp."}
           </li>
         ))}
       </ul>

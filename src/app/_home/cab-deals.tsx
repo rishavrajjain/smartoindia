@@ -27,6 +27,8 @@ interface Deal {
   line: string;
   image: string;
   fare: string | null;
+  /** Replaces "all-in" for metered fares, e.g. "per hour". */
+  unit?: string;
   /** WhatsApp message for rides; a page link for the business services. */
   message?: string;
   href?: "/corporate" | "/events";
@@ -80,7 +82,8 @@ const DEALS: Deal[] = [
     title: "Hourly rental",
     line: "A car and driver for as long as you need.",
     image: "/images/fleet-cabs-hourly.webp",
-    fare: null,
+    fare: "₹349",
+    unit: "per hour",
     message: enquiry("I would like an hourly cab rental."),
   },
   {
@@ -182,7 +185,7 @@ export function CabDeals({ className }: { className?: string }) {
                     <span className="text-[1.375rem] font-extrabold text-green-deep tabular-nums">
                       {deal.fare}
                     </span>
-                    <span className="ml-1 text-[0.6875rem] text-taupe">all-in</span>
+                    <span className="ml-1 text-[0.6875rem] text-taupe">{deal.unit ?? "all-in"}</span>
                   </p>
                 ) : (
                   <p className="text-[0.8125rem] leading-tight text-taupe">
