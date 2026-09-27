@@ -4,6 +4,7 @@ import Link from "next/link";
 import { EventBrief } from "@/components/sections/event-brief";
 import { EventPlan } from "@/components/sections/event-plan";
 import { PhotoHero } from "@/components/sections/photo-hero";
+import { TrustAndFaqs } from "@/components/sections/trust-and-faqs";
 import { FactTiles } from "@/components/ui/fact-tiles";
 import { MarqueeBand } from "@/components/ui/marquee-band";
 import { Container } from "@/components/ui/container";
@@ -170,7 +171,7 @@ const FAQ = [
   },
   {
     q: "Do you arrange the hotel rooms too?",
-    a: "Yes, as part of the event. We do not sell rooms on their own; they are arranged inside a complete event, which is how we can hold the price and the timing together.",
+    a: "Yes. We book your guests' rooms alongside their transport, which is how we hold the price and the timing together.",
   },
   {
     q: "Do you cover events outside Guwahati?",
@@ -397,40 +398,6 @@ export default function EventsPage() {
         </Container>
       </div>
 
-      {/* ——— The practical questions. */}
-      <Container width="narrow" className="pt-16 lg:pt-20">
-        <p className="text-label font-extrabold text-clay uppercase">
-          What planners ask first
-        </p>
-        <h2 className="mt-4 text-[1.8125rem] leading-[1.09] sm:text-[2.25rem]">
-          The practical <span className="accent">questions.</span>
-        </h2>
-        <div className="mt-6">
-          {FAQ.map((item) => (
-            <details key={item.q} className="group border-b border-line">
-              <summary className="flex min-h-11 cursor-pointer list-none items-start justify-between gap-4 py-4 text-[0.9375rem] font-extrabold [&::-webkit-details-marker]:hidden">
-                {item.q}
-                <span
-                  aria-hidden="true"
-                  className="text-[1.25rem] leading-none font-extrabold text-green-deep group-open:hidden"
-                >
-                  +
-                </span>
-                <span
-                  aria-hidden="true"
-                  className="hidden text-[1.25rem] leading-none font-extrabold text-green-deep group-open:inline"
-                >
-                  &ndash;
-                </span>
-              </summary>
-              <p className="pb-5 text-[0.875rem] leading-relaxed text-taupe">
-                {item.a}
-              </p>
-            </details>
-          ))}
-        </div>
-      </Container>
-
       {/* ——— Enquiry: the phone first, the brief second. */}
       <div id="brief" className="mt-16 scroll-mt-20 bg-ink py-14 text-bone lg:mt-20">
         <Container width="narrow" className="text-center">
@@ -474,6 +441,9 @@ export default function EventsPage() {
           </a>
         </Container>
       </div>
+
+      {/* --- Why Smarto, the Google reviews, and this page's questions. */}
+      <TrustAndFaqs faqs={FAQ} location="events-faq" className="pt-16 lg:pt-24" />
 
       {/* ——— The corporate cross-link, straight from the mockup. */}
       <div className="bg-sand px-5 py-9 text-center">

@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { FestivalExplorer } from "@/components/sections/festival-explorer";
+import { TrustAndFaqs } from "@/components/sections/trust-and-faqs";
 import { Container } from "@/components/ui/container";
 import { Label } from "@/components/ui/deco";
 import { PageHero } from "@/components/ui/page-hero";
@@ -8,6 +9,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { WhatsAppLink } from "@/components/ui/whatsapp-link";
 import { FESTIVALS } from "@/data/festivals";
 import { IMAGES } from "@/data/images";
+import { FESTIVAL_FAQS } from "@/data/faqs";
 import { pageMetadata } from "@/lib/seo";
 import { enquiry } from "@/lib/whatsapp";
 
@@ -148,6 +150,9 @@ export default function FestivalsPage() {
           </div>
         </Container>
       </section>
+
+      {/* --- Why Smarto, the Google reviews, and this page's questions. */}
+      <TrustAndFaqs faqs={FESTIVAL_FAQS} location="festivals-faq" className="pt-20 lg:pt-28" />
 
       <Container width="wide" className="pt-20 lg:pt-28">
         <div className="border-t border-line bg-sand px-6 py-16 text-center sm:px-12 lg:py-20">

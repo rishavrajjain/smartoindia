@@ -6,6 +6,7 @@ import { PhotoHero } from "@/components/sections/photo-hero";
 import { FactTiles } from "@/components/ui/fact-tiles";
 import { MarqueeBand } from "@/components/ui/marquee-band";
 import { RateCardForm } from "@/components/sections/rate-card-form";
+import { TrustAndFaqs } from "@/components/sections/trust-and-faqs";
 import { Container } from "@/components/ui/container";
 import {
   ArrowIcon,
@@ -328,41 +329,6 @@ export default function CorporatePage() {
         </Container>
       </div>
 
-      {/* ——— The procurement questions. */}
-      <Container width="narrow" className="pt-16 lg:pt-20">
-        <p className="text-label font-extrabold text-clay uppercase">
-          Before you ask
-        </p>
-        <h2 className="mt-4 text-[1.8125rem] leading-[1.09] sm:text-[2.25rem]">
-          The questions{" "}
-          <span className="accent">procurement always sends.</span>
-        </h2>
-        <div className="mt-6">
-          {FAQ.map((item) => (
-            <details key={item.q} className="group border-b border-line">
-              <summary className="flex min-h-11 cursor-pointer list-none items-start justify-between gap-4 py-4 text-[0.9375rem] font-extrabold [&::-webkit-details-marker]:hidden">
-                {item.q}
-                <span
-                  aria-hidden="true"
-                  className="text-[1.25rem] leading-none font-extrabold text-green-deep group-open:hidden"
-                >
-                  +
-                </span>
-                <span
-                  aria-hidden="true"
-                  className="hidden text-[1.25rem] leading-none font-extrabold text-green-deep group-open:inline"
-                >
-                  &ndash;
-                </span>
-              </summary>
-              <p className="pb-5 text-[0.875rem] leading-relaxed text-taupe">
-                {item.a}
-              </p>
-            </details>
-          ))}
-        </div>
-      </Container>
-
       {/* ——— Start here: the rate card. */}
       <div
         id="rate-card"
@@ -383,6 +349,9 @@ export default function CorporatePage() {
           <RateCardForm />
         </Container>
       </div>
+
+      {/* --- Why Smarto, the Google reviews, and this page's questions. */}
+      <TrustAndFaqs faqs={FAQ} location="corporate-faq" className="pt-16 lg:pt-24" />
 
       {/* ——— The other doors: events (one-off) and partners (booking for guests). */}
       <div className="grid gap-px bg-line sm:grid-cols-2">

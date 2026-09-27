@@ -2,12 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Viewport } from "next";
 
-import { FaqSection } from "@/components/sections/faq-section";
 import { FlightsTeaser } from "@/components/sections/flights-teaser";
-import { GoogleReviews } from "@/components/sections/google-reviews";
 import { HotelStays } from "@/components/sections/hotel-stays";
 import { HeroVideo } from "@/components/sections/hero-video";
-import { WhySmarto } from "@/components/sections/why-smarto";
+import { TrustAndFaqs } from "@/components/sections/trust-and-faqs";
 import {
   BoltIcon,
   HeadsetIcon,
@@ -540,9 +538,7 @@ export default function HomePage() {
       </section>
 
       {/* --- Why Smarto, what travellers say, and the questions people ask. */}
-      <WhySmarto className="pt-16 lg:pt-24" />
-      <GoogleReviews className="pt-16 lg:pt-24" />
-      <FaqSection faqs={GENERAL_FAQS} location="home-faq" className="pt-16 lg:pt-24" />
+      <TrustAndFaqs faqs={GENERAL_FAQS} location="home-faq" className="pt-16 lg:pt-24" />
 
       {/* --- WhatsApp: an open section on the page, not another card. */}
       <section className="mx-auto max-w-7xl px-5 pt-16 sm:px-8 lg:pt-24">

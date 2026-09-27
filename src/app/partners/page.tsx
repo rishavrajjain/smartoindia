@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PartnerRegisterForm } from "@/components/sections/partner-register-form";
 import { PartnerSplit } from "@/components/sections/partner-split";
 import { PhotoHero } from "@/components/sections/photo-hero";
+import { TrustAndFaqs } from "@/components/sections/trust-and-faqs";
 import { FactTiles } from "@/components/ui/fact-tiles";
 import { MarqueeBand } from "@/components/ui/marquee-band";
 import { Container } from "@/components/ui/container";
@@ -286,40 +287,6 @@ export default function PartnersPage() {
         </ul>
       </Container>
 
-      {/* ——— The questions agents actually ask. */}
-      <Container width="narrow" className="pt-16 lg:pt-20">
-        <p className="text-label font-extrabold text-clay uppercase">
-          Before you register
-        </p>
-        <h2 className="mt-4 text-[1.8125rem] leading-[1.09] sm:text-[2.25rem]">
-          The questions <span className="accent">agents actually ask.</span>
-        </h2>
-        <div className="mt-6">
-          {FAQ.map((item) => (
-            <details key={item.q} className="group border-b border-line">
-              <summary className="flex min-h-11 cursor-pointer list-none items-start justify-between gap-4 py-4 text-[0.9375rem] font-extrabold [&::-webkit-details-marker]:hidden">
-                {item.q}
-                <span
-                  aria-hidden="true"
-                  className="text-[1.25rem] leading-none font-extrabold text-green-deep group-open:hidden"
-                >
-                  +
-                </span>
-                <span
-                  aria-hidden="true"
-                  className="hidden text-[1.25rem] leading-none font-extrabold text-green-deep group-open:inline"
-                >
-                  &ndash;
-                </span>
-              </summary>
-              <p className="pb-5 text-[0.875rem] leading-relaxed text-taupe">
-                {item.a}
-              </p>
-            </details>
-          ))}
-        </div>
-      </Container>
-
       {/* ——— Register. */}
       <div
         id="register"
@@ -340,6 +307,9 @@ export default function PartnersPage() {
           <PartnerRegisterForm />
         </Container>
       </div>
+
+      {/* --- Why Smarto, the Google reviews, and this page's questions. */}
+      <TrustAndFaqs faqs={FAQ} location="partners-faq" className="pt-16 lg:pt-24" />
 
       {/* ——— The corporate cross-link, straight from the mockup. */}
       <div className="bg-sand px-5 py-9 text-center">

@@ -3,10 +3,12 @@ import { Suspense } from "react";
 
 import { FlightResults, ResultsSkeleton } from "@/components/sections/flight-results";
 import { FlightSearchPanel } from "@/components/sections/flight-search-form";
+import { TrustAndFaqs } from "@/components/sections/trust-and-faqs";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/deco";
 import { addDays, firstParam, MAX_DAYS_AHEAD, todayIST } from "@/lib/flights";
 import { pageMetadata } from "@/lib/seo";
+import { FLIGHT_FAQS } from "@/data/faqs";
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
 
@@ -42,7 +44,8 @@ export default async function FlightsPage({ searchParams }: { searchParams: Sear
   const today = todayIST();
 
   return (
-    <Container width="default" className="pt-8 pb-24 lg:pt-12 lg:pb-32">
+    <>
+    <Container width="default" className="pt-8 lg:pt-12">
       {/* min-w-0: the chip rail inside the form is a scroll container whose
           intrinsic width would otherwise stretch the column past the phone. */}
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
@@ -74,6 +77,9 @@ export default async function FlightsPage({ searchParams }: { searchParams: Sear
         </div>
       </div>
     </Container>
+
+    <TrustAndFaqs faqs={FLIGHT_FAQS} location="flights-faq" className="pt-20 pb-6 lg:pt-28" />
+    </>
   );
 }
 

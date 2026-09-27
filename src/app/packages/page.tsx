@@ -2,10 +2,12 @@ import { Suspense } from "react";
 
 import { JourneyBrowser } from "@/components/sections/journey-browser";
 import { PackagesSwitch } from "@/components/sections/packages-switch";
+import { TrustAndFaqs } from "@/components/sections/trust-and-faqs";
 import { Container } from "@/components/ui/container";
 import { WhatsAppLink } from "@/components/ui/whatsapp-link";
 import { INTL_TRIPS } from "@/data/international-trips";
 import { JOURNEYS } from "@/data/journeys";
+import { PACKAGE_FAQS } from "@/data/faqs";
 import { pageMetadata } from "@/lib/seo";
 import { enquiry } from "@/lib/whatsapp";
 
@@ -45,6 +47,9 @@ export default function PackagesPage() {
           <JourneyBrowser journeys={[...JOURNEYS]} />
         </Suspense>
       </Container>
+
+      {/* --- Why Smarto, the Google reviews, and this page's questions. */}
+      <TrustAndFaqs faqs={PACKAGE_FAQS} location="packages-faq" className="pt-20 lg:pt-28" />
 
       {/* --- The custom-trip door, for everyone the filters don't fit. */}
       <Container width="wide" className="pt-20 lg:pt-28">

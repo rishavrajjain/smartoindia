@@ -4,6 +4,7 @@ import Link from "next/link";
 import { CabBookingCard } from "@/components/sections/cab-booking-card";
 import { FareLock } from "@/components/sections/fare-lock";
 import { PhotoHero } from "@/components/sections/photo-hero";
+import { TrustAndFaqs } from "@/components/sections/trust-and-faqs";
 import { MarqueeBand } from "@/components/ui/marquee-band";
 import { Container } from "@/components/ui/container";
 import {
@@ -15,7 +16,7 @@ import {
 } from "@/components/ui/line-icons";
 import { WaCta } from "@/components/ui/wa-cta";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
-import { GOOGLE_RATING, REVIEWS } from "@/data/reviews";
+import { CAB_FAQS } from "@/data/faqs";
 import { pageMetadata } from "@/lib/seo";
 import { enquiry } from "@/lib/whatsapp";
 
@@ -112,7 +113,6 @@ const STEPS = [
 ];
 
 export default function CabsPage() {
-  const reviews = REVIEWS.slice(0, 3);
 
   return (
     <>
@@ -293,53 +293,8 @@ export default function CabsPage() {
         </ol>
       </Container>
 
-      {/* ——— What people say after the ride. */}
-      <div className="mt-16 bg-sand py-14 lg:mt-20">
-        <Container width="wide">
-          <p className="text-label font-extrabold text-clay uppercase">
-            From Guwahati
-          </p>
-          <h2 className="mt-4 text-[1.875rem] leading-[1.08] sm:text-[2.25rem]">
-            What people say <span className="accent">after the ride.</span>
-          </h2>
-          <ul className="no-scrollbar -mx-5 mt-7 flex snap-x snap-mandatory gap-3.5 overflow-x-auto px-5 pb-2 sm:mx-0 sm:px-0 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible">
-            {reviews.map((review, index) => (
-              <li
-                key={review.id}
-                className="w-[17rem] shrink-0 snap-start lg:w-auto"
-              >
-                <figure
-                  className={`flex h-full flex-col rounded-2xl bg-paper p-5 ring-1 ring-line transition-transform duration-[260ms] hover:rotate-0 ${
-                    index % 2 === 0 ? "motion-safe:rotate-[1.2deg]" : "motion-safe:-rotate-[1.2deg]"
-                  }`}
-                >
-                  <blockquote className="flex-1 text-[0.9375rem] leading-relaxed text-ink">
-                    &ldquo;{review.quote}&rdquo;
-                  </blockquote>
-                  <figcaption className="mt-4 flex items-center gap-2.5 border-t border-line pt-3.5 text-[0.8125rem]">
-                    <span
-                      aria-hidden="true"
-                      className="grid size-[34px] place-items-center rounded-full bg-[linear-gradient(135deg,#b5c07a_0%,#3eb391_100%)] text-[0.875rem] font-extrabold text-white"
-                    >
-                      {review.author[0]}
-                    </span>
-                    <span>
-                      <b className="block font-extrabold text-ink">
-                        {review.author}
-                      </b>
-                      <span className="text-taupe">{review.context}</span>
-                    </span>
-                  </figcaption>
-                </figure>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-4 text-[0.6875rem] text-taupe/70">
-            From Smarto&rsquo;s Google reviews: {GOOGLE_RATING.score} from{" "}
-            {GOOGLE_RATING.count} reviews.
-          </p>
-        </Container>
-      </div>
+      {/* --- Why Smarto, the Google reviews, and this page's questions. */}
+      <TrustAndFaqs faqs={CAB_FAQS} location="cabs-faq" className="pt-16 lg:pt-24" />
 
       {/* ——— Beyond the city. */}
       <Container width="wide" className="pt-16 lg:pt-20">

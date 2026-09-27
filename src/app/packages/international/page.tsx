@@ -2,11 +2,13 @@ import Link from "next/link";
 import { Suspense } from "react";
 
 import { PackagesSwitch } from "@/components/sections/packages-switch";
+import { TrustAndFaqs } from "@/components/sections/trust-and-faqs";
 import { Container } from "@/components/ui/container";
 import { WaCta } from "@/components/ui/wa-cta";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { INTL_TRIPS } from "@/data/international-trips";
 import { JOURNEYS } from "@/data/journeys";
+import { INTL_FAQS } from "@/data/faqs";
 import { pageMetadata } from "@/lib/seo";
 import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, enquiry } from "@/lib/whatsapp";
 
@@ -116,6 +118,9 @@ export default function InternationalPackagesPage() {
           ))}
         </ol>
       </Container>
+
+      {/* --- Why Smarto, the Google reviews, and this page's questions. */}
+      <TrustAndFaqs faqs={INTL_FAQS} location="packages-faq" className="pt-16 lg:pt-24" />
 
       {/* --- Back to the Northeast. */}
       <Container width="wide" className="pt-16 pb-4 lg:pt-20">

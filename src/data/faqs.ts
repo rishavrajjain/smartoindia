@@ -1,3 +1,5 @@
+import { POPULAR_SECTORS, findAirport } from "@/data/airports";
+import { MAX_DAYS_AHEAD } from "@/lib/flights";
 import { WHATSAPP_DISPLAY } from "@/lib/whatsapp";
 
 /*
@@ -58,5 +60,123 @@ export const HOTEL_FAQS: Faq[] = [
     a: "Use the planner at the top of this page or message us on WhatsApp. We send a few options with their rates, and you choose.",
   },
   GENERAL_FAQS[1],
+  GENERAL_FAQS[5],
+];
+
+/* The popular routes, read from the same list the flight search offers. */
+const ROUTES = POPULAR_SECTORS.map(
+  ([a, b]) => `${findAirport(a)?.city ?? a} to ${findAirport(b)?.city ?? b}`,
+);
+
+export const FLIGHT_FAQS: Faq[] = [
+  {
+    q: "What are the most popular routes?",
+    a: `${ROUTES.slice(0, -1).join(", ")} and ${ROUTES[ROUTES.length - 1]}. Tap any of them under the search to start.`,
+  },
+  {
+    q: "How do I book a flight?",
+    a: "Search your route and date, pick a fare, and confirm it with us on WhatsApp. Nothing is ticketed until you say yes.",
+  },
+  {
+    q: "Why do some dates show no fares?",
+    a: "Our fares come from an airline partner's fixed-departure seats, which are limited. If a date is empty, message us and we find you a fare by hand.",
+  },
+  {
+    q: "Can I book a round trip?",
+    a: "Yes. Add a return date and both legs are priced together, in one booking.",
+  },
+  {
+    q: "How far ahead can I search, and for how many people?",
+    a: `Up to ${MAX_DAYS_AHEAD} days ahead, and up to 9 seats in one search for adults and children together, plus infants.`,
+  },
+  {
+    q: "Will a cab be waiting when I land?",
+    a: "In Guwahati, yes. Tell us your flight and a Smarto cab meets you at arrivals.",
+  },
+];
+
+export const CAB_FAQS: Faq[] = [
+  {
+    q: "How do I book a cab?",
+    a: "Use the booking card at the top of this page, or message us on WhatsApp with your pickup, drop and time.",
+  },
+  {
+    q: "Is there surge pricing?",
+    a: "Never. Rain, rush hour or a 2 AM pickup, the fare you are quoted is the fare you pay.",
+  },
+  {
+    q: "Are the cabs electric?",
+    a: "Our city cabs in Guwahati are all-electric. For long outstation journeys we use a car suited to the route, confirmed in your quote.",
+  },
+  {
+    q: "Do you do airport pickups?",
+    a: "Yes. We meet you at arrivals and follow your flight, so a delay does not leave you stranded.",
+  },
+  {
+    q: "Can I hire a cab by the hour?",
+    a: "Yes. Hourly rentals start from ₹349 per hour: a car and driver on your clock.",
+  },
+  {
+    q: "Do you go outside Guwahati?",
+    a: "Yes: Shillong, Kaziranga, Tezpur and across the Northeast, on fixed fares agreed up front.",
+  },
+];
+
+export const PACKAGE_FAQS: Faq[] = [
+  {
+    q: "What is included in a journey?",
+    a: "A dedicated car and driver, your hotels, daily breakfast and end-to-end planning, as one all-in bundle.",
+  },
+  {
+    q: "What is not included?",
+    a: "Lunches and dinners, entry fees, optional activities like safaris or boat rides, and personal expenses.",
+  },
+  {
+    q: "Can I change a journey?",
+    a: "Yes. Every journey can be reshaped: dates, pace, hotels and route.",
+  },
+  {
+    q: "Why are prices not shown?",
+    a: "They depend on your dates, group size and hotels. You get one all-in quote on WhatsApp, and that is the price you pay.",
+  },
+  {
+    q: "Are there group departures?",
+    a: "On selected journeys: fixed dates, a shared coach and private rooms. Solo travellers can join without a supplement.",
+  },
+  GENERAL_FAQS[4],
+];
+
+export const INTL_FAQS: Faq[] = [
+  {
+    q: "Are these fixed packages?",
+    a: "No, they are sample itineraries. We tailor the dates, pace and stays to you and quote all-in on WhatsApp.",
+  },
+  {
+    q: "Will I stay anywhere twice?",
+    a: "No. Every trip is one continuous route: fly in, stay in each place once, and fly home from the last stop.",
+  },
+  {
+    q: "Can I go somewhere that is not listed?",
+    a: "Yes. Name the place and we plan it.",
+  },
+  PACKAGE_FAQS[3],
+  GENERAL_FAQS[0],
+  GENERAL_FAQS[5],
+];
+
+export const FESTIVAL_FAQS: Faq[] = [
+  {
+    q: "Are festival dates fixed?",
+    a: "No. Many follow lunar or local calendars and shift each year. We confirm the current dates on WhatsApp before you book.",
+  },
+  {
+    q: "How early should I book?",
+    a: "Early. Festival weeks fill months ahead, Hornbill in December most of all.",
+  },
+  {
+    q: "Can you plan a whole trip around a festival?",
+    a: "Yes: the stays, the cars and the days around it. Some of our journeys are built around festivals, such as Wangala and Torgya.",
+  },
+  GENERAL_FAQS[4],
   GENERAL_FAQS[5],
 ];

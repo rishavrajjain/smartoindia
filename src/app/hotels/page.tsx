@@ -1,9 +1,7 @@
 import Image from "next/image";
 
-import { FaqSection } from "@/components/sections/faq-section";
-import { GoogleReviews } from "@/components/sections/google-reviews";
 import { HotelStays } from "@/components/sections/hotel-stays";
-import { WhySmarto } from "@/components/sections/why-smarto";
+import { TrustAndFaqs } from "@/components/sections/trust-and-faqs";
 import { Container } from "@/components/ui/container";
 import { WaCta } from "@/components/ui/wa-cta";
 import { HOTEL_FAQS } from "@/data/faqs";
@@ -185,9 +183,7 @@ export default function HotelsPage() {
         </ol>
       </Container>
 
-      <WhySmarto className="pt-20 lg:pt-28" />
-      <GoogleReviews className="pt-20 lg:pt-28" />
-      <FaqSection faqs={HOTEL_FAQS} location="hotels-faq" className="pt-20 pb-6 lg:pt-28" />
+      <TrustAndFaqs faqs={HOTEL_FAQS} location="hotels-faq" className="pt-20 pb-6 lg:pt-28" />
     </>
   );
 }
