@@ -467,42 +467,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* --- Promo banners. */}
-      <section className="mx-auto grid max-w-7xl gap-5 px-5 pt-14 sm:px-8 lg:grid-cols-2 lg:gap-6 lg:pt-20">
-        <div className="relative isolate flex flex-col overflow-hidden rounded-[1.75rem] bg-clay-deep text-bone lg:min-h-[24rem] lg:justify-end lg:p-10">
-          <div className="relative aspect-[16/10] lg:absolute lg:inset-0 lg:-z-10 lg:aspect-auto">
-            <Image
-              src="/images/fleet-cabs-hero.webp"
-              alt="A Smarto electric cab at a misty hill-road viewpoint, rear door open and travel bags beside it"
-              fill
-              sizes="(min-width: 1024px) 40rem, 100vw"
-              className="object-cover"
-            />
-          </div>
-          <div aria-hidden="true" className="absolute inset-0 -z-10 hidden bg-gradient-to-t from-[rgba(28,26,69,0.95)] via-[rgba(28,26,69,0.72)] via-50% to-[rgba(28,26,69,0.12)] lg:block" />
-          <div className="p-7 lg:p-0">
-            <p className="text-label font-extrabold text-green uppercase">Cabs · Guwahati</p>
-            <h2 className="mt-3 max-w-sm text-[1.75rem] leading-[1.1] lg:text-[2.125rem]">
-              Rain, rush hour or 2 AM. <span className="accent">Same fare.</span>
-            </h2>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <WaCta
-                message={enquiry("I would like to book a cab in Guwahati.")}
-                location="b-banner-cabs"
-                className="inline-flex min-h-12 items-center gap-2.5 rounded-full bg-green-deep px-6 text-[0.875rem] font-extrabold text-white"
-              >
-                <WhatsAppIcon />
-                Book a cab
-              </WaCta>
-              <Link
-                href="/cabs"
-                className="inline-flex min-h-12 items-center rounded-full px-5 text-[0.875rem] font-extrabold text-bone ring-1 ring-white/40 transition-colors hover:bg-white/10"
-              >
-                See all fares
-              </Link>
-            </div>
-          </div>
-        </div>
+      {/* --- Promo banner: weddings and events. */}
+      <section className="mx-auto max-w-7xl px-5 pt-14 sm:px-8 lg:pt-20">
         <div className="relative isolate flex flex-col overflow-hidden rounded-[1.75rem] bg-clay-deep text-bone lg:min-h-[24rem] lg:justify-end lg:p-10">
           <div className="relative aspect-[16/10] lg:absolute lg:inset-0 lg:-z-10 lg:aspect-auto">
             <Image
@@ -536,48 +502,6 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* --- Why travellers trust Smarto: three photographs. */}
-      <section className="relative mt-16 overflow-hidden bg-sand py-14 lg:mt-24 lg:py-20">
-        <div aria-hidden="true" className="pointer-events-none absolute -top-[30rem] left-1/2 h-[46rem] w-[90rem] -translate-x-1/2 rounded-[50%] bg-bone/80" />
-        <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-          <h2 className="text-center text-[1.75rem] leading-tight lg:text-[2.25rem]">
-            Travel that <span className="accent">just works</span>
-          </h2>
-          <ul className="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-5 lg:gap-8">
-            {[
-              {
-                title: "Planned day by day",
-                line: "Every journey is printed with its drive times and stays.",
-                src: "/images/fleet-hero-passes.webp",
-                alt: "A Smarto cab on a high mountain road under prayer flags, snow peaks behind",
-              },
-              {
-                title: "Electric in the city",
-                line: "Guwahati rides on an EV fleet, on a flat fare.",
-                src: "/images/fleet-corporate-charging.webp",
-                alt: "A row of Smarto electric cabs charging at an office campus at dusk",
-              },
-              {
-                title: "One WhatsApp thread",
-                line: "Cars, hotels and permits sorted in one conversation.",
-                src: "/images/fleet-cabs-airport.webp",
-                alt: "A Smarto electric cab at the airport departures kerb at dawn, a suitcase beside it",
-              },
-            ].map((card) => (
-              <li key={card.title} className="text-center">
-                <span className="relative block aspect-[16/9] overflow-hidden rounded-[1.5rem] ring-4 ring-bone shadow-[0_18px_40px_rgba(40,37,96,0.14)] sm:aspect-[4/3]">
-                  <Image src={card.src} alt={card.alt} fill sizes="(min-width: 640px) 33vw, 100vw" className="object-cover" />
-                </span>
-                <h3 className="mt-5 text-[1.25rem] font-extrabold text-ink">{card.title}</h3>
-                <p className="mx-auto mt-1 max-w-xs text-[0.875rem] leading-relaxed text-taupe">
-                  {card.line}
-                </p>
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 

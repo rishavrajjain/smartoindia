@@ -41,7 +41,6 @@ export type CtaLocation =
   | "login-help"
   | "login-access"
   | "b-festivals"
-  | "b-banner-cabs"
   | "b-whatsapp-banner"
   | "packages-index"
   | "packages-empty-state"
