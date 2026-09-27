@@ -75,73 +75,7 @@ export function countFor(query: string): number {
   return JOURNEYS.filter((j) => matchesQuery(j, query)).length;
 }
 
-/* --- Who's coming along: each picker maps onto the catalog's own styles. */
-
-export interface Traveller {
-  id: string;
-  label: string;
-  /** Heading for the rail once this traveller is picked. */
-  heading: string;
-  /** Catalog styles this traveller browses; the first feeds the "see all" link. */
-  styles: string[];
-  image: string;
-  /** object-position that keeps faces inside the circular crop. */
-  focus: string;
-  journeys: TrailJourney[];
-}
-
-const TRAVELLER_SPECS = [
-  {
-    id: "couples",
-    label: "Couples",
-    heading: "Picked for two",
-    styles: ["Honeymoon"],
-    image: "/images/b-who-couple.webp",
-    focus: "50% 60%",
-  },
-  {
-    id: "families",
-    label: "Families",
-    heading: "Picked for families",
-    styles: ["Family", "Family adventure"],
-    image: "/images/b-who-family.webp",
-    focus: "50% 40%",
-  },
-  {
-    id: "friends",
-    label: "Friends",
-    heading: "Picked for a crew",
-    styles: ["Offbeat", "Group departure"],
-    image: "/images/b-who-friends.webp",
-    focus: "50% 38%",
-  },
-  {
-    id: "solo",
-    label: "Solo",
-    heading: "Picked for going solo",
-    styles: ["Solo"],
-    image: "/images/b-who-solo.webp",
-    focus: "45% 30%",
-  },
-  {
-    id: "seniors",
-    label: "Seniors",
-    heading: "Picked for an easy pace",
-    styles: ["Senior-friendly"],
-    image: "/images/b-who-seniors.webp",
-    focus: "50% 30%",
-  },
-] as const;
-
-export const TRAVELLERS: Traveller[] = TRAVELLER_SPECS.map((spec) => ({
-  ...spec,
-  styles: [...spec.styles],
-  journeys: distinctThumbs(
-    JOURNEYS.filter((j) =>
-      j.styles.some((s) => (spec.styles as readonly string[]).includes(s)),
-    ).map(toTrailJourney),
-  ),
-}));
+/* --- The catalog's own popular five, with no photograph repeated. */
 
 export const POPULAR: TrailJourney[] = distinctThumbs(
   JOURNEYS.filter((j) => j.styles.includes("Popular")).map(toTrailJourney),

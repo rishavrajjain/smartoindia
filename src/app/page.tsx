@@ -30,14 +30,14 @@ import {
   POPULAR,
   SEARCH_INDEX,
   STAY_CARDS,
-  TRAVELLERS,
 } from "./_home/data";
 import { HotelStays } from "./_home/hotel-stays";
 import { LengthBento } from "./_home/length-bento";
+import { PopularRail } from "./_home/popular-rail";
 import { Rail } from "./_home/rail";
+import { ServiceDoors } from "./_home/service-doors";
 import { TrailChrome } from "./_home/trail-chrome";
 import { TrailSearch } from "./_home/trail-search";
-import { TravellerPicker } from "./_home/traveller-picker";
 
 export const metadata = pageMetadata({
   title: "Smarto: Northeast India, travelled well",
@@ -53,7 +53,8 @@ export const viewport: Viewport = {
 
 /*
  * The homepage: PickYourTrail's homepage rhythm (video hero with a
- * glowing search, "who's coming along" pickers, card rails, a length bento,
+ * glowing search, the four Smarto services where PickYourTrail asks
+ * "who's coming along", card rails, a length bento,
  * dark story cards, a chat banner) rebuilt in Smarto's own brand and fed
  * only by real catalog data. Every figure here is either counted from the
  * catalog or already published on the live site.
@@ -153,7 +154,7 @@ export default function HomePage() {
         <span id="b-hero-end" aria-hidden="true" className="absolute bottom-0 h-px w-px" />
       </section>
 
-      {/* --- The sheet: search straddling the fold, then the pickers. */}
+      {/* --- The sheet: search straddling the fold, then the four Smarto services. */}
       <section
         aria-label="Plan your trip"
         className="relative z-10 -mt-12 rounded-t-[2.5rem] bg-clay-deep pb-14 text-bone lg:-mt-14 lg:rounded-t-[3.5rem] lg:pb-20"
@@ -167,7 +168,8 @@ export default function HomePage() {
         </div>
 
         <div className="relative mt-12 lg:mt-14">
-          <TravellerPicker travellers={TRAVELLERS} popular={POPULAR} />
+          <ServiceDoors />
+          <PopularRail journeys={POPULAR} />
         </div>
       </section>
 

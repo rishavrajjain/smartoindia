@@ -921,5 +921,57 @@
     "prompt": "Square portrait: a retired Indian couple in their sixties walking arm in arm along a lakeside path lined with pine trees, relaxed genuine smiles, cardigan and a woollen shawl, soft morning light with light mist over the lake behind them. Both centred in the frame for a circular crop. Editorial travel photography, natural daylight, grounded realistic colours, believable Northeast Indian setting, shot on a full-frame camera, gentle depth of field, natural skin texture, candid body language, no oversaturation, no readable text, signage, logos or number plates.",
     "model": "gpt-image-2",
     "status": "generated"
+  },
+  {
+    "id": "door-cabs",
+    "src": "/images/door-cabs.webp",
+    "width": 768,
+    "height": 768,
+    "aspect": "1:1",
+    "alt": "",
+    "usedOn": "/ : 'All of Smarto, in one place' service card (decorative)",
+    "subject": "A glossy 3D collectible-toy miniature of the exact car in the reference photos: the white Tata Tigor EV taxi with its teal grille accent, a pale lilac",
+    "prompt": "A glossy 3D collectible-toy miniature of the exact car in the reference photos: the white Tata Tigor EV taxi with its teal grille accent, a pale lilac front-door panel carrying the Smarto wordmark and a deep purple rear-door panel. Three-quarter front view, cheerful and premium. The only lettering is the Smarto wordmark on the door; plates are plain with no characters. Rendered as a single centred object in the style of a premium mobile-app category icon or modern 3D emoji: smooth rounded forms, realistic glossy materials with soft highlights, soft even studio lighting, gentle ambient occlusion and a soft subtle contact shadow directly beneath. Palette of white, deep navy (#282560), violet (#7b3f7e) and fresh green (#75b884) accents. The object fills about 70% of the frame with generous margins. The entire background is one solid flat uniform very light cool grey (#eef0f4) with nothing else in it.",
+    "model": "gpt-image-2 (images/edits with Tata Tigor EV references)",
+    "status": "generated"
+  },
+  {
+    "id": "door-flights",
+    "src": "/images/door-flights.webp",
+    "width": 768,
+    "height": 768,
+    "aspect": "1:1",
+    "alt": "",
+    "usedOn": "/ : 'All of Smarto, in one place' service card (decorative)",
+    "subject": "A glossy 3D friendly passenger jet, white with a deep navy underside and a violet tail fin, banking gently upward to the right, with a small white boa",
+    "prompt": "A glossy 3D friendly passenger jet, white with a deep navy underside and a violet tail fin, banking gently upward to the right, with a small white boarding-pass ticket floating beside its wing. No logos, no text, no airline markings. Rendered as a single centred object in the style of a premium mobile-app category icon or modern 3D emoji: smooth rounded forms, realistic glossy materials with soft highlights, soft even studio lighting, gentle ambient occlusion and a soft subtle contact shadow directly beneath. Palette of white, deep navy (#282560), violet (#7b3f7e) and fresh green (#75b884) accents. The object fills about 70% of the frame with generous margins. The entire background is one solid flat uniform very light cool grey (#eef0f4) with nothing else in it.",
+    "model": "gpt-image-2",
+    "status": "generated"
+  },
+  {
+    "id": "door-packages",
+    "src": "/images/door-packages.webp",
+    "width": 768,
+    "height": 768,
+    "aspect": "1:1",
+    "alt": "",
+    "usedOn": "/ : 'All of Smarto, in one place' service card (decorative)",
+    "subject": "A glossy 3D open gift box, deep navy with a violet satin ribbon and bow, its lid tilted open, with a whole tiny holiday rising out of it as one bundle",
+    "prompt": "A glossy 3D open gift box, deep navy with a violet satin ribbon and bow, its lid tilted open, with a whole tiny holiday rising out of it as one bundle: two rounded green hills, a small white waterfall, a few rounded pine trees, a little white cottage with a lit window, and a winding road carrying a tiny white Tata Tigor EV taxi in the Smarto livery from the reference photos. A small cloud floats above. Joyful, premium, clearly a travel package. No text or labels anywhere. Rendered as a single centred object in the style of a premium mobile-app category icon or modern 3D emoji: smooth rounded forms, realistic glossy materials with soft highlights, soft even studio lighting, gentle ambient occlusion and a soft subtle contact shadow directly beneath. Palette of white, deep navy (#282560), violet (#7b3f7e) and fresh green (#75b884) accents. The object fills about 70% of the frame with generous margins. The entire background is one solid flat uniform very light cool grey (#eef0f4) with nothing else in it.",
+    "model": "gpt-image-2 (images/edits with Tata Tigor EV references)",
+    "status": "generated"
+  },
+  {
+    "id": "door-hotels",
+    "src": "/images/door-hotels.webp",
+    "width": 768,
+    "height": 768,
+    "aspect": "1:1",
+    "alt": "",
+    "usedOn": "/ : 'All of Smarto, in one place' service card (decorative)",
+    "subject": "A glossy 3D little boutique hill hotel: a two-storey white cottage with a deep navy pitched roof, warmly lit windows, a small wooden balcony and a tin",
+    "prompt": "A glossy 3D little boutique hill hotel: a two-storey white cottage with a deep navy pitched roof, warmly lit windows, a small wooden balcony and a tiny violet door, sitting on a rounded grassy mound among a few rounded pine trees. No signs, no text. Rendered as a single centred object in the style of a premium mobile-app category icon or modern 3D emoji: smooth rounded forms, realistic glossy materials with soft highlights, soft even studio lighting, gentle ambient occlusion and a soft subtle contact shadow directly beneath. Palette of white, deep navy (#282560), violet (#7b3f7e) and fresh green (#75b884) accents. The object fills about 70% of the frame with generous margins. The entire background is one solid flat uniform very light cool grey (#eef0f4) with nothing else in it.",
+    "model": "gpt-image-2",
+    "status": "generated"
   }
 ]

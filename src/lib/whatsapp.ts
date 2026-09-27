@@ -42,6 +42,8 @@ export type CtaLocation =
   | "b-hotels"
   | "b-corporate"
   | "b-banner-events"
+  | "login-help"
+  | "login-access"
   | "b-festivals"
   | "b-banner-cabs"
   | "b-whatsapp-banner"

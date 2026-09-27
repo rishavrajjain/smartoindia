@@ -146,16 +146,27 @@ export function TrailChrome({
             Plan a trip
           </WaCta>
 
+          <Link
+            href="/login"
+            className={cn(
+              "grid size-11 shrink-0 place-items-center rounded-full text-bone ring-1 ring-white/25 transition-colors hover:bg-white/10",
+              !solid && "ml-auto lg:ml-0",
+            )}
+          >
+            <span className="sr-only">Log in</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="size-5">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 21a8 8 0 0 1 16 0" />
+            </svg>
+          </Link>
+
           <button
             ref={menuButtonRef}
             type="button"
             onClick={() => setMenu(true)}
             aria-expanded={menu}
             aria-controls="trail-menu"
-            className={cn(
-              "grid size-11 shrink-0 place-items-center rounded-full text-bone ring-1 ring-white/25 transition-colors hover:bg-white/10",
-              !solid && "ml-auto lg:ml-0",
-            )}
+            className="grid size-11 shrink-0 place-items-center rounded-full text-bone ring-1 ring-white/25 transition-colors hover:bg-white/10"
           >
             <span className="sr-only">Open menu</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true" className="size-5">
@@ -214,14 +225,23 @@ export function TrailChrome({
                 ))}
               </ul>
             </nav>
-            <WaCta
-              message={PLAN}
-              location="b-header"
-              className="mt-10 inline-flex min-h-[3.25rem] items-center justify-center gap-2.5 self-start rounded-full bg-green-deep px-7 text-[0.9375rem] font-extrabold text-white"
-            >
-              <WhatsAppIcon />
-              Plan on WhatsApp
-            </WaCta>
+            <div className="mt-10 flex flex-wrap items-center gap-3">
+              <WaCta
+                message={PLAN}
+                location="b-header"
+                className="inline-flex min-h-[3.25rem] items-center justify-center gap-2.5 rounded-full bg-green-deep px-7 text-[0.9375rem] font-extrabold text-white"
+              >
+                <WhatsAppIcon />
+                Plan on WhatsApp
+              </WaCta>
+              <Link
+                href="/login"
+                onClick={() => setMenu(false)}
+                className="inline-flex min-h-[3.25rem] items-center rounded-full px-6 text-[0.9375rem] font-extrabold text-bone ring-1 ring-white/30 hover:bg-white/10"
+              >
+                Log in
+              </Link>
+            </div>
           </div>
         </div>
       )}

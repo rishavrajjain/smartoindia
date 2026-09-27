@@ -145,7 +145,7 @@ export function TrailSearch({
             expanded && active >= 0 ? options[active]?.id : undefined
           }
           value={query}
-          placeholder={hero ? "Search places or journeys" : "Search the Northeast"}
+          placeholder={hero ? "Search places or journeys" : "Search trips"}
           onChange={(e) => {
             setQuery(e.target.value);
             setOpen(true);
