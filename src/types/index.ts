@@ -150,6 +150,8 @@ export interface Review {
   /** Trip context, not a verified booking record. */
   context: string;
   quote: string;
+  /** One-line pull quote for compact tiles, drawn from `quote`. */
+  highlight: string;
   status: ContentStatus;
 }
 

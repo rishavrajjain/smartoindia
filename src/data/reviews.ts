@@ -18,6 +18,7 @@ export const REVIEWS: Review[] = [
     context: "Meghalaya, five days",
     quote:
       "They talked us out of the itinerary we asked for and suggested a shorter one. It was the right call. We saw less and enjoyed it considerably more.",
+    highlight: "They talked us out of our itinerary. It was the right call.",
     status: "mock",
   },
   {
@@ -26,6 +27,7 @@ export const REVIEWS: Review[] = [
     context: "Kaziranga, long weekend",
     quote:
       "The driver knew which gate to be at and when. We were through and into the park while other vehicles were still queueing.",
+    highlight: "The driver knew which gate to be at, and when.",
     status: "mock",
   },
   {
@@ -34,6 +36,7 @@ export const REVIEWS: Review[] = [
     context: "Meghalaya at an easy pace",
     quote:
       "We travelled with a four-year-old and my parents. Nobody planned a single thing around us being slow, except Smarto, who planned everything around it.",
+    highlight: "Smarto planned everything around us being slow.",
     status: "mock",
   },
   {
@@ -42,6 +45,7 @@ export const REVIEWS: Review[] = [
     context: "Tawang, eight days",
     quote:
       "Sela was shut on our day. They told us at breakfast instead of driving us up there to find out, and rearranged the rest without fuss.",
+    highlight: "Sela was shut. They told us at breakfast and rearranged the rest.",
     status: "mock",
   },
   {
@@ -50,6 +54,7 @@ export const REVIEWS: Review[] = [
     context: "Corporate offsite transport",
     quote:
       "Eleven people, three pickup points, one invoice at the end of the month. That was the whole reason we switched.",
+    highlight: "Three pickup points, one invoice. That is why we switched.",
     status: "mock",
   },
   {
@@ -58,6 +63,7 @@ export const REVIEWS: Review[] = [
     context: "North Sikkim, six days",
     quote:
       "Permits were done before we landed. I have done this trip the other way and it cost me a full day in an office.",
+    highlight: "Permits were done before we landed.",
     status: "mock",
   },
 ];

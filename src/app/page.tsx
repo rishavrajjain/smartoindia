@@ -16,6 +16,7 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { CLIENT_LOGOS } from "@/data/clients";
 import { FESTIVALS } from "@/data/festivals";
 import { IMAGES } from "@/data/images";
+import { REVIEWS } from "@/data/reviews";
 import { pageMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, enquiry } from "@/lib/whatsapp";
@@ -63,15 +64,6 @@ const HERO_STILLS = [
   { src: "/images/fleet-hero-clouds.webp", w: 1536, h: 1024 },
   { src: "/images/fleet-hero-passes.webp", w: 1536, h: 1024 },
   { src: "/images/fleet-hero-tea.webp", w: 1536, h: 1024 },
-];
-
-const MARQUEE = [
-  "#TravelledWell",
-  "No surge, ever",
-  "Zero cancellation",
-  "Electric in the city",
-  `${JOURNEY_COUNT} planned journeys`,
-  "Planned on WhatsApp",
 ];
 
 /* Festival cards pair the catalog entry with its scene, soonest first. */
@@ -170,23 +162,48 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* --- The green band. */}
-      <div className="overflow-hidden bg-green py-3.5 text-clay-deep">
-        <ul className="flex w-max motion-safe:animate-marquee items-center">
-          {[0, 1].map((copy) =>
-            MARQUEE.map((item) => (
-              <li
-                key={`${copy}-${item}`}
-                aria-hidden={copy === 1 ? true : undefined}
-                className="flex items-center gap-8 pr-8 text-[1.0625rem] font-extrabold whitespace-nowrap lg:text-[1.25rem]"
-              >
-                {item}
-                <BoltIcon className="size-4 text-clay-deep/60" />
-              </li>
-            )),
-          )}
-        </ul>
-      </div>
+      {/* --- The green band: traveller feedback, drifting past. */}
+      <section aria-label="Traveller feedback" className="bg-green text-clay-deep">
+        <div className="marquee-mask overflow-hidden pt-3">
+          <ul
+            className="flex w-max items-center motion-safe:animate-marquee hover:[animation-play-state:paused]"
+            style={{ animationDuration: "90s" }}
+          >
+            {[0, 1].map((copy) =>
+              REVIEWS.map((review) => (
+                <li
+                  key={`${copy}-${review.id}`}
+                  aria-hidden={copy === 1 ? true : undefined}
+                  className="flex shrink-0 items-center"
+                >
+                  <figure className="flex items-center gap-3 rounded-2xl bg-bone py-2 pr-4 pl-2 shadow-[0_6px_16px_rgba(28,26,69,0.12)]">
+                    <span
+                      aria-hidden="true"
+                      className="grid size-9 shrink-0 place-items-center rounded-full bg-clay-deep text-green"
+                    >
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
+                        <path d="M4 18v-5.2C4 8.6 6 6 10 5l.8 1.6C8.6 7.5 7.6 9 7.5 11H10v7zm9.5 0v-5.2c0-4.2 2-6.8 6-7.8l.8 1.6c-2.2.9-3.2 2.4-3.3 4.4h2.5v7z" />
+                      </svg>
+                    </span>
+                    <span className="leading-tight whitespace-nowrap">
+                      <blockquote className="text-[0.8125rem] font-extrabold text-ink">
+                        {review.highlight}
+                      </blockquote>
+                      <figcaption className="mt-0.5 text-[0.6875rem] text-taupe">
+                        {review.author} · {review.context}
+                      </figcaption>
+                    </span>
+                  </figure>
+                  <BoltIcon className="mx-5 size-4 shrink-0 text-clay-deep/60" />
+                </li>
+              )),
+            )}
+          </ul>
+        </div>
+        <p className="pt-1.5 pb-2 text-center text-[0.625rem] text-clay-deep/65">
+          Illustrative feedback while we gather permission to publish real reviews.
+        </p>
+      </section>
 
       {/* --- Cabs: PickYourTrail's "recently booked" layout. */}
       <section className="pt-14 lg:pt-20">

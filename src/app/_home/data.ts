@@ -91,6 +91,7 @@ export interface Place {
 }
 
 const PLACE_SPECS = [
+  { name: "Guwahati", line: "Where every trip begins", image: "/images/dest-guwahati.webp" },
   { name: "Shillong", line: "Pine hills and cafés", image: "/images/dest-shillong.webp" },
   { name: "Cherrapunjee", line: "Waterfall country", image: "/images/pkg-meghalaya-waterfalls.webp" },
   { name: "Kaziranga", line: "Rhino country", image: "/images/pkg-assam-kaziranga.webp" },
