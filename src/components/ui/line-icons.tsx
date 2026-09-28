@@ -156,12 +156,6 @@ export const SendIcon = icon(
   </>,
 );
 
-export const LockIcon = icon(
-  <>
-    <rect x="4" y="10.5" width="16" height="10" rx="3" strokeWidth="2.4" />
-    <path d="M8 10.5V7a4 4 0 0 1 8 0v3.5" strokeWidth="2.4" />
-  </>,
-);
 
 export const TrainIcon = icon(
   <>

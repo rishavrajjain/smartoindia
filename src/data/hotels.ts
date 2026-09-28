@@ -27,7 +27,7 @@ export interface Stay {
   status: ContentStatus;
 }
 
-export const STAYS: Stay[] = [
+const STAYS: Stay[] = [
   {
     id: "courtyard-shillong",
     name: "Courtyard by Marriott Shillong",

@@ -7,39 +7,30 @@
  */
 export type ContentStatus = "mock" | "verified";
 
-export const NORTHEAST_STATES = [
-  "Assam",
-  "Meghalaya",
-  "Arunachal Pradesh",
-  "Sikkim",
-  "Nagaland",
-  "Multi-state",
-] as const;
+export type NortheastState =
+  | "Assam"
+  | "Meghalaya"
+  | "Arunachal Pradesh"
+  | "Sikkim"
+  | "Nagaland"
+  | "Multi-state";
 
-export type NortheastState = (typeof NORTHEAST_STATES)[number];
+export type TravellerType =
+  | "Couples"
+  | "Families"
+  | "Small groups"
+  | "Solo travellers"
+  | "Corporate teams";
 
-export const TRAVELLER_TYPES = [
-  "Couples",
-  "Families",
-  "Small groups",
-  "Solo travellers",
-  "Corporate teams",
-] as const;
-
-export type TravellerType = (typeof TRAVELLER_TYPES)[number];
-
-export const PACKAGE_TAGS = [
-  "Nature",
-  "Culture",
-  "Slow travel",
-  "Road trip",
-  "Wildlife",
-  "High altitude",
-  "Easy pace",
-  "Festival",
-] as const;
-
-export type PackageTag = (typeof PACKAGE_TAGS)[number];
+export type PackageTag =
+  | "Nature"
+  | "Culture"
+  | "Slow travel"
+  | "Road trip"
+  | "Wildlife"
+  | "High altitude"
+  | "Easy pace"
+  | "Festival";
 
 export type Season =
   | "Jan"

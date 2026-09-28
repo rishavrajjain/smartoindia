@@ -837,9 +837,3 @@ export const PACKAGES: TravelPackage[] = [
     status: "mock",
   },
 ];
-
-export function getPackage(slug: string): TravelPackage | undefined {
-  return PACKAGES.find((item) => item.slug === slug);
-}
-
-export const FEATURED_PACKAGES = PACKAGES.filter((item) => item.featured);

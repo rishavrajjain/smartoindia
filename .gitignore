@@ -52,3 +52,6 @@ next-env.d.ts
 
 # Raw video masters (compressed copies live in public/video)
 /video/
+
+# Local scratch files, never part of the site
+/tmp/

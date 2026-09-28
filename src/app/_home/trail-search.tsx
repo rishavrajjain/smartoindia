@@ -31,11 +31,9 @@ interface Option {
 
 export function TrailSearch({
   index,
-  variant = "hero",
   className,
 }: {
   index: SearchEntry[];
-  variant?: "hero" | "bar";
   className?: string;
 }) {
   const router = useRouter();
@@ -108,7 +106,6 @@ export function TrailSearch({
   };
 
   const expanded = open && options.length > 0;
-  const hero = variant === "hero";
 
   return (
     <form
@@ -121,15 +118,8 @@ export function TrailSearch({
       <label htmlFor={`${uid}-input`} className="sr-only">
         Search journeys, places or states
       </label>
-      <div
-        className={cn(
-          "flex items-center bg-bone text-ink",
-          hero
-            ? "h-16 rounded-full pr-2 pl-6 shadow-[0_0_0_4px_rgba(117,184,132,0.55),0_0_48px_rgba(117,184,132,0.55),0_18px_40px_rgba(28,26,69,0.35)] lg:h-[4.5rem] lg:pl-7"
-            : "h-11 rounded-full pr-1.5 pl-4 ring-2 ring-green/70",
-        )}
-      >
-        <SearchGlyph className={cn("shrink-0 text-taupe", hero ? "size-5" : "size-4")} />
+      <div className="flex h-16 items-center rounded-full bg-bone pr-2 pl-6 text-ink shadow-[0_0_0_4px_rgba(117,184,132,0.55),0_0_48px_rgba(117,184,132,0.55),0_18px_40px_rgba(28,26,69,0.35)] lg:h-[4.5rem] lg:pl-7">
+        <SearchGlyph className="size-5 shrink-0 text-taupe" />
         <input
           ref={inputRef}
           id={`${uid}-input`}
@@ -145,7 +135,7 @@ export function TrailSearch({
             expanded && active >= 0 ? options[active]?.id : undefined
           }
           value={query}
-          placeholder={hero ? "Search places or journeys" : "Search trips"}
+          placeholder="Search places or journeys"
           onChange={(e) => {
             setQuery(e.target.value);
             setOpen(true);
@@ -154,22 +144,14 @@ export function TrailSearch({
           onFocus={() => setOpen(true)}
           onBlur={() => setOpen(false)}
           onKeyDown={onKeyDown}
-          className={cn(
-            "h-full min-w-0 flex-1 bg-transparent outline-none placeholder:text-taupe/70 [&::-webkit-search-cancel-button]:hidden",
-            hero ? "pl-3.5 text-[1rem] lg:text-[1.0625rem]" : "pl-2.5 text-[0.875rem]",
-          )}
+          className="h-full min-w-0 flex-1 bg-transparent pl-3.5 text-[1rem] outline-none placeholder:text-taupe/70 lg:text-[1.0625rem] [&::-webkit-search-cancel-button]:hidden"
         />
         <button
           type="submit"
-          className={cn(
-            "flex shrink-0 items-center justify-center gap-2 rounded-full bg-green-deep font-extrabold text-white transition-transform duration-150 active:scale-[0.97]",
-            hero ? "size-12 lg:h-14 lg:w-auto lg:px-7" : "size-8",
-          )}
+          className="flex size-12 shrink-0 items-center justify-center gap-2 rounded-full bg-green-deep font-extrabold text-white transition-transform duration-150 active:scale-[0.97] lg:h-14 lg:w-auto lg:px-7"
         >
-          <span className={cn("sr-only", hero && "lg:not-sr-only lg:text-[0.9375rem]")}>
-            Start planning
-          </span>
-          <ArrowGlyph className={cn(hero ? "size-5 lg:hidden" : "size-4")} />
+          <span className="sr-only lg:not-sr-only lg:text-[0.9375rem]">Start planning</span>
+          <ArrowGlyph className="size-5 lg:hidden" />
         </button>
       </div>
 
@@ -178,10 +160,7 @@ export function TrailSearch({
         role="listbox"
         aria-label="Suggestions"
         hidden={!expanded}
-        className={cn(
-          "absolute inset-x-0 z-50 mt-3 max-h-[22rem] overflow-y-auto rounded-3xl bg-bone p-2 text-left text-ink shadow-[0_24px_60px_rgba(28,26,69,0.35)] ring-1 ring-line",
-          !hero && "mt-2 rounded-2xl",
-        )}
+        className="absolute inset-x-0 z-50 mt-3 max-h-[22rem] overflow-y-auto rounded-3xl bg-bone p-2 text-left text-ink shadow-[0_24px_60px_rgba(28,26,69,0.35)] ring-1 ring-line"
       >
         {options.map((option, i) => {
           const showGroup = option.group && option.group !== options[i - 1]?.group;

@@ -118,7 +118,7 @@ export function formatAmount(amount: number): string {
 }
 
 /** "₹2,452" for plain text such as WhatsApp messages. */
-export function formatINR(amount: number): string {
+function formatINR(amount: number): string {
   return `₹${formatAmount(amount)}`;
 }
 
@@ -276,7 +276,7 @@ export function parseSearchQuery(params: Params, today = todayIST()): ParsedSear
   };
 }
 
-export function searchParamsFor(q: FlightSearchQuery): URLSearchParams {
+function searchParamsFor(q: FlightSearchQuery): URLSearchParams {
   const sp = new URLSearchParams();
   sp.set("from", q.from);
   sp.set("to", q.to);
@@ -352,7 +352,7 @@ export function onwardOnlyHref(q: FlightSearchQuery, onward: OfferSelection): st
 
 /* --- Display helpers for an offer. */
 
-export function offerRoute(offer: FlightOffer): string {
+function offerRoute(offer: FlightOffer): string {
   const from = findAirport(offer.origin);
   const to = findAirport(offer.destination);
   return `${from?.city ?? offer.origin} to ${to?.city ?? offer.destination}`;

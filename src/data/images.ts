@@ -18,42 +18,6 @@ function image(
 }
 
 export const IMAGES = {
-  heroDawnRidges: image(
-    "hero-dawn-ridges",
-    1280,
-    1920,
-    "Layered green mountain ridges under a soft golden dawn sky, with gentle mist settling in the dark valley below",
-  ),
-  heroTeaDawn: image(
-    "hero-tea-dawn",
-    1280,
-    1920,
-    "Smooth rolling curves of a tea garden glowing in golden morning light beneath a soft hazy sky",
-  ),
-  heroRiver: image(
-    "hero-river-morning",
-    1280,
-    1920,
-    "A slender wooden boat drifting on crystal-clear turquoise water in a sunlit green gorge under a bright blue sky",
-  ),
-  heroFlagsRoad: image(
-    "hero-flags-road",
-    1280,
-    1920,
-    "A white car sweeping up a sunlit green mountain road beneath strings of colourful prayer flags against a deep blue sky",
-  ),
-  homeHeroValley: image(
-    "hero-valley-dusk",
-    1200,
-    1800,
-    "A white sedan parked on mossy grass in a vast green valley, steep mountain walls rising into low cloud on both sides",
-  ),
-  homeHero: image(
-    "home-hero",
-    2000,
-    1333,
-    "A family standing at a green hill viewpoint in Meghalaya on a bright morning, with sunlit ridges rolling into the distance",
-  ),
   homeRoad: image(
     "home-road",
     1600,
@@ -122,37 +86,7 @@ export const IMAGES = {
     "A wide sunlit river in Assam with golden sandbanks and a small passenger ferry crossing",
   ),
 
-  cabsHero: image(
-    "cabs-hero",
-    2000,
-    1333,
-    "A family loading bags into a clean white car parked on a sunny hill road with green slopes behind",
-  ),
-  cabsAirport: image(
-    "cabs-airport",
-    1000,
-    750,
-    "A sunny kerbside pickup lane outside a small regional airport with palms, parked cars and arriving travellers",
-  ),
-  cabsOutstation: image(
-    "cabs-outstation",
-    1000,
-    750,
-    "A long highway running through bright green Assamese countryside under a blue sky",
-  ),
-  cabsEv: image(
-    "cabs-ev",
-    1000,
-    750,
-    "A white electric car plugged into an outdoor charging post beside bright green hedges in sunshine",
-  ),
 
-  corporateHero: image(
-    "corporate-hero",
-    2000,
-    1333,
-    "A group of colleagues boarding clean white passenger vans in an open yard on a bright morning",
-  ),
 
   festBihu: image(
     "fest-bihu",

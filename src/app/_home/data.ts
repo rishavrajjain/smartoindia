@@ -17,7 +17,7 @@ export interface TrailJourney {
   hero: SiteImage;
 }
 
-export function toTrailJourney(journey: Journey): TrailJourney {
+function toTrailJourney(journey: Journey): TrailJourney {
   const stops = [...new Set(journey.route)].filter((s) => s !== "Guwahati");
   return {
     slug: journey.slug,
@@ -47,7 +47,7 @@ const STOP_IMAGE: Record<string, string> = {
 };
 
 /** Keeps every card in a rail on its own photograph. */
-export function distinctThumbs(list: TrailJourney[]): TrailJourney[] {
+function distinctThumbs(list: TrailJourney[]): TrailJourney[] {
   const used = new Set<string>();
   return list.map((j) => {
     const candidates = [
@@ -64,13 +64,13 @@ export function distinctThumbs(list: TrailJourney[]): TrailJourney[] {
  * The same predicate the /packages search uses, so a count printed on a tile
  * here always equals the results that page shows for `?q=`.
  */
-export function matchesQuery(journey: Journey, query: string): boolean {
+function matchesQuery(journey: Journey, query: string): boolean {
   const hay =
     `${journey.title} ${journey.subtitle} ${journey.route.join(" ")} ${journey.states.join(" ")}`.toLowerCase();
   return hay.includes(query.trim().toLowerCase());
 }
 
-export function countFor(query: string): number {
+function countFor(query: string): number {
   return JOURNEYS.filter((j) => matchesQuery(j, query)).length;
 }
 

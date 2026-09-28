@@ -11,7 +11,7 @@ to WhatsApp (see below).
 - Next.js 16 (App Router, Turbopack) with React 19
 - Strict TypeScript, React Server Components by default
 - Tailwind CSS v4 with design tokens declared in `src/app/globals.css`
-- `next/font` (Newsreader for display, Archivo for UI)
+- `next/font` with Poppins in two weights, Light 300 and ExtraBold 800 (see `docs/smarto-design-system.md`)
 - Deployed on Vercel; every route is statically prerendered except `/flights`
   and `/flights/book`, which render per request against the airline API
 
