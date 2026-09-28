@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/container";
 import { GOOGLE_RATING, GOOGLE_REVIEWS_URL, REVIEWS } from "@/data/reviews";
+import type { Review } from "@/types";
 
 /*
  * What travellers say: the real Google reviews in full, beside the overall
@@ -19,7 +20,13 @@ function Stars({ className }: { className?: string }) {
   );
 }
 
-export function GoogleReviews({ className }: { className?: string }) {
+export function GoogleReviews({
+  reviews = REVIEWS,
+  className,
+}: {
+  reviews?: Review[];
+  className?: string;
+}) {
   return (
     <section aria-labelledby="traveller-reviews" className={className}>
       <Container width="wide">
@@ -58,7 +65,7 @@ export function GoogleReviews({ className }: { className?: string }) {
           </div>
 
           <ul className="no-scrollbar -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 sm:mx-0 sm:block sm:columns-2 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0">
-            {REVIEWS.map((review) => (
+            {reviews.map((review) => (
               <li
                 key={review.id}
                 className="w-[17.5rem] shrink-0 snap-start sm:mb-4 sm:w-auto sm:break-inside-avoid"

@@ -2,7 +2,7 @@ import type { Review } from "@/types";
 
 /**
  * Real customer reviews from Smarto Cabs' Google Business profile
- * (4.9 from 2,032 reviews as of 27 Sep 2026), used with RRJ's go-ahead.
+ * (4.9 from 2,036 reviews as of 28 Sep 2026), used with RRJ's go-ahead.
  *
  * Quotes are verbatim excerpts, never edited or combined; a highlight is a
  * contiguous piece of its quote, with an ellipsis where it starts mid-way.
@@ -15,7 +15,8 @@ export const GOOGLE_RATING = { score: "4.9", count: "2,000+" } as const;
 /** Smarto Cabs on Google Maps, where every review lives. */
 export const GOOGLE_REVIEWS_URL = "https://www.google.com/maps?cid=8183920777346941104";
 
-export const REVIEWS: Review[] = [
+/** Every review we quote. Pages pick from these below. */
+const GOOGLE_REVIEWS: Review[] = [
   {
     id: "google-ambarish",
     author: "Ambarish G.",
@@ -59,7 +60,39 @@ export const REVIEWS: Review[] = [
     highlight: "We need more people like him in hospitality service.",
     status: "verified",
   },
+  {
+    id: "google-debobrat",
+    author: "Debobrat M.",
+    context: "Google, 5 stars",
+    quote:
+      "On time service. Very efficient and cost effective service on Airport dropping and pickup. I have used many times and the services are great. Nice experience.",
+    highlight: "On time service. Very efficient and cost effective…",
+    status: "verified",
+  },
+  {
+    id: "google-arun",
+    author: "Arun A.",
+    context: "Google, 5 stars",
+    quote:
+      "Affordable and reliable service by Smarto. The smart way to travel to and from the airport. Hassle free booking, clean cabs, professional drivers and safe driving. Highly recommended.",
+    highlight: "Hassle free booking, clean cabs, professional drivers…",
+    status: "verified",
+  },
 ];
+
+function pick(ids: string[]): Review[] {
+  return ids.map((id) => {
+    const review = GOOGLE_REVIEWS.find((r) => r.id === id);
+    if (!review) throw new Error(`No review "${id}".`);
+    return review;
+  });
+}
+
+/** The homepage and service pages. */
+export const REVIEWS = pick(["google-ambarish", "google-sayantan", "google-care", "google-price", "google-hospitality"]);
+
+/** The cabs page: only reviews about the rides themselves. */
+export const CAB_REVIEWS = pick(["google-debobrat", "google-arun", "google-ambarish", "google-sayantan", "google-care"]);
 
 /*
  * Lines about the cabs themselves, for the cabs page. Each is a verbatim,
@@ -68,16 +101,19 @@ export const REVIEWS: Review[] = [
  */
 const CAB_LINES: [id: string, line: string][] = [
   ["google-ambarish", "The cabs are always on time…"],
+  ["google-arun", "Hassle free booking, clean cabs, professional drivers…"],
   ["google-sayantan", "On-time pickup, neat and well-maintained car…"],
+  ["google-debobrat", "On time service. Very efficient and cost effective…"],
   ["google-care", "Good driver and good customer care…"],
   ["google-ambarish", "…makes airport travel completely stress-free."],
+  ["google-arun", "Affordable and reliable service by Smarto."],
   ["google-sayantan", "Driver was courteous and drove carefully."],
   ["google-ambarish", "The drivers are experienced, polite…"],
   ["google-sayantan", "Reasonable fare. Comfortable ride."],
 ];
 
 export const CAB_REVIEW_LINES = CAB_LINES.map(([id, line], i) => {
-  const review = REVIEWS.find((r) => r.id === id);
+  const review = GOOGLE_REVIEWS.find((r) => r.id === id);
   if (!review || !review.quote.includes(line.replaceAll("…", ""))) {
     throw new Error(`Cab review line ${i + 1} is not in review "${id}".`);
   }

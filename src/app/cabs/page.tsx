@@ -6,11 +6,12 @@ import { FleetRail, OutstationRail, ServiceRail } from "@/components/sections/ca
 import { ReviewStrip } from "@/components/sections/review-strip";
 import { TrustAndFaqs } from "@/components/sections/trust-and-faqs";
 import { Container } from "@/components/ui/container";
+import { Eyebrow } from "@/components/ui/deco";
 import { ArrowIcon, TagIcon } from "@/components/ui/line-icons";
 import { WaCta } from "@/components/ui/wa-cta";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { CAB_FAQS } from "@/data/faqs";
-import { CAB_REVIEW_LINES } from "@/data/reviews";
+import { CAB_REVIEWS, CAB_REVIEW_LINES, GOOGLE_RATING } from "@/data/reviews";
 import { pageMetadata } from "@/lib/seo";
 import { enquiry } from "@/lib/whatsapp";
 
@@ -30,11 +31,16 @@ export const metadata = pageMetadata({
  * from Smarto's Google profile (src/data/reviews.ts).
  */
 
-const NUMBERS = [
-  { n: "100%", l: "Electric fleet" },
-  { n: "₹0", l: "Surge, ever" },
-  { n: "1st", l: "With flat pricing in Guwahati" },
-  { n: "24×7", l: "On a real phone" },
+/* What every cab ride comes with. Each line restates something the page or
+   the Google profile already backs: 24x7 support, flat fares, the reviews'
+   "clean and premium cars", flight tracking, and electric city cabs. */
+const PROMISES = [
+  { big: "24×7", tag: "support", line: "A real person on the phone, day and night." },
+  { big: "₹0", tag: "surge", line: "Affordable flat fares, in the rain or at rush hour." },
+  { big: "Clean", tag: "& premium", line: "Spotless, air-conditioned cabs on every ride." },
+  { big: "On time", tag: "pickups", line: "We follow your flight and plan around your train." },
+  { big: GOOGLE_RATING.score, tag: "on Google", line: `Rated by riders across ${GOOGLE_RATING.count} reviews.`, star: true },
+  { big: "EV", tag: "city cabs", line: "Electric cabs across Guwahati: quiet, clean and cool." },
 ];
 
 const STEPS = [
@@ -104,39 +110,49 @@ export default function CabsPage() {
       <ServiceRail className="mt-16 lg:mt-24" />
       <OutstationRail className="pt-16 lg:pt-24" />
 
-      {/* ——— The numbers we're willing to print. */}
-      <div className="mt-16 bg-sand py-14 lg:mt-20">
+      {/* ——— What every cab ride comes with. */}
+      <section aria-labelledby="promises-title" className="mt-16 bg-sand py-14 lg:mt-24 lg:py-20">
         <Container width="wide">
-          <p className="text-label font-extrabold text-clay uppercase">
-            Since 2023
-          </p>
-          <h2 className="mt-4 text-[1.875rem] leading-[1.08] sm:text-[2.25rem]">
-            The numbers we&rsquo;re{" "}
-            <span className="accent">willing to print.</span>
+          <Eyebrow>Smarto Cabs</Eyebrow>
+          <h2 id="promises-title" className="mt-3 text-[1.875rem] leading-[1.08] sm:text-[2.25rem] lg:text-[2.5rem]">
+            What every ride <span className="accent">comes with.</span>
           </h2>
-          <dl className="reveal mt-8 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
-            {NUMBERS.map((item, index) => (
-              <div
-                key={item.n}
-                className={`rounded-2xl px-5 py-7 transition-transform duration-[260ms] hover:-translate-y-1 ${
-                  ["bg-clay-soft", "bg-green-deep/10", "bg-sand", "bg-clay-soft"][index]
-                }`}
-              >
-                <dd
-                  className={`text-[2.375rem] leading-none font-extrabold tracking-[-0.035em] ${
-                    index === 1 ? "text-green-deep" : "text-ink"
+          <ul className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-4">
+            {PROMISES.map((item, index) => {
+              const dark = index === 1;
+              return (
+                <li
+                  key={item.tag}
+                  className={`rounded-[1.5rem] px-4 py-6 transition-transform duration-[260ms] hover:-translate-y-1 sm:px-6 sm:py-7 ${
+                    dark ? "bg-ink text-bone" : "bg-bone text-ink"
                   }`}
                 >
-                  {item.n}
-                </dd>
-                <dt className="mt-2.5 text-[0.78125rem] leading-snug font-extrabold text-taupe">
-                  {item.l}
-                </dt>
-              </div>
-            ))}
-          </dl>
+                  <p className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                    <span
+                      className={`inline-flex items-center gap-1.5 text-[1.875rem] leading-none font-extrabold tracking-[-0.03em] sm:text-[2.5rem] ${
+                        dark ? "text-green" : "text-ink"
+                      }`}
+                    >
+                      {item.big}
+                      {item.star && (
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="size-5 text-green-deep sm:size-6">
+                          <path d="m12 3 2.7 5.5 6 .9-4.35 4.25 1 6L12 16.8l-5.35 2.85 1-6L3.3 9.4l6-.9z" />
+                        </svg>
+                      )}
+                    </span>
+                    <span className={`text-[0.875rem] font-extrabold ${dark ? "text-bone/80" : "text-taupe"}`}>
+                      {item.tag}
+                    </span>
+                  </p>
+                  <p className={`mt-3 text-[0.8125rem] leading-snug ${dark ? "text-bone/70" : "text-taupe"}`}>
+                    {item.line}
+                  </p>
+                </li>
+              );
+            })}
+          </ul>
         </Container>
-      </div>
+      </section>
 
       {/* ——— Booking, start to finish. */}
       <Container width="narrow" className="pt-16 lg:pt-20">
@@ -177,8 +193,8 @@ export default function CabsPage() {
         </ol>
       </Container>
 
-      {/* --- Why Smarto, the Google reviews, and this page's questions. */}
-      <TrustAndFaqs faqs={CAB_FAQS} location="cabs-faq" className="pt-16 lg:pt-24" />
+      {/* --- Reviews about the rides, and this page's questions. */}
+      <TrustAndFaqs faqs={CAB_FAQS} location="cabs-faq" why={false} reviews={CAB_REVIEWS} className="pt-16 lg:pt-24" />
 
       {/* ——— Beyond the city. */}
       <Container width="wide" className="pt-16 lg:pt-20">
@@ -205,31 +221,6 @@ export default function CabsPage() {
               <ArrowIcon className="size-4" />
             </Link>
           </div>
-        </div>
-      </Container>
-
-      {/* ——— The promise, to close. */}
-      <Container width="wide" className="pt-20 pb-16 lg:pt-28 lg:pb-24">
-        <span aria-hidden="true" className="spark-fill block h-[3px] w-16 rounded-full" />
-        <p className="mt-6 text-label font-extrabold text-clay uppercase">
-          Cabs · Guwahati
-        </p>
-        <h2 className="mt-5 max-w-3xl text-[2.25rem] leading-[1.05] tracking-[-0.015em] sm:text-[3rem] lg:text-[3.75rem]">
-          The price you&rsquo;re quoted{" "}
-          <span className="accent block">is the price you pay.</span>
-        </h2>
-        <div className="mt-7 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="max-w-md text-[0.9375rem] leading-relaxed text-taupe">
-            Flat fares. No surge. No bargaining. All-electric cabs across
-            Guwahati, 24×7.
-          </p>
-          <a
-            href="#book"
-            className="inline-flex min-h-[3.25rem] shrink-0 items-center gap-2.5 self-start rounded-full bg-green-deep px-6 text-[0.9375rem] font-extrabold text-white transition-transform duration-150 active:scale-[0.985] sm:self-auto"
-          >
-            Search cabs
-            <ArrowIcon className="size-4 -rotate-90" />
-          </a>
         </div>
       </Container>
 
