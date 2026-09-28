@@ -60,3 +60,26 @@ export const REVIEWS: Review[] = [
     status: "verified",
   },
 ];
+
+/*
+ * Lines about the cabs themselves, for the cabs page. Each is a verbatim,
+ * contiguous piece of one review above (ellipses mark a cut), checked at
+ * build time so an edit to a quote cannot leave a line it no longer says.
+ */
+const CAB_LINES: [id: string, line: string][] = [
+  ["google-ambarish", "The cabs are always on time…"],
+  ["google-sayantan", "On-time pickup, neat and well-maintained car…"],
+  ["google-care", "Good driver and good customer care…"],
+  ["google-ambarish", "…makes airport travel completely stress-free."],
+  ["google-sayantan", "Driver was courteous and drove carefully."],
+  ["google-ambarish", "The drivers are experienced, polite…"],
+  ["google-sayantan", "Reasonable fare. Comfortable ride."],
+];
+
+export const CAB_REVIEW_LINES = CAB_LINES.map(([id, line], i) => {
+  const review = REVIEWS.find((r) => r.id === id);
+  if (!review || !review.quote.includes(line.replaceAll("…", ""))) {
+    throw new Error(`Cab review line ${i + 1} is not in review "${id}".`);
+  }
+  return { id: `${id}-${i}`, author: review.author, context: review.context, highlight: line };
+});

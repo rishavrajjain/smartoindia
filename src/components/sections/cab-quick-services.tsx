@@ -457,7 +457,7 @@ export function CabQuickServices({
             <form
               noValidate
               aria-labelledby={`${uid}-title`}
-              className="relative mt-5 overflow-hidden rounded-[1.75rem] bg-bone p-4 shadow-[0_28px_60px_-32px_rgba(28,26,69,0.45)] ring-1 ring-line sm:p-6 lg:mt-7 lg:p-7"
+              className="relative mt-5 overflow-hidden rounded-[1.75rem] bg-bone px-3.5 py-4 shadow-[0_28px_60px_-32px_rgba(28,26,69,0.45)] ring-1 ring-line sm:p-6 lg:mt-7 lg:p-7"
               onSubmit={(e) => {
                 e.preventDefault();
                 submit();
@@ -466,18 +466,17 @@ export function CabQuickServices({
               <span aria-hidden="true" className="spark-fill absolute inset-x-0 top-0 h-[3px]" />
 
               {/* The bold copy under each label reserves its width, so
-                  choosing a pill never reflows the row. On phones the pills
-                  run in one swipeable line to keep the card on one screen. */}
+                  choosing a pill never reflows the rows. */}
               <fieldset>
                 <legend className="sr-only">Choose a service</legend>
-                <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4 sm:mx-0 sm:flex-wrap sm:gap-2 sm:overflow-visible sm:px-0">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {SERVICES.map((s) => {
                     const active = s.id === service;
                     return (
                       <label
                         key={s.id}
                         className={cn(
-                          "inline-flex min-h-11 shrink-0 cursor-pointer items-center gap-1.5 rounded-full pr-3.5 pl-3 text-[0.8125rem] transition-colors duration-200 has-[:focus-visible]:outline-2 has-[:focus-visible]:-outline-offset-2 has-[:focus-visible]:outline-ink sm:gap-2 sm:pr-4 sm:pl-3.5",
+                          "inline-flex min-h-11 cursor-pointer items-center gap-1.5 rounded-full pr-2.5 pl-2 text-[0.78125rem] transition-colors duration-200 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-ink sm:gap-2 sm:pr-4 sm:pl-3.5 sm:text-[0.8125rem]",
                           active ? "bg-ink text-bone" : "bg-sand text-ink hover:bg-line",
                         )}
                       >
@@ -489,7 +488,7 @@ export function CabQuickServices({
                           onChange={() => pickService(s.id)}
                           className="sr-only"
                         />
-                        <s.icon className={cn("size-4 shrink-0", active ? "text-green" : "text-taupe")} />
+                        <s.icon className={cn("size-[0.9375rem] shrink-0 sm:size-4", active ? "text-green" : "text-taupe")} />
                         <span className="grid">
                           <span className="invisible col-start-1 row-start-1 font-extrabold">{s.pill}</span>
                           <span className={cn("col-start-1 row-start-1", active && "font-extrabold")}>{s.pill}</span>

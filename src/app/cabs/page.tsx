@@ -2,14 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { CabQuickServices } from "@/components/sections/cab-quick-services";
-import { FareLock } from "@/components/sections/fare-lock";
+import { ReviewStrip } from "@/components/sections/review-strip";
 import { TrustAndFaqs } from "@/components/sections/trust-and-faqs";
-import { MarqueeBand } from "@/components/ui/marquee-band";
 import { Container } from "@/components/ui/container";
 import { ArrowIcon, TagIcon } from "@/components/ui/line-icons";
 import { WaCta } from "@/components/ui/wa-cta";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { CAB_FAQS } from "@/data/faqs";
+import { CAB_REVIEW_LINES } from "@/data/reviews";
 import { pageMetadata } from "@/lib/seo";
 import { enquiry } from "@/lib/whatsapp";
 
@@ -22,8 +22,8 @@ export const metadata = pageMetadata({
 
 /*
  * The cabs page, built from Manav's mobile mockup (smarto-cabs-mobile.html)
- * and laid out properly for desktop: booking card beside the headline, the
- * fare lock in two columns, services and numbers in grids. His copy,
+ * and laid out properly for desktop: booking card beside the photo,
+ * services and numbers in grids. His copy,
  * lightly edited. The mockup's placeholder stat cells (rides completed,
  * CO2 avoided) stay out until real figures arrive; the reviews are real,
  * from Smarto's Google profile (src/data/reviews.ts).
@@ -140,35 +140,8 @@ export default function CabsPage() {
         }
       />
 
-      <MarqueeBand
-        items={[
-          "Flat ₹399 railway drop",
-          "No surge",
-          "No meter drama",
-          "100% electric",
-          "24×7",
-          "Book on WhatsApp",
-        ]}
-      />
-
-      {/* ——— The fare lock: the mockup's signature. */}
-      <section className="bg-clay-deep py-14 text-bone lg:py-20">
-        <Container width="wide">
-          <div className="max-w-xl">
-            <p className="text-label font-extrabold text-green uppercase">
-              The fare lock
-            </p>
-            <h2 className="mt-4 text-[1.875rem] leading-[1.08] text-bone sm:text-[2.25rem]">
-              Go on. Try to make it <span className="accent">go up.</span>
-            </h2>
-            <p className="mt-4 text-[0.90625rem] leading-relaxed text-bone/65">
-              Zoo Road to the railway station. Tap what usually makes prices
-              jump.
-            </p>
-          </div>
-          <FareLock />
-        </Container>
-      </section>
+      {/* ——— What riders say about the cabs, drifting past. */}
+      <ReviewStrip reviews={CAB_REVIEW_LINES} label="What riders say about our cabs" />
 
       {/* ——— Four ways to ride, each one bookable. */}
       <Container width="wide" className="pt-16 lg:pt-20">
