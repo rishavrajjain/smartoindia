@@ -102,17 +102,11 @@ export default function CabsPage() {
 
   return (
     <>
-      {/* ——— Hero: the promise, then straight into booking. */}
+      {/* ——— Hero: straight into booking. */}
       <CabQuickServices
-        heading={
+        title={
           <>
-            <p className="text-label font-extrabold text-clay uppercase">
-              Cabs · Guwahati
-            </p>
-            <h1 className="mt-5 max-w-xl text-[2.25rem] leading-[1.05] tracking-[-0.015em] sm:text-[2.875rem]">
-              The price you&rsquo;re quoted{" "}
-              <span className="accent block">is the price you pay.</span>
-            </h1>
+            Search <span className="accent">cabs</span>
           </>
         }
         aside={
@@ -327,6 +321,31 @@ export default function CabsPage() {
               <ArrowIcon className="size-4" />
             </Link>
           </div>
+        </div>
+      </Container>
+
+      {/* ——— The promise, to close. */}
+      <Container width="wide" className="pt-20 pb-16 lg:pt-28 lg:pb-24">
+        <span aria-hidden="true" className="spark-fill block h-[3px] w-16 rounded-full" />
+        <p className="mt-6 text-label font-extrabold text-clay uppercase">
+          Cabs · Guwahati
+        </p>
+        <h2 className="mt-5 max-w-3xl text-[2.25rem] leading-[1.05] tracking-[-0.015em] sm:text-[3rem] lg:text-[3.75rem]">
+          The price you&rsquo;re quoted{" "}
+          <span className="accent block">is the price you pay.</span>
+        </h2>
+        <div className="mt-7 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="max-w-md text-[0.9375rem] leading-relaxed text-taupe">
+            Flat fares. No surge. No bargaining. All-electric cabs across
+            Guwahati, 24×7.
+          </p>
+          <a
+            href="#book"
+            className="inline-flex min-h-[3.25rem] shrink-0 items-center gap-2.5 self-start rounded-full bg-green-deep px-6 text-[0.9375rem] font-extrabold text-white transition-transform duration-150 active:scale-[0.985] sm:self-auto"
+          >
+            Search cabs
+            <ArrowIcon className="size-4 -rotate-90" />
+          </a>
         </div>
       </Container>
 

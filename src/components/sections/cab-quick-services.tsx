@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useRef, useState, type ComponentType, type ReactNode } from "react";
+import { useId, useState, type ComponentType, type ReactNode } from "react";
 
 import { Container } from "@/components/ui/container";
 import {
@@ -48,7 +48,6 @@ type ServiceId = "airport" | "rental" | "railway" | "city" | "shillong" | "outst
 
 interface Service {
   id: ServiceId;
-  name: string;
   /** The short label on its pill. */
   pill: string;
   icon: Icon;
@@ -64,7 +63,6 @@ const ONE_WAY_ROUND: readonly Option[] = [
 const SERVICES: readonly Service[] = [
   {
     id: "airport",
-    name: "Airport transfer",
     pill: "Airport",
     icon: AirportIcon,
     modes: ONE_WAY_ROUND,
@@ -72,7 +70,6 @@ const SERVICES: readonly Service[] = [
   },
   {
     id: "rental",
-    name: "Car rental",
     pill: "Car rental",
     icon: KeyIcon,
     modes: null,
@@ -80,7 +77,6 @@ const SERVICES: readonly Service[] = [
   },
   {
     id: "railway",
-    name: "Railway station",
     pill: "Railway",
     icon: TrainIcon,
     modes: null,
@@ -88,7 +84,6 @@ const SERVICES: readonly Service[] = [
   },
   {
     id: "city",
-    name: "City trip",
     pill: "City trip",
     icon: BuildingIcon,
     modes: null,
@@ -96,7 +91,6 @@ const SERVICES: readonly Service[] = [
   },
   {
     id: "shillong",
-    name: "Shillong rides",
     pill: "Shillong",
     icon: MountainIcon,
     modes: [
@@ -110,7 +104,6 @@ const SERVICES: readonly Service[] = [
   },
   {
     id: "outstation",
-    name: "Outstation",
     pill: "Outstation",
     icon: RoadIcon,
     modes: [
@@ -125,7 +118,6 @@ const SERVICES: readonly Service[] = [
   },
   {
     id: "sonapur",
-    name: "Sonapur ride",
     pill: "Sonapur",
     icon: RouteIcon,
     modes: ONE_WAY_ROUND,
@@ -334,11 +326,11 @@ function at(date: string, time: string): string {
 }
 
 export function CabQuickServices({
-  heading,
+  title,
   aside,
 }: {
-  /** The page's eyebrow and headline, above the pills. */
-  heading: ReactNode;
+  /** The page's headline, above the booking card. */
+  title: ReactNode;
   /** Shown beside the booking card from desktop up. */
   aside?: ReactNode;
 }) {
@@ -363,7 +355,6 @@ export function CabQuickServices({
   const [cab, setCab] = useState("Any");
   const [extras, setExtras] = useState<string[]>([]);
   const [error, setError] = useState("");
-  const formRef = useRef<HTMLFormElement>(null);
 
   const svc = SERVICES.find((s) => s.id === service) ?? SERVICES[0];
   const mode = svc.modes?.some((m) => m.value === modeChoice) ? modeChoice : (svc.modes?.[0].value ?? "");
@@ -385,17 +376,6 @@ export function CabQuickServices({
     setMode(next?.modes?.[0].value ?? "");
     setDirection("");
     setError("");
-  };
-
-  /* On a phone the card can sit below the fold: after a tap on a pill,
-     bring it into view if it is off screen. Keyboard changes never move
-     the page. */
-  const revealForm = () => {
-    const form = formRef.current;
-    if (!form || window.matchMedia("(min-width: 1024px)").matches) return;
-    if (form.getBoundingClientRect().top > window.innerHeight * 0.6) {
-      requestAnimationFrame(() => form.scrollIntoView({ block: "start" }));
-    }
   };
 
   const setPlace = (key: Place["key"], value: string) => {
@@ -465,53 +445,19 @@ export function CabQuickServices({
   };
 
   return (
-    <section id="book" className="bg-bone">
-      <Container width="wide" className="pt-10 pb-14 lg:pt-16 lg:pb-20">
+    <section id="book" className="scroll-mt-16 bg-bone">
+      <Container width="wide" className="pt-6 pb-14 lg:pt-12 lg:pb-20">
         <div className="grid grid-cols-1 gap-x-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] xl:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
           <div>
-            {heading}
+            <h1 id={`${uid}-title`} className="text-[2rem] leading-[1.05] tracking-[-0.015em] sm:text-[2.5rem]">
+              {title}
+            </h1>
 
-            {/* --- The services, as pills. The bold copy underneath each label
-                reserves its width, so choosing one never reflows the row. */}
-            <fieldset className="mt-7">
-              <legend className="sr-only">Choose a service</legend>
-              <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                {SERVICES.map((s) => {
-                  const active = s.id === service;
-                  return (
-                    <label
-                      key={s.id}
-                      onPointerUp={revealForm}
-                      className={cn(
-                        "inline-flex min-h-11 cursor-pointer items-center gap-1.5 rounded-full pr-3.5 pl-3 text-[0.78125rem] transition-colors sm:gap-2 sm:pr-4 sm:pl-3.5 sm:text-[0.8125rem] duration-200 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-ink",
-                        active ? "bg-ink text-bone" : "bg-sand text-ink hover:bg-line",
-                      )}
-                    >
-                      <input
-                        type="radio"
-                        name={`${uid}-service`}
-                        value={s.id}
-                        checked={active}
-                        onChange={() => pickService(s.id)}
-                        className="sr-only"
-                      />
-                      <s.icon className={cn("size-[0.9375rem] shrink-0 sm:size-4", active ? "text-green" : "text-taupe")} />
-                      <span className="grid">
-                        <span className="invisible col-start-1 row-start-1 font-extrabold">{s.pill}</span>
-                        <span className={cn("col-start-1 row-start-1", active && "font-extrabold")}>{s.pill}</span>
-                      </span>
-                    </label>
-                  );
-                })}
-              </div>
-            </fieldset>
-
-            {/* --- The chosen service's booking card. */}
+            {/* --- One card: the service pills on top, that service's trip below. */}
             <form
-              ref={formRef}
               noValidate
-              aria-labelledby={`${uid}-service-name`}
-              className="relative mt-5 scroll-mt-20 overflow-hidden rounded-[1.75rem] bg-bone p-4 shadow-[0_28px_60px_-32px_rgba(28,26,69,0.45)] ring-1 ring-line sm:p-6 lg:p-7"
+              aria-labelledby={`${uid}-title`}
+              className="relative mt-5 overflow-hidden rounded-[1.75rem] bg-bone p-4 shadow-[0_28px_60px_-32px_rgba(28,26,69,0.45)] ring-1 ring-line sm:p-6 lg:mt-7 lg:p-7"
               onSubmit={(e) => {
                 e.preventDefault();
                 submit();
@@ -519,48 +465,78 @@ export function CabQuickServices({
             >
               <span aria-hidden="true" className="spark-fill absolute inset-x-0 top-0 h-[3px]" />
 
-              <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
-                <h2
-                  id={`${uid}-service-name`}
-                  className="flex items-center gap-2.5 text-[1.1875rem] leading-tight font-extrabold text-ink sm:text-[1.25rem]"
-                >
-                  <span className="grid size-9 shrink-0 place-items-center rounded-full bg-ink text-green">
-                    <svc.icon className="size-[1.125rem]" />
-                  </span>
-                  {svc.name}
-                </h2>
-                {svc.modes && (
-                  <fieldset className="w-full sm:w-auto">
-                    <legend className="sr-only">Trip type</legend>
-                    <div className="grid auto-cols-fr grid-flow-col gap-1 rounded-full bg-sand p-1">
-                      {svc.modes.map((m) => (
-                        <label
-                          key={m.value}
-                          className={cn(
-                            "flex min-h-11 cursor-pointer items-center justify-center rounded-full px-4 text-[0.8125rem] whitespace-nowrap transition-colors duration-200 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-1 has-[:focus-visible]:outline-ink",
-                            mode === m.value ? "bg-ink font-extrabold text-bone" : "text-ink hover:bg-bone/80",
-                          )}
-                        >
-                          <input
-                            type="radio"
-                            name={`${uid}-mode`}
-                            value={m.value}
-                            checked={mode === m.value}
-                            onChange={() => {
-                              setMode(m.value);
-                              setDirection("");
-                              setError("");
-                            }}
-                            className="sr-only"
-                          />
-                          {m.label}
-                        </label>
-                      ))}
-                    </div>
-                  </fieldset>
+              {/* The bold copy under each label reserves its width, so
+                  choosing a pill never reflows the row. On phones the pills
+                  run in one swipeable line to keep the card on one screen. */}
+              <fieldset>
+                <legend className="sr-only">Choose a service</legend>
+                <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4 sm:mx-0 sm:flex-wrap sm:gap-2 sm:overflow-visible sm:px-0">
+                  {SERVICES.map((s) => {
+                    const active = s.id === service;
+                    return (
+                      <label
+                        key={s.id}
+                        className={cn(
+                          "inline-flex min-h-11 shrink-0 cursor-pointer items-center gap-1.5 rounded-full pr-3.5 pl-3 text-[0.8125rem] transition-colors duration-200 has-[:focus-visible]:outline-2 has-[:focus-visible]:-outline-offset-2 has-[:focus-visible]:outline-ink sm:gap-2 sm:pr-4 sm:pl-3.5",
+                          active ? "bg-ink text-bone" : "bg-sand text-ink hover:bg-line",
+                        )}
+                      >
+                        <input
+                          type="radio"
+                          name={`${uid}-service`}
+                          value={s.id}
+                          checked={active}
+                          onChange={() => pickService(s.id)}
+                          className="sr-only"
+                        />
+                        <s.icon className={cn("size-4 shrink-0", active ? "text-green" : "text-taupe")} />
+                        <span className="grid">
+                          <span className="invisible col-start-1 row-start-1 font-extrabold">{s.pill}</span>
+                          <span className={cn("col-start-1 row-start-1", active && "font-extrabold")}>{s.pill}</span>
+                        </span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </fieldset>
+
+              {svc.modes && (
+                <fieldset className="mt-4 border-t border-line pt-4 sm:mt-5 sm:pt-5">
+                  <legend className="sr-only">Trip type</legend>
+                  <div className="grid auto-cols-fr grid-flow-col gap-1 rounded-full bg-sand p-1 sm:inline-grid">
+                    {svc.modes.map((m) => (
+                      <label
+                        key={m.value}
+                        className={cn(
+                          "flex min-h-11 cursor-pointer items-center justify-center rounded-full px-5 text-[0.8125rem] whitespace-nowrap transition-colors duration-200 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-1 has-[:focus-visible]:outline-ink",
+                          mode === m.value ? "bg-ink font-extrabold text-bone" : "text-ink hover:bg-bone/80",
+                        )}
+                      >
+                        <input
+                          type="radio"
+                          name={`${uid}-mode`}
+                          value={m.value}
+                          checked={mode === m.value}
+                          onChange={() => {
+                            setMode(m.value);
+                            setDirection("");
+                            setError("");
+                          }}
+                          className="sr-only"
+                        />
+                        {m.label}
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              )}
+              <div
+                key={`${service}-${mode}`}
+                className={cn(
+                  "flex flex-col gap-4 motion-safe:animate-fade-in",
+                  svc.modes ? "mt-5" : "mt-4 border-t border-line pt-4 sm:mt-5 sm:pt-5",
                 )}
-              </div>
-              <div key={`${service}-${mode}`} className="mt-6 flex flex-col gap-4 motion-safe:animate-fade-in">
+              >
                 {dir && (
                   <ChoicePills
                     legend={dir.legend}
