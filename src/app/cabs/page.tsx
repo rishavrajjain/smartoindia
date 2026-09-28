@@ -104,11 +104,13 @@ export default function CabsPage() {
     <>
       {/* ——— Hero: straight into booking. */}
       <CabQuickServices
+        eyebrow="Cabs"
         title={
           <>
             Search <span className="accent">cabs</span>
           </>
         }
+        sub="Flat fares on all-electric cabs across Guwahati, 24×7. Pick a ride and your fare comes back on WhatsApp."
         aside={
           <div className="relative">
             <div className="rounded-[2.1875rem] bg-[linear-gradient(135deg,#282560_0%,#7b3f7e_45%,#c44868_100%)] p-[3px]">

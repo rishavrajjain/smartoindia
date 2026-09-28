@@ -3,6 +3,7 @@
 import { useId, useState, type ComponentType, type ReactNode } from "react";
 
 import { Container } from "@/components/ui/container";
+import { Eyebrow } from "@/components/ui/deco";
 import {
   ChoicePills,
   DateTile,
@@ -326,11 +327,16 @@ function at(date: string, time: string): string {
 }
 
 export function CabQuickServices({
+  eyebrow,
   title,
+  sub,
   aside,
 }: {
+  eyebrow: string;
   /** The page's headline, above the booking card. */
   title: ReactNode;
+  /** One line under the headline. */
+  sub: ReactNode;
   /** Shown beside the booking card from desktop up. */
   aside?: ReactNode;
 }) {
@@ -449,15 +455,17 @@ export function CabQuickServices({
       <Container width="wide" className="pt-6 pb-14 lg:pt-12 lg:pb-20">
         <div className="grid grid-cols-1 gap-x-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] xl:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
           <div>
-            <h1 id={`${uid}-title`} className="text-[2rem] leading-[1.05] tracking-[-0.015em] sm:text-[2.5rem]">
+            <Eyebrow>{eyebrow}</Eyebrow>
+            <h1 id={`${uid}-title`} className="mt-3 text-[1.75rem] leading-tight sm:text-[2rem] lg:text-[2.5rem]">
               {title}
             </h1>
+            <p className="mt-3 max-w-md text-[0.875rem] leading-relaxed text-taupe">{sub}</p>
 
             {/* --- One card: the service pills on top, that service's trip below. */}
             <form
               noValidate
               aria-labelledby={`${uid}-title`}
-              className="relative mt-5 overflow-hidden rounded-[1.75rem] bg-bone px-3.5 py-4 shadow-[0_28px_60px_-32px_rgba(28,26,69,0.45)] ring-1 ring-line sm:p-6 lg:mt-7 lg:p-7"
+              className="relative mt-6 overflow-hidden rounded-[1.75rem] bg-bone px-3.5 py-4 shadow-[0_28px_60px_-32px_rgba(28,26,69,0.45)] ring-1 ring-line sm:p-6 lg:p-7"
               onSubmit={(e) => {
                 e.preventDefault();
                 submit();
