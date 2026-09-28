@@ -105,6 +105,23 @@ export const NAV: NavItem[] = [
   },
 ];
 
+/** The header's links, identical on every page; everything else is in the menu. */
+export const HEADER_NAV = [
+  { href: "/packages", label: "Packages" },
+  { href: "/cabs", label: "Cabs" },
+  { href: "/flights", label: "Flights" },
+  { href: "/hotels", label: "Hotels" },
+  { href: "/festivals", label: "Festivals" },
+  { href: "/corporate", label: "Corporate" },
+] as const;
+
+/** Linked from every footer. */
+export const LEGAL_LINKS = [
+  { href: "/terms", label: "Terms & Conditions" },
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/terms#cancellations", label: "Cancellations & refunds" },
+] as const;
+
 export function absoluteUrl(path: string): string {
   return new URL(path, SITE.url).toString();
 }
