@@ -12,15 +12,18 @@ import type { CtaLocation } from "@/lib/whatsapp";
 export function TrustAndFaqs({
   faqs,
   location,
+  why = true,
   className,
 }: {
   faqs: Faq[];
   location: CtaLocation;
+  /** Include "Why book through Smarto". */
+  why?: boolean;
   className?: string;
 }) {
   return (
     <div className={cn("space-y-16 lg:space-y-24", className)}>
-      <WhySmarto />
+      {why && <WhySmarto />}
       <GoogleReviews />
       <FaqSection faqs={faqs} location={location} />
     </div>

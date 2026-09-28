@@ -537,8 +537,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* --- Why Smarto, what travellers say, and the questions people ask. */}
-      <TrustAndFaqs faqs={GENERAL_FAQS} location="home-faq" className="pt-16 lg:pt-24" />
+      {/* --- What travellers say, and the questions people ask. */}
+      <TrustAndFaqs faqs={GENERAL_FAQS} location="home-faq" why={false} className="pt-16 lg:pt-24" />
 
       {/* --- WhatsApp: an open section on the page, not another card. */}
       <section className="mx-auto max-w-7xl px-5 pt-16 sm:px-8 lg:pt-24">

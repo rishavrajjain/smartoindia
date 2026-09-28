@@ -3,17 +3,10 @@ import Link from "next/link";
 
 import { CabQuickServices } from "@/components/sections/cab-quick-services";
 import { FareLock } from "@/components/sections/fare-lock";
-import { PhotoHero } from "@/components/sections/photo-hero";
 import { TrustAndFaqs } from "@/components/sections/trust-and-faqs";
 import { MarqueeBand } from "@/components/ui/marquee-band";
 import { Container } from "@/components/ui/container";
-import {
-  ArrowIcon,
-  BoltIcon,
-  HeadsetIcon,
-  SurgeOffIcon,
-  TagIcon,
-} from "@/components/ui/line-icons";
+import { ArrowIcon, TagIcon } from "@/components/ui/line-icons";
 import { WaCta } from "@/components/ui/wa-cta";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { CAB_FAQS } from "@/data/faqs";
@@ -35,13 +28,6 @@ export const metadata = pageMetadata({
  * CO2 avoided) stay out until real figures arrive; the reviews are real,
  * from Smarto's Google profile (src/data/reviews.ts).
  */
-
-const CHIPS = [
-  { icon: BoltIcon, label: <><b className="font-extrabold">100%</b> electric</> },
-  { icon: SurgeOffIcon, label: <><b className="font-extrabold">Zero</b> surge, ever</> },
-  { icon: HeadsetIcon, label: <><b className="font-extrabold">24×7</b> support</> },
-  { icon: TagIcon, label: <>First with flat pricing</> },
-];
 
 const SERVICES = [
   {
@@ -116,48 +102,49 @@ export default function CabsPage() {
 
   return (
     <>
-      {/* ——— Hero: the promise, the booking card, and the road it buys. */}
-      <PhotoHero
-        eyebrow="Cabs · Guwahati"
-        title={
+      {/* ——— Hero: the promise, then straight into booking. */}
+      <CabQuickServices
+        heading={
           <>
-            The price you&rsquo;re quoted{" "}
-            <span className="accent block">is the price you pay.</span>
+            <p className="text-label font-extrabold text-clay uppercase">
+              Cabs · Guwahati
+            </p>
+            <h1 className="mt-5 max-w-xl text-[2.25rem] leading-[1.05] tracking-[-0.015em] sm:text-[2.875rem]">
+              The price you&rsquo;re quoted{" "}
+              <span className="accent block">is the price you pay.</span>
+            </h1>
           </>
         }
-        sub="Flat fares. No surge. No bargaining. All-electric cabs across Guwahati, 24×7."
-        image={{
-          src: "/images/fleet-cabs-hero.webp",
-          alt: "A Smarto electric cab at a misty hill-road viewpoint, rear door open and travel bags beside it",
-        }}
-        float={{
-          icon: TagIcon,
-          title: "Flat ₹399",
-          line: "Railway station drop",
-        }}
-        chips={CHIPS}
-      >
-        <div className="flex flex-wrap gap-3">
-          <a
-            href="#book"
-            className="inline-flex min-h-[3.25rem] items-center gap-2.5 rounded-full bg-green-deep px-6 text-[0.9375rem] font-extrabold text-white shadow-[0_14px_30px_rgba(57,151,114,0.3)] transition-transform duration-150 active:scale-[0.985]"
-          >
-            Book a ride
-            <ArrowIcon className="size-4 rotate-90" />
-          </a>
-          <WaCta
-            message={enquiry("I need a cab in Guwahati.")}
-            location="cabs-hero"
-            className="inline-flex min-h-[3.25rem] items-center gap-2.5 rounded-full px-6 text-[0.9375rem] font-extrabold text-ink ring-1 ring-line-strong transition-colors hover:bg-sand"
-          >
-            <WhatsAppIcon />
-            Book on WhatsApp
-          </WaCta>
-        </div>
-      </PhotoHero>
-
-      {/* ——— Quick services: every kind of ride, each with its own booking card. */}
-      <CabQuickServices />
+        aside={
+          <div className="relative">
+            <div className="rounded-[2.1875rem] bg-[linear-gradient(135deg,#282560_0%,#7b3f7e_45%,#c44868_100%)] p-[3px]">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-sand">
+                <Image
+                  src="/images/fleet-cabs-hero.webp"
+                  alt="A Smarto electric cab at a misty hill-road viewpoint, rear door open and travel bags beside it"
+                  fill
+                  priority
+                  sizes="(min-width: 1280px) 480px, 416px"
+                  className="zoom-slow object-cover"
+                />
+              </div>
+            </div>
+            <div className="absolute -bottom-6 left-5 flex items-center gap-3 rounded-2xl bg-paper px-4 py-3.5 ring-1 ring-line motion-safe:animate-cab-float sm:left-7">
+              <span className="grid size-10 shrink-0 place-items-center rounded-full bg-green-deep/10">
+                <TagIcon className="size-5 text-green-deep" />
+              </span>
+              <span>
+                <span className="block text-[0.9375rem] leading-snug font-extrabold text-ink">
+                  Flat ₹399
+                </span>
+                <span className="block text-[0.75rem] text-taupe">
+                  Railway station drop
+                </span>
+              </span>
+            </div>
+          </div>
+        }
+      />
 
       <MarqueeBand
         items={[

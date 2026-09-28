@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { useId, useRef, useState, type ComponentType } from "react";
+import { useId, useRef, useState, type ComponentType, type ReactNode } from "react";
 
 import { Container } from "@/components/ui/container";
 import {
@@ -15,26 +14,22 @@ import {
 } from "@/components/ui/form-tiles";
 import {
   AirportIcon,
-  ArrowIcon,
   BuildingIcon,
   CheckIcon,
   ClockIcon,
   CloseIcon,
-  HeadsetIcon,
   KeyIcon,
   LocateIcon,
   MountainIcon,
-  PeopleIcon,
   PlusIcon,
   RoadIcon,
   RouteIcon,
-  SuitcaseIcon,
   TrainIcon,
 } from "@/components/ui/line-icons";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { trackCtaClick } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
-import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, whatsappUrl } from "@/lib/whatsapp";
+import { whatsappUrl } from "@/lib/whatsapp";
 
 /*
  * Quick services: the booking flow from Smarto's own booking page
@@ -54,7 +49,8 @@ type ServiceId = "airport" | "rental" | "railway" | "city" | "shillong" | "outst
 interface Service {
   id: ServiceId;
   name: string;
-  hint: string;
+  /** The short label on its pill. */
+  pill: string;
   icon: Icon;
   modes: readonly Option[] | null;
   note: (mode: string) => string;
@@ -69,7 +65,7 @@ const SERVICES: readonly Service[] = [
   {
     id: "airport",
     name: "Airport transfer",
-    hint: "Terminal 1 and 2",
+    pill: "Airport",
     icon: AirportIcon,
     modes: ONE_WAY_ROUND,
     note: () => "We follow your flight, so a delay never leaves you stranded.",
@@ -77,7 +73,7 @@ const SERVICES: readonly Service[] = [
   {
     id: "rental",
     name: "Car rental",
-    hint: "2 to 12 hours",
+    pill: "Car rental",
     icon: KeyIcon,
     modes: null,
     note: () => "From ₹349/hr, with 10 km included for every hour.",
@@ -85,7 +81,7 @@ const SERVICES: readonly Service[] = [
   {
     id: "railway",
     name: "Railway station",
-    hint: "Three stations",
+    pill: "Railway",
     icon: TrainIcon,
     modes: null,
     note: () => "One flat fare, early train or late.",
@@ -93,7 +89,7 @@ const SERVICES: readonly Service[] = [
   {
     id: "city",
     name: "City trip",
-    hint: "Across Guwahati",
+    pill: "City trip",
     icon: BuildingIcon,
     modes: null,
     note: () => "Minimum fare ₹249. Book at least 2 hours ahead.",
@@ -101,7 +97,7 @@ const SERVICES: readonly Service[] = [
   {
     id: "shillong",
     name: "Shillong rides",
-    hint: "Reserved or shared",
+    pill: "Shillong",
     icon: MountainIcon,
     modes: [
       { value: "reserved", label: "Reserved" },
@@ -115,7 +111,7 @@ const SERVICES: readonly Service[] = [
   {
     id: "outstation",
     name: "Outstation",
-    hint: "One way or multi-day",
+    pill: "Outstation",
     icon: RoadIcon,
     modes: [
       { value: "one-way", label: "One way" },
@@ -130,17 +126,12 @@ const SERVICES: readonly Service[] = [
   {
     id: "sonapur",
     name: "Sonapur ride",
-    hint: "One way or return",
+    pill: "Sonapur",
     icon: RouteIcon,
     modes: ONE_WAY_ROUND,
     note: () => "One flat fare, confirmed before you ride.",
   },
 ];
-
-const LINKS = [
-  { href: "/corporate", name: "Corporate", hint: "Rides for your team", icon: SuitcaseIcon },
-  { href: "/partners#register", name: "Partner", hint: "Agents and hotels", icon: PeopleIcon },
-] as const;
 
 const TERMINALS: readonly Option[] = [
   { value: "Terminal 1", label: "Terminal 1" },
@@ -182,8 +173,8 @@ function directionsFor(service: ServiceId, mode: string): { legend: string; opti
         : {
             legend: "Trip",
             options: [
-              { value: "from", label: "Pickup from airport" },
-              { value: "to", label: "Drop to airport" },
+              { value: "from", label: "Airport pickup" },
+              { value: "to", label: "Airport drop" },
             ],
           };
     case "railway":
@@ -342,7 +333,15 @@ function at(date: string, time: string): string {
   return [date && longDate(date), time && timeLabel(time)].filter(Boolean).join(", ");
 }
 
-export function CabQuickServices() {
+export function CabQuickServices({
+  heading,
+  aside,
+}: {
+  /** The page's eyebrow and headline, above the pills. */
+  heading: ReactNode;
+  /** Shown beside the booking card from desktop up. */
+  aside?: ReactNode;
+}) {
   const uid = useId();
   const [service, setService] = useState<ServiceId>("airport");
   const [modeChoice, setMode] = useState("one-way");
@@ -388,8 +387,9 @@ export function CabQuickServices() {
     setError("");
   };
 
-  /* On a phone the card sits below the tiles: after a tap, bring it into
-     view if it is off screen. Keyboard changes never move the page. */
+  /* On a phone the card can sit below the fold: after a tap on a pill,
+     bring it into view if it is off screen. Keyboard changes never move
+     the page. */
   const revealForm = () => {
     const form = formRef.current;
     if (!form || window.matchMedia("(min-width: 1024px)").matches) return;
@@ -465,370 +465,314 @@ export function CabQuickServices() {
   };
 
   return (
-    <section id="book" aria-labelledby={`${uid}-title`} className="scroll-mt-20 bg-bone pb-16 lg:pb-24">
-      <Container width="wide">
-        <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-3">
+    <section id="book" className="bg-bone">
+      <Container width="wide" className="pt-10 pb-14 lg:pt-16 lg:pb-20">
+        <div className="grid grid-cols-1 gap-x-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] xl:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
           <div>
-            <p className="text-label font-extrabold text-clay uppercase">Quick services</p>
-            <h2 id={`${uid}-title`} className="mt-3 text-[1.875rem] leading-[1.08] sm:text-[2.25rem] lg:text-[2.5rem]">
-              What kind of ride <span className="accent">do you need?</span>
-            </h2>
-          </div>
-          <p className="max-w-sm text-[0.875rem] leading-relaxed text-taupe">
-            Pick a service and fill in what you know. We reply on WhatsApp with
-            your fare, before anything is booked.
-          </p>
-        </div>
+            {heading}
 
-        <div className="mt-8 grid grid-cols-1 gap-5 lg:mt-10 lg:grid-cols-12 lg:gap-10">
-          {/* --- The services. */}
-          <fieldset className="lg:sticky lg:top-24 lg:col-span-5 lg:self-start">
-            <legend className="sr-only">Choose a service</legend>
-            <div className="grid grid-cols-3 gap-2 sm:gap-3">
-              {SERVICES.map((s) => {
-                const active = s.id === service;
-                return (
-                  <label
-                    key={s.id}
-                    onPointerUp={revealForm}
-                    className={cn(
-                      "relative flex min-h-[6.5rem] cursor-pointer flex-col justify-between overflow-hidden rounded-2xl p-3 transition-colors duration-200 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-ink sm:min-h-[8rem] sm:p-4",
-                      active ? "bg-ink text-bone" : "bg-sand text-ink hover:bg-line",
-                    )}
-                  >
-                    <input
-                      type="radio"
-                      name={`${uid}-service`}
-                      value={s.id}
-                      checked={active}
-                      onChange={() => pickService(s.id)}
-                      className="sr-only"
-                    />
-                    <span
+            {/* --- The services, as pills. The bold copy underneath each label
+                reserves its width, so choosing one never reflows the row. */}
+            <fieldset className="mt-7">
+              <legend className="sr-only">Choose a service</legend>
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                {SERVICES.map((s) => {
+                  const active = s.id === service;
+                  return (
+                    <label
+                      key={s.id}
+                      onPointerUp={revealForm}
                       className={cn(
-                        "grid size-9 place-items-center rounded-full transition-colors sm:size-10",
-                        active ? "bg-bone/12 text-green" : "bg-bone text-ink",
+                        "inline-flex min-h-11 cursor-pointer items-center gap-1.5 rounded-full pr-3.5 pl-3 text-[0.78125rem] transition-colors sm:gap-2 sm:pr-4 sm:pl-3.5 sm:text-[0.8125rem] duration-200 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-ink",
+                        active ? "bg-ink text-bone" : "bg-sand text-ink hover:bg-line",
                       )}
                     >
-                      <s.icon className="size-[1.125rem] sm:size-5" />
-                    </span>
-                    <span className="mt-3 block">
-                      <span className="block text-[0.78125rem] leading-tight font-extrabold sm:text-[0.875rem]">
-                        {s.name}
-                      </span>
-                      <span
-                        className={cn(
-                          "mt-1 hidden text-[0.6875rem] leading-snug sm:block",
-                          active ? "text-bone/65" : "text-taupe",
-                        )}
-                      >
-                        {s.hint}
-                      </span>
-                    </span>
-                    {active && <span aria-hidden="true" className="spark-fill absolute inset-x-0 bottom-0 h-[3px]" />}
-                  </label>
-                );
-              })}
-              {LINKS.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className="group relative flex min-h-[6.5rem] flex-col justify-between rounded-2xl bg-bone p-3 text-ink ring-1 ring-line transition-shadow duration-200 hover:ring-ink sm:min-h-[8rem] sm:p-4"
-                >
-                  <span className="flex items-start justify-between gap-1">
-                    <span className="grid size-9 place-items-center rounded-full bg-sand sm:size-10">
-                      <l.icon className="size-[1.125rem] sm:size-5" />
-                    </span>
-                    <ArrowIcon className="size-3.5 -rotate-45 text-taupe transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </span>
-                  <span className="mt-3 block">
-                    <span className="block text-[0.78125rem] leading-tight font-extrabold sm:text-[0.875rem]">{l.name}</span>
-                    <span className="mt-1 hidden text-[0.6875rem] leading-snug text-taupe sm:block">{l.hint}</span>
-                  </span>
-                </Link>
-              ))}
-            </div>
-            <p className="mt-4 flex items-center gap-3 rounded-2xl px-1 text-[0.8125rem] leading-snug text-taupe sm:mt-5">
-              <span className="grid size-9 shrink-0 place-items-center rounded-full bg-green-deep/10 text-green-deep">
-                <HeadsetIcon className="size-[1.125rem]" />
-              </span>
-              <span>
-                Not sure which? Call us on{" "}
-                <a href={`tel:+${WHATSAPP_NUMBER}`} className="font-extrabold whitespace-nowrap text-ink underline-offset-4 hover:underline">
-                  {WHATSAPP_DISPLAY}
-                </a>
-                , around the clock.
-              </span>
-            </p>
-          </fieldset>
-
-          {/* --- The chosen service's booking card. */}
-          <form
-            ref={formRef}
-            noValidate
-            aria-labelledby={`${uid}-service-name`}
-            className="relative scroll-mt-20 overflow-hidden rounded-[1.75rem] bg-bone p-4 shadow-[0_28px_60px_-32px_rgba(28,26,69,0.45)] ring-1 ring-line sm:p-6 lg:col-span-7 lg:p-7"
-            onSubmit={(e) => {
-              e.preventDefault();
-              submit();
-            }}
-          >
-            <span aria-hidden="true" className="spark-fill absolute inset-x-0 top-0 h-[3px]" />
-
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <span className="grid size-11 shrink-0 place-items-center rounded-full bg-ink text-green">
-                  <svc.icon className="size-5" />
-                </span>
-                <div>
-                  <p className="text-label font-extrabold text-taupe uppercase">Book</p>
-                  <h3 id={`${uid}-service-name`} className="text-[1.25rem] leading-tight font-extrabold text-ink">
-                    {svc.name}
-                  </h3>
-                </div>
-              </div>
-              {svc.modes && (
-                <fieldset className="w-full sm:w-auto">
-                  <legend className="sr-only">Trip type</legend>
-                  <div className="grid auto-cols-fr grid-flow-col gap-1 rounded-full bg-sand p-1">
-                    {svc.modes.map((m) => (
-                      <label
-                        key={m.value}
-                        className={cn(
-                          "flex min-h-11 cursor-pointer items-center justify-center rounded-full px-4 text-[0.8125rem] whitespace-nowrap transition-colors duration-200 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-1 has-[:focus-visible]:outline-ink",
-                          mode === m.value ? "bg-ink font-extrabold text-bone" : "text-ink hover:bg-bone/80",
-                        )}
-                      >
-                        <input
-                          type="radio"
-                          name={`${uid}-mode`}
-                          value={m.value}
-                          checked={mode === m.value}
-                          onChange={() => {
-                            setMode(m.value);
-                            setDirection("");
-                            setError("");
-                          }}
-                          className="sr-only"
-                        />
-                        {m.label}
-                      </label>
-                    ))}
-                  </div>
-                </fieldset>
-              )}
-            </div>
-
-            <div key={`${service}-${mode}`} className="mt-6 flex flex-col gap-4 motion-safe:animate-fade-in">
-              {dir && (
-                <ChoicePills
-                  legend={dir.legend}
-                  name={`${uid}-direction`}
-                  options={dir.options}
-                  value={direction}
-                  onChange={setDirection}
-                  layout={dir.options.length === 3 ? "grid-3" : "grid-2"}
-                />
-              )}
-              {service === "airport" && (
-                <ChoicePills legend="Terminal" name={`${uid}-terminal`} options={TERMINALS} value={terminal} onChange={setTerminal} />
-              )}
-              {service === "railway" && (
-                <ChoicePills legend="Station" name={`${uid}-station`} options={STATIONS} value={station} onChange={setStation} layout="wrap" />
-              )}
-              {service === "rental" && (
-                <Stepper
-                  label="Hours"
-                  value={hours}
-                  min={2}
-                  max={12}
-                  onChange={setHours}
-                  display={`${hours} hours`}
-                  note={`${hours * 10} km included`}
-                />
-              )}
-              {service === "shillong" && mode === "shared" && (
-                <Stepper label="Seats" value={seats} min={1} max={4} onChange={setSeats} />
-              )}
-
-              {places.map((place) => {
-                const id = `${uid}-${place.key}`;
-                return (
-                  <Tile key={place.key} label={place.label} htmlFor={id}>
-                    <span className="mt-1 flex items-center gap-2">
                       <input
-                        id={id}
-                        type="text"
-                        autoComplete="off"
-                        enterKeyHint="next"
-                        placeholder={place.placeholder}
-                        value={place.key === "pickup" ? pickup : drop}
-                        onChange={(e) => setPlace(place.key, e.target.value)}
-                        className="min-w-0 flex-1 bg-transparent text-[1.0625rem] leading-tight font-extrabold text-ink outline-none placeholder:font-light placeholder:text-taupe/60 sm:text-[1.125rem]"
+                        type="radio"
+                        name={`${uid}-service`}
+                        value={s.id}
+                        checked={active}
+                        onChange={() => pickService(s.id)}
+                        className="sr-only"
                       />
-                      {place.locate && (
-                        <button
-                          type="button"
-                          onClick={locate}
-                          disabled={locating}
-                          aria-label={here && pickup === HERE ? "Update my location" : "Use my location"}
+                      <s.icon className={cn("size-[0.9375rem] shrink-0 sm:size-4", active ? "text-green" : "text-taupe")} />
+                      <span className="grid">
+                        <span className="invisible col-start-1 row-start-1 font-extrabold">{s.pill}</span>
+                        <span className={cn("col-start-1 row-start-1", active && "font-extrabold")}>{s.pill}</span>
+                      </span>
+                    </label>
+                  );
+                })}
+              </div>
+            </fieldset>
+
+            {/* --- The chosen service's booking card. */}
+            <form
+              ref={formRef}
+              noValidate
+              aria-labelledby={`${uid}-service-name`}
+              className="relative mt-5 scroll-mt-20 overflow-hidden rounded-[1.75rem] bg-bone p-4 shadow-[0_28px_60px_-32px_rgba(28,26,69,0.45)] ring-1 ring-line sm:p-6 lg:p-7"
+              onSubmit={(e) => {
+                e.preventDefault();
+                submit();
+              }}
+            >
+              <span aria-hidden="true" className="spark-fill absolute inset-x-0 top-0 h-[3px]" />
+
+              <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+                <h2
+                  id={`${uid}-service-name`}
+                  className="flex items-center gap-2.5 text-[1.1875rem] leading-tight font-extrabold text-ink sm:text-[1.25rem]"
+                >
+                  <span className="grid size-9 shrink-0 place-items-center rounded-full bg-ink text-green">
+                    <svc.icon className="size-[1.125rem]" />
+                  </span>
+                  {svc.name}
+                </h2>
+                {svc.modes && (
+                  <fieldset className="w-full sm:w-auto">
+                    <legend className="sr-only">Trip type</legend>
+                    <div className="grid auto-cols-fr grid-flow-col gap-1 rounded-full bg-sand p-1">
+                      {svc.modes.map((m) => (
+                        <label
+                          key={m.value}
                           className={cn(
-                            "inline-flex min-h-10 min-w-10 shrink-0 items-center justify-center gap-1.5 rounded-full px-2.5 text-[0.75rem] font-extrabold ring-1 transition-colors disabled:opacity-60 sm:px-3",
-                            here && pickup === HERE
-                              ? "bg-green-deep text-white ring-green-deep"
-                              : "bg-bone text-ink ring-line hover:bg-ink hover:text-bone",
+                            "flex min-h-11 cursor-pointer items-center justify-center rounded-full px-4 text-[0.8125rem] whitespace-nowrap transition-colors duration-200 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-1 has-[:focus-visible]:outline-ink",
+                            mode === m.value ? "bg-ink font-extrabold text-bone" : "text-ink hover:bg-bone/80",
                           )}
                         >
-                          <LocateIcon className={cn("size-4", locating && "motion-safe:animate-spin")} />
-                          <span className="hidden sm:inline">{locating ? "Locating" : "My location"}</span>
-                        </button>
-                      )}
-                    </span>
-                  </Tile>
-                );
-              })}
-
-              {canStop && (
-                <>
-                  {stops.map((stop, i) => {
-                    const id = `${uid}-stop-${stop.id}`;
-                    return (
-                      <Tile key={stop.id} label={`Stop ${i + 1}`} htmlFor={id} className="min-h-[4.75rem]">
-                        <span className="mt-1 flex items-center gap-2">
                           <input
-                            id={id}
-                            type="text"
-                            autoComplete="off"
-                            placeholder="Where should we stop?"
-                            value={stop.value}
-                            onChange={(e) =>
-                              setStops(stops.map((s) => (s.id === stop.id ? { ...s, value: e.target.value } : s)))
-                            }
-                            className="min-w-0 flex-1 bg-transparent text-[1.0625rem] leading-tight font-extrabold text-ink outline-none placeholder:font-light placeholder:text-taupe/60"
+                            type="radio"
+                            name={`${uid}-mode`}
+                            value={m.value}
+                            checked={mode === m.value}
+                            onChange={() => {
+                              setMode(m.value);
+                              setDirection("");
+                              setError("");
+                            }}
+                            className="sr-only"
                           />
-                          <button
-                            type="button"
-                            onClick={() => setStops(stops.filter((s) => s.id !== stop.id))}
-                            aria-label={`Remove stop ${i + 1}`}
-                            className="grid size-9 shrink-0 place-items-center rounded-full bg-bone text-ink ring-1 ring-line transition-colors hover:bg-ink hover:text-bone"
-                          >
-                            <CloseIcon className="size-4" />
-                          </button>
-                        </span>
-                      </Tile>
-                    );
-                  })}
-                  {stops.length < MAX_STOPS && (
-                    <button
-                      type="button"
-                      onClick={() => setStops([...stops, { id: Math.max(0, ...stops.map((s) => s.id)) + 1, value: "" }])}
-                      className="inline-flex min-h-11 items-center gap-2 self-start rounded-full px-4 text-[0.8125rem] font-extrabold text-ink ring-1 ring-line-strong transition-colors hover:bg-sand"
-                    >
-                      <PlusIcon className="size-4" />
-                      Add a stop
-                    </button>
-                  )}
-                </>
-              )}
-
-              {custom && (
-                <>
-                  <ChoicePills legend="Preferred cab" name={`${uid}-cab`} options={CABS} value={cab} onChange={setCab} layout="wrap" />
-                  <fieldset>
-                    <legend className="text-label font-extrabold text-taupe uppercase">Add to the trip</legend>
-                    <div className="mt-2.5 grid grid-cols-3 gap-2">
-                      {EXTRAS.map((extra) => {
-                        const on = extras.includes(extra);
-                        return (
-                          <label
-                            key={extra}
-                            className={cn(
-                              "flex min-h-11 cursor-pointer items-center justify-center gap-1.5 rounded-xl px-2 text-[0.8125rem] transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-ink",
-                              on ? "bg-ink font-extrabold text-bone" : "bg-sand text-ink hover:bg-line",
-                            )}
-                          >
-                            <input
-                              type="checkbox"
-                              checked={on}
-                              onChange={() => setExtras(on ? extras.filter((x) => x !== extra) : [...extras, extra])}
-                              className="sr-only"
-                            />
-                            {on && <CheckIcon className="size-3.5 text-green" />}
-                            {extra}
-                          </label>
-                        );
-                      })}
+                          {m.label}
+                        </label>
+                      ))}
                     </div>
                   </fieldset>
-                </>
-              )}
+                )}
+              </div>
+              <div key={`${service}-${mode}`} className="mt-6 flex flex-col gap-4 motion-safe:animate-fade-in">
+                {dir && (
+                  <ChoicePills
+                    legend={dir.legend}
+                    name={`${uid}-direction`}
+                    options={dir.options}
+                    value={direction}
+                    onChange={setDirection}
+                    layout={dir.options.length === 3 ? "grid-3" : "grid-2"}
+                  />
+                )}
+                {service === "airport" && (
+                  <ChoicePills legend="Terminal" name={`${uid}-terminal`} options={TERMINALS} value={terminal} onChange={setTerminal} />
+                )}
+                {service === "railway" && (
+                  <ChoicePills legend="Station" name={`${uid}-station`} options={STATIONS} value={station} onChange={setStation} layout="wrap" />
+                )}
+                {service === "rental" && (
+                  <Stepper
+                    label="Hours"
+                    value={hours}
+                    min={2}
+                    max={12}
+                    onChange={setHours}
+                    display={`${hours} hours`}
+                    note={`${hours * 10} km included`}
+                  />
+                )}
+                {service === "shillong" && mode === "shared" && (
+                  <Stepper label="Seats" value={seats} min={1} max={4} onChange={setSeats} />
+                )}
 
-              {canRideNow && (
-                <ChoicePills legend="When" name={`${uid}-timing`} options={TIMING} value={timing} onChange={setTiming} />
-              )}
-              {now ? (
-                <p className="flex items-center gap-3 rounded-2xl bg-sand px-4 py-4 text-[0.875rem] text-ink">
-                  <ClockIcon className="size-5 shrink-0 text-green-deep" />
-                  Average pickup time is about 20 minutes.
+                {places.map((place) => {
+                  const id = `${uid}-${place.key}`;
+                  return (
+                    <Tile key={place.key} label={place.label} htmlFor={id}>
+                      <span className="mt-1 flex items-center gap-2">
+                        <input
+                          id={id}
+                          type="text"
+                          autoComplete="off"
+                          enterKeyHint="next"
+                          placeholder={place.placeholder}
+                          value={place.key === "pickup" ? pickup : drop}
+                          onChange={(e) => setPlace(place.key, e.target.value)}
+                          className="min-w-0 flex-1 bg-transparent text-[1.0625rem] leading-tight font-extrabold text-ink outline-none placeholder:font-light placeholder:text-taupe/60 sm:text-[1.125rem]"
+                        />
+                        {place.locate && (
+                          <button
+                            type="button"
+                            onClick={locate}
+                            disabled={locating}
+                            aria-label={here && pickup === HERE ? "Update my location" : "Use my location"}
+                            className={cn(
+                              "inline-flex min-h-10 min-w-10 shrink-0 items-center justify-center gap-1.5 rounded-full px-2.5 text-[0.75rem] font-extrabold ring-1 transition-colors disabled:opacity-60 sm:px-3",
+                              here && pickup === HERE
+                                ? "bg-green-deep text-white ring-green-deep"
+                                : "bg-bone text-ink ring-line hover:bg-ink hover:text-bone",
+                            )}
+                          >
+                            <LocateIcon className={cn("size-4", locating && "motion-safe:animate-spin")} />
+                            <span className="hidden sm:inline">{locating ? "Locating" : "My location"}</span>
+                          </button>
+                        )}
+                      </span>
+                    </Tile>
+                  );
+                })}
+
+                {canStop && (
+                  <>
+                    {stops.map((stop, i) => {
+                      const id = `${uid}-stop-${stop.id}`;
+                      return (
+                        <Tile key={stop.id} label={`Stop ${i + 1}`} htmlFor={id} className="min-h-[4.75rem]">
+                          <span className="mt-1 flex items-center gap-2">
+                            <input
+                              id={id}
+                              type="text"
+                              autoComplete="off"
+                              placeholder="Where should we stop?"
+                              value={stop.value}
+                              onChange={(e) =>
+                                setStops(stops.map((s) => (s.id === stop.id ? { ...s, value: e.target.value } : s)))
+                              }
+                              className="min-w-0 flex-1 bg-transparent text-[1.0625rem] leading-tight font-extrabold text-ink outline-none placeholder:font-light placeholder:text-taupe/60"
+                            />
+                            <button
+                              type="button"
+                              onClick={() => setStops(stops.filter((s) => s.id !== stop.id))}
+                              aria-label={`Remove stop ${i + 1}`}
+                              className="grid size-9 shrink-0 place-items-center rounded-full bg-bone text-ink ring-1 ring-line transition-colors hover:bg-ink hover:text-bone"
+                            >
+                              <CloseIcon className="size-4" />
+                            </button>
+                          </span>
+                        </Tile>
+                      );
+                    })}
+                    {stops.length < MAX_STOPS && (
+                      <button
+                        type="button"
+                        onClick={() => setStops([...stops, { id: Math.max(0, ...stops.map((s) => s.id)) + 1, value: "" }])}
+                        className="inline-flex min-h-11 items-center gap-2 self-start rounded-full px-4 text-[0.8125rem] font-extrabold text-ink ring-1 ring-line-strong transition-colors hover:bg-sand"
+                      >
+                        <PlusIcon className="size-4" />
+                        Add a stop
+                      </button>
+                    )}
+                  </>
+                )}
+
+                {custom && (
+                  <>
+                    <ChoicePills legend="Preferred cab" name={`${uid}-cab`} options={CABS} value={cab} onChange={setCab} layout="wrap" />
+                    <fieldset>
+                      <legend className="text-label font-extrabold text-taupe uppercase">Add to the trip</legend>
+                      <div className="mt-2.5 grid grid-cols-3 gap-2">
+                        {EXTRAS.map((extra) => {
+                          const on = extras.includes(extra);
+                          return (
+                            <label
+                              key={extra}
+                              className={cn(
+                                "flex min-h-11 cursor-pointer items-center justify-center gap-1.5 rounded-xl px-2 text-[0.8125rem] transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-ink",
+                                on ? "bg-ink font-extrabold text-bone" : "bg-sand text-ink hover:bg-line",
+                              )}
+                            >
+                              <input
+                                type="checkbox"
+                                checked={on}
+                                onChange={() => setExtras(on ? extras.filter((x) => x !== extra) : [...extras, extra])}
+                                className="sr-only"
+                              />
+                              {on && <CheckIcon className="size-3.5 text-green" />}
+                              {extra}
+                            </label>
+                          );
+                        })}
+                      </div>
+                    </fieldset>
+                  </>
+                )}
+
+                {canRideNow && (
+                  <ChoicePills legend="When" name={`${uid}-timing`} options={TIMING} value={timing} onChange={setTiming} />
+                )}
+                {now ? (
+                  <p className="flex items-center gap-3 rounded-2xl bg-sand px-4 py-4 text-[0.875rem] text-ink">
+                    <ClockIcon className="size-5 shrink-0 text-green-deep" />
+                    Average pickup time is about 20 minutes.
+                  </p>
+                ) : (
+                  <div className="grid grid-cols-2 gap-3">
+                    <DateTile
+                      label={`${legs.first} date`}
+                      ariaLabel={`${legs.first} date`}
+                      value={date}
+                      onChange={setDate}
+                    />
+                    {legs.withTime ? (
+                      <TimeTile label={`${legs.first} time`} ariaLabel={`${legs.first} time`} value={time} onChange={setTime} />
+                    ) : (
+                      legs.second && (
+                        <DateTile
+                          label={`${legs.second} date`}
+                          ariaLabel={`${legs.second} date`}
+                          value={date2}
+                          min={date || undefined}
+                          onChange={setDate2}
+                        />
+                      )
+                    )}
+                  </div>
+                )}
+                {legs.second && legs.withTime && (
+                  <div className="grid grid-cols-2 gap-3">
+                    <DateTile
+                      label={`${legs.second} date`}
+                      ariaLabel={`${legs.second} date`}
+                      value={date2}
+                      min={(!now && date) || undefined}
+                      onChange={setDate2}
+                    />
+                    <TimeTile label={`${legs.second} time`} ariaLabel={`${legs.second} time`} value={time2} onChange={setTime2} />
+                  </div>
+                )}
+
+                <p className="mt-1 flex items-start gap-2.5 text-[0.8125rem] leading-snug text-taupe">
+                  <CheckIcon className="mt-px size-4 shrink-0 text-green-deep" />
+                  {svc.note(mode)}
                 </p>
-              ) : (
-                <div className="grid grid-cols-2 gap-3">
-                  <DateTile
-                    label={`${legs.first} date`}
-                    ariaLabel={`${legs.first} date`}
-                    value={date}
-                    onChange={setDate}
-                  />
-                  {legs.withTime ? (
-                    <TimeTile label={`${legs.first} time`} ariaLabel={`${legs.first} time`} value={time} onChange={setTime} />
-                  ) : (
-                    legs.second && (
-                      <DateTile
-                        label={`${legs.second} date`}
-                        ariaLabel={`${legs.second} date`}
-                        value={date2}
-                        min={date || undefined}
-                        onChange={setDate2}
-                      />
-                    )
-                  )}
-                </div>
-              )}
-              {legs.second && legs.withTime && (
-                <div className="grid grid-cols-2 gap-3">
-                  <DateTile
-                    label={`${legs.second} date`}
-                    ariaLabel={`${legs.second} date`}
-                    value={date2}
-                    min={(!now && date) || undefined}
-                    onChange={setDate2}
-                  />
-                  <TimeTile label={`${legs.second} time`} ariaLabel={`${legs.second} time`} value={time2} onChange={setTime2} />
-                </div>
-              )}
+              </div>
 
-              <p className="mt-1 flex items-start gap-2.5 text-[0.8125rem] leading-snug text-taupe">
-                <CheckIcon className="mt-px size-4 shrink-0 text-green-deep" />
-                {svc.note(mode)}
+              <div aria-live="polite" className="mt-3">
+                {error && <p className="text-[0.8125rem] font-extrabold text-error">{error}</p>}
+              </div>
+
+              <button
+                type="submit"
+                className="mt-3 flex min-h-14 w-full items-center justify-center gap-2.5 rounded-2xl bg-green-deep text-[1rem] font-extrabold text-white shadow-[0_14px_30px_rgba(57,151,114,0.3)] transition-transform duration-150 active:scale-[0.985]"
+              >
+                <WhatsAppIcon />
+                {custom ? "Plan it on WhatsApp" : "Get your fare on WhatsApp"}
+                <span className="sr-only"> (opens WhatsApp in a new tab)</span>
+              </button>
+              <p className="mt-3 text-center text-[0.75rem] text-taupe">
+                A real person replies. Nothing is booked until you say yes.
               </p>
-            </div>
+            </form>
+          </div>
 
-            <div aria-live="polite" className="mt-3">
-              {error && <p className="text-[0.8125rem] font-extrabold text-error">{error}</p>}
-            </div>
-
-            <button
-              type="submit"
-              className="mt-3 flex min-h-14 w-full items-center justify-center gap-2.5 rounded-2xl bg-green-deep text-[1rem] font-extrabold text-white shadow-[0_14px_30px_rgba(57,151,114,0.3)] transition-transform duration-150 active:scale-[0.985]"
-            >
-              <WhatsAppIcon />
-              {custom ? "Plan it on WhatsApp" : "Get your fare on WhatsApp"}
-              <span className="sr-only"> (opens WhatsApp in a new tab)</span>
-            </button>
-            <p className="mt-3 text-center text-[0.75rem] text-taupe">
-              A real person replies. Nothing is booked until you say yes.
-            </p>
-          </form>
+          {aside && <div className="hidden lg:sticky lg:top-24 lg:block lg:self-start">{aside}</div>}
         </div>
       </Container>
     </section>

@@ -98,7 +98,7 @@ export const FLIGHT_FAQS: Faq[] = [
 export const CAB_FAQS: Faq[] = [
   {
     q: "How do I book a cab?",
-    a: "Pick your ride under Quick services on this page and fill in what you know, or message us on WhatsApp with your pickup, drop and time.",
+    a: "Pick your ride at the top of this page and fill in what you know, or message us on WhatsApp with your pickup, drop and time.",
   },
   {
     q: "Is there surge pricing?",
