@@ -6,6 +6,7 @@ import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { IMAGES } from "@/data/images";
 import { PACKAGES } from "@/data/packages";
 import { pageMetadata } from "@/lib/seo";
+import { LEGAL_LINKS } from "@/lib/site";
 import { enquiry } from "@/lib/whatsapp";
 
 import { AltWhatsAppLink } from "./alt-whatsapp-link";
@@ -388,6 +389,14 @@ export default function AlternativeHomePage() {
           </Link>
           <p>Thoughtful journeys and dependable transport across Northeast India.</p>
           <Link href="/">View the original homepage</Link>
+          <p>
+            {LEGAL_LINKS.map((link, i) => (
+              <span key={link.href}>
+                {i > 0 && " · "}
+                <Link href={link.href}>{link.label}</Link>
+              </span>
+            ))}
+          </p>
         </footer>
       </div>
     </MotionShell>

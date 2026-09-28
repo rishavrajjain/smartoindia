@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/deco";
 import { WhatsAppLink } from "@/components/ui/whatsapp-link";
-import { NAV, SITE } from "@/lib/site";
+import { LEGAL_LINKS, NAV, SITE } from "@/lib/site";
 import { WHATSAPP_DISPLAY, enquiry } from "@/lib/whatsapp";
 
 const STATES = ["Assam", "Meghalaya", "Arunachal", "Sikkim", "Nagaland"];
@@ -97,12 +97,24 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-line pt-6">
+        <div className="mt-14 flex flex-col gap-4 border-t border-line pt-6 lg:flex-row lg:items-center lg:justify-between">
           <p className="text-[0.8125rem] leading-relaxed text-taupe">
             © {new Date().getFullYear()} {SITE.legalName}. Trip details and
             festival dates are indicative and confirmed on WhatsApp before you
             travel.
           </p>
+          <ul className="flex flex-wrap gap-x-5 gap-y-1">
+            {LEGAL_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="inline-flex min-h-9 items-center text-[0.8125rem] text-ink underline-offset-4 transition-colors hover:text-clay hover:underline"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </Container>
       {/* Clears the fixed mobile CTA bar so the last line is never hidden. */}

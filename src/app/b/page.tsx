@@ -32,7 +32,7 @@ import { JOURNEYS } from "@/data/journeys";
 import { IMAGES } from "@/data/images";
 import { GOOGLE_RATING, REVIEWS } from "@/data/reviews";
 import { pageMetadata } from "@/lib/seo";
-import { SITE } from "@/lib/site";
+import { LEGAL_LINKS, SITE } from "@/lib/site";
 import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, enquiry } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
@@ -479,6 +479,18 @@ export default function ClassicHomePage() {
             © {new Date().getFullYear()} {SITE.legalName}. Fares and trip
             details are confirmed on WhatsApp before travel.
           </p>
+          <ul className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-1">
+            {LEGAL_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="inline-flex min-h-9 items-center text-[0.75rem] text-ink underline-offset-4 hover:underline"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </footer>
 
         {/* The signature: every light layout is anchored by the spark band. */}
