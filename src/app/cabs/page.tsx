@@ -8,8 +8,10 @@ import { TrustAndFaqs } from "@/components/sections/trust-and-faqs";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/deco";
 import { ArrowIcon, TagIcon } from "@/components/ui/line-icons";
+import { RotatingFare } from "@/components/ui/rotating-fare";
 import { WaCta } from "@/components/ui/wa-cta";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
+import { CAB_SERVICE_CARDS } from "@/data/cabs";
 import { CAB_FAQS } from "@/data/faqs";
 import { CAB_REVIEWS, CAB_REVIEW_LINES, GOOGLE_RATING } from "@/data/reviews";
 import { pageMetadata } from "@/lib/seo";
@@ -43,20 +45,11 @@ const PROMISES = [
   { big: "EV", tag: "city cabs", line: "Electric cabs across Guwahati: quiet, clean and cool." },
 ];
 
-const STEPS = [
-  {
-    title: "Tell us where you're going",
-    body: "WhatsApp or the site. No app.",
-  },
-  {
-    title: "See your flat fare",
-    body: "Before you commit to anything.",
-  },
-  {
-    title: "Ride. Pay exactly what you saw",
-    body: "No meter, no rounding up.",
-  },
-];
+/* The photo badge and phone dock cycle through every service's starting fare. */
+const FARES = CAB_SERVICE_CARDS.filter((card) => card.fare).map((card) => ({
+  title: `From ${card.fare}${card.unit ?? ""}`,
+  line: card.name,
+}));
 
 export default function CabsPage() {
 
@@ -89,14 +82,12 @@ export default function CabsPage() {
               <span className="grid size-10 shrink-0 place-items-center rounded-full bg-green-deep/10">
                 <TagIcon className="size-5 text-green-deep" />
               </span>
-              <span>
-                <span className="block text-[0.9375rem] leading-snug font-extrabold text-ink">
-                  From ₹249
-                </span>
-                <span className="block text-[0.75rem] text-taupe">
-                  Railway station rides
-                </span>
-              </span>
+              <RotatingFare
+                items={FARES}
+                className="min-w-[9.5rem]"
+                titleClassName="text-[0.9375rem] leading-snug font-extrabold text-ink"
+                lineClassName="text-[0.75rem] text-taupe"
+              />
             </div>
           </div>
         }
@@ -154,45 +145,6 @@ export default function CabsPage() {
         </Container>
       </section>
 
-      {/* ——— Booking, start to finish. */}
-      <Container width="narrow" className="pt-16 lg:pt-20">
-        <p className="text-label font-extrabold text-clay uppercase">
-          Booking, start to finish
-        </p>
-        <h2 className="mt-4 text-[1.875rem] leading-[1.08] sm:text-[2.25rem]">
-          Three steps.{" "}
-          <span className="accent">No surprises in any of them.</span>
-        </h2>
-        <ol className="relative mt-9">
-          <span
-            aria-hidden="true"
-            className="absolute top-3 bottom-4 left-[0.875rem] border-l-2 border-dashed border-line-strong"
-          />
-          {STEPS.map((step, index) => (
-            <li
-              key={step.title}
-              className="reveal relative grid grid-cols-[1.75rem_1fr] gap-x-4 pb-8 last:pb-0 sm:gap-x-5"
-            >
-              <span
-                className={`z-10 inline-flex size-7 items-center justify-center self-start rounded-full text-[0.75rem] font-extrabold text-bone tabular-nums ${
-                  index === STEPS.length - 1 ? "bg-green-deep" : "bg-ink"
-                }`}
-              >
-                {index + 1}
-              </span>
-              <div className="pt-0.5">
-                <h3 className="text-[1.03125rem] leading-snug font-extrabold">
-                  {step.title}
-                </h3>
-                <p className="mt-1 max-w-[26rem] text-[0.875rem] leading-relaxed text-taupe">
-                  {step.body}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </Container>
-
       {/* --- Reviews about the rides, and this page's questions. */}
       <TrustAndFaqs faqs={CAB_FAQS} location="cabs-faq" why={false} reviews={CAB_REVIEWS} className="pt-16 lg:pt-24" />
 
@@ -230,12 +182,12 @@ export default function CabsPage() {
           className="flex items-center justify-between gap-3 bg-ink px-4 pt-3.5"
           style={{ paddingBottom: "calc(0.875rem + env(safe-area-inset-bottom))" }}
         >
-          <p className="text-[0.6875rem] leading-snug text-bone/60">
-            <span className="block text-[0.90625rem] font-extrabold text-bone">
-              From ₹249
-            </span>
-            Railway station rides
-          </p>
+          <RotatingFare
+            items={FARES}
+            className="min-w-0"
+            titleClassName="text-[0.90625rem] font-extrabold text-bone"
+            lineClassName="text-[0.6875rem] leading-snug text-bone/60"
+          />
           <WaCta
             message={enquiry("I need a cab in Guwahati.")}
             location="cabs-dock"
@@ -247,8 +199,6 @@ export default function CabsPage() {
         </div>
         <div aria-hidden="true" className="spark-band" />
       </div>
-      {/* Clears the fixed dock so the footer's last line is never hidden. */}
-      <div aria-hidden="true" className="h-20 lg:hidden" />
     </>
   );
 }

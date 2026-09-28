@@ -126,6 +126,8 @@ export interface Review {
   author: string;
   /** Where the review is from and its rating, e.g. "Google, 5 stars". */
   context: string;
+  /** Star rating, only where it was seen on Google; cards show stars only then. */
+  rating?: number;
   quote: string;
   /** One-line pull quote for compact tiles, drawn from `quote`. */
   highlight: string;

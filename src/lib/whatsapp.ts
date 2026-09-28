@@ -72,6 +72,7 @@ export type CtaLocation =
   | "impact-cta"
   | "home-flights"
   | "flights-hero"
+  | "flights-routes"
   | "flights-empty-state"
   | "flights-error"
   | "flights-book"

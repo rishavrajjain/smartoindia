@@ -3,6 +3,7 @@ import { Suspense } from "react";
 
 import { FlightResults, ResultsSkeleton } from "@/components/sections/flight-results";
 import { FlightSearchPanel } from "@/components/sections/flight-search-form";
+import { PopularRoutes } from "@/components/sections/popular-routes";
 import { TrustAndFaqs } from "@/components/sections/trust-and-faqs";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/deco";
@@ -78,7 +79,11 @@ export default async function FlightsPage({ searchParams }: { searchParams: Sear
       </div>
     </Container>
 
-    <TrustAndFaqs faqs={FLIGHT_FAQS} location="flights-faq" className="pt-20 pb-6 lg:pt-28" />
+    <Container width="default" className="pt-16 lg:pt-24">
+      <PopularRoutes date={addDays(today, 7)} />
+    </Container>
+
+    <TrustAndFaqs faqs={FLIGHT_FAQS} location="flights-faq" className="pt-16 lg:pt-24" />
     </>
   );
 }

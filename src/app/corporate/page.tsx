@@ -410,8 +410,6 @@ export default function CorporatePage() {
         </div>
         <div aria-hidden="true" className="spark-band" />
       </div>
-      {/* Clears the fixed dock so the footer's last line is never hidden. */}
-      <div aria-hidden="true" className="h-20 lg:hidden" />
     </>
   );
 }

@@ -81,7 +81,7 @@ export function LegalPage({
   const split = doc.title.lastIndexOf(" ");
 
   return (
-    <Container width="wide" className="pt-10 pb-20 lg:pt-16 lg:pb-28">
+    <Container width="wide" className="pt-10 pb-6 lg:pt-16 lg:pb-10">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-16">
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <p className="text-label font-extrabold text-clay uppercase">Legal</p>

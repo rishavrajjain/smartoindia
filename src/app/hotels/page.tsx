@@ -183,7 +183,7 @@ export default function HotelsPage() {
         </ol>
       </Container>
 
-      <TrustAndFaqs faqs={HOTEL_FAQS} location="hotels-faq" className="pt-20 pb-6 lg:pt-28" />
+      <TrustAndFaqs faqs={HOTEL_FAQS} location="hotels-faq" className="pt-16 lg:pt-24" />
     </>
   );
 }

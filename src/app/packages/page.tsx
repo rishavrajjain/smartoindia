@@ -49,7 +49,7 @@ export default function PackagesPage() {
       </Container>
 
       {/* --- Why Smarto, the Google reviews, and this page's questions. */}
-      <TrustAndFaqs faqs={PACKAGE_FAQS} location="packages-faq" className="pt-20 lg:pt-28" />
+      <TrustAndFaqs faqs={PACKAGE_FAQS} location="packages-faq" className="pt-16 lg:pt-24" />
 
       {/* --- The custom-trip door, for everyone the filters don't fit. */}
       <Container width="wide" className="pt-20 lg:pt-28">

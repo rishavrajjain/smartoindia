@@ -146,12 +146,12 @@ export function findAirport(code: string | null | undefined): Airport | null {
   return BY_CODE.get(code.toUpperCase()) ?? null;
 }
 
-/** Sectors surfaced as quick picks on the homepage and the search page. */
+/** Sectors surfaced as quick picks on the homepage and the search page (RRJ, 28 Sep 2026). */
 export const POPULAR_SECTORS: ReadonlyArray<readonly [from: string, to: string]> = [
-  ["DEL", "GAU"],
-  ["CCU", "GAU"],
-  ["BLR", "GAU"],
-  ["BOM", "GAU"],
+  ["GAU", "BLR"],
+  ["GAU", "CCU"],
   ["GAU", "DEL"],
-  ["DEL", "IXB"],
+  ["GAU", "BOM"],
+  ["GAU", "JAI"],
+  ["GAU", "PNQ"],
 ];

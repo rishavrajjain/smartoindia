@@ -14,7 +14,7 @@ export function SiteFooter() {
   // homepage the body behind it is navy-deep (mobile-frame theme), not bone,
   // so a margin here would read as a dark stripe.
   return (
-    <footer data-site-chrome="footer" className="bg-bone pt-28 lg:pt-40">
+    <footer data-site-chrome="footer" className="bg-bone pt-16 lg:pt-20">
       {/* Sign-off */}
       <div className="border-t border-line bg-sand">
         <Container width="wide" className="py-20 lg:py-28">
@@ -36,7 +36,7 @@ export function SiteFooter() {
                 Message us on WhatsApp
               </WhatsAppLink>
               <p className="mt-4 text-sm text-taupe">
-                {WHATSAPP_DISPLAY} · usually replies the same day
+                {WHATSAPP_DISPLAY} · a real person replies, 24×7
               </p>
             </div>
           </div>

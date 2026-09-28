@@ -20,7 +20,7 @@ export function ReviewStrip({
       <div className="marquee-mask overflow-hidden py-3">
         <ul
           className="flex w-max items-center motion-safe:animate-marquee hover:[animation-play-state:paused]"
-          style={{ animationDuration: "90s" }}
+          style={{ animationDuration: `${(reviews.length + 1) * 15}s` }}
         >
           {[0, 1].map((copy) => [
             <li

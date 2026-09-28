@@ -71,8 +71,8 @@ export function GoogleReviews({
                 className="w-[17.5rem] shrink-0 snap-start sm:mb-4 sm:w-auto sm:break-inside-avoid"
               >
                 <figure className="flex h-full flex-col rounded-[1.5rem] bg-sand p-5 lg:p-6">
-                  <Stars className="text-green-deep" />
-                  <blockquote className="mt-3 flex-1 text-[0.9375rem] leading-relaxed text-ink">
+                  {review.rating === 5 && <Stars className="mb-3 text-green-deep" />}
+                  <blockquote className="flex-1 text-[0.9375rem] leading-relaxed text-ink">
                     &ldquo;{review.quote}&rdquo;
                   </blockquote>
                   <figcaption className="mt-4 flex items-center gap-2.5 border-t border-line pt-3.5 text-[0.8125rem]">

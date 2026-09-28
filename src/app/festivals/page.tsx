@@ -152,7 +152,7 @@ export default function FestivalsPage() {
       </section>
 
       {/* --- Why Smarto, the Google reviews, and this page's questions. */}
-      <TrustAndFaqs faqs={FESTIVAL_FAQS} location="festivals-faq" className="pt-20 lg:pt-28" />
+      <TrustAndFaqs faqs={FESTIVAL_FAQS} location="festivals-faq" className="pt-16 lg:pt-24" />
 
       <Container width="wide" className="pt-20 lg:pt-28">
         <div className="border-t border-line bg-sand px-6 py-16 text-center sm:px-12 lg:py-20">
