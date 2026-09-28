@@ -102,29 +102,6 @@ export interface TravelPackage {
   status: ContentStatus;
 }
 
-export interface CabService {
-  id: string;
-  name: string;
-  summary: string;
-  /** What the service covers, as short scannable lines. */
-  details: string[];
-  /** Typical use cases, shown as small tags. */
-  bestFor: string[];
-  image?: SiteImage;
-  enquiry: string;
-  status: ContentStatus;
-}
-
-export interface VehicleClass {
-  id: string;
-  name: string;
-  seats: string;
-  description: string;
-  /** True only for battery-electric vehicle classes. */
-  electric: boolean;
-  status: ContentStatus;
-}
-
 export interface Festival {
   id: string;
   name: string;

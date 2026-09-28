@@ -63,6 +63,7 @@ export type CtaLocation =
   | "cabs-fleet"
   | "cabs-book"
   | "cabs-quick-book"
+  | "cabs-outstation"
   | "cabs-dock"
   | "corporate-hero"
   | "corporate-enquiry"

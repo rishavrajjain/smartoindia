@@ -1272,5 +1272,83 @@
     "prompt": "See scripts/generate-hotels-scene.mjs",
     "model": "gpt-image-2",
     "status": "generated"
+  },
+  {
+    "id": "fleet-lineup-tigor-ev",
+    "src": "/images/fleet-lineup-tigor-ev.webp",
+    "width": 1200,
+    "height": 800,
+    "aspect": "3:2",
+    "alt": "A white Tata Tigor EV in Smarto livery parked beside a misty hill road in Meghalaya",
+    "usedOn": "/cabs fleet rail",
+    "subject": "White Tata Tigor EV in Smarto livery, front three-quarter view, on a hill-road lay-by; no people, no text",
+    "prompt": "See scripts/generate-fleet-lineup.mjs",
+    "model": "gpt-image-2",
+    "status": "generated"
+  },
+  {
+    "id": "fleet-lineup-dzire",
+    "src": "/images/fleet-lineup-dzire.webp",
+    "width": 1200,
+    "height": 800,
+    "aspect": "3:2",
+    "alt": "A white Maruti Suzuki Dzire sedan parked beside a misty hill road in Meghalaya",
+    "usedOn": "/cabs fleet rail",
+    "subject": "White Maruti Suzuki Dzire sedan, front three-quarter view, on a hill-road lay-by; no people, no text, badges removed",
+    "prompt": "See scripts/generate-fleet-lineup.mjs",
+    "model": "gpt-image-2",
+    "status": "generated"
+  },
+  {
+    "id": "fleet-lineup-ertiga",
+    "src": "/images/fleet-lineup-ertiga.webp",
+    "width": 1200,
+    "height": 800,
+    "aspect": "3:2",
+    "alt": "A white Maruti Suzuki Ertiga seven-seater parked beside a misty hill road in Meghalaya",
+    "usedOn": "/cabs fleet rail",
+    "subject": "White Maruti Suzuki Ertiga seven-seater, front three-quarter view, on a hill-road lay-by; no people, no text, badges removed",
+    "prompt": "See scripts/generate-fleet-lineup.mjs",
+    "model": "gpt-image-2",
+    "status": "generated"
+  },
+  {
+    "id": "fleet-lineup-innova-crysta",
+    "src": "/images/fleet-lineup-innova-crysta.webp",
+    "width": 1200,
+    "height": 800,
+    "aspect": "3:2",
+    "alt": "A white Toyota Innova Crysta parked beside a misty hill road in Meghalaya",
+    "usedOn": "/cabs fleet rail",
+    "subject": "White Toyota Innova Crysta, front three-quarter view, on a hill-road lay-by; no people, no text, badges removed",
+    "prompt": "See scripts/generate-fleet-lineup.mjs",
+    "model": "gpt-image-2",
+    "status": "generated"
+  },
+  {
+    "id": "fleet-lineup-traveller",
+    "src": "/images/fleet-lineup-traveller.webp",
+    "width": 1200,
+    "height": 800,
+    "aspect": "3:2",
+    "alt": "A white Force Traveller tempo traveller parked beside a misty hill road in Meghalaya",
+    "usedOn": "/cabs fleet rail",
+    "subject": "White Force Traveller tempo traveller, front three-quarter view, on a hill-road lay-by; no people, no text, badges removed",
+    "prompt": "See scripts/generate-fleet-lineup.mjs",
+    "model": "gpt-image-2",
+    "status": "generated"
+  },
+  {
+    "id": "fleet-lineup-urbania",
+    "src": "/images/fleet-lineup-urbania.webp",
+    "width": 1200,
+    "height": 800,
+    "aspect": "3:2",
+    "alt": "A white Force Urbania premium van parked beside a misty hill road in Meghalaya",
+    "usedOn": "/cabs fleet rail",
+    "subject": "White Force Urbania premium van, front three-quarter view, on a hill-road lay-by; no people, no text, badges removed",
+    "prompt": "See scripts/generate-fleet-lineup.mjs",
+    "model": "gpt-image-2",
+    "status": "generated"
   }
 ]

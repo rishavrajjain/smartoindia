@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { CabQuickServices } from "@/components/sections/cab-quick-services";
+import { FleetRail, OutstationRail, ServiceRail } from "@/components/sections/cab-sections";
 import { ReviewStrip } from "@/components/sections/review-strip";
 import { TrustAndFaqs } from "@/components/sections/trust-and-faqs";
 import { Container } from "@/components/ui/container";
@@ -14,9 +15,9 @@ import { pageMetadata } from "@/lib/seo";
 import { enquiry } from "@/lib/whatsapp";
 
 export const metadata = pageMetadata({
-  title: "Cabs in Guwahati: the price you're quoted is the price you pay",
+  title: "Cabs in Guwahati: airport, local and outstation taxis on flat fares",
   description:
-    "Flat fares, no surge, no bargaining. All-electric cabs across Guwahati, 24×7: city rides, ₹399 railway station drops, airport rides and hourly rentals, booked on WhatsApp.",
+    "Clean, premium cabs in Guwahati on flat fares: airport transfers, railway station rides, hourly rentals and outstation cabs to Shillong, Cherrapunji, Kaziranga, Tawang and Dibrugarh. Tigor EV, Dzire, Ertiga, Innova Crysta, Tempo Traveller and Urbania, booked on WhatsApp.",
   path: "/cabs",
 });
 
@@ -28,53 +29,6 @@ export const metadata = pageMetadata({
  * CO2 avoided) stay out until real figures arrive; the reviews are real,
  * from Smarto's Google profile (src/data/reviews.ts).
  */
-
-const SERVICES = [
-  {
-    image: {
-      src: "/images/fleet-cabs-city.webp",
-      alt: "A white Smarto electric cab on a leafy Guwahati avenue in the early morning",
-    },
-    title: "City rides",
-    fare: null,
-    unit: null,
-    body: "Anywhere in town. Rain or rush, one price.",
-    message: enquiry("I need a cab in Guwahati and would like the flat fare."),
-  },
-  {
-    image: {
-      src: "/images/fleet-cabs-railway.webp",
-      alt: "A Smarto electric cab waiting with its boot open at a railway station forecourt at golden hour",
-    },
-    title: "Railway station drops",
-    fare: "₹399",
-    unit: null,
-    body: "Early train, late train, same ₹399.",
-    message: enquiry("I need a railway station drop."),
-  },
-  {
-    image: {
-      src: "/images/fleet-cabs-airport.webp",
-      alt: "A Smarto electric cab at the airport departures kerb at dawn, a suitcase beside it",
-    },
-    title: "Airport rides",
-    fare: null,
-    unit: null,
-    body: "A 4 AM flight, priced like noon.",
-    message: enquiry("I need an airport ride."),
-  },
-  {
-    image: {
-      src: "/images/fleet-cabs-hourly.webp",
-      alt: "A Smarto electric cab parked at a tea-garden viewpoint in Assam",
-    },
-    title: "Hourly rentals",
-    fare: "₹349",
-    unit: "/hr",
-    body: "Car and driver, on your clock.",
-    message: enquiry("I would like an hourly cab rental."),
-  },
-] as const;
 
 const NUMBERS = [
   { n: "100%", l: "Electric fleet" },
@@ -145,55 +99,10 @@ export default function CabsPage() {
       {/* ——— What riders say about the cabs, drifting past. */}
       <ReviewStrip reviews={CAB_REVIEW_LINES} label="What riders say about our cabs" />
 
-      {/* ——— Four ways to ride, each one bookable. */}
-      <Container width="wide" className="pt-16 lg:pt-20">
-        <p className="text-label font-extrabold text-clay uppercase">
-          Four ways to ride
-        </p>
-        <h2 className="mt-4 text-[1.875rem] leading-[1.08] sm:text-[2.25rem]">
-          Every one of them <span className="accent">a flat fare.</span>
-        </h2>
-        <ul className="mt-8 grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-          {SERVICES.map((service) => (
-            <li key={service.title} className="reveal">
-              <WaCta
-                message={service.message}
-                location="cabs-service"
-                subject={service.title}
-                className="group block"
-              >
-                <span className="relative block aspect-[4/3] overflow-hidden rounded-2xl bg-sand">
-                  <Image
-                    src={service.image.src}
-                    alt={service.image.alt}
-                    fill
-                    loading="lazy"
-                    sizes="(min-width: 1024px) 24vw, (min-width: 640px) 46vw, calc(100vw - 2.5rem)"
-                    className="zoom-slow object-cover"
-                  />
-                  {service.fare && (
-                    <span className="absolute top-3 left-3 rounded-full bg-green-deep px-3 py-1.5 text-[0.6875rem] font-extrabold tracking-[0.1em] text-white uppercase">
-                      {service.unit ? `From ${service.fare}${service.unit}` : `Flat ${service.fare}`}
-                    </span>
-                  )}
-                </span>
-                <span className="mt-3.5 flex items-center gap-2 text-[1.03125rem] font-extrabold text-ink">
-                  {service.title}
-                  <span
-                    aria-hidden="true"
-                    className="text-clay opacity-0 transition-opacity group-hover:opacity-100"
-                  >
-                    →
-                  </span>
-                </span>
-                <span className="mt-1 block text-[0.8125rem] leading-relaxed text-taupe">
-                  {service.body}
-                </span>
-              </WaCta>
-            </li>
-          ))}
-        </ul>
-      </Container>
+      {/* ——— The cars, the rides and the routes: three rails. */}
+      <FleetRail className="pt-16 lg:pt-24" />
+      <ServiceRail className="mt-16 lg:mt-24" />
+      <OutstationRail className="pt-16 lg:pt-24" />
 
       {/* ——— The numbers we're willing to print. */}
       <div className="mt-16 bg-sand py-14 lg:mt-20">

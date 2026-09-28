@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState, type ComponentType, type ReactNode } from "react";
+import { useCallback, useEffect, useId, useState, type ComponentType, type ReactNode } from "react";
 
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/deco";
@@ -30,6 +30,7 @@ import {
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { trackCtaClick } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
+import type { CabServiceId } from "@/data/cabs";
 import { whatsappUrl } from "@/lib/whatsapp";
 
 /*
@@ -45,7 +46,7 @@ import { whatsappUrl } from "@/lib/whatsapp";
 type Icon = ComponentType<{ className?: string }>;
 type Option = { value: string; label: string };
 
-type ServiceId = "airport" | "rental" | "railway" | "city" | "shillong" | "outstation" | "sonapur";
+type ServiceId = CabServiceId;
 
 interface Service {
   id: ServiceId;
@@ -322,6 +323,32 @@ function headline(service: ServiceId, mode: string): string {
   }
 }
 
+const BOOK_EVENT = "smarto:book-cab";
+
+/*
+ * Jumps to the booking card with a service already chosen. A plain link to
+ * #book underneath, so it still reaches the card without JavaScript.
+ */
+export function BookServiceLink({
+  service,
+  className,
+  children,
+}: {
+  service: ServiceId;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <a
+      href="#book"
+      onClick={() => window.dispatchEvent(new CustomEvent(BOOK_EVENT, { detail: service }))}
+      className={className}
+    >
+      {children}
+    </a>
+  );
+}
+
 function at(date: string, time: string): string {
   return [date && longDate(date), time && timeLabel(time)].filter(Boolean).join(", ");
 }
@@ -376,13 +403,21 @@ export function CabQuickServices({
     service === "airport" || service === "railway" || service === "city" || (service === "outstation" && mode === "one-way");
   const custom = service === "outstation" && mode === "custom";
 
-  const pickService = (id: ServiceId) => {
+  const pickService = useCallback((id: ServiceId) => {
     const next = SERVICES.find((s) => s.id === id);
+    if (!next) return;
     setService(id);
-    setMode(next?.modes?.[0].value ?? "");
+    setMode(next.modes?.[0].value ?? "");
     setDirection("");
     setError("");
-  };
+  }, []);
+
+  // A "Book" button elsewhere on the page picks its service here.
+  useEffect(() => {
+    const onBook = (e: Event) => pickService((e as CustomEvent<ServiceId>).detail);
+    window.addEventListener(BOOK_EVENT, onBook);
+    return () => window.removeEventListener(BOOK_EVENT, onBook);
+  }, [pickService]);
 
   const setPlace = (key: Place["key"], value: string) => {
     if (key === "pickup") {
