@@ -125,7 +125,7 @@ export const CAB_SERVICE_CARDS: CabServiceCard[] = [
     id: "railway",
     name: "Railway station rides",
     body: "Reliable drops and pickups at Guwahati, Kamakhya and New Guwahati stations, timed to your train, early or late.",
-    fare: null,
+    fare: "₹249",
   },
   {
     id: "city",

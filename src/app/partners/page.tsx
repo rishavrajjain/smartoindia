@@ -198,12 +198,12 @@ export default function PartnersPage() {
             <span className="accent block">the whole split.</span>
           </h2>
           <p className="mt-4 max-w-md text-[0.90625rem] leading-relaxed text-bone/65">
-            Most operators hide what they keep. Here&rsquo;s ours, on a ₹399
+            Most operators hide what they keep. Here&rsquo;s ours, on a ₹249
             railway drop.
           </p>
           <PartnerSplit />
           <p className="mt-5 max-w-2xl text-[0.65625rem] leading-relaxed text-bone/35">
-            Illustrative, based on a ₹399 railway station drop. Airport,
+            Illustrative, based on a ₹249 railway station ride. Airport,
             rental and outstation rides carry higher fares, so your actual
             figure will be higher. Tier thresholds shown in brackets are
             provisional and confirmed in your partner agreement.

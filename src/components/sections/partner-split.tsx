@@ -7,7 +7,7 @@ import { cn } from "@/lib/cn";
 /*
  * The open split: Manav's signature for the partner page. Most operators
  * won't tell a partner what they keep; this shows the whole split on a
- * ₹399 railway station drop, then lets the partner slide their monthly
+ * ₹249 railway station ride, then lets the partner slide their monthly
  * volume to see their commission tier and what comes back to them.
  *
  * Numbers are the mockup's: tiers of 5% / 7.5% / 10%, with thresholds
@@ -15,7 +15,7 @@ import { cn } from "@/lib/cn";
  * (they are confirmed in the partner agreement).
  */
 
-const FARE = 399;
+const FARE = 249;
 
 const TIERS = [
   { min: 0, rate: 0.05, label: "5%", band: "Under [50]\nrides a month" },

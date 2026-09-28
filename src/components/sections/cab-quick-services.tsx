@@ -82,7 +82,7 @@ const SERVICES: readonly Service[] = [
     pill: "Railway",
     icon: TrainIcon,
     modes: null,
-    note: () => "One flat fare, early train or late.",
+    note: () => "From ₹249 all-in, early train or late.",
   },
   {
     id: "city",

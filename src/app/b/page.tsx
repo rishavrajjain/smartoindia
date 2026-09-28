@@ -76,7 +76,7 @@ const HERO_CAPTIONS: HeroCaption[] = [
     big: "North East",
     sub: "with personally curated packages",
   },
-  { at: 15.55, small: "Railway station rides", pre: "starting", big: "₹199" },
+  { at: 15.55, small: "Railway station rides", pre: "starting", big: "₹249" },
 ];
 
 /* The route bar's flags. Each id is a section on this page, in scroll order. */
@@ -112,7 +112,7 @@ const SERVICES = [
   {
     name: "Railway station",
     line: "To Guwahati station, on train time.",
-    fare: "₹399",
+    fare: "₹249",
     icon: "/icons/ic-train.webp",
     message: enquiry("I need a railway station drop."),
   },

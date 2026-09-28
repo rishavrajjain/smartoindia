@@ -91,10 +91,10 @@ export default function CabsPage() {
               </span>
               <span>
                 <span className="block text-[0.9375rem] leading-snug font-extrabold text-ink">
-                  Flat ₹399
+                  From ₹249
                 </span>
                 <span className="block text-[0.75rem] text-taupe">
-                  Railway station drop
+                  Railway station rides
                 </span>
               </span>
             </div>
@@ -232,9 +232,9 @@ export default function CabsPage() {
         >
           <p className="text-[0.6875rem] leading-snug text-bone/60">
             <span className="block text-[0.90625rem] font-extrabold text-bone">
-              Flat ₹399
+              From ₹249
             </span>
-            Railway station drop
+            Railway station rides
           </p>
           <WaCta
             message={enquiry("I need a cab in Guwahati.")}
